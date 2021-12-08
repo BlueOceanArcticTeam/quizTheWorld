@@ -1,7 +1,9 @@
-const someFunction = () => {
-  console.log('bad');
-};
+/* eslint-disable import/extensions */
 
-const getQuizResultsByAnswer = () => {
-  console.log('good');
+// import utility functions
+import helperFunction from '../templates/helperFunction.js';
+
+// export utility functions
+export default {
+  helperFunction,
 };
