@@ -8,17 +8,18 @@ CREATE TABLE answers (
   id INT PRIMARY KEY AUTO_INCREMENT,
   question_id INT,
   correct BOOLEAN,
-  text VARCHAR(100),
+  text VARCHAR(200),
   FOREIGN KEY (question_id) REFERENCES questions(id)
 );
 
 CREATE TABLE questions (
   id INT PRIMARY KEY AUTO_INCREMENT,
   quiz_id INT,
-  text VARCHAR(100),
+  text VARCHAR(200),
   thumbnail_url TEXT,
   questionType VARCHAR(15),
-  learnMore_url TEXT
+  learnMore_url TEXT,
+  FOREIGN KEY (quiz_id) REFERENCES quizzes(id)
 );
 
 CREATE TABLE messages (
