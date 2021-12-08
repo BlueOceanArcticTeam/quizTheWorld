@@ -9,14 +9,13 @@ CREATE TABLE  quizzes(
     FOREIGN KEY (source) REFERENCES users(id)
 );
 
-CREATE TABLE user_quiz_status(
+CREATE TABLE userQuizStatus(
     id INT PRIMARY KEY AUTO_INCREMENT,
     quiz_id INT NOT NULL,
     user_id INT NOT NULL,
     completed BOOLEAN NOT NULL,
     dateCompleted DATETIME,
-    lastAnswered INT,
-    score DECIMAL,
+    lastAnswered INT NOT NULL,
     numCorrect INT,
     numAttempted INT
     FOREIGN KEY (quiz_id) REFERENCES quiz(id),
