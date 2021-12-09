@@ -16,7 +16,6 @@ import Quiz from './components/quiz/Quiz.jsx';
 import Quizzes from './components/quizzes/Quizzes.jsx';
 import Register from './components/register/Register.jsx';
 
-
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 //* fetch('http://example.com/movies.json',)
@@ -30,11 +29,11 @@ const App = function () {
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />} />
           <Route path="/profile/:user_id" element={<ProfilePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/quizzes/:quiz_id" element={<Quiz />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NoPath />} />
         </Route>
       </Routes>

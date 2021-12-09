@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
 
+import axios from 'axios';
 import React, { useState, useContext, useEffect } from 'react';
 import { getUserName } from './chatBoxHelperFunctions.js';
 import MessageTile from './MessageTile.jsx';
@@ -13,6 +14,8 @@ export default function ChatBox({ recipientID }) {
   // component functions - event handlers
   const handleChatBoxClick = () => { setChatBoxActive(!chatBoxActive); };
   const getMessageHistory = () => {
+    axios.get('http://localhost:3000/messages', {})
+      .then()
     setMessageHistory([]);
   };
   // use Effect:
