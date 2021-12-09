@@ -1,24 +1,25 @@
-{"id":1,"category":"General Knowledge","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.816Z","numSubmissions":0}
-{"id":2,"category":"Animals","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.822Z","numSubmissions":0}
-{"id":3,"category":"Geography","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.825Z","numSubmissions":0}
-{"id":4,"category":"Entertainment: Film","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.829Z","numSubmissions":0}
-{"id":5,"category":"Entertainment: Film","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.833Z","numSubmissions":0}
-{"id":6,"category":"Science & Nature","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.836Z","numSubmissions":0}
-{"id":7,"category":"General Knowledge","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.840Z","numSubmissions":0}
-{"id":8,"category":"Animals","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.844Z","numSubmissions":0}
-{"id":9,"category":"Mythology","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.848Z","numSubmissions":0}
-{"id":10,"category":"Entertainment: Books","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.852Z","numSubmissions":0}
-{"id":11,"category":"General Knowledge","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.855Z","numSubmissions":0}
-{"id":12,"category":"Entertainment: Film","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.859Z","numSubmissions":0}
-{"id":13,"category":"Animals","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.862Z","numSubmissions":0}
-{"id":14,"category":"Entertainment: Books","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.865Z","numSubmissions":0}
-{"id":15,"category":"Entertainment: Books","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.869Z","numSubmissions":0}
-{"id":16,"category":"Mythology","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.873Z","numSubmissions":0}
-{"id":17,"category":"Entertainment: Music","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.876Z","numSubmissions":0}
-{"id":18,"category":"Geography","difficulty":"easy","source":1,"dateCreated":"2021-12-09T19:26:16.879Z","numSubmissions":0}
-{"id":19,"category":"Entertainment: Music","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.883Z","numSubmissions":0}
-{"id":20,"category":"Entertainment: Music","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.886Z","numSubmissions":0}
-{"id":21,"category":"Science & Nature","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.890Z","numSubmissions":0}
-{"id":22,"category":"Geography","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.893Z","numSubmissions":0}
-{"id":23,"category":"Mythology","difficulty":"hard","source":1,"dateCreated":"2021-12-09T19:26:16.896Z","numSubmissions":0}
-{"id":24,"category":"Science & Nature","difficulty":"medium","source":1,"dateCreated":"2021-12-09T19:26:16.900Z","numSubmissions":0}
+id, category, difficulty, source, dateCreated, numSubmissions
+1,"General Knowledge","hard",1,"2021-12-09T19:26:16.816Z",0
+2,"Animals","hard",1,"2021-12-09T19:26:16.822Z",0
+3,"Geography","hard",1,"2021-12-09T19:26:16.825Z",0
+4,"Entertainment: Film","easy",1,"2021-12-09T19:26:16.829Z",0
+5,"Entertainment: Film","medium",1,"2021-12-09T19:26:16.833Z",0
+6,"Science & Nature","easy",1,"2021-12-09T19:26:16.836Z",0
+7,"General Knowledge","medium",1,"2021-12-09T19:26:16.840Z",0
+8,"Animals","easy",1,"2021-12-09T19:26:16.844Z",0
+9,"Mythology","easy",1,"2021-12-09T19:26:16.848Z",0
+10,"Entertainment: Books","hard",1,"2021-12-09T19:26:16.852Z",0
+11,"General Knowledge","easy",1,"2021-12-09T19:26:16.855Z",0
+12,"Entertainment: Film","hard",1,"2021-12-09T19:26:16.859Z",0
+13,"Animals","medium",1,"2021-12-09T19:26:16.862Z",0
+14,"Entertainment: Books","easy",1,"2021-12-09T19:26:16.865Z",0
+15,"Entertainment: Books","medium",1,"2021-12-09T19:26:16.869Z",0
+16,"Mythology","medium",1,"2021-12-09T19:26:16.873Z",0
+17,"Entertainment: Music","easy",1,"2021-12-09T19:26:16.876Z",0
+18,"Geography","easy",1,"2021-12-09T19:26:16.879Z",0
+19,"Entertainment: Music","hard",1,"2021-12-09T19:26:16.883Z",0
+20,"Entertainment: Music","medium",1,"2021-12-09T19:26:16.886Z",0
+21,"Science & Nature","hard",1,"2021-12-09T19:26:16.890Z",0
+22,"Geography","medium",1,"2021-12-09T19:26:16.893Z",0
+23,"Mythology","hard",1,"2021-12-09T19:26:16.896Z",0
+24,"Science & Nature","medium",1,"2021-12-09T19:26:16.900Z",0
