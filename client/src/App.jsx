@@ -1,10 +1,10 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import AppContext from './context.js';
 import {
   Routes, Switch, Route, Link, BrowserRouter,
 } from 'react-router-dom';
+import AppContext from './context.js';
 
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
