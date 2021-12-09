@@ -4,7 +4,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function MessageTile() {
+export default function MessageTile({ message }) {
   // set state variables below:
 
   // component functions - event handlers
