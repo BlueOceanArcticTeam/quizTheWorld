@@ -1,3 +1,5 @@
+CREATE ROLE quizlet WITH LOGIN PASSWORD '12345';
+
 DROP DATABASE IF EXISTS quizKnows;
 
 CREATE DATABASE quizKnows;
@@ -69,5 +71,6 @@ CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
-    thumbnail_url TEXT
+    thumbnail_url TEXT,
+    email TEXT
 );

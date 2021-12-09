@@ -3,9 +3,8 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import ChatBox from '../chat/ChatBox.jsx';
 
-export default function HomePage() {
+export default function MessageTile() {
   // set state variables below:
 
   // component functions - event handlers
@@ -15,8 +14,7 @@ export default function HomePage() {
   // render component:
   return (
     <div>
-      Home Page!!!
-      <ChatBox />
+      Example
     </div>
   );
 }

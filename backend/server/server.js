@@ -21,4 +21,25 @@ app.get('*', (req, res) => {
   });
 });
 
+app.get('/quizzes', (req, res) => {
+  db.query(`SELECT * FROM quizzes`, (err, data) => {
+    if (err) { console.log(err); }
+    // TODO: res.send();
+  });
+});
+
+app.get('/quizzes/:quiz_id', (req, res) => {
+  db.query(`SELECT * FROM quizzes WHERE quiz_id = ${req.params.quiz_id}`, (err, data) => {
+    if (err) { console.log(err); }
+    // TODO: res.send();
+  });
+});
+
+app.get(':user_id/friends', (req, res) => {
+  db.query(``, (err, data) => {
+    if (err) { console.log(err); }
+    // TODO: res.send();
+  });
+});
+
 app.listen(3000, console.log('Connected to the Arctic'));
