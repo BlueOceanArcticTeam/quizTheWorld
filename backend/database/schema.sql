@@ -71,5 +71,6 @@ CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
-    thumbnail_url TEXT
+    thumbnail_url TEXT,
+    email TEXT
 );
