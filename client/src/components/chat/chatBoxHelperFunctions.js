@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /**
  * TODO:
  * copy helperFunction template and move to utilities folder
@@ -5,10 +7,9 @@
  * modify function name
  * import function in ../utilities/index.js
  */
-export default function helperFunction() {
-  // do something
-
-  // return
+export function getUserName(id) {
+  // axios.get('', {})
+    // .then()
+    // .catch();
 };
-
 
