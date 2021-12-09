@@ -1,10 +1,10 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import AppContext from './context.js';
 import {
   Routes, Switch, Route, Link, BrowserRouter,
 } from 'react-router-dom';
+import AppContext from './context.js';
 
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
@@ -15,7 +15,7 @@ import ProfilePage from './components/profile/ProfilePage.jsx';
 import Quiz from './components/quiz/Quiz.jsx';
 import Quizzes from './components/quizzes/Quizzes.jsx';
 import Register from './components/register/Register.jsx';
-
+import NavBar from './components/helperComponents/NavBar.jsx';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -32,7 +32,7 @@ const App = function () {
           <Route path="/profile/:user_id" element={<ProfilePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="quizzes" element={<Quizzes />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/quizzes/:quiz_id" element={<Quiz />} />
           <Route path="*" element={<NoPath />} />

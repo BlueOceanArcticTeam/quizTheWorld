@@ -4,6 +4,8 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import ChatBox from '../chat/ChatBox.jsx';
+import NavBar from '../helperComponents/NavBar.jsx';
+import './homepage.css';
 
 export default function HomePage() {
   // set state variables below:
@@ -14,9 +16,6 @@ export default function HomePage() {
 
   // render component:
   return (
-    <div>
-      Home Page!!!
-      <ChatBox />
-    </div>
+    <div />
   );
 }
