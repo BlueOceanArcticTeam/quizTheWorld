@@ -4,19 +4,21 @@ const express = require('express');
 const messagesRoutes = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
 const db = require('../../database/db.js');
 
-messagesRoutes.route('/messages').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
+messagesRoutes.route('/').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
   db.query(`SELECT * FROM messages`, [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
     if (err) throw err;
-    // TODO: res.send();
-    console.log('MESSAGES DATA:', data);
+    res.send(data.fields);
   });
 });
 
-messagesRoutes.route('/messages').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  const { sender_user_id, recipient_user_id, text, dateTime } = req.body;
-  db.query('QUERY', [sender_user_id, recipient_user_id, text, dateTime], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
-    if (err) throw err;
-    // TODO: res.send();
+messagesRoutes.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
+  const { senderID, recipientID, text, date } = req.body;
+  db.query(
+    'INSERT INTO messages (sender_user_id, recipient_user_id, text, date) VALUES (?, ?, ?, ?)',
+    [senderID, recipientID, text, date],
+    (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+      if (err) throw err;
+      res.sendStatus(201);
   });
 });
 

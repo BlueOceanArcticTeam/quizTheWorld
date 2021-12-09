@@ -9,42 +9,44 @@ import MessageTile from './MessageTile.jsx';
 
 export default function ChatBox({ senderID, recipientID }) {
   const [chatBoxActive, setChatBoxActive] = useState(false);
-  const [messsageHistory, setMessageHistory] = useState([]);
+  const [messageHistory, setMessageHistory] = useState([]);
   const [messageText, setMessageText] = useState('');
 
   const handleChatBoxClick = () => { setChatBoxActive(!chatBoxActive); };
   const getMessageHistory = () => {
-    axios.get('http://localhost:3000/messages', {})
+    axios.get('/api/messages', {})
       .then((results) => { console.log('GOT MESSAGES BACK:', results.data); })
       .then(() => { setMessageHistory([]); })
-      .catch();
+      .catch((err) => { console.log(err); });
   };
   const handleSendMessage = () => {
-    axios.post('http://localhost:3000/messages', {
+    axios.post('/api/messages', {
       // sender_user_id: senderID,
       // recipient_user_id: recipientID,
-      sender_user_id: '1',
-      recipient_user_id: '2',
+      senderID: '1',
+      recipientID: '2',
       text: messageText,
-      dateTime: new Date()
+      date: new Date()
     })
-      .then(() => { getMessageHistory(); })
+      // .then(() => { getMessageHistory(); })
       .then(() => { setMessageText(''); })
       // .then(() => { console.log('Message submitted'); })
       .catch((err) => { console.log(err); });
   };
 
   useEffect(() => { getMessageHistory(); }, []);
-
+  const today = new Date();
   return (
     <div className="chatBoxContainer">
       <span className="chatBoxTitle" onClick={handleChatBoxClick}>
         Chat with: {getUserName(recipientID)}
+        {/* {today.toString()} */}
       </span>
       {chatBoxActive
         ? (<div>
             <div>
-              {messsageHistory.map((message) => { return <MessageTile message={message} />; })}
+              {messageHistory.map((message) => { return <MessageTile message={message} />; })}
+              {messageHistory.toString()}
               <div className="messageInputBox">
                 <input type="text" className="messageInput" onChange={(e) => { setMessageText(e.nativeEvent.target.value); }}></input>
                 <button type="submit" onClick={handleSendMessage}>Send</button>
