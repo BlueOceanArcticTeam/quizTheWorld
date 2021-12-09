@@ -5,9 +5,16 @@ import AppContext from './context.js';
 import {
   Routes, Switch, Route, Link, BrowserRouter,
 } from 'react-router-dom';
-import HomePage from './components/home/HomePage.jsx';
-import ProfilePage from './components/profile/ProfilePage.jsx';
+
+import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
+import HomePage from './components/home/HomePage.jsx';
+import Login from './components/login/Login.jsx';
+import NoPath from './components/nopath/NoPath.jsx';
+import ProfilePage from './components/profile/ProfilePage.jsx';
+import Quiz from './components/quiz/Quiz.jsx';
+import Quizzes from './components/quizzes/Quizzes.jsx';
+import Register from './components/register/Register.jsx';
 
 
 // We're using fetch!
@@ -22,7 +29,13 @@ const App = function () {
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />} />
-          <Route path="profile/" element={<ProfilePage />} />
+          <Route path="/profile/:user_id" element={<ProfilePage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/quizzes/create" element={<CreateQuiz />} />
+          <Route path="/quizzes/:quiz_id" element={<Quiz />} />
+          <Route path="*" element={<NoPath />} />
         </Route>
       </Routes>
     </div>

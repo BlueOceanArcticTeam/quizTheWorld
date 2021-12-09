@@ -4,7 +4,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function ComponentName() {
+export default function NoPath() {
   // set state variables below:
 
   // component functions - event handlers
@@ -14,7 +14,7 @@ export default function ComponentName() {
   // render component:
   return (
     <div>
-      Example
+      404
     </div>
   );
 }
