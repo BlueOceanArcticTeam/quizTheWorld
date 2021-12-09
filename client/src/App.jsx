@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import AppContext from './context.js';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
