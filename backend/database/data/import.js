@@ -42,7 +42,7 @@ const seperateData = (quizzes) => {
       numSubmissions: 0,
     };
     // write quiz to file
-    fs.appendFileSync('question.csv', `${currentQuiz}\n`, (err) => {
+    fs.appendFileSync('quizzes.csv', `${JSON.stringify(currentQuiz)}\n`, (err) => {
       if (err) {
         console.log(err);
       } else {
@@ -61,7 +61,7 @@ const seperateData = (quizzes) => {
         learnMore_url: '',
       };
       // write to file
-      fs.appendFileSync('question.csv', `${question}\n`, (err) => {
+      fs.appendFileSync('question.csv', `${JSON.stringify(question)}\n`, (err) => {
         if (err) {
           console.log(err);
         } else {
@@ -74,7 +74,7 @@ const seperateData = (quizzes) => {
         correct: true,
         text: q.correct_answer,
       };
-      fs.appendFileSync('answers.csv', `${correctAnswer}\n`, (err) => {
+      fs.appendFileSync('answers.csv', `${JSON.stringify(correctAnswer)}\n`, (err) => {
         if (err) {
           console.log(err);
         } else {
@@ -89,7 +89,7 @@ const seperateData = (quizzes) => {
           correct: false,
           text: answer,
         };
-        fs.appendFileSync('answers.csv', `${incorrectAnswer}\n`, (err) => {
+        fs.appendFileSync('answers.csv', `${JSON.stringify(incorrectAnswer)}\n`, (err) => {
           if (err) {
             console.log(err);
           } else {
