@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import AppContext from './context.js';
 import {
   Routes, Switch, Route, Link, BrowserRouter,
 } from 'react-router-dom';
@@ -14,6 +15,7 @@ import ProfilePage from './components/profile/ProfilePage.jsx';
 import Quiz from './components/quiz/Quiz.jsx';
 import Quizzes from './components/quizzes/Quizzes.jsx';
 import Register from './components/register/Register.jsx';
+
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
