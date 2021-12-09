@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 const axios = require('axios');
 const fs = require('fs');
+const quizzes = require('./quizzes.json');
 
 const baseURL = 'https://opentdb.com/api.php?amount=10&type=multiple&token=3e24f005a432012df4018d7daf4d2f5e1d911d854714eeee5ea8b5adf268557d&category=';
 const trailURL = '&difficulty=';
@@ -12,7 +13,7 @@ const importQuiz = () => {
     for (let j = 0; j < difficulty.length; j++) {
       axios.get(baseURL + category[i] + trailURL + difficulty[j])
         .then((res) => {
-          fs.appendFileSync('quizzes.json', JSON.stringify(res.data), (err) => {
+          fs.appendFileSync('quizzes.txt', JSON.stringify(res.data), (err) => {
             if (err) {
               console.log(err);
             } else {
@@ -24,4 +25,6 @@ const importQuiz = () => {
   }
 };
 
-importQuiz();
+// importQuiz();
+
+console.log(quizzes);
