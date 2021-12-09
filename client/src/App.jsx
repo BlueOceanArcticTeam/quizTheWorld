@@ -32,9 +32,11 @@ const App = function () {
           <Route path="/profile/:user_id" element={<ProfilePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="quizzes" element={<Quizzes />} />
+          <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/quizzes/:quiz_id" element={<Quiz />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NoPath />} />
         </Route>
       </Routes>

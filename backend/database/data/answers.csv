@@ -1,0 +1,960 @@
+{"question_id":1,"correct":true,"text":"Bulldog"}
+{"question_id":1,"correct":false,"text":"Yorkshire Terrier"}
+{"question_id":1,"correct":false,"text":"Boxer"}
+{"question_id":1,"correct":false,"text":"Pug"}
+{"question_id":2,"correct":true,"text":"24 MPH"}
+{"question_id":2,"correct":false,"text":"15 MPH"}
+{"question_id":2,"correct":false,"text":"20 MPH"}
+{"question_id":2,"correct":false,"text":"200 MPH"}
+{"question_id":3,"correct":true,"text":"February 14, 2005"}
+{"question_id":3,"correct":false,"text":"May 22, 2004"}
+{"question_id":3,"correct":false,"text":"September 12, 2005"}
+{"question_id":3,"correct":false,"text":"July 19, 2009"}
+{"question_id":4,"correct":true,"text":"Qamar"}
+{"question_id":4,"correct":false,"text":"Najma"}
+{"question_id":4,"correct":false,"text":"Kawkab"}
+{"question_id":4,"correct":false,"text":"Shams"}
+{"question_id":5,"correct":true,"text":"1 Month"}
+{"question_id":5,"correct":false,"text":"3 Weeks"}
+{"question_id":5,"correct":false,"text":"1 Week"}
+{"question_id":5,"correct":false,"text":"2 Months"}
+{"question_id":6,"correct":true,"text":"2004"}
+{"question_id":6,"correct":false,"text":"2000"}
+{"question_id":6,"correct":false,"text":"2001"}
+{"question_id":6,"correct":false,"text":"2006"}
+{"question_id":7,"correct":true,"text":"7 years"}
+{"question_id":7,"correct":false,"text":"2 years"}
+{"question_id":7,"correct":false,"text":"8 years"}
+{"question_id":7,"correct":false,"text":"6 months"}
+{"question_id":8,"correct":true,"text":"Purple"}
+{"question_id":8,"correct":false,"text":"Red"}
+{"question_id":8,"correct":false,"text":"Brown"}
+{"question_id":8,"correct":false,"text":"Pink"}
+{"question_id":9,"correct":true,"text":"15%"}
+{"question_id":9,"correct":false,"text":"20%"}
+{"question_id":9,"correct":false,"text":"10%"}
+{"question_id":9,"correct":false,"text":"25%"}
+{"question_id":10,"correct":true,"text":"The inability to make decisions"}
+{"question_id":10,"correct":false,"text":"The inability to stand up"}
+{"question_id":10,"correct":false,"text":"The inability to concentrate on anything"}
+{"question_id":10,"correct":false,"text":"A feverish desire to rip one&#039;s clothes off"}
+{"question_id":11,"correct":true,"text":"Simien Jackel"}
+{"question_id":11,"correct":false,"text":"Ethiopian Coyote"}
+{"question_id":11,"correct":false,"text":"Amharic Fox"}
+{"question_id":11,"correct":false,"text":"Canis Simiensis"}
+{"question_id":12,"correct":true,"text":"Syrian Brown Bear"}
+{"question_id":12,"correct":false,"text":"California Grizzly Bear"}
+{"question_id":12,"correct":false,"text":"Atlas Bear"}
+{"question_id":12,"correct":false,"text":"Mexican Grizzly Bear"}
+{"question_id":13,"correct":true,"text":"4"}
+{"question_id":13,"correct":false,"text":"8"}
+{"question_id":13,"correct":false,"text":"2"}
+{"question_id":13,"correct":false,"text":"6"}
+{"question_id":14,"correct":true,"text":"Tuatara"}
+{"question_id":14,"correct":false,"text":"Komodo Dragon"}
+{"question_id":14,"correct":false,"text":"Gila Monster"}
+{"question_id":14,"correct":false,"text":"Green Iguana"}
+{"question_id":15,"correct":true,"text":"Ape"}
+{"question_id":15,"correct":false,"text":"Lion"}
+{"question_id":15,"correct":false,"text":"Parrot"}
+{"question_id":15,"correct":false,"text":"Wildcat"}
+{"question_id":16,"correct":true,"text":"Frog"}
+{"question_id":16,"correct":false,"text":"Chicken"}
+{"question_id":16,"correct":false,"text":"Horse"}
+{"question_id":16,"correct":false,"text":"Fly"}
+{"question_id":17,"correct":true,"text":"Gooty"}
+{"question_id":17,"correct":false,"text":"Hopper"}
+{"question_id":17,"correct":false,"text":"Silver Stripe"}
+{"question_id":17,"correct":false,"text":"Woebegone"}
+{"question_id":18,"correct":true,"text":"Portuguese Man-of-War"}
+{"question_id":18,"correct":false,"text":"Sea Wasp"}
+{"question_id":18,"correct":false,"text":"Irukandji"}
+{"question_id":18,"correct":false,"text":"Sea Nettle"}
+{"question_id":19,"correct":true,"text":"Wake"}
+{"question_id":19,"correct":false,"text":"Ambush"}
+{"question_id":19,"correct":false,"text":"Building"}
+{"question_id":19,"correct":false,"text":"Gaze"}
+{"question_id":20,"correct":true,"text":"Chordata"}
+{"question_id":20,"correct":false,"text":"Echinodermata"}
+{"question_id":20,"correct":false,"text":"Annelida"}
+{"question_id":20,"correct":false,"text":"Placazoa"}
+{"question_id":21,"correct":true,"text":"Lesotho"}
+{"question_id":21,"correct":false,"text":"Swaziland"}
+{"question_id":21,"correct":false,"text":"Botswana"}
+{"question_id":21,"correct":false,"text":"Zimbabwe"}
+{"question_id":22,"correct":true,"text":"Yangtze"}
+{"question_id":22,"correct":false,"text":"Fujian"}
+{"question_id":22,"correct":false,"text":"Sichuan"}
+{"question_id":22,"correct":false,"text":"Guangdong"}
+{"question_id":23,"correct":true,"text":"Afghanistan and Pakistan"}
+{"question_id":23,"correct":false,"text":"India and Nepal"}
+{"question_id":23,"correct":false,"text":"Pakistan and India"}
+{"question_id":23,"correct":false,"text":"Tajikistan and Kyrgyzstan"}
+{"question_id":24,"correct":true,"text":"New Zealand"}
+{"question_id":24,"correct":false,"text":"Nepal"}
+{"question_id":24,"correct":false,"text":"China"}
+{"question_id":24,"correct":false,"text":"Mexico"}
+{"question_id":25,"correct":true,"text":"Schweizerische Bundesbahnen"}
+{"question_id":25,"correct":false,"text":"Schweizerische Nationalbahnen"}
+{"question_id":25,"correct":false,"text":"Bundesbahnen der Schweiz"}
+{"question_id":25,"correct":false,"text":"Schweizerische Staatsbahnen"}
+{"question_id":26,"correct":true,"text":"Suomi"}
+{"question_id":26,"correct":false,"text":"Eesti"}
+{"question_id":26,"correct":false,"text":"Magyarorsz&aacute;g"}
+{"question_id":26,"correct":false,"text":"Sverige"}
+{"question_id":27,"correct":true,"text":"Kaunas"}
+{"question_id":27,"correct":false,"text":"Panevėžys"}
+{"question_id":27,"correct":false,"text":"Vilnius"}
+{"question_id":27,"correct":false,"text":"Klaipėda"}
+{"question_id":28,"correct":true,"text":"Estonia"}
+{"question_id":28,"correct":false,"text":"Finland"}
+{"question_id":28,"correct":false,"text":"Sweden"}
+{"question_id":28,"correct":false,"text":"Poland"}
+{"question_id":29,"correct":true,"text":"Madison"}
+{"question_id":29,"correct":false,"text":"Milwaukee"}
+{"question_id":29,"correct":false,"text":"Wisconsin Dells"}
+{"question_id":29,"correct":false,"text":"Green Bay"}
+{"question_id":30,"correct":true,"text":"Lake Baikal"}
+{"question_id":30,"correct":false,"text":"Lake Superior"}
+{"question_id":30,"correct":false,"text":"Lake Huron"}
+{"question_id":30,"correct":false,"text":"Lake Michigan"}
+{"question_id":31,"correct":true,"text":"Wilson"}
+{"question_id":31,"correct":false,"text":"Friday"}
+{"question_id":31,"correct":false,"text":"Jones"}
+{"question_id":31,"correct":false,"text":"Billy"}
+{"question_id":32,"correct":true,"text":"Tommy Lee Jones"}
+{"question_id":32,"correct":false,"text":"Harrison Ford"}
+{"question_id":32,"correct":false,"text":"Harvey Keitel"}
+{"question_id":32,"correct":false,"text":"Martin Landau"}
+{"question_id":33,"correct":true,"text":"Top Gun"}
+{"question_id":33,"correct":false,"text":"Days of Thunder"}
+{"question_id":33,"correct":false,"text":"The Color of Money"}
+{"question_id":33,"correct":false,"text":"Cocktail"}
+{"question_id":34,"correct":true,"text":"Vincent Vega"}
+{"question_id":34,"correct":false,"text":"Jules Winnfield"}
+{"question_id":34,"correct":false,"text":"Jimmie Dimmick"}
+{"question_id":34,"correct":false,"text":"Butch Coolidge"}
+{"question_id":35,"correct":true,"text":"Indominus Rex"}
+{"question_id":35,"correct":false,"text":"Mosasaurus"}
+{"question_id":35,"correct":false,"text":"Pteranodon"}
+{"question_id":35,"correct":false,"text":"Tyrannosaurus Rex "}
+{"question_id":36,"correct":true,"text":"Fight Club"}
+{"question_id":36,"correct":false,"text":"The Island"}
+{"question_id":36,"correct":false,"text":"Unthinkable"}
+{"question_id":36,"correct":false,"text":"American Pie"}
+{"question_id":37,"correct":true,"text":"Aloysius O&#039;Hare"}
+{"question_id":37,"correct":false,"text":"Ted Wiggins"}
+{"question_id":37,"correct":false,"text":"The Once-Ler"}
+{"question_id":37,"correct":false,"text":"Grammy Norma"}
+{"question_id":38,"correct":true,"text":"Replicants"}
+{"question_id":38,"correct":false,"text":"Cylons"}
+{"question_id":38,"correct":false,"text":"Synthetics"}
+{"question_id":38,"correct":false,"text":"Skinjobs"}
+{"question_id":39,"correct":true,"text":"Kaltag, Nikki, and Star"}
+{"question_id":39,"correct":false,"text":"Dusty, Kirby, and Ralph"}
+{"question_id":39,"correct":false,"text":"Nuk, Yak, and Sumac"}
+{"question_id":39,"correct":false,"text":"Jenna, Sylvie, and Dixie"}
+{"question_id":40,"correct":true,"text":"San Fransokyo"}
+{"question_id":40,"correct":false,"text":"San Tokyo"}
+{"question_id":40,"correct":false,"text":"Tokysisco"}
+{"question_id":40,"correct":false,"text":"Sankyo"}
+{"question_id":41,"correct":true,"text":"Sugar"}
+{"question_id":41,"correct":false,"text":"Honey"}
+{"question_id":41,"correct":false,"text":"Caramel"}
+{"question_id":41,"correct":false,"text":"Candy"}
+{"question_id":42,"correct":true,"text":"Guys and Dolls"}
+{"question_id":42,"correct":false,"text":"Anchors Aweigh"}
+{"question_id":42,"correct":false,"text":"From Here to Eternity"}
+{"question_id":42,"correct":false,"text":"High Society"}
+{"question_id":43,"correct":true,"text":"Matthew Taylor"}
+{"question_id":43,"correct":false,"text":"Jason Dip"}
+{"question_id":43,"correct":false,"text":"Eric Mabius"}
+{"question_id":43,"correct":false,"text":"Jimmy Matts"}
+{"question_id":44,"correct":true,"text":"Jackie Earle Haley"}
+{"question_id":44,"correct":false,"text":"Tyler Mane"}
+{"question_id":44,"correct":false,"text":"Derek Mears"}
+{"question_id":44,"correct":false,"text":"Gunnar Hansen"}
+{"question_id":45,"correct":true,"text":"Romani Ite Domum"}
+{"question_id":45,"correct":false,"text":"Romans Go Home"}
+{"question_id":45,"correct":false,"text":"Roxani Ite Domum"}
+{"question_id":45,"correct":false,"text":"Tomate Ite Domum"}
+{"question_id":46,"correct":true,"text":"1984"}
+{"question_id":46,"correct":false,"text":"1986"}
+{"question_id":46,"correct":false,"text":"1985"}
+{"question_id":46,"correct":false,"text":"1983"}
+{"question_id":47,"correct":true,"text":"Jonathan Demme"}
+{"question_id":47,"correct":false,"text":"Stanley Kubrick"}
+{"question_id":47,"correct":false,"text":"Frank Darabont"}
+{"question_id":47,"correct":false,"text":"Michael Bay"}
+{"question_id":48,"correct":true,"text":"Shan Yu"}
+{"question_id":48,"correct":false,"text":"Chien-Po"}
+{"question_id":48,"correct":false,"text":"Li Shang"}
+{"question_id":48,"correct":false,"text":"Fa Zhou"}
+{"question_id":49,"correct":true,"text":"Jean-Claude Van Damme"}
+{"question_id":49,"correct":false,"text":"Chuck Norris"}
+{"question_id":49,"correct":false,"text":"Steven Seagal"}
+{"question_id":49,"correct":false,"text":"Scott Adkins"}
+{"question_id":50,"correct":true,"text":"88 mph"}
+{"question_id":50,"correct":false,"text":"77 mph"}
+{"question_id":50,"correct":false,"text":"100 mph"}
+{"question_id":50,"correct":false,"text":"70 mph"}
+{"question_id":51,"correct":true,"text":"Femur"}
+{"question_id":51,"correct":false,"text":"Cranium"}
+{"question_id":51,"correct":false,"text":"Humerus"}
+{"question_id":51,"correct":false,"text":"Tibia"}
+{"question_id":52,"correct":true,"text":"Joey"}
+{"question_id":52,"correct":false,"text":"Calf"}
+{"question_id":52,"correct":false,"text":"Pup"}
+{"question_id":52,"correct":false,"text":"Cub"}
+{"question_id":53,"correct":true,"text":"Nose"}
+{"question_id":53,"correct":false,"text":"Ears"}
+{"question_id":53,"correct":false,"text":"Chin"}
+{"question_id":53,"correct":false,"text":"Neck"}
+{"question_id":54,"correct":true,"text":"Venus"}
+{"question_id":54,"correct":false,"text":"Mars"}
+{"question_id":54,"correct":false,"text":"Mercury"}
+{"question_id":54,"correct":false,"text":"Jupiter"}
+{"question_id":55,"correct":true,"text":"Hydrogen"}
+{"question_id":55,"correct":false,"text":"Helium"}
+{"question_id":55,"correct":false,"text":"Lithium"}
+{"question_id":55,"correct":false,"text":"Oxygen"}
+{"question_id":56,"correct":true,"text":"The presence or absence of a nucleus"}
+{"question_id":56,"correct":false,"text":"The overall size"}
+{"question_id":56,"correct":false,"text":"The presence or absence of certain organelles"}
+{"question_id":56,"correct":false,"text":"The mode of reproduction"}
+{"question_id":57,"correct":true,"text":"23"}
+{"question_id":57,"correct":false,"text":"21"}
+{"question_id":57,"correct":false,"text":"22"}
+{"question_id":57,"correct":false,"text":"24"}
+{"question_id":58,"correct":true,"text":"Water"}
+{"question_id":58,"correct":false,"text":"Deserts"}
+{"question_id":58,"correct":false,"text":"Continents"}
+{"question_id":58,"correct":false,"text":"Forests"}
+{"question_id":59,"correct":true,"text":"Polaris"}
+{"question_id":59,"correct":false,"text":"Eridanus"}
+{"question_id":59,"correct":false,"text":"Gamma Cephei"}
+{"question_id":59,"correct":false,"text":"Iota Cephei"}
+{"question_id":60,"correct":true,"text":"A black hole"}
+{"question_id":60,"correct":false,"text":"A wormhole"}
+{"question_id":60,"correct":false,"text":"A supernova"}
+{"question_id":60,"correct":false,"text":"A quasar"}
+{"question_id":61,"correct":true,"text":"Mike"}
+{"question_id":61,"correct":false,"text":"Matthew"}
+{"question_id":61,"correct":false,"text":"Mark"}
+{"question_id":61,"correct":false,"text":"Max"}
+{"question_id":62,"correct":true,"text":"Government"}
+{"question_id":62,"correct":false,"text":"Going"}
+{"question_id":62,"correct":false,"text":"Ghost"}
+{"question_id":62,"correct":false,"text":"Geronimo"}
+{"question_id":63,"correct":true,"text":"Ducati"}
+{"question_id":63,"correct":false,"text":"Nissan"}
+{"question_id":63,"correct":false,"text":"GMC"}
+{"question_id":63,"correct":false,"text":"Fiat"}
+{"question_id":64,"correct":true,"text":"Daigaku"}
+{"question_id":64,"correct":false,"text":"Toshokan"}
+{"question_id":64,"correct":false,"text":"Jimusho"}
+{"question_id":64,"correct":false,"text":"Shokudou"}
+{"question_id":65,"correct":true,"text":"Twilight Zone Tower of Terror"}
+{"question_id":65,"correct":false,"text":"The Haunted Mansion"}
+{"question_id":65,"correct":false,"text":"Pirates of the Caribbean"}
+{"question_id":65,"correct":false,"text":"Peter Pan&#039;s Flight"}
+{"question_id":66,"correct":true,"text":"Bobby Henderson"}
+{"question_id":66,"correct":false,"text":"Eric Tignor"}
+{"question_id":66,"correct":false,"text":"Bill Nye"}
+{"question_id":66,"correct":false,"text":"Zach Soldi"}
+{"question_id":67,"correct":true,"text":"Sheep&#039;s Heart, Liver and Lungs"}
+{"question_id":67,"correct":false,"text":"Sheep&#039;s Heart, Kidneys and Lungs"}
+{"question_id":67,"correct":false,"text":"Sheep&#039;s Liver, Kidneys and Eyes"}
+{"question_id":67,"correct":false,"text":"Whole Sheep"}
+{"question_id":68,"correct":true,"text":"Horse"}
+{"question_id":68,"correct":false,"text":"Weave"}
+{"question_id":68,"correct":false,"text":"Guitar"}
+{"question_id":68,"correct":false,"text":"Boat"}
+{"question_id":69,"correct":true,"text":"Shogun"}
+{"question_id":69,"correct":false,"text":"Ninja"}
+{"question_id":69,"correct":false,"text":"Samurai"}
+{"question_id":69,"correct":false,"text":"Shinobi"}
+{"question_id":70,"correct":true,"text":"Ad hominem"}
+{"question_id":70,"correct":false,"text":"Post hoc ergo propter hoc"}
+{"question_id":70,"correct":false,"text":"Tu quoque"}
+{"question_id":70,"correct":false,"text":"Argumentum ad populum"}
+{"question_id":71,"correct":true,"text":"Cheetah"}
+{"question_id":71,"correct":false,"text":"Lion"}
+{"question_id":71,"correct":false,"text":"Thomson&rsquo;s Gazelle"}
+{"question_id":71,"correct":false,"text":"Pronghorn Antelope"}
+{"question_id":72,"correct":true,"text":"Homo Sapiens"}
+{"question_id":72,"correct":false,"text":"Homo Ergaster"}
+{"question_id":72,"correct":false,"text":"Homo Erectus"}
+{"question_id":72,"correct":false,"text":"Homo Neanderthalensis"}
+{"question_id":73,"correct":true,"text":"Seahorse"}
+{"question_id":73,"correct":false,"text":"Dolphin"}
+{"question_id":73,"correct":false,"text":"Whale"}
+{"question_id":73,"correct":false,"text":"Octopus"}
+{"question_id":74,"correct":true,"text":"6"}
+{"question_id":74,"correct":false,"text":"2"}
+{"question_id":74,"correct":false,"text":"4"}
+{"question_id":74,"correct":false,"text":"0"}
+{"question_id":75,"correct":true,"text":"Pup"}
+{"question_id":75,"correct":false,"text":"Cub"}
+{"question_id":75,"correct":false,"text":"Chick"}
+{"question_id":75,"correct":false,"text":"Kid"}
+{"question_id":76,"correct":true,"text":"Tardar Sauce"}
+{"question_id":76,"correct":false,"text":"Sauce"}
+{"question_id":76,"correct":false,"text":"Minnie"}
+{"question_id":76,"correct":false,"text":"Broccoli"}
+{"question_id":77,"correct":true,"text":"Amphibian"}
+{"question_id":77,"correct":false,"text":"Fish"}
+{"question_id":77,"correct":false,"text":"Reptiles"}
+{"question_id":77,"correct":false,"text":"Mammals"}
+{"question_id":78,"correct":true,"text":"Murder"}
+{"question_id":78,"correct":false,"text":"Pack"}
+{"question_id":78,"correct":false,"text":"Gaggle"}
+{"question_id":78,"correct":false,"text":"Herd"}
+{"question_id":79,"correct":true,"text":"Brown"}
+{"question_id":79,"correct":false,"text":"Black"}
+{"question_id":79,"correct":false,"text":"White"}
+{"question_id":79,"correct":false,"text":"Yellow"}
+{"question_id":80,"correct":true,"text":"28"}
+{"question_id":80,"correct":false,"text":"30"}
+{"question_id":80,"correct":false,"text":"26"}
+{"question_id":80,"correct":false,"text":"24"}
+{"question_id":81,"correct":true,"text":"Apollo"}
+{"question_id":81,"correct":false,"text":"Demeter"}
+{"question_id":81,"correct":false,"text":"Zeus"}
+{"question_id":81,"correct":false,"text":"Athena"}
+{"question_id":82,"correct":true,"text":"Mars"}
+{"question_id":82,"correct":false,"text":"Jupiter"}
+{"question_id":82,"correct":false,"text":"Juno"}
+{"question_id":82,"correct":false,"text":"Ares"}
+{"question_id":83,"correct":true,"text":"Jason"}
+{"question_id":83,"correct":false,"text":"Castor"}
+{"question_id":83,"correct":false,"text":"Daedalus"}
+{"question_id":83,"correct":false,"text":"Odysseus"}
+{"question_id":84,"correct":true,"text":"Zeus"}
+{"question_id":84,"correct":false,"text":"Apollo"}
+{"question_id":84,"correct":false,"text":"Hermes"}
+{"question_id":84,"correct":false,"text":"Poseidon"}
+{"question_id":85,"correct":true,"text":"Apollo"}
+{"question_id":85,"correct":false,"text":"Aphrodite"}
+{"question_id":85,"correct":false,"text":"Artemis"}
+{"question_id":85,"correct":false,"text":"Athena"}
+{"question_id":86,"correct":true,"text":"The Sea"}
+{"question_id":86,"correct":false,"text":"War"}
+{"question_id":86,"correct":false,"text":"Sun"}
+{"question_id":86,"correct":false,"text":"Fire"}
+{"question_id":87,"correct":true,"text":"Dionysus"}
+{"question_id":87,"correct":false,"text":"Hephaestus"}
+{"question_id":87,"correct":false,"text":"Demeter"}
+{"question_id":87,"correct":false,"text":"Apollo"}
+{"question_id":88,"correct":true,"text":"Hera"}
+{"question_id":88,"correct":false,"text":"Aphrodite"}
+{"question_id":88,"correct":false,"text":"Athena"}
+{"question_id":88,"correct":false,"text":"Hestia"}
+{"question_id":89,"correct":true,"text":"Greek and Roman"}
+{"question_id":89,"correct":false,"text":"Roman and Spanish"}
+{"question_id":89,"correct":false,"text":"Greek and Chinese"}
+{"question_id":89,"correct":false,"text":"Greek, Roman and Norse"}
+{"question_id":90,"correct":true,"text":"Harpies"}
+{"question_id":90,"correct":false,"text":"Mermaids"}
+{"question_id":90,"correct":false,"text":"Nymph"}
+{"question_id":90,"correct":false,"text":"Lilith"}
+{"question_id":91,"correct":true,"text":"Rudyard Kipling"}
+{"question_id":91,"correct":false,"text":"Edgar Allan Poe"}
+{"question_id":91,"correct":false,"text":"William Shakespeare"}
+{"question_id":91,"correct":false,"text":"William Wordsworth"}
+{"question_id":92,"correct":true,"text":"Badger"}
+{"question_id":92,"correct":false,"text":"Fox"}
+{"question_id":92,"correct":false,"text":"Frog"}
+{"question_id":92,"correct":false,"text":"Rabbit"}
+{"question_id":93,"correct":true,"text":"Herman Melville"}
+{"question_id":93,"correct":false,"text":"William Golding"}
+{"question_id":93,"correct":false,"text":"William Shakespeare"}
+{"question_id":93,"correct":false,"text":"J. R. R. Tolkien"}
+{"question_id":94,"correct":true,"text":"Bilius"}
+{"question_id":94,"correct":false,"text":"Arthur"}
+{"question_id":94,"correct":false,"text":"John"}
+{"question_id":94,"correct":false,"text":"Dominic"}
+{"question_id":95,"correct":true,"text":"Great Expectations"}
+{"question_id":95,"correct":false,"text":"The Pickwick Papers"}
+{"question_id":95,"correct":false,"text":"Nicholas Nickleby"}
+{"question_id":95,"correct":false,"text":"Oliver Twist"}
+{"question_id":96,"correct":true,"text":"The main character&#039;s trauma in childhood"}
+{"question_id":96,"correct":false,"text":"The relation it has with killing the innocents"}
+{"question_id":96,"correct":false,"text":"The villain&#039;s favourite meal"}
+{"question_id":96,"correct":false,"text":"The voice of innocent people being shut by the powerful"}
+{"question_id":97,"correct":true,"text":"Trial of Temperance"}
+{"question_id":97,"correct":false,"text":"Measure For Measure"}
+{"question_id":97,"correct":false,"text":"Titus Andronicus"}
+{"question_id":97,"correct":false,"text":"Cymbeline"}
+{"question_id":98,"correct":true,"text":" Osteogenesis Imperfecta"}
+{"question_id":98,"correct":false,"text":"Spinocerebellar ataxia"}
+{"question_id":98,"correct":false,"text":"Adrenoleukodystrophy"}
+{"question_id":98,"correct":false,"text":"Cystic Fibrosis"}
+{"question_id":99,"correct":true,"text":"June"}
+{"question_id":99,"correct":false,"text":"August"}
+{"question_id":99,"correct":false,"text":"April"}
+{"question_id":99,"correct":false,"text":"May"}
+{"question_id":100,"correct":true,"text":"The Prince and the Pauper"}
+{"question_id":100,"correct":false,"text":"Hamlet"}
+{"question_id":100,"correct":false,"text":"Wealthy Boy and the Schmuck"}
+{"question_id":100,"correct":false,"text":"A Modern Twain Story"}
+{"question_id":101,"correct":true,"text":"Cancer"}
+{"question_id":101,"correct":false,"text":"Libra"}
+{"question_id":101,"correct":false,"text":"Virgo"}
+{"question_id":101,"correct":false,"text":"Sagittarius"}
+{"question_id":102,"correct":true,"text":"Tango"}
+{"question_id":102,"correct":false,"text":"Target"}
+{"question_id":102,"correct":false,"text":"Taxi"}
+{"question_id":102,"correct":false,"text":"Turkey"}
+{"question_id":103,"correct":true,"text":"Gorilla"}
+{"question_id":103,"correct":false,"text":"Tiger"}
+{"question_id":103,"correct":false,"text":"Panda"}
+{"question_id":103,"correct":false,"text":"Crocodile"}
+{"question_id":104,"correct":true,"text":"Polska"}
+{"question_id":104,"correct":false,"text":"Pupcia"}
+{"question_id":104,"correct":false,"text":"Polszka"}
+{"question_id":104,"correct":false,"text":"P&oacute;land"}
+{"question_id":105,"correct":true,"text":"Print"}
+{"question_id":105,"correct":false,"text":"Digest"}
+{"question_id":105,"correct":false,"text":"Look"}
+{"question_id":105,"correct":false,"text":"Read"}
+{"question_id":106,"correct":true,"text":"Twins"}
+{"question_id":106,"correct":false,"text":"Fish"}
+{"question_id":106,"correct":false,"text":"Scales"}
+{"question_id":106,"correct":false,"text":"Maiden"}
+{"question_id":107,"correct":true,"text":"12"}
+{"question_id":107,"correct":false,"text":"10"}
+{"question_id":107,"correct":false,"text":"14"}
+{"question_id":107,"correct":false,"text":"16"}
+{"question_id":108,"correct":true,"text":"Green"}
+{"question_id":108,"correct":false,"text":"Red"}
+{"question_id":108,"correct":false,"text":"Blue"}
+{"question_id":108,"correct":false,"text":"Yellow"}
+{"question_id":109,"correct":true,"text":"Loonie"}
+{"question_id":109,"correct":false,"text":"Boolie"}
+{"question_id":109,"correct":false,"text":"Foolie"}
+{"question_id":109,"correct":false,"text":"Moodie"}
+{"question_id":110,"correct":true,"text":"Platelets"}
+{"question_id":110,"correct":false,"text":"Red blood cells"}
+{"question_id":110,"correct":false,"text":"White blood cells"}
+{"question_id":110,"correct":false,"text":"Blood plasma"}
+{"question_id":111,"correct":true,"text":"Rope"}
+{"question_id":111,"correct":false,"text":"Psycho"}
+{"question_id":111,"correct":false,"text":"Vertigo"}
+{"question_id":111,"correct":false,"text":"Rebecca"}
+{"question_id":112,"correct":true,"text":"23 years, 4 months, and 8 days"}
+{"question_id":112,"correct":false,"text":"15 years, 2 months, and 15 days"}
+{"question_id":112,"correct":false,"text":"10 months and 6 days"}
+{"question_id":112,"correct":false,"text":"26 years, 4 months, and 10 days"}
+{"question_id":113,"correct":true,"text":"4"}
+{"question_id":113,"correct":false,"text":"2"}
+{"question_id":113,"correct":false,"text":"6"}
+{"question_id":113,"correct":false,"text":"1"}
+{"question_id":114,"correct":true,"text":"A galloping horse"}
+{"question_id":114,"correct":false,"text":"A woman in a dress"}
+{"question_id":114,"correct":false,"text":"A man walking"}
+{"question_id":114,"correct":false,"text":"A crackling fire"}
+{"question_id":115,"correct":true,"text":"Jack and Jill"}
+{"question_id":115,"correct":false,"text":"The Girl with the Dragon Tattoo"}
+{"question_id":115,"correct":false,"text":"Thor"}
+{"question_id":115,"correct":false,"text":"The King&#039;s Speech"}
+{"question_id":116,"correct":true,"text":"Stewjon"}
+{"question_id":116,"correct":false,"text":"Alderaan"}
+{"question_id":116,"correct":false,"text":"Tatooine"}
+{"question_id":116,"correct":false,"text":"Naboo"}
+{"question_id":117,"correct":true,"text":"Sigourney Weaver"}
+{"question_id":117,"correct":false,"text":"Jessica Chastain"}
+{"question_id":117,"correct":false,"text":"Melissa Beckett"}
+{"question_id":117,"correct":false,"text":"Alyssa Monroe "}
+{"question_id":118,"correct":true,"text":"Too Agonizing"}
+{"question_id":118,"correct":false,"text":"Too Loud"}
+{"question_id":118,"correct":false,"text":"Too Harsh"}
+{"question_id":118,"correct":false,"text":"Too Violent"}
+{"question_id":119,"correct":true,"text":"Shambala"}
+{"question_id":119,"correct":false,"text":"Peace"}
+{"question_id":119,"correct":false,"text":"Ancient"}
+{"question_id":119,"correct":false,"text":"Chakra"}
+{"question_id":120,"correct":true,"text":"Elvis Presley"}
+{"question_id":120,"correct":false,"text":"Johnny Cash"}
+{"question_id":120,"correct":false,"text":"Hank Williams, Sr."}
+{"question_id":120,"correct":false,"text":"Buddy Holly"}
+{"question_id":121,"correct":true,"text":"Black"}
+{"question_id":121,"correct":false,"text":"White"}
+{"question_id":121,"correct":false,"text":"Pink"}
+{"question_id":121,"correct":false,"text":"Green"}
+{"question_id":122,"correct":true,"text":"Goat"}
+{"question_id":122,"correct":false,"text":"Sheep"}
+{"question_id":122,"correct":false,"text":"Camel"}
+{"question_id":122,"correct":false,"text":"Llama"}
+{"question_id":123,"correct":true,"text":"Ursus Maritimus"}
+{"question_id":123,"correct":false,"text":"Polar Bear"}
+{"question_id":123,"correct":false,"text":"Ursus Spelaeus"}
+{"question_id":123,"correct":false,"text":"Ursus Arctos"}
+{"question_id":124,"correct":true,"text":"Keratin"}
+{"question_id":124,"correct":false,"text":"Bone"}
+{"question_id":124,"correct":false,"text":"Ivory"}
+{"question_id":124,"correct":false,"text":"Skin"}
+{"question_id":125,"correct":true,"text":"Nervousness"}
+{"question_id":125,"correct":false,"text":"Excitement"}
+{"question_id":125,"correct":false,"text":"Aggression"}
+{"question_id":125,"correct":false,"text":"Exhaustion"}
+{"question_id":126,"correct":true,"text":"Foxes"}
+{"question_id":126,"correct":false,"text":"Pigeons"}
+{"question_id":126,"correct":false,"text":"Bears"}
+{"question_id":126,"correct":false,"text":"Alligators"}
+{"question_id":127,"correct":true,"text":"Tasmania, Australia"}
+{"question_id":127,"correct":false,"text":"Baluchistan, Pakistan"}
+{"question_id":127,"correct":false,"text":"Wallachia, Romania"}
+{"question_id":127,"correct":false,"text":"Oregon, United States"}
+{"question_id":128,"correct":true,"text":"Komodo dragon"}
+{"question_id":128,"correct":false,"text":"Japanese sea lion"}
+{"question_id":128,"correct":false,"text":"Tasmanian tiger"}
+{"question_id":128,"correct":false,"text":"Saudi gazelle"}
+{"question_id":129,"correct":true,"text":"Mad Cow disease"}
+{"question_id":129,"correct":false,"text":"Weil&#039;s disease"}
+{"question_id":129,"correct":false,"text":"Milk fever"}
+{"question_id":129,"correct":false,"text":"Foot-and-mouth disease"}
+{"question_id":130,"correct":true,"text":"King Cobra"}
+{"question_id":130,"correct":false,"text":"Green Anaconda"}
+{"question_id":130,"correct":false,"text":"Inland Taipan"}
+{"question_id":130,"correct":false,"text":"Yellow Bellied Sea Snake"}
+{"question_id":131,"correct":true,"text":"Frankenstein"}
+{"question_id":131,"correct":false,"text":"Dracula"}
+{"question_id":131,"correct":false,"text":"The Strange Case of Dr. Jekyll and Mr. Hyde "}
+{"question_id":131,"correct":false,"text":"The Legend of Sleepy Hollow"}
+{"question_id":132,"correct":true,"text":"Dr. Seuss"}
+{"question_id":132,"correct":false,"text":"Beatrix Potter"}
+{"question_id":132,"correct":false,"text":"Roald Dahl"}
+{"question_id":132,"correct":false,"text":"A.A. Milne"}
+{"question_id":133,"correct":true,"text":"Ian Fleming"}
+{"question_id":133,"correct":false,"text":"Joseph Conrad"}
+{"question_id":133,"correct":false,"text":"John Buchan"}
+{"question_id":133,"correct":false,"text":"Graham Greene"}
+{"question_id":134,"correct":true,"text":"Richard Bachman"}
+{"question_id":134,"correct":false,"text":"J. D. Robb"}
+{"question_id":134,"correct":false,"text":"Mark Twain"}
+{"question_id":134,"correct":false,"text":"Lewis Carroll"}
+{"question_id":135,"correct":true,"text":"James Potter"}
+{"question_id":135,"correct":false,"text":"Joey Potter"}
+{"question_id":135,"correct":false,"text":"Frank Potter"}
+{"question_id":135,"correct":false,"text":"Hairy Potter Sr."}
+{"question_id":136,"correct":true,"text":"Fluffy"}
+{"question_id":136,"correct":false,"text":"Spike"}
+{"question_id":136,"correct":false,"text":"Poofy"}
+{"question_id":136,"correct":false,"text":"Spot"}
+{"question_id":137,"correct":true,"text":"A Clash of Kings"}
+{"question_id":137,"correct":false,"text":"A Dance with Dragons"}
+{"question_id":137,"correct":false,"text":"A Storm of Swords"}
+{"question_id":137,"correct":false,"text":"A Feast for Crows"}
+{"question_id":138,"correct":true,"text":"INGSOC"}
+{"question_id":138,"correct":false,"text":"Neo-Bolshevism"}
+{"question_id":138,"correct":false,"text":"Obliteration of the Self"}
+{"question_id":138,"correct":false,"text":"Earth Alliance"}
+{"question_id":139,"correct":true,"text":"Charles Dickens"}
+{"question_id":139,"correct":false,"text":"Charles Darwin"}
+{"question_id":139,"correct":false,"text":"Mark Twain"}
+{"question_id":139,"correct":false,"text":"Roald Dahl"}
+{"question_id":140,"correct":true,"text":"Falcon"}
+{"question_id":140,"correct":false,"text":"Eagle"}
+{"question_id":140,"correct":false,"text":"Kyte"}
+{"question_id":140,"correct":false,"text":"Swallow"}
+{"question_id":141,"correct":true,"text":"George Eliot"}
+{"question_id":141,"correct":false,"text":"George Orwell"}
+{"question_id":141,"correct":false,"text":"George Bernard Shaw"}
+{"question_id":141,"correct":false,"text":"George Saunders"}
+{"question_id":142,"correct":true,"text":"The Balmoral"}
+{"question_id":142,"correct":false,"text":"The Dunstane Hotel"}
+{"question_id":142,"correct":false,"text":"Hotel Novotel"}
+{"question_id":142,"correct":false,"text":"Sheraton Grand Hotel &amp; Spa"}
+{"question_id":143,"correct":true,"text":"My Struggle"}
+{"question_id":143,"correct":false,"text":"My Hatred"}
+{"question_id":143,"correct":false,"text":"My Sadness"}
+{"question_id":143,"correct":false,"text":"My Desire"}
+{"question_id":144,"correct":true,"text":"John Steinbeck"}
+{"question_id":144,"correct":false,"text":"F. Scott Fitzgerald"}
+{"question_id":144,"correct":false,"text":"Ernest Hemingway"}
+{"question_id":144,"correct":false,"text":"William Faulkner"}
+{"question_id":145,"correct":true,"text":"42"}
+{"question_id":145,"correct":false,"text":"Loving everyone around you"}
+{"question_id":145,"correct":false,"text":"Chocolate"}
+{"question_id":145,"correct":false,"text":"Death"}
+{"question_id":146,"correct":true,"text":"Antoine de Saint-Exup&eacute;ry"}
+{"question_id":146,"correct":false,"text":"Miguel de Cervantes Saavedra"}
+{"question_id":146,"correct":false,"text":"Jane Austen"}
+{"question_id":146,"correct":false,"text":"F. Scott Fitzgerald"}
+{"question_id":147,"correct":true,"text":"The Greasers"}
+{"question_id":147,"correct":false,"text":"The Outsiders"}
+{"question_id":147,"correct":false,"text":"The Mafia"}
+{"question_id":147,"correct":false,"text":"The Socs"}
+{"question_id":148,"correct":true,"text":"Ray Bradbury"}
+{"question_id":148,"correct":false,"text":"R. L. Stine"}
+{"question_id":148,"correct":false,"text":"Wolfgang Amadeus Mozart"}
+{"question_id":148,"correct":false,"text":"Stephen King"}
+{"question_id":149,"correct":true,"text":"Saphira"}
+{"question_id":149,"correct":false,"text":"Glaedr"}
+{"question_id":149,"correct":false,"text":"Thorn"}
+{"question_id":149,"correct":false,"text":"Arya"}
+{"question_id":150,"correct":true,"text":"Steven Erikson"}
+{"question_id":150,"correct":false,"text":"Ian Cameron Esslemont"}
+{"question_id":150,"correct":false,"text":"George R. R. Martin"}
+{"question_id":150,"correct":false,"text":"J. R. R. Tolkien"}
+{"question_id":151,"correct":true,"text":"Athena"}
+{"question_id":151,"correct":false,"text":"Ares"}
+{"question_id":151,"correct":false,"text":"Artemis"}
+{"question_id":151,"correct":false,"text":"Apollo"}
+{"question_id":152,"correct":true,"text":"Vulcan"}
+{"question_id":152,"correct":false,"text":"Apollo"}
+{"question_id":152,"correct":false,"text":"Jupiter"}
+{"question_id":152,"correct":false,"text":"Mercury"}
+{"question_id":153,"correct":true,"text":"Poseidon"}
+{"question_id":153,"correct":false,"text":"Ares"}
+{"question_id":153,"correct":false,"text":"Zeus"}
+{"question_id":153,"correct":false,"text":"Apollo"}
+{"question_id":154,"correct":true,"text":"Janus"}
+{"question_id":154,"correct":false,"text":"Vulcan"}
+{"question_id":154,"correct":false,"text":"Juno"}
+{"question_id":154,"correct":false,"text":"Mars"}
+{"question_id":155,"correct":true,"text":"Set"}
+{"question_id":155,"correct":false,"text":"Horus"}
+{"question_id":155,"correct":false,"text":"Ra"}
+{"question_id":155,"correct":false,"text":"Anhur"}
+{"question_id":156,"correct":true,"text":"Narcissus"}
+{"question_id":156,"correct":false,"text":"Clotho"}
+{"question_id":156,"correct":false,"text":"Atropos"}
+{"question_id":156,"correct":false,"text":"Lachesis"}
+{"question_id":157,"correct":true,"text":"Spider"}
+{"question_id":157,"correct":false,"text":"Wild dog"}
+{"question_id":157,"correct":false,"text":"Monkey"}
+{"question_id":157,"correct":false,"text":"Crocodile"}
+{"question_id":158,"correct":true,"text":"New Zealand"}
+{"question_id":158,"correct":false,"text":"Vanuatu"}
+{"question_id":158,"correct":false,"text":"Fiji"}
+{"question_id":158,"correct":false,"text":"Hawaii"}
+{"question_id":159,"correct":true,"text":"&#039;Oro"}
+{"question_id":159,"correct":false,"text":"Hina"}
+{"question_id":159,"correct":false,"text":"Kohara"}
+{"question_id":159,"correct":false,"text":"Māui"}
+{"question_id":160,"correct":true,"text":"Eris"}
+{"question_id":160,"correct":false,"text":"Hades"}
+{"question_id":160,"correct":false,"text":"Ares"}
+{"question_id":160,"correct":false,"text":"Artemis"}
+{"question_id":161,"correct":true,"text":"Toto"}
+{"question_id":161,"correct":false,"text":"Foreigner"}
+{"question_id":161,"correct":false,"text":"Steely Dan"}
+{"question_id":161,"correct":false,"text":"Journey"}
+{"question_id":162,"correct":true,"text":"The Joker"}
+{"question_id":162,"correct":false,"text":"Fandango"}
+{"question_id":162,"correct":false,"text":"Take The Money and Run"}
+{"question_id":162,"correct":false,"text":"Fly Like an Eagle"}
+{"question_id":163,"correct":true,"text":"4"}
+{"question_id":163,"correct":false,"text":"1"}
+{"question_id":163,"correct":false,"text":"5"}
+{"question_id":163,"correct":false,"text":"2"}
+{"question_id":164,"correct":true,"text":"Bass Guitar"}
+{"question_id":164,"correct":false,"text":"Drums"}
+{"question_id":164,"correct":false,"text":"Guitar"}
+{"question_id":164,"correct":false,"text":"Keyboards"}
+{"question_id":165,"correct":true,"text":"Panic! At the Disco"}
+{"question_id":165,"correct":false,"text":"Twenty One Pilots"}
+{"question_id":165,"correct":false,"text":"My Chemical Romance"}
+{"question_id":165,"correct":false,"text":"Fall Out Boy"}
+{"question_id":166,"correct":true,"text":"Laura Brehm"}
+{"question_id":166,"correct":false,"text":"Anna Yvette "}
+{"question_id":166,"correct":false,"text":"Danyka Nadeau"}
+{"question_id":166,"correct":false,"text":"Veela"}
+{"question_id":167,"correct":true,"text":"AC/DC"}
+{"question_id":167,"correct":false,"text":"Iron Maiden"}
+{"question_id":167,"correct":false,"text":"Black Sabbath"}
+{"question_id":167,"correct":false,"text":"Metallica"}
+{"question_id":168,"correct":true,"text":"Red Hot Chilli Peppers"}
+{"question_id":168,"correct":false,"text":"Green Day"}
+{"question_id":168,"correct":false,"text":"Linkin Park"}
+{"question_id":168,"correct":false,"text":"Foo Fighters"}
+{"question_id":169,"correct":true,"text":"New Musical Express"}
+{"question_id":169,"correct":false,"text":"New Metro Entertainment"}
+{"question_id":169,"correct":false,"text":"Next Musical Enterprise"}
+{"question_id":169,"correct":false,"text":"North Manchester Express"}
+{"question_id":170,"correct":true,"text":"Dave Grohl"}
+{"question_id":170,"correct":false,"text":"Dave Mustaine"}
+{"question_id":170,"correct":false,"text":"James Hetfield"}
+{"question_id":170,"correct":false,"text":"Little Red Riding Hood"}
+{"question_id":171,"correct":true,"text":"Jakarta"}
+{"question_id":171,"correct":false,"text":"Bandung"}
+{"question_id":171,"correct":false,"text":"Medan"}
+{"question_id":171,"correct":false,"text":"Palembang"}
+{"question_id":172,"correct":true,"text":"Alberta"}
+{"question_id":172,"correct":false,"text":"New South Wales"}
+{"question_id":172,"correct":false,"text":"Victoria"}
+{"question_id":172,"correct":false,"text":"Queensland"}
+{"question_id":173,"correct":true,"text":"France"}
+{"question_id":173,"correct":false,"text":"Slovenia"}
+{"question_id":173,"correct":false,"text":"Switzerland"}
+{"question_id":173,"correct":false,"text":"Slovakia"}
+{"question_id":174,"correct":true,"text":"Red"}
+{"question_id":174,"correct":false,"text":"White"}
+{"question_id":174,"correct":false,"text":"Yellow"}
+{"question_id":174,"correct":false,"text":"Black"}
+{"question_id":175,"correct":true,"text":"Ohio"}
+{"question_id":175,"correct":false,"text":"Florida"}
+{"question_id":175,"correct":false,"text":"Idaho"}
+{"question_id":175,"correct":false,"text":"New Mexico"}
+{"question_id":176,"correct":true,"text":"1"}
+{"question_id":176,"correct":false,"text":"3"}
+{"question_id":176,"correct":false,"text":"4"}
+{"question_id":176,"correct":false,"text":"2"}
+{"question_id":177,"correct":true,"text":"2"}
+{"question_id":177,"correct":false,"text":"1"}
+{"question_id":177,"correct":false,"text":"3"}
+{"question_id":177,"correct":false,"text":"4"}
+{"question_id":178,"correct":true,"text":"Wales"}
+{"question_id":178,"correct":false,"text":"England"}
+{"question_id":178,"correct":false,"text":"North Ireland"}
+{"question_id":178,"correct":false,"text":"Scotland"}
+{"question_id":179,"correct":true,"text":"4"}
+{"question_id":179,"correct":false,"text":"5"}
+{"question_id":179,"correct":false,"text":"2"}
+{"question_id":179,"correct":false,"text":"0"}
+{"question_id":180,"correct":true,"text":"Country"}
+{"question_id":180,"correct":false,"text":"Region"}
+{"question_id":180,"correct":false,"text":"River"}
+{"question_id":180,"correct":false,"text":"City"}
+{"question_id":181,"correct":true,"text":"Goodbye Yellow Brick Road"}
+{"question_id":181,"correct":false,"text":"Rocket Man"}
+{"question_id":181,"correct":false,"text":"Bennie and the Jets"}
+{"question_id":181,"correct":false,"text":"Crocodile Rock"}
+{"question_id":182,"correct":true,"text":"Elton John"}
+{"question_id":182,"correct":false,"text":"John Denver"}
+{"question_id":182,"correct":false,"text":"Billy Joel"}
+{"question_id":182,"correct":false,"text":"Joe Cocker"}
+{"question_id":183,"correct":true,"text":"U2"}
+{"question_id":183,"correct":false,"text":"Radiohead"}
+{"question_id":183,"correct":false,"text":"Rush"}
+{"question_id":183,"correct":false,"text":"Rolling Stones"}
+{"question_id":184,"correct":true,"text":"Lisa Frank 420 / Modern Computing"}
+{"question_id":184,"correct":false,"text":"Smoke Weed 420 / Everyday"}
+{"question_id":184,"correct":false,"text":"Make Your Move 420 / My Mind"}
+{"question_id":184,"correct":false,"text":"It&#039;s All In Your Head 420 / Understand"}
+{"question_id":185,"correct":true,"text":"2011"}
+{"question_id":185,"correct":false,"text":"2014"}
+{"question_id":185,"correct":false,"text":"2013"}
+{"question_id":185,"correct":false,"text":"2012"}
+{"question_id":186,"correct":true,"text":"The Go-Getters"}
+{"question_id":186,"correct":false,"text":"The Jumpers"}
+{"question_id":186,"correct":false,"text":"The Kickstarters"}
+{"question_id":186,"correct":false,"text":"The Beat-Busters"}
+{"question_id":187,"correct":true,"text":"Ladyhawke"}
+{"question_id":187,"correct":false,"text":"Lorde"}
+{"question_id":187,"correct":false,"text":"Kesha"}
+{"question_id":187,"correct":false,"text":"Anika Moa"}
+{"question_id":188,"correct":true,"text":"The Black Mages"}
+{"question_id":188,"correct":false,"text":"The Final Fantasies"}
+{"question_id":188,"correct":false,"text":"The Espers"}
+{"question_id":188,"correct":false,"text":"The Rock Summoners"}
+{"question_id":189,"correct":true,"text":"Deftones"}
+{"question_id":189,"correct":false,"text":"Tool"}
+{"question_id":189,"correct":false,"text":"Korn"}
+{"question_id":189,"correct":false,"text":"Type O Negative"}
+{"question_id":190,"correct":true,"text":"June 22, 2018"}
+{"question_id":190,"correct":false,"text":"May 9, 2018"}
+{"question_id":190,"correct":false,"text":"March 13, 2018"}
+{"question_id":190,"correct":false,"text":"February 21, 2018"}
+{"question_id":191,"correct":true,"text":"CN Tower"}
+{"question_id":191,"correct":false,"text":"Allan Gardens"}
+{"question_id":191,"correct":false,"text":"Union Station"}
+{"question_id":191,"correct":false,"text":"Prince of Wales Theatre"}
+{"question_id":192,"correct":true,"text":"Canada"}
+{"question_id":192,"correct":false,"text":"United States"}
+{"question_id":192,"correct":false,"text":"Australia"}
+{"question_id":192,"correct":false,"text":"United Kingdom"}
+{"question_id":193,"correct":true,"text":"Being For The Benefit Of Mr. Kite!"}
+{"question_id":193,"correct":false,"text":"Why Don&#039;t We Do It in the Road?"}
+{"question_id":193,"correct":false,"text":"Everybody&#039;s Got Something to Hide Except Me and My Monkey"}
+{"question_id":193,"correct":false,"text":"The Continuing Story of Bungalow Bill"}
+{"question_id":194,"correct":true,"text":"WiFi Tears"}
+{"question_id":194,"correct":false,"text":"Swamp Thing"}
+{"question_id":194,"correct":false,"text":"Emoji"}
+{"question_id":194,"correct":false,"text":"BAMF"}
+{"question_id":195,"correct":true,"text":"Ringo Starr"}
+{"question_id":195,"correct":false,"text":"George Harrison"}
+{"question_id":195,"correct":false,"text":"John Lennon"}
+{"question_id":195,"correct":false,"text":"Paul McCartney"}
+{"question_id":196,"correct":true,"text":"Aubrey Graham"}
+{"question_id":196,"correct":false,"text":"Shaun Carter"}
+{"question_id":196,"correct":false,"text":"Dwayne Carter"}
+{"question_id":196,"correct":false,"text":"Andre Young"}
+{"question_id":197,"correct":true,"text":"Italy"}
+{"question_id":197,"correct":false,"text":"Germany"}
+{"question_id":197,"correct":false,"text":"Austria"}
+{"question_id":197,"correct":false,"text":"France"}
+{"question_id":198,"correct":true,"text":"The Prodigy"}
+{"question_id":198,"correct":false,"text":"The Chemical Brothers"}
+{"question_id":198,"correct":false,"text":"The Crystal Method"}
+{"question_id":198,"correct":false,"text":"Infected Mushroom"}
+{"question_id":199,"correct":true,"text":"The Connells"}
+{"question_id":199,"correct":false,"text":"R.E.M."}
+{"question_id":199,"correct":false,"text":"The Ocean Blue"}
+{"question_id":199,"correct":false,"text":"The Bangles"}
+{"question_id":200,"correct":true,"text":"Bob Dylan"}
+{"question_id":200,"correct":false,"text":"Jim Morrison"}
+{"question_id":200,"correct":false,"text":"Brian Epstein"}
+{"question_id":200,"correct":false,"text":"Jerry Garcia"}
+{"question_id":201,"correct":true,"text":"Haplogroup U"}
+{"question_id":201,"correct":false,"text":"Haplogroup L"}
+{"question_id":201,"correct":false,"text":"Haplogroup T"}
+{"question_id":201,"correct":false,"text":"Haplogroup J"}
+{"question_id":202,"correct":true,"text":"Sulfuric acid"}
+{"question_id":202,"correct":false,"text":"Hydrochloric acid"}
+{"question_id":202,"correct":false,"text":"Potassium chloride"}
+{"question_id":202,"correct":false,"text":"Sodium chloride"}
+{"question_id":203,"correct":true,"text":"Titan"}
+{"question_id":203,"correct":false,"text":"Europa"}
+{"question_id":203,"correct":false,"text":"Miranda"}
+{"question_id":203,"correct":false,"text":"Callisto"}
+{"question_id":204,"correct":true,"text":"0.1 Microsievert"}
+{"question_id":204,"correct":false,"text":"0.3 Microsievert"}
+{"question_id":204,"correct":false,"text":"0.5 Microsievert"}
+{"question_id":204,"correct":false,"text":"0.7 Microsievert"}
+{"question_id":205,"correct":true,"text":"Myofibrils"}
+{"question_id":205,"correct":false,"text":"Epimysium"}
+{"question_id":205,"correct":false,"text":"Myofiaments"}
+{"question_id":205,"correct":false,"text":"Myocardium"}
+{"question_id":206,"correct":true,"text":"Gauss&#039;s Law"}
+{"question_id":206,"correct":false,"text":"Faraday&#039;s Law"}
+{"question_id":206,"correct":false,"text":"Ampere&#039;s Law"}
+{"question_id":206,"correct":false,"text":"Biot-Savart Law"}
+{"question_id":207,"correct":true,"text":"Boron"}
+{"question_id":207,"correct":false,"text":"Oxygen"}
+{"question_id":207,"correct":false,"text":"Carbon"}
+{"question_id":207,"correct":false,"text":"Iron"}
+{"question_id":208,"correct":true,"text":"Botulinum toxin"}
+{"question_id":208,"correct":false,"text":"Ricin"}
+{"question_id":208,"correct":false,"text":"Cyanide"}
+{"question_id":208,"correct":false,"text":"Asbestos"}
+{"question_id":209,"correct":true,"text":"Closure of the heart valves"}
+{"question_id":209,"correct":false,"text":"Contraction of the heart chambers"}
+{"question_id":209,"correct":false,"text":"Blood exiting the heart"}
+{"question_id":209,"correct":false,"text":"Relaxation of the heart chambers"}
+{"question_id":210,"correct":true,"text":"6"}
+{"question_id":210,"correct":false,"text":"2"}
+{"question_id":210,"correct":false,"text":"3"}
+{"question_id":210,"correct":false,"text":"4"}
+{"question_id":211,"correct":true,"text":"Murcia"}
+{"question_id":211,"correct":false,"text":"Asturias"}
+{"question_id":211,"correct":false,"text":"Navarre"}
+{"question_id":211,"correct":false,"text":"Le&oacute;n"}
+{"question_id":212,"correct":true,"text":"Switzerland"}
+{"question_id":212,"correct":false,"text":"United Kingdom"}
+{"question_id":212,"correct":false,"text":"France"}
+{"question_id":212,"correct":false,"text":"Belgium"}
+{"question_id":213,"correct":true,"text":"Lithuania"}
+{"question_id":213,"correct":false,"text":"France"}
+{"question_id":213,"correct":false,"text":"Norway"}
+{"question_id":213,"correct":false,"text":"Netherlands"}
+{"question_id":214,"correct":true,"text":"Atlanta, Georgia USA"}
+{"question_id":214,"correct":false,"text":"London, England"}
+{"question_id":214,"correct":false,"text":"Chicago,Illinois ISA"}
+{"question_id":214,"correct":false,"text":"Tokyo,Japan"}
+{"question_id":215,"correct":true,"text":"Urdu"}
+{"question_id":215,"correct":false,"text":"Indian"}
+{"question_id":215,"correct":false,"text":"Punjabi"}
+{"question_id":215,"correct":false,"text":"Pashto"}
+{"question_id":216,"correct":true,"text":"Luxembourg"}
+{"question_id":216,"correct":false,"text":"Montenegro"}
+{"question_id":216,"correct":false,"text":"Liechtenstein"}
+{"question_id":216,"correct":false,"text":"Andorra"}
+{"question_id":217,"correct":true,"text":"Michigan"}
+{"question_id":217,"correct":false,"text":"Pennsylvania"}
+{"question_id":217,"correct":false,"text":"Kentucky"}
+{"question_id":217,"correct":false,"text":"Virginia"}
+{"question_id":218,"correct":true,"text":"Alert, Canada"}
+{"question_id":218,"correct":false,"text":"Nagurskoye, Russia"}
+{"question_id":218,"correct":false,"text":"McMurdo Station, Antarctica "}
+{"question_id":218,"correct":false,"text":"Honningsv&aring;g, Norway"}
+{"question_id":219,"correct":true,"text":"11"}
+{"question_id":219,"correct":false,"text":"8"}
+{"question_id":219,"correct":false,"text":"5"}
+{"question_id":219,"correct":false,"text":"2"}
+{"question_id":220,"correct":true,"text":"Rhodesia"}
+{"question_id":220,"correct":false,"text":"Zambia"}
+{"question_id":220,"correct":false,"text":"Mozambique"}
+{"question_id":220,"correct":false,"text":" Bulawayo"}
+{"question_id":221,"correct":true,"text":"Crete"}
+{"question_id":221,"correct":false,"text":"Sardinia"}
+{"question_id":221,"correct":false,"text":"Sicily"}
+{"question_id":221,"correct":false,"text":"Cyprus"}
+{"question_id":222,"correct":true,"text":"Cursed to roll a boulder up a hill for eternity."}
+{"question_id":222,"correct":false,"text":"Tied to a boulder for eternity, being pecked by birds."}
+{"question_id":222,"correct":false,"text":"Standing in a lake filled with water he could not drink."}
+{"question_id":222,"correct":false,"text":"To fell a tree that regenerated after every axe swing."}
+{"question_id":223,"correct":true,"text":"Participating in cannibalism."}
+{"question_id":223,"correct":false,"text":"Excessive mutilation of animal corpses."}
+{"question_id":223,"correct":false,"text":"Performing a ritual involving murder."}
+{"question_id":223,"correct":false,"text":"Drinking the blood of many slain animals."}
+{"question_id":224,"correct":true,"text":"Ariadne"}
+{"question_id":224,"correct":false,"text":"Athena"}
+{"question_id":224,"correct":false,"text":"Ariel"}
+{"question_id":224,"correct":false,"text":"Alana"}
+{"question_id":225,"correct":true,"text":"Nidhogg"}
+{"question_id":225,"correct":false,"text":"Bragi"}
+{"question_id":225,"correct":false,"text":"Odin"}
+{"question_id":225,"correct":false,"text":"Ymir"}
+{"question_id":226,"correct":true,"text":"Jens"}
+{"question_id":226,"correct":false,"text":"Loki"}
+{"question_id":226,"correct":false,"text":"Tyr"}
+{"question_id":226,"correct":false,"text":"Snotra"}
+{"question_id":227,"correct":true,"text":"Norse"}
+{"question_id":227,"correct":false,"text":"Egyptian"}
+{"question_id":227,"correct":false,"text":"Greek"}
+{"question_id":227,"correct":false,"text":"Hindu"}
+{"question_id":228,"correct":true,"text":"Min"}
+{"question_id":228,"correct":false,"text":"Menu"}
+{"question_id":228,"correct":false,"text":"Mut"}
+{"question_id":228,"correct":false,"text":"Meret"}
+{"question_id":229,"correct":true,"text":"Odin"}
+{"question_id":229,"correct":false,"text":"Thor"}
+{"question_id":229,"correct":false,"text":"Frigg"}
+{"question_id":229,"correct":false,"text":"Balder"}
+{"question_id":230,"correct":true,"text":"Aristaeus"}
+{"question_id":230,"correct":false,"text":"Autonoe"}
+{"question_id":230,"correct":false,"text":"Carme"}
+{"question_id":230,"correct":false,"text":"Cephisso"}
+{"question_id":231,"correct":true,"text":"Jupiter"}
+{"question_id":231,"correct":false,"text":"Uranus"}
+{"question_id":231,"correct":false,"text":"Neptune"}
+{"question_id":231,"correct":false,"text":"Mars"}
+{"question_id":232,"correct":true,"text":"low, all"}
+{"question_id":232,"correct":false,"text":"low, some"}
+{"question_id":232,"correct":false,"text":"high, all"}
+{"question_id":232,"correct":false,"text":"high, some"}
+{"question_id":233,"correct":true,"text":"Leg"}
+{"question_id":233,"correct":false,"text":"Arm"}
+{"question_id":233,"correct":false,"text":"Hand"}
+{"question_id":233,"correct":false,"text":"Head"}
+{"question_id":234,"correct":true,"text":"Bones"}
+{"question_id":234,"correct":false,"text":"Skin"}
+{"question_id":234,"correct":false,"text":"Brain"}
+{"question_id":234,"correct":false,"text":"Heart"}
+{"question_id":235,"correct":true,"text":"Ernest Rutherford"}
+{"question_id":235,"correct":false,"text":"Joseph John Thomson"}
+{"question_id":235,"correct":false,"text":"Archimedes"}
+{"question_id":235,"correct":false,"text":"Niels Henrik David Bohr"}
+{"question_id":236,"correct":true,"text":"Copenhagen"}
+{"question_id":236,"correct":false,"text":"Odense"}
+{"question_id":236,"correct":false,"text":"Herning"}
+{"question_id":236,"correct":false,"text":"Skagen"}
+{"question_id":237,"correct":true,"text":"Ankle jerk reflex"}
+{"question_id":237,"correct":false,"text":"Gag reflex"}
+{"question_id":237,"correct":false,"text":"Pupillary light reflex"}
+{"question_id":237,"correct":false,"text":"Scratch reflex"}
+{"question_id":238,"correct":true,"text":"Keratin"}
+{"question_id":238,"correct":false,"text":"Bone"}
+{"question_id":238,"correct":false,"text":"Chitin"}
+{"question_id":238,"correct":false,"text":"Calcium"}
+{"question_id":239,"correct":true,"text":"Blue"}
+{"question_id":239,"correct":false,"text":"Black"}
+{"question_id":239,"correct":false,"text":"Orange"}
+{"question_id":239,"correct":false,"text":"Brown"}
+{"question_id":240,"correct":true,"text":"1996"}
+{"question_id":240,"correct":false,"text":"2009"}
+{"question_id":240,"correct":false,"text":"1999"}
+{"question_id":240,"correct":false,"text":"1985"}
