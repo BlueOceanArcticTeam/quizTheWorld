@@ -4,7 +4,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function ComponentName() {
+export default function Login() {
   // set state variables below:
 
   // component functions - event handlers
