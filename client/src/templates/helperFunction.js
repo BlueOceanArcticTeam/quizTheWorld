@@ -9,4 +9,6 @@ export default function helperFunction() {
   // do something
 
   // return
-}
+};
+
+
