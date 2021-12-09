@@ -3,7 +3,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import ChatBox from '../chat/ChatBox.jsx';
+import ChatBox from '../chatbox/ChatBox.jsx';
 
 export default function HomePage() {
   // set state variables below:
