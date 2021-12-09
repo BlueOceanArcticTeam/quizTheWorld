@@ -1,1 +1,4 @@
-/* Use Classnames and ID's
+/* Use Classnames and ID's */
+.chatBoxContainer {
+  cursor: pointer
+}
