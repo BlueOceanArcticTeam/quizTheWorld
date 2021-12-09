@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
-** bundle.js
-.vscode
-** settings.json
+client/dist/bundle.js
+.vscode/settings.json
+package-lock.json
