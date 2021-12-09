@@ -13,8 +13,8 @@ messagesRoutes.route('/messages').get((req, res) => { // CHANGE GET TO THE METHO
 });
 
 messagesRoutes.route('/messages').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  const { senderID, recipientID, text, dateTime } = req.body;
-  db.query('QUERY', [senderID, recipientID, text, dateTime], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+  const { sender_user_id, recipient_user_id, text, dateTime } = req.body;
+  db.query('QUERY', [sender_user_id, recipient_user_id, text, dateTime], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
     if (err) throw err;
     // TODO: res.send();
   });

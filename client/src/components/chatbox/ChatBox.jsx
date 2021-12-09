@@ -21,8 +21,10 @@ export default function ChatBox({ senderID, recipientID }) {
   };
   const handleSendMessage = () => {
     axios.post('http://localhost:3000/messages', {
-      sender_user_id: senderID,
-      recipient_user_id: recipientID,
+      // sender_user_id: senderID,
+      // recipient_user_id: recipientID,
+      sender_user_id: '1',
+      recipient_user_id: '2',
       text: messageText,
       dateTime: new Date()
     })
