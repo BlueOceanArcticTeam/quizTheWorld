@@ -1,11 +1,13 @@
-const { query } = require('express');
+/* eslint-disable comma-dangle */
 const { Pool } = require('pg');
+require('dotenv').config();
 
-const pool = new Pool();
+const pool = new Pool({
+  user: '',
+  host: 'localhost',
+  database: 'quizKnows',
+  password: '',
+  port: 5432 // Default port
+});
 
-module.exports = {
-  async query(``, params) {
-    const res = await pool.query(``, params);
-    return res;
-  }
-};
+module.exports = pool;
