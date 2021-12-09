@@ -4,10 +4,15 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function ComponentName() {
+export default function QuestionWidget() {
   // set state variables below:
+  const { currentQuestion, answers } = useContext(AppContext);
+  const [selected, setSelected] = useState();
 
   // component functions - event handlers
+  const selectAnswer = () => {
+    // handle clicking on an answer to select it
+  };
 
   // use Effect:
 
