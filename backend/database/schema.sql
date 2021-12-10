@@ -29,7 +29,6 @@ CREATE TABLE public.messages (
   recipient_user_id INT,
   text VARCHAR(200),
   date DATE NOT NULL
-
 );
 
 CREATE TABLE public.userAnswers (
