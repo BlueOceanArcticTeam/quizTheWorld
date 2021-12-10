@@ -6,7 +6,6 @@ const db = require('../../database/db.js');
 // Get a single quiz by ID and associated questions
 quiz.route('/:quiz_id').get((req, res) => {
   const id = req.params.quiz_id;
-  console.log(id);
   db.query('SELECT * FROM quizzes, questions WHERE quizzes.id = $1 and questions.quiz_id = $1;', [id], (err, data) => {
     if (err) throw (err);
     res.send(data.rows);
