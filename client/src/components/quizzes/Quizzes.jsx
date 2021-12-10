@@ -6,6 +6,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from '../../context.js';
+import QuizBackground from './assets/Question.png';
 
 export default function Quizzes() {
   // set state variables below:
@@ -17,8 +18,25 @@ export default function Quizzes() {
   // use Effect:
   // render component:
   return (
-    <div>
-      Quizzes
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'top',
+      zIndex: '-100',
+    }}
+    >
+      <img
+        src={QuizBackground}
+        alt=""
+        style={{
+          zIndex: '-100',
+          width: '100vw',
+          height: '100vh',
+          position: 'absolute',
+        }}
+      />
     </div>
   );
 }

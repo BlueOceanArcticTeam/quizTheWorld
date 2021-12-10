@@ -31,14 +31,13 @@ const App = function () {
           <Route index element={<HomePage />} />
           <Route path="/profile/:user_id" element={<ProfilePage />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quizzes/quiz" element={<QuizPage />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NoPath />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

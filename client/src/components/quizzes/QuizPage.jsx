@@ -9,9 +9,22 @@ import AppContext from '../../context.js';
 
 export default function QuizPage() {
   // set state variables below:
+<<<<<<< HEAD
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionState, setQuestions] = useState();
+=======
+
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+
+  const { currentQuestion, answers } = useContext(AppContext);
+  const [selected, setSelected] = useState();
+>>>>>>> master
 
   const nextHandler = () => {
     // handle the button that moves to the next question
