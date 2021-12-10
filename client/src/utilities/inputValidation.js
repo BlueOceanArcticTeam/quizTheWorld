@@ -9,11 +9,24 @@
 /**
  * userInput is what the user input into a form and is trying to submit
  * usage is what this string will be used for. Options are:
- * password, email, username, message, question and answer
+ * password, email, username, message, question, answer, title, firstname, lastname
  */
 export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF STRING AND USAGE
   // define output variable
   const output = { valid: false, errorMessage: `Invalid input for ${usage}` };
+
+  // make sure userInput is a string
+  if (typeof (userInput) !== 'string') {
+    output.errorMessage = 'For dev: convert user input into a string.';
+    return output;
+  }
+
+  // check if userInput is any empty string
+  if (userInput === '') {
+    output.errorMessage = `Please input a value for ${usage}`;
+    return output;
+  }
+
   // for overall validation - checking for sql commands
   /**
    * ALTER TABLE
@@ -153,6 +166,29 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
       output.errorMessage = `${usage} must be less than 200 characters`;
       return output;
     }
+  }
+
+  // additional checks for title
+  if (usage === 'title') {
+    if (userInput.length > 30) {
+      output.errorMessage = `${usage} cannot be greater than 30 characters`;
+      return output;
+    }
+    if (userInput.length < 8) {
+      output.errorMessage = `${usage} must be greater than 8 characters`;
+      return output;
+    }
+  }
+
+  // additional checks for firstname
+  if (usage === 'firstname' && userInput.length > 40) {
+    output.errorMessage = `${usage} must be less than 40 characters`;
+    return output;
+  }
+  // additional checks for lastname
+  if (usage === 'lastname' && userInput.length > 40) {
+    output.errorMessage = `${usage} must be less than 40 characters`;
+    return output;
   }
 
   // return
