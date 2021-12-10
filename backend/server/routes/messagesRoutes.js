@@ -1,23 +1,42 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable import/extensions */
 const express = require('express');
 
-const messagesRoutes = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
+const messagesRoutes = express.Router();
 const db = require('../../database/db.js');
 
-messagesRoutes.route('/messages').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  db.query(`SELECT * FROM messages`, [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+messagesRoutes.route('/').get((req, res) => {
+  db.query('SELECT * FROM messages', [], (err, data) => {
     if (err) throw err;
-    // TODO: res.send();
-    console.log('MESSAGES DATA:', data);
+    res.send(data.fields);
   });
 });
 
-messagesRoutes.route('/messages').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  const { sender_user_id, recipient_user_id, text, dateTime } = req.body;
-  db.query('QUERY', [sender_user_id, recipient_user_id, text, dateTime], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
-    if (err) throw err;
-    // TODO: res.send();
-  });
+messagesRoutes.route('/history').get((req, res) => {
+  const { senderID, recipientID } = req.body;
+  db.query(
+    // `SELECT * FROM messages
+    //   WHERE (sender_user_id=$1 OR sender_user_id=$2) AND (recipient_user_id=$1 OR recipient_user_id=$2)`,
+    `SELECT * FROM messages
+    WHERE (sender_user_id=1 OR sender_user_id=2) AND (recipient_user_id=1 OR recipient_user_id=2)`,
+    // [senderID, recipientID],
+    (err, data) => {
+      if (err) throw err;
+      res.send(data.rows);
+    }
+  );
+});
+
+messagesRoutes.route('/').post((req, res) => {
+  const { senderID, recipientID, text, date } = req.body;
+  db.query(
+    'INSERT INTO messages (sender_user_id, recipient_user_id, text, date) VALUES ($1, $2, $3, $4)',
+    [senderID, recipientID, text, date],
+    (err, data) => {
+      if (err) throw err;
+      res.sendStatus(201);
+    }
+  );
 });
 
 module.exports = messagesRoutes; // CHANGE 'TEMPLATE' TO YOUR ROUTE

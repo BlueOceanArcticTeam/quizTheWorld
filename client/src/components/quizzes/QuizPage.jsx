@@ -11,11 +11,15 @@ import Question from './Question.jsx';
 
 export default function QuizPage() {
   // set state variables below:
+
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [toggle, setToggle] = useState(true);
   const [questionIndex, setIndex] = useState(0);
+
+  const { currentQuestion, answers } = useContext(AppContext);
+  const [selected, setSelected] = useState();
 
   const nextHandler = () => {
     let i = questionIndex;
