@@ -4,6 +4,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import { Outlet } from 'react-router';
+import NavBar from '../helperComponents/NavBar.jsx';
 
 export default function Header() {
   // set state variables below:
@@ -15,8 +16,7 @@ export default function Header() {
   // render component:
   return (
     <div>
-      Header
-      <hr />
+      <NavBar />
       <Outlet />
     </div>
   );

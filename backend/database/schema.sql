@@ -1,5 +1,5 @@
--- RUN THE FOLLOWING COMMAND FROM YOUR POSTGRES CLI
--- \i backend/database/schema/sql
+-- NAVIGATE TO YOUR REPO DIRECTORY AND RUN THE FOLLOWING COMMAND FROM YOUR POSTGRES CLI
+-- \i backend/database/schema.sql
 
 DROP DATABASE IF EXISTS quizknows;
 
@@ -8,14 +8,14 @@ CREATE DATABASE quizknows;
 \c quizknows;
 
 CREATE TABLE public.answers (
-  id INT unique,
+  id SERIAL PRIMARY KEY,
   question_id INT,
   correct BOOLEAN,
   text VARCHAR(200)
 );
 
 CREATE TABLE public.questions (
-  id INT unique,
+  id INT PRIMARY KEY,
   quiz_id INT,
   text VARCHAR(200),
   thumbnail_url TEXT,
@@ -24,7 +24,7 @@ CREATE TABLE public.questions (
 );
 
 CREATE TABLE public.messages (
-  id INT unique,
+  id INT PRIMARY KEY,
   sender_user_id INT,
   recipient_user_id INT,
   text VARCHAR(200),
@@ -33,14 +33,14 @@ CREATE TABLE public.messages (
 );
 
 CREATE TABLE public.userAnswers (
-  id INT unique,
+  id INT PRIMARY KEY,
   user_id INT,
   question_id INT,
   submittedAnswer_id INT
 );
 
 CREATE TABLE public.quizzes(
-    id INT unique,
+    id INT PRIMARY KEY,
     category VARCHAR(30) NOT NULL,
     difficulty VARCHAR(30) NOT NULL,
     source INT NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE public.quizzes(
 );
 
 CREATE TABLE public.userQuizStatus(
-    id INT unique,
+    id INT PRIMARY KEY,
     quiz_id INT NOT NULL,
     user_id INT NOT NULL,
     completed BOOLEAN NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE public.userQuizStatus(
 );
 
 CREATE TABLE public.users(
-    id INT unique,
+    id INT PRIMARY KEY,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
     thumbnail_url TEXT,
