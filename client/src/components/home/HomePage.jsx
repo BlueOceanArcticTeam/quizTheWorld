@@ -16,6 +16,8 @@ export default function HomePage() {
 
   // render component:
   return (
-    <div />
+    <div>
+      Text in the Div
+    </div>
   );
 }
