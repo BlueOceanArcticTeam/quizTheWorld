@@ -6,9 +6,9 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import './chat.css';
-import axios from 'axios';
 
 const Chat = () => {
   let today = new Date();
