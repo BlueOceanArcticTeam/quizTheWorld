@@ -32,7 +32,6 @@ const App = function () {
           <Route index element={<HomePage />} />
           <Route path="/profile/:user_id" element={<ProfilePage />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/quizzes/:quiz_id" element={<Quiz />} />
@@ -41,6 +40,7 @@ const App = function () {
           <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<NoPath />} />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

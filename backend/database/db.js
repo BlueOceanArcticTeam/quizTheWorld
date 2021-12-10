@@ -10,4 +10,12 @@ const pool = new Pool({
   port: 5432 // Default port
 });
 
+pool.connect((err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected to PostgresQL');
+  }
+});
+
 module.exports = pool;

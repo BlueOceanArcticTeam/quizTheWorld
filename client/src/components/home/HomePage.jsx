@@ -5,7 +5,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import NavBar from '../helperComponents/NavBar.jsx';
 import './homepage.css';
-import ChatBox from '../chatbox/ChatBox.jsx';
 
 export default function HomePage() {
   // set state variables below:
@@ -16,6 +15,8 @@ export default function HomePage() {
 
   // render component:
   return (
-    <div />
+    <div>
+      Text in the Div
+    </div>
   );
 }
