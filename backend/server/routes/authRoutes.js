@@ -1,4 +1,6 @@
 const express = require('express');
+const passport = require('passport');
+const passportSetup = require('../config/passport-setup.js');
 
 const authRouter = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
 const db = require('../../database/db.js');
@@ -18,9 +20,14 @@ authRouter.get('/logout', (req, res) => {
 });
 
 // auth with google
-authRouter.get('/google', (req, res) => {
-  // handle with passport
-  res.send('logging in with google');
+authRouter.get('/google', passport.authenticate('google', {
+  // tell passport what we want to get from the user profile
+  scope: ['profile'],
+}));
+
+// callback route for google to redirect to
+authRouter.get('/google/redirect', (req, res) => {
+  res.send('you reached the callback URI');
 });
 
 // authRouter.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE

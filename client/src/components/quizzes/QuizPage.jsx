@@ -6,6 +6,14 @@ import React, { useState, useContext, useEffect } from 'react';
 
 export default function QuestionWidget() {
   // set state variables below:
+
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+
   const { currentQuestion, answers } = useContext(AppContext);
   const [selected, setSelected] = useState();
 
@@ -24,4 +32,4 @@ export default function QuestionWidget() {
       Example
     </div>
   );
-};
+}
