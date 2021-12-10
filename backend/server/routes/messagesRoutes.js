@@ -11,15 +11,17 @@ messagesRoutes.route('/').get((req, res) => { // CHANGE GET TO THE METHOD YOU WA
   });
 });
 
-messagesRoutes.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
+messagesRoutes.route('/').post((req, res) => {
   const { senderID, recipientID, text, date } = req.body;
   db.query(
     'INSERT INTO messages (sender_user_id, recipient_user_id, text, date) VALUES (?, ?, ?, ?)',
     [senderID, recipientID, text, date],
-    (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+    (err, data) => {
       if (err) throw err;
+      // if (err) { console.log(err); }
       res.sendStatus(201);
-  });
+    }
+  );
 });
 
 module.exports = messagesRoutes; // CHANGE 'TEMPLATE' TO YOUR ROUTE

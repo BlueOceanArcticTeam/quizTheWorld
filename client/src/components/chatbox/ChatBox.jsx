@@ -8,6 +8,8 @@ import { getUserName } from './chatBoxHelperFunctions.js';
 import MessageTile from './MessageTile.jsx';
 
 export default function ChatBox({ senderID, recipientID }) {
+  let today = new Date();
+  let todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
   const [chatBoxActive, setChatBoxActive] = useState(false);
   const [messageHistory, setMessageHistory] = useState([]);
   const [messageText, setMessageText] = useState('');
@@ -23,10 +25,10 @@ export default function ChatBox({ senderID, recipientID }) {
     axios.post('/api/messages', {
       // sender_user_id: senderID,
       // recipient_user_id: recipientID,
-      senderID: '1',
-      recipientID: '2',
+      senderID: 1,
+      recipientID: 2,
       text: messageText,
-      date: new Date()
+      date: todayString
     })
       // .then(() => { getMessageHistory(); })
       .then(() => { setMessageText(''); })
@@ -35,7 +37,7 @@ export default function ChatBox({ senderID, recipientID }) {
   };
 
   useEffect(() => { getMessageHistory(); }, []);
-  const today = new Date();
+
   return (
     <div className="chatBoxContainer">
       <span className="chatBoxTitle" onClick={handleChatBoxClick}>
