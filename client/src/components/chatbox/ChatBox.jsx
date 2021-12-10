@@ -39,18 +39,22 @@ export default function ChatBox({ senderID, recipientID }) {
   return (
     <div className="chatBoxContainer">
       <span className="chatBoxTitle" onClick={handleChatBoxClick}>
-        Chat with: {getUserName(recipientID)}
+        Chat with:
+        {' '}
+        {getUserName(recipientID)}
       </span>
       {chatBoxActive
-        ? (<div>
+        ? (
+          <div>
             <div>
-              {messsageHistory.map((message) => { return <MessageTile message={message} />; })}
+              {messsageHistory.map((message) => <MessageTile message={message} />)}
               <div className="messageInputBox">
-                <input type="text" className="messageInput" onChange={(e) => { setMessageText(e.nativeEvent.target.value); }}></input>
+                <input type="text" className="messageInput" onChange={(e) => { setMessageText(e.nativeEvent.target.value); }} />
                 <button type="submit" onClick={handleSendMessage}>Send</button>
               </div>
             </div>
-          </div>)
+          </div>
+        )
         : null}
     </div>
   );
