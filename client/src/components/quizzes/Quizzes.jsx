@@ -4,6 +4,7 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import QuizBackground from './assets/Question.png';
+import './Quizzes.css';
 
 export default function Quizzes() {
   // set state variables below:
@@ -19,8 +20,9 @@ export default function Quizzes() {
       height: '100vh',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'top',
+      alignItems: 'center',
       zIndex: '-100',
+      position: 'relative',
     }}
     >
       <img
@@ -30,9 +32,17 @@ export default function Quizzes() {
           zIndex: '-100',
           width: '100vw',
           height: '100vh',
-          position: 'absolute',
+          position: 'relative',
         }}
       />
+      <div style={{
+        background: '#D6C0E5', width: '85em', height: '47em', position: 'absolute', marginTop: '5em',
+      }}
+      >
+        <div style={{ width: '20em', height: '25em', background: 'purple' }}>
+          Hello
+        </div>
+      </div>
     </div>
   );
 }

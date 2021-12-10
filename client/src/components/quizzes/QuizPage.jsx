@@ -3,16 +3,10 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import QuizBackground from './assets/Question.png';
 
 export default function QuestionWidget() {
   // set state variables below:
-
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
 
   const { currentQuestion, answers } = useContext(AppContext);
   const [selected, setSelected] = useState();
@@ -28,8 +22,34 @@ export default function QuestionWidget() {
 
   // render component:
   return (
-    <div>
-      Example
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: '-100',
+      position: 'relative',
+    }}
+    >
+      <img
+        src={QuizBackground}
+        alt=""
+        style={{
+          zIndex: '-100',
+          width: '100vw',
+          height: '100vh',
+          position: 'relative',
+        }}
+      />
+      <div style={{
+        background: '#D6C0E5', width: '85em', height: '47em', position: 'absolute', marginTop: '5em',
+      }}
+      >
+        <div style={{ width: '20em', height: '25em', background: 'purple' }}>
+          Hello
+        </div>
+      </div>
     </div>
   );
 }

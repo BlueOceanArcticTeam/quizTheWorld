@@ -32,7 +32,8 @@ export default function NavBar() {
       justifyContent: 'center',
       alignItems: 'center',
       fontStyle: '',
-      background: 'none',
+      position: 'absolute',
+      zIndex: '100',
     }}
     >
       <Box sx={{
