@@ -16,6 +16,7 @@ import Quizzes from './components/quizzes/Quizzes.jsx';
 import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
+import Chat from './components/chatbox/Chat.jsx';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -35,6 +36,8 @@ const App = function () {
           <Route path="/quizzes/quiz" element={<QuizPage />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<NoPath />} />
         </Route>
         <Route path="/login" element={<Login />} />
