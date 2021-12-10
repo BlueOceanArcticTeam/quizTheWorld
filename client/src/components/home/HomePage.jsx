@@ -3,7 +3,6 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import ChatBox from '../chat/ChatBox.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
 import './homepage.css';
 import ChatBox from '../chatbox/ChatBox.jsx';
