@@ -11,13 +11,13 @@ CREATE TABLE public.answers (
   id SERIAL PRIMARY KEY,
   question_id INT,
   correct BOOLEAN,
-  text VARCHAR(200)
+  text VARCHAR(200) NOT NULL
 );
 
 CREATE TABLE public.questions (
   id INT PRIMARY KEY,
   quiz_id INT,
-  text VARCHAR(200),
+  text VARCHAR(200) NOT NULL,
   thumbnail_url TEXT,
   questionType VARCHAR(15),
   learnMore_url TEXT
@@ -27,8 +27,9 @@ CREATE TABLE public.messages (
   id INT PRIMARY KEY,
   sender_user_id INT,
   recipient_user_id INT,
-  text VARCHAR(200),
+  text VARCHAR(200) NOT NULL,
   date DATE NOT NULL
+
 );
 
 CREATE TABLE public.userAnswers (
@@ -42,6 +43,7 @@ CREATE TABLE public.quizzes(
     id INT PRIMARY KEY,
     category VARCHAR(30) NOT NULL,
     difficulty VARCHAR(30) NOT NULL,
+    title VARCHAR(30) NOT NULL,
     source INT NOT NULL,
     dateCreated DATE NOT NULL NOT NULL,
     numSubmissions INT NOT NULL
@@ -63,8 +65,10 @@ CREATE TABLE public.users(
     id INT PRIMARY KEY,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
+    firstname VARCHAR(40) NOT NULL,
+    lastname VARCHAR(40) NOT NULL,
     thumbnail_url TEXT,
-    email TEXT
+    email TEXT NOT NULL
 );
 
 
