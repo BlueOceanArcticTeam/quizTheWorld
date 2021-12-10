@@ -12,6 +12,8 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 // API ROUTES
 app.use('/api/template', router.template); // COPY THIS AND CHANGE TEMPLATE TO YOUR ROUTE
 
+app.use('/api/auth', router.authRouter);
+
 // WEB ROUTES
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../../client/dist/index.html'), (err) => {
@@ -22,7 +24,7 @@ app.get('*', (req, res) => {
 });
 
 app.get('/quizzes', (req, res) => {
-  db.query(`SELECT * FROM quizzes`, (err, data) => {
+  db.query('SELECT * FROM quizzes', (err, data) => {
     if (err) { console.log(err); }
     // TODO: res.send();
   });
@@ -36,7 +38,7 @@ app.get('/quizzes/:quiz_id', (req, res) => {
 });
 
 app.get(':user_id/friends', (req, res) => {
-  db.query(``, (err, data) => {
+  db.query('', (err, data) => {
     if (err) { console.log(err); }
     // TODO: res.send();
   });
