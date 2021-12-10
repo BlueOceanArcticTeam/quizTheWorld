@@ -3,8 +3,8 @@ import io from 'socket.io-client';
 let socket;
 
 export const initiateSocket = (room) => {
-  socket = io('http://localhost:4000');
-  console.log(`Connecting socket...`);
+  socket = io('http://localhost:3000');
+  console.log('Connecting socket...');
   if (socket && room) socket.emit('join', room);
 };
 
@@ -14,8 +14,8 @@ export const disconnectSocket = () => {
 };
 
 export const subscribeToChat = (cb) => {
-  if (!socket) return(true);
-  socket.on('chat', msg => {
+  if (!socket) return (true);
+  socket.on('chat', (msg) => {
     console.log('Websocket event received!');
     return cb(null, msg);
   });

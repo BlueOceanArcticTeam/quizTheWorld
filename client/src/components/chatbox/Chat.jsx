@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable arrow-body-style */
+/* eslint-disable block-spacing */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
 import React, { useEffect, useState } from 'react';
@@ -22,15 +25,33 @@ const Chat = () => {
 
   return (
     <div>
-      <h1>Room: {room}</h1>
-      {rooms.map((r, i) =>
-        <button onClick={() => setRoom(r)} key={i}>{r}</button>)}
+      <h1>
+        Room:
+        {room}
+      </h1>
+      {rooms.map((r, i) => {
+        return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
+      })}
       <h1>Live Chat:</h1>
-      <input type="text" name="name" value={message}
+      {chat.map((m, i) => {
+        return <p key={i}>{m}</p>;
+      }).reverse()}
+      <input
+        type="text"
+        name="name"
+        value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button onClick={()=> sendMessage(room,message)}>Send</button>
-      { chat.map((m, i) => <p key={i}>{m}</p>) }
+      <button
+        type="submit"
+        onClick={() => {
+          setChat((oldChats) => [message, ...oldChats]);
+          sendMessage(room, message);
+          setMessage('');
+        }}
+      >
+        Send
+      </button>
     </div>
   );
 };
