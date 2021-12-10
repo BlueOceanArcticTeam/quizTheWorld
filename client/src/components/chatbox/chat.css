@@ -1,0 +1,16 @@
+.chatRoom,
+.chatHeader {
+  font-size: 40px;
+}
+
+input {
+  height: 30px;
+  width: 200px;
+}
+
+button {
+  height: 30px;
+  width: 100px;
+  background-color: white;
+  cursor: pointer;
+}

@@ -24,7 +24,7 @@ CREATE TABLE public.questions (
 );
 
 CREATE TABLE public.messages (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   sender_user_id INT,
   recipient_user_id INT,
   text VARCHAR(200),
@@ -56,7 +56,7 @@ CREATE TABLE public.userQuizStatus(
     lastAnswered INT NOT NULL,
     numCorrect INT,
     numAttempted INT
-   
+
 );
 
 CREATE TABLE public.users(

@@ -4,9 +4,7 @@
   "description": "Blue Ocean project for Team Arctic",
   "main": "server.js",
   "scripts": {
-    "server": "nodemon backend/server/server.js",
-    "chatServer": "nodemon backend/server/chatServer.js",
-    "start": "concurrently \"npm:server\" \"npm:chatServer\"",
+    "start": "nodemon backend/server/server.js",
     "build": "webpack --config ./webpack.config.js --mode development -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "load": "psql postgres -f ./load.sh"
