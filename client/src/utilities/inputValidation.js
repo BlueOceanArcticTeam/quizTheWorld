@@ -55,7 +55,7 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
     || userInput.includes('DROP VIEW')) {
       return output;
     }
-  } else if (userInput.includes('GRANT ')) {
+  } else if (userInput.includes('GRANT')) {
     return output;
   } else if (userInput.includes('INSERT INTO')) {
     return output;
@@ -67,22 +67,24 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
     return output;
   }
 
+  // overall validation checking for the use of ' or "
+  if (userInput.includes("'") || userInput.includes('"')) {
+    return output;
+  }
+
   // additional checks for email
   if (usage === 'email') {
     // check if the email includes @ and .
-    if (!usage.contain('@') || !usage.contain('.')) {
+    if (!userInput.includes('@') || !userInput.includes('.')) {
       // if not valid return not valid email
       output.errorMessage = 'Please enter a valid email';
       return output;
     }
-    output.valid = true;
-    output.errorMessage = '';
-    return output;
   }
 
   // additional checks for username
   if (usage === 'username') {
-    // username cannot be greater than 40 characters and greater than 8
+    // username cannot be greater than 40 characters and less than 8
     if (userInput.length < 8) {
       output.errorMessage = 'Username must be longer than 8 characters';
       return output;
@@ -95,17 +97,17 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
   // additional checks for password
   if (usage === 'password') {
     const passwordErrors = [];
-    // password cannot be greater than 40 characters and greater than 8
+    // password cannot be greater than 40 characters and less than 8
     if (userInput.length > 40) {
       passwordErrors.push('less than 40 characters');
     } else if (userInput.length < 8) {
       passwordErrors.push('more than 8 characters');
     }
-    // password must contain the following:
+    // password must contain one of the following:
     // special characters: ! _ - % & # $ + < >
     const specialCharacters = '!_-%&#$+<>';
     let specialCharUsed = false;
-    for (let i = 0; i < specialCharacters.length; i++) {
+    for (let i = 0; i < specialCharacters.length; i + 1) {
       if (userInput.includes(specialCharacters[i])) {
         specialCharUsed = true;
         break;
@@ -118,7 +120,7 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
     // must contain a number
     const numbers = '0123456789';
     let numberUsed = false;
-    for (let j = 0; j < numbers.length; j++) {
+    for (let j = 0; j < numbers.length; j + 1) {
       if (userInput.includes(numbers[j])) {
         numberUsed = true;
         break;
@@ -145,10 +147,10 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
   }
 
   // additional checks for message, question, or answer
-  if (usage === 'message') {
+  if (usage === 'message' || usage === 'question' || usage === 'answer') {
     // cannot be greater than 200 characters
     if (userInput.length > 200) {
-      output.errorMessage = 'Message must be less than 200 characters';
+      output.errorMessage = `${usage} must be less than 200 characters`;
       return output;
     }
   }
