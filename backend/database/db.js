@@ -5,7 +5,7 @@ require('dotenv').config();
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'quizKnows',
+  database: 'quizknows',
   password: process.env.PASSWORD,
   port: 5432 // Default port
 });
