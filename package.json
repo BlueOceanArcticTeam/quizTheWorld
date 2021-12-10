@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon backend/server/server.js",
     "build": "webpack --config ./webpack.config.js --mode development -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "load": "psql postgres -f ./load.sh"
   },
   "repository": {
     "type": "git",
