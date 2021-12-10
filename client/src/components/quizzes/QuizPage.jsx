@@ -6,51 +6,49 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from '../../context.js';
+import QuizContext from './quizContext.js';
+import Question from './Question.jsx';
 
 export default function QuizPage() {
   // set state variables below:
-<<<<<<< HEAD
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
-  const [questionState, setQuestions] = useState();
-=======
-
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-
-  const { currentQuestion, answers } = useContext(AppContext);
-  const [selected, setSelected] = useState();
->>>>>>> master
+  const [questionsArray, setQuestions] = useState();
+  const [toggle, setToggle] = useState(true);
+  const [questionIndex, setIndex] = useState(0);
 
   const nextHandler = () => {
+    let i = questionIndex;
+    setIndex(i += 1);
     // handle the button that moves to the next question
   };
 
   const backHandler = () => {
+    let i = questionIndex;
+    if (i > 0) {
+      setIndex(i -= 1);
+    }
     // handle the button that moves to the previous question
   };
   // use Effect:
-  console.log(quiz_id);
   useEffect(() => {
-    if (typeof (quiz_id) === 'number') {
-      axios.get(`/api/quiz/${quiz_id}`)
+    const count = 0;
+    if (toggle) { // TEMP HOLD TO PREVENT INFINITE FETCHES, USE QUIZ_ID
+      setToggle(false);
+      axios.get('/api/quiz/1') // 1 should be quiz_id
         .then((res) => {
           const { data } = res;
           const quiz = {
-            id: data.quiz_id,
-            category: data.category,
-            difficulty: data.difficulty,
-            source: data.source,
-            datecreated: data.datecreated,
-            numsubmissions: data.numsubmissions,
+            id: data[0].quiz_id,
+            category: data[0].category,
+            difficulty: data[0].difficulty,
+            source: data[0].source,
+            datecreated: data[0].datecreated,
+            numsubmissions: data[0].numsubmissions,
           };
           setQuiz(quiz);
           const questions = [];
-          res.forEach((ele) => {
+          data.forEach((ele) => {
             const {
               id, text, thumbnail_url, questiontype, learnmore_url,
             } = ele;
@@ -66,12 +64,24 @@ export default function QuizPage() {
           setQuestions(questions);
         });
     }
-  });
+  }, [quiz_id]);
+  // Just so I can see the data
+  useEffect(() => {
+    console.log('questions ', questionsArray);
+    console.log('quiz ', quizState);
+  }, [questionsArray]);
 
   // render component:
+  if (!questionsArray) {
+    return (
+      <div>
+        Example
+      </div>
+    );
+  }
   return (
-    <div>
-      Example
-    </div>
+    <QuizContext.Provider value={{ questionsArray }}>
+      <Question index={questionIndex} />
+    </QuizContext.Provider>
   );
 }
