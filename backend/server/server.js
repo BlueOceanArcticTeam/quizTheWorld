@@ -16,6 +16,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.use('/api/template', router.template); // COPY THIS AND CHANGE TEMPLATE TO YOUR ROUTE
 app.use('/api/quiz', router.quiz);
 app.use('/api/messages', router.messages);
+app.use('/api/answers', router.answers);
 
 // WEB ROUTES
 app.get('*', (req, res) => {

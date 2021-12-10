@@ -12,8 +12,8 @@ import HomePage from './components/home/HomePage.jsx';
 import Login from './components/login/Login.jsx';
 import NoPath from './components/nopath/NoPath.jsx';
 import ProfilePage from './components/profile/ProfilePage.jsx';
-import Quiz from './components/quiz/Quiz.jsx';
 import Quizzes from './components/quizzes/Quizzes.jsx';
+import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
 import Chat from './components/chatbox/Chat.jsx';
@@ -33,8 +33,8 @@ const App = function () {
           <Route path="/profile/:user_id" element={<ProfilePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/quizzes" element={<Quizzes />} />
+          <Route path="/quizzes/quiz" element={<QuizPage />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
-          <Route path="/quizzes/:quiz_id" element={<Quiz />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/chat" element={<Chat />} />
