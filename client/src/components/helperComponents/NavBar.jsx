@@ -95,7 +95,6 @@ export default function NavBar() {
           Login
         </Button>
       </Box>
-      <Outlet />
     </div>
   );
 }

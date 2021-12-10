@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
 /* eslint-disable arrow-body-style */
 /* eslint-disable block-spacing */
@@ -25,10 +26,7 @@ const Chat = () => {
 
   return (
     <div>
-      <h1>
-        Room:
-        {room}
-      </h1>
+      <h1>Room: {room}</h1>
       {rooms.map((r, i) => {
         return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
       })}
@@ -46,7 +44,6 @@ const Chat = () => {
         type="submit"
         onClick={() => {
           setChat((oldChats) => [message, ...oldChats]);
-          sendMessage(room, message);
           setMessage('');
         }}
       >
