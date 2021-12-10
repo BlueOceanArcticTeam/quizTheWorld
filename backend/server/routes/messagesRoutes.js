@@ -2,14 +2,29 @@
 /* eslint-disable import/extensions */
 const express = require('express');
 
-const messagesRoutes = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
+const messagesRoutes = express.Router();
 const db = require('../../database/db.js');
 
-messagesRoutes.route('/').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  db.query('SELECT * FROM messages', [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+messagesRoutes.route('/').get((req, res) => {
+  db.query('SELECT * FROM messages', [], (err, data) => {
     if (err) throw err;
     res.send(data.fields);
   });
+});
+
+messagesRoutes.route('/history').get((req, res) => {
+  const { senderID, recipientID } = req.body;
+  db.query(
+    // `SELECT * FROM messages
+    //   WHERE (sender_user_id=$1 OR sender_user_id=$2) AND (recipient_user_id=$1 OR recipient_user_id=$2)`,
+    `SELECT * FROM messages
+    WHERE (sender_user_id=1 OR sender_user_id=2) AND (recipient_user_id=1 OR recipient_user_id=2)`,
+    // [senderID, recipientID],
+    (err, data) => {
+      if (err) throw err;
+      res.send(data.rows);
+    }
+  );
 });
 
 messagesRoutes.route('/').post((req, res) => {
@@ -19,7 +34,6 @@ messagesRoutes.route('/').post((req, res) => {
     [senderID, recipientID, text, date],
     (err, data) => {
       if (err) throw err;
-      if (err) console.log(err);
       res.sendStatus(201);
     }
   );

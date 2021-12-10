@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
 /* eslint-disable arrow-body-style */
@@ -31,6 +32,20 @@ const Chat = () => {
   }, [room]);
 
   // HELPER FUNCTIONS
+  const getMessageHistory = () => {
+    axios.get('/api/messages/history', {
+      senderID: 1,
+      recipientID: 1
+    })
+      .then((results) => {
+        const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
+        setChat(messageHistory);
+      })
+      // .then((results) => { console.log(results.data); })
+      .catch((err) => { console.log(err); });
+  };
+  useEffect(() => {getMessageHistory();});
+
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: 1,
@@ -38,9 +53,8 @@ const Chat = () => {
       text: message,
       date: todayString
     })
-      // .then(() => { getMessageHistory(); })
       .then(() => { setMessage(''); })
-      .then(() => { console.log('Message submitted'); })
+      .then(() => { getMessageHistory(); })
       .catch((err) => { console.log(err); });
   };
 
@@ -53,7 +67,7 @@ const Chat = () => {
       <h1 className="chatHeader">Live Chat:</h1>
       {chat.map((m, i) => {
         return <p key={i}>{m}</p>;
-      }).reverse()}
+      })}
       <input
         type="text"
         name="name"
