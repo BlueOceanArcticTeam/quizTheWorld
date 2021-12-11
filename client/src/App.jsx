@@ -25,27 +25,34 @@ import ChatPage from './components/chatbox/Chat.jsx';
 //  .then(response => response.json())
 //  .then(data => console.log(data));
 
-const App = function () {
+export const UserIDContext = React.createContext();
+
+export const App = function () {
   // const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userID, setUserID] = useState(1); // TODO: Make this dynamic
+
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   // OR, just have a bool checking if user is logged in and conditionally render pages
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Header />}>
-          <Route index element={<HomePage />} />
-          <Route path="/profile/:user_id" element={<ProfilePage />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/quizzes" element={<Quizzes />} />
-          <Route path="/quizzes/quiz" element={<QuizPage />} />
-          <Route path="/quizzes/create" element={<CreateQuiz />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/chat" element={<ChatPage />} />
-          <Route path="*" element={<NoPath />} />
-        </Route>
-      </Routes>
+      <UserIDContext.Provider value={userID}>
+        <Routes>
+          <Route path="/" element={<Header />}>
+            <Route index element={<HomePage />} />
+            <Route path="/profile/:user_id" element={<ProfilePage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/quizzes" element={<Quizzes />} />
+            <Route path="/quizzes/quiz" element={<QuizPage />} />
+            <Route path="/quizzes/create" element={<CreateQuiz />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/chat" element={<ChatPage />} />
+            <Route path="*" element={<NoPath />} />
+          </Route>
+        </Routes>
+      </UserIDContext.Provider>
     </div>
   );
 };
@@ -164,5 +171,3 @@ function LoginPage() {
     });
   };
 }
-
-export default App;

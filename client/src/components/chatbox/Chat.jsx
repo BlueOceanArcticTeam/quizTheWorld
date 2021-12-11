@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable import/extensions */
@@ -10,14 +11,14 @@ import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import './chat.css';
 
-const Chat = () => {
+const Chat = ({ userID }) => {
   let today = new Date();
   let todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
   const rooms = ['A', 'B', 'C'];
   const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
-  const [senderID, setSenderID] = useState(1);
+  const [senderID, setSenderID] = useState(userID);
   const [recipientID, setRecipientID] = useState(2);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const Chat = () => {
   // HELPER FUNCTIONS
   const getMessageHistory = () => {
     axios.get('/api/messages/history', {
-      senderID: 1,
+      senderID: senderID,
       recipientID: 1
     })
       .then((results) => {
@@ -44,11 +45,14 @@ const Chat = () => {
       // .then((results) => { console.log(results.data); })
       .catch((err) => { console.log(err); });
   };
-  useEffect(() => {getMessageHistory();});
+  useEffect(() => {
+    setSenderID(userID);
+    getMessageHistory();
+  }, []);
 
   const addMessageToDB = () => {
     axios.post('/api/messages', {
-      senderID: 1,
+      senderID: senderID,
       recipientID: 1,
       text: message,
       date: todayString
@@ -66,6 +70,7 @@ const Chat = () => {
 
   return (
     <div className="chatBoxContainer">
+      UserID: {userID}
       <h1 className="chatRoom">Room: {room}</h1>
       <div>
         {rooms.map((r, i) => {
