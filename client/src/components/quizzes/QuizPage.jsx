@@ -15,23 +15,31 @@ export default function QuizPage() {
   // set state variables below:
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
-  const [questionState, setQuestions] = useState();
-
-  const quiz_id = useContext(AppContext);
-  const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
+  const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(true);
-  const [questionIndex, setIndex] = useState(0);
+  const [questionIndex, setIndex] = useState(10000000);
+  const [currentQuestion, setCurrent] = useState();
+  const [last, setLast] = useState(0);
+  const [render, setRender] = useState(false);
+  const [buttonText, setButton] = useState('START QUIZ!');
 
-  const { currentQuestion, answers } = useContext(AppContext);
-  const [selected, setSelected] = useState();
+  // This function will let you start a quiz and then let you submit one later!
+  const startSubmit = () => {
+    if (!render) {
+      setRender(true);
+      setIndex(0);
+      setButton('SUBMIT QUIZ');
+    }
+  };
 
   const nextHandler = () => {
     let i = questionIndex;
-    setIndex(i += 1);
+    if (i < questionsArray.length - 1) {
+      setIndex(i += 1);
+    }
     // handle the button that moves to the next question
   };
-
   const backHandler = () => {
     let i = questionIndex;
     if (i > 0) {
@@ -39,12 +47,12 @@ export default function QuizPage() {
     }
     // handle the button that moves to the previous question
   };
-  // use Effect:
+
+  // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    const count = 0;
     if (toggle) { // TEMP HOLD TO PREVENT INFINITE FETCHES, USE QUIZ_ID
       setToggle(false);
-      axios.get('/api/quiz/1') // 1 should be quiz_id
+      axios.get('/api/quiz/5') // 1 should be quiz_id
         .then((res) => {
           const { data } = res;
           const quiz = {
@@ -74,22 +82,32 @@ export default function QuizPage() {
         });
     }
   }, [quiz_id]);
-  // Just so I can see the data
+  // Fetch answers when the question changes
   useEffect(() => {
-    console.log('questions ', questionsArray);
-    console.log('quiz ', quizState);
-  }, [questionsArray]);
-
-  useEffect(() => {}, [questionIndex]);
+    if (questionsArray) {
+      const query = questionsArray[questionIndex]?.id;
+      axios.get(`/api/answers/${query}`)
+        .then((res) => {
+          const { data } = res;
+          const store = [];
+          data.forEach((ele) => {
+            const answer = {
+              text: ele.text,
+              correct: ele.correct,
+            };
+            store.push(answer);
+          });
+          const question = questionsArray[questionIndex].text;
+          const l = questionsArray.length - 1;
+          setCurrent(question);
+          setAnswers(store);
+          setLast(l);
+        });
+    }
+  }, [questionIndex]);
+  useEffect(() => { console.log('test'); }, [render]);
 
   // render component:
-  if (!questionsArray) {
-    return (
-      <div>
-        Example
-      </div>
-    );
-  }
   return (
     <div style={{
       width: '100vw',
@@ -131,6 +149,7 @@ export default function QuizPage() {
           }}
           >
             <Button
+              onClick={backHandler}
               variant="contained"
               sx={{
                 width: '30%',
@@ -146,8 +165,15 @@ export default function QuizPage() {
               Previous
             </Button>
             {/* Span where the current question goes */}
-            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>13/22</span>
+            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>
+              {questionIndex + 1}
+              {' '}
+              /
+              {' '}
+              {last + 1}
+            </span>
             <Button
+              onClick={nextHandler}
               variant="contained"
               sx={{
                 width: '30%',
@@ -177,7 +203,7 @@ export default function QuizPage() {
             color: '#DBD7D1',
           }}
           >
-            <h3 style={{ fontSize: '2em' }}>What kind of potato is best?</h3>
+            <h3 style={{ fontSize: '2em' }}>{currentQuestion}</h3>
             <div style={{
               display: 'flex',
               flexDirection: 'column',
@@ -186,13 +212,26 @@ export default function QuizPage() {
               height: '23em',
             }}
             >
-              <span style={{ fontSize: '2em' }}>- Baked Potato</span>
-              <span style={{ fontSize: '2em' }}>- Mashed Potato</span>
-              <span style={{ fontSize: '2em' }}>- French Fried</span>
-              <span style={{ fontSize: '2em' }}>- Potato Cannon</span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[0]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[1]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[2]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[3]?.text}
+              </span>
               {/* Submit Quiz Button */}
               {/* Youll want to hide this one until the last question appears */}
               <Button
+                onClick={startSubmit}
                 variant="contained"
                 sx={{
                   width: '100%',
@@ -205,7 +244,7 @@ export default function QuizPage() {
                   },
                 }}
               >
-                Submit Quiz
+                {buttonText}
               </Button>
             </div>
           </div>
