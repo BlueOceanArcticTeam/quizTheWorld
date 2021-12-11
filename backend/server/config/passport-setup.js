@@ -6,7 +6,7 @@ const db = require('../../database/db.js');
 
 // check the db for the user by google_id
 const googleCheck = async (googleId) => {
-  console.log('google_id', googleId);
+  // console.log('google_id', googleId);
   const details = await db.query('SELECT * FROM users WHERE google_id = $1;', [googleId]);
   //   (err, data) => {
   //   if (err) { throw err; } else {
@@ -38,7 +38,7 @@ const addGoogleUser = (info, callback) => {
       if (err) {
         throw err;
       } else {
-        console.log('new User added', data.rows[0]);
+        // console.log('new User added', data.rows[0]);
         callback(data.rows[0].id);
         console.log('done adding user');
         // return data.rows[0];
@@ -52,13 +52,13 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (user, done) => {
-  console.log('here i am', user);
+  // console.log('here i am', user);
   const userDbInformation = await db.query('SELECT * FROM users WHERE id=$1', [user.id]);
   // , (err, user) => {
   // if (err) {
   //   throw err;
   // } else {
-  console.log(userDbInformation);
+  // console.log(userDbInformation);
   done(null, userDbInformation);
   // }
   // });
@@ -84,20 +84,20 @@ passport.use(new GoogleStrategy({
     email: profile.emails[0].value,
   };
 
-  console.log('\n\nUserInformation', userInformation);
+  // console.log('\n\nUserInformation', userInformation);
   // TODO: See if we have already confirmed that person as a user
   // console.log('GOOGLE CHECK=', googleCheck(userInformation.google_id));
   const checkUser = async () => {
     // this async await is not waiting for the function to return...FIXME
     const user = await googleCheck(userInformation.google_id);
-    console.log('==user==', user);
+    // console.log('==user==', user);
     if (user) {
     // user exists in the db
-      console.log('user exists');
+      // console.log('user exists');
       done(null, user.id);
     } else {
     // need to save this user to the db
-      console.log('user does not exist');
+      // console.log('user does not exist');
       addGoogleUser(userInformation, (id) => {
         done(null, id);
       });

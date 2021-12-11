@@ -1,15 +1,16 @@
+/* eslint-disable import/extensions */
 const express = require('express');
 const passport = require('passport');
 const passportSetup = require('../config/passport-setup.js');
 
-const authRouter = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
-const db = require('../../database/db.js');
-const { default: axios } = require('axios');
+const authRouter = express.Router();
 
 // auth logout
 authRouter.get('/logout', (req, res) => {
   // handle with passport
-  res.send('loggin out');
+  req.logout();
+  console.log('logged out');
+  res.redirect('../../');
 });
 
 // auth with google
@@ -21,7 +22,7 @@ authRouter.get('/google', passport.authenticate('google', {
 
 // callback route for google to redirect to
 authRouter.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.status(400).send(`you reached the callback URI ${req.user}`);
+  res.redirect(`/profile/${req.user}`);
 });
 
 module.exports = authRouter; // CHANGE 'TEMPLATE' TO YOUR ROUTE

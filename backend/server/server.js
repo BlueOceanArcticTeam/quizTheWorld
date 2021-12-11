@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 // encrypt our cookies
 app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000, // max age of the cookie is one day
+  maxAge: 12 * 60 * 60 * 1000, // max age of the cookie is one day
   keys: [keys.session.cookieKey],
 }));
 
@@ -32,7 +32,6 @@ app.use('api/profile', router.profile);
 app.use('/api/quiz', router.quiz);
 app.use('/api/messages', router.messages);
 app.use('/api/answers', router.answers);
-
 app.use('/api/auth', router.authRouter);
 
 // WEB ROUTES
