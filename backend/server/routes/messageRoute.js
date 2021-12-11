@@ -28,10 +28,6 @@ messageRoute.route('/').post((req, res) => {
   db.query(
     'INSERT INTO messages (sender_user_id, recipient_user_id, text, date) VALUES ($1, $2, $3, $4)',
     [senderID, recipientID, text, date]
-    // (err, data) => {
-    //   if (err) throw err;
-    //   res.sendStatus(201);
-    // }
   )
     .then((data) => { res.sendStatus(201); })
     .catch((err) => { console.log(err); });

@@ -20,6 +20,7 @@ const Chat = ({ userID }) => {
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
   const [recipientID, setRecipientID] = useState(2);
+  const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
     if (room) initiateSocket(room);
@@ -59,22 +60,21 @@ const Chat = ({ userID }) => {
       .catch((err) => { console.log(err); });
   };
 
-  const getUsername = (id) => {
+  const getRecipientUsername = (id) => {
     axios.get(`/api/messages/${id}`)
-      .then((results) => { console.log(results.data); return results.data; })
+      .then((results) => { setRecipientUsername(results.data); })
       .catch((err) => { console.log(err); });
   };
 
   useEffect(() => {
     setSenderID(userID);
     getMessageHistory();
-    // getUsername();
+    getRecipientUsername(recipientID);
   }, []);
 
   return (
     <div className="chatBoxContainer">
-      {/* Chat with: {recipientID} */}
-      <h1 className="chatTitle">Chat with: {getUsername(recipientID)}</h1>
+      <h4 className="chatTitle">Chat with: {recipientUsername}</h4>
       <div>
         {rooms.map((r, i) => {
           return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
