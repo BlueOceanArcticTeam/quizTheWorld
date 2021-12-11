@@ -16,10 +16,11 @@ import Box from '@mui/material/Box';
 import Login from '../login/Login.jsx';
 import ChatBox from '../chatbox/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
+import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
   // set state variables below:
-
+  const { userData, handleLogOut } = useContext(AppContext);
   // component functions - event handlers
 
   // use Effect:
@@ -85,20 +86,42 @@ export default function NavBar() {
         >
           My Account
         </Link>
-        <Button
-          to="/login"
-          component={Link}
-          variant="contained"
-          sx={{
-            marginLeft: 'auto',
-            background: '#FE6845',
-            color: '#FFF1EA',
-            textDecoration: 'none',
-            marginRight: '5em',
-          }}
-        >
-          Login
-        </Button>
+        {/* {console.log('userData', userData)} */}
+        {
+        userData
+          ? (
+        // logout button
+            <Button
+              href="/api/auth/logout"
+              variant="contained"
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+                marginRight: '5em',
+              }}
+            >
+              Logout
+            </Button>
+          )
+          : (
+            <Button
+              to="/login"
+              component={Link}
+              variant="contained"
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+                marginRight: '5em',
+              }}
+            >
+              Login
+            </Button>
+          )
+}
       </Box>
     </div>
   );

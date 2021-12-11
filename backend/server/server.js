@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 const path = require('path');
 const express = require('express');
 const cookieSession = require('cookie-session');
@@ -28,7 +29,7 @@ app.use(passport.session());
 
 // API ROUTES
 app.use('/api/template', router.template); // COPY THIS AND CHANGE TEMPLATE TO YOUR ROUTE
-app.use('api/profile', router.profile);
+app.use('/api/profile', router.profile);
 app.use('/api/quiz', router.quiz);
 app.use('/api/messages', router.messages);
 app.use('/api/answers', router.answers);

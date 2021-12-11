@@ -9,7 +9,7 @@ const authRouter = express.Router();
 authRouter.get('/logout', (req, res) => {
   // handle with passport
   req.logout();
-  console.log('logged out');
+  // console.log('logged out');
   res.redirect('../../');
 });
 
@@ -20,9 +20,26 @@ authRouter.get('/google', passport.authenticate('google', {
     'https://www.googleapis.com/auth/userinfo.email'],
 }));
 
-// callback route for google to redirect to
+// callback route for google to redirect to  //32:00
 authRouter.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect(`/profile/${req.user}`);
+  req.logIn(req.user, (err) => {
+    if (err) {
+      throw err;
+    } else {
+      res.redirect('../../../');
+    }
+  });
 });
 
-module.exports = authRouter; // CHANGE 'TEMPLATE' TO YOUR ROUTE
+authRouter.get('/userInformation', (req, res) => {
+  // console.log('\n\n\n\n\n\n\n', req);
+  if (req.user) {
+    // console.log('logged in');
+    res.send(req.user);
+  } else {
+    // console.log('logged out');
+    res.send();
+  }
+});
+
+module.exports = authRouter;
