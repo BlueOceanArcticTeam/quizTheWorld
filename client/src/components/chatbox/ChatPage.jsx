@@ -1,24 +1,24 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import React from 'react';
+import React, { useContext } from 'react';
 import Chat from './Chat.jsx';
 import FriendList from '../profile/FriendsList.jsx';
-import { UserIDContext } from '../../App.jsx';
+import { AppContext } from '../../App.jsx';
 
 const ChatPage = () => {
+  const { userID } = useContext(AppContext);
   return (
     <div className="chatPage">
-      <UserIDContext.Consumer>
-        {(context) => {
+      <AppContext.Consumer>
+        {() => {
           return (
             <div>
-              <p>ID----------------: {context}</p>
-              <Chat userID={context} />
+              <Chat userID={userID} />
               <FriendList />
             </div>
           );
         }}
-      </UserIDContext.Consumer>
+      </AppContext.Consumer>
     </div>
   );
 };

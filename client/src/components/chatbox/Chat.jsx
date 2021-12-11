@@ -34,26 +34,23 @@ const Chat = ({ userID }) => {
 
   // HELPER FUNCTIONS
   const getMessageHistory = () => {
-    axios.get('/api/messages/history', {
-      senderID: senderID,
-      recipientID: 1
+    axios.get('/api/messages', {
+      params: {
+        senderID: senderID,
+        recipientID: 2
+      }
     })
       .then((results) => {
         const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
         setChat(messageHistory);
       })
-      // .then((results) => { console.log(results.data); })
       .catch((err) => { console.log(err); });
   };
-  useEffect(() => {
-    setSenderID(userID);
-    getMessageHistory();
-  }, []);
 
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: senderID,
-      recipientID: 1,
+      recipientID: 2,
       text: message,
       date: todayString
     })
@@ -63,15 +60,21 @@ const Chat = ({ userID }) => {
   };
 
   const getUsername = (id) => {
-    axios.get('/api/messages', { id })
-      .then()
+    axios.get(`/api/messages/${id}`)
+      .then((results) => { console.log(results.data); return results.data; })
       .catch((err) => { console.log(err); });
   };
 
+  useEffect(() => {
+    setSenderID(userID);
+    getMessageHistory();
+    // getUsername();
+  }, []);
+
   return (
     <div className="chatBoxContainer">
-      UserID: {userID}
-      <h1 className="chatRoom">Room: {room}</h1>
+      {/* Chat with: {recipientID} */}
+      <h1 className="chatTitle">Chat with: {getUsername(recipientID)}</h1>
       <div>
         {rooms.map((r, i) => {
           return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;

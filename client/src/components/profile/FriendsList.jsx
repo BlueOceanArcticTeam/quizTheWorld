@@ -18,7 +18,7 @@ const FriendList = (userID) => {
   return (
     <div>
       {friendList.forEach((friend) => {
-        getFriendList();
+        // getFriendList();
         return <Friend />;
       })}
     </div>

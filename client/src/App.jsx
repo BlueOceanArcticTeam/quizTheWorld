@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useContext, createContext } from 'react';
@@ -5,7 +6,6 @@ import axios from 'axios';
 import {
   Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect
 } from 'react-router-dom';
-import AppContext from './context.js';
 
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
@@ -17,7 +17,7 @@ import Quizzes from './components/quizzes/Quizzes.jsx';
 import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
-import ChatPage from './components/chatbox/Chat.jsx';
+import ChatPage from './components/chatbox/ChatPage.jsx';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -25,18 +25,17 @@ import ChatPage from './components/chatbox/Chat.jsx';
 //  .then(response => response.json())
 //  .then(data => console.log(data));
 
-export const UserIDContext = React.createContext();
+export const AppContext = React.createContext();
 
 export const App = function () {
-  // const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userID, setUserID] = useState(1); // TODO: Make this dynamic
 
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
-  // OR, just have a bool checking if user is logged in and conditionally render pages
+  // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
     <div>
-      <UserIDContext.Provider value={userID}>
+      <AppContext.Provider value={{ userID }}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
@@ -52,7 +51,7 @@ export const App = function () {
             <Route path="*" element={<NoPath />} />
           </Route>
         </Routes>
-      </UserIDContext.Provider>
+      </AppContext.Provider>
     </div>
   );
 };
