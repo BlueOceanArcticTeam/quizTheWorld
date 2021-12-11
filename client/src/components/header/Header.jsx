@@ -15,7 +15,10 @@ export default function Header() {
 
   // render component:
   return (
-    <div>
+    <div style={{
+      position: 'absolute', backgroundColor: 'transparent', background: 'none', zIndex: '100',
+    }}
+    >
       <NavBar />
       <Outlet />
     </div>

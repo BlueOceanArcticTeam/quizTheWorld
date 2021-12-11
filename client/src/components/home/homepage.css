@@ -2,15 +2,12 @@ body {
     background: linear-gradient(#6A418A, #930DFF);
     height: 100;
     overflow: hidden;
+    height: 100vh;
     font-family: 'Poppins', sans-serif;
 }
 
 .Link {
     padding: 2em
-}
-
-.Button {
-    background: red;
 }
 
 .homeContainer {
@@ -29,7 +26,6 @@ body {
     height: 50vh;
     border-top: 5px solid #FE6845;
     border-bottom: 5px solid #FE6845;
-
 }
 
 .heroSectionContainerInner {
@@ -39,8 +35,6 @@ body {
     margin: auto;
     height: 100%;
 }
-
-
 
 .heroTextGrid {
     display: inline-grid;
@@ -77,5 +71,3 @@ body {
     font-size: 1.85rem;
     grid-column: 1/13;
 }
-
-

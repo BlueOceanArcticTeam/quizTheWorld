@@ -6,6 +6,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import './homepage.css';
 import placehold from './Assets/placehold.png';
+import NavBar from '../helperComponents/NavBar.jsx';
+import './homepage.css';
+
 
 export default function HomePage() {
   return (
@@ -44,6 +47,5 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

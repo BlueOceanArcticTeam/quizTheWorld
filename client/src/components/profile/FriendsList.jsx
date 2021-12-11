@@ -1,20 +1,28 @@
-/* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
+/* eslint-disable react/function-component-definition */
+/* eslint-disable arrow-body-style */
+import axios from 'axios';
+import React, { useState } from 'react';
+import Friend from './Friend.jsx';
 
-import React, { useState, useContext, useEffect } from 'react';
+const FriendList = (userID) => {
+  const [friendList, setFriendList] = useState([1]);
 
-export default function FriendsList() {
-  // set state variables below:
+  const getFriendList = () => {
+    axios.get(`/${userID}/friends`)
+      .then((results) => { console.log(results); })
+      .then(() => { setFriendList([...friendList]); })
+      .catch((err) => { console.log(err); });
+  };
 
-  // component functions - event handlers
-
-  // use Effect:
-
-  // render component:
   return (
     <div>
-      Friends list
+      {friendList.forEach((friend) => {
+        // getFriendList();
+        return <Friend />;
+      })}
     </div>
   );
-}
+};
+
+export default FriendList;
