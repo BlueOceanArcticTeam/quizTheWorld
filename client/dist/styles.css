@@ -1,1 +1,11 @@
 /* Use Classnames and ID's */
+
+.mainContainer {
+  padding: none;
+  margin : none;
+  max-width: 90%;
+  height: 100vh;
+  margin: auto;
+  float: none;
+  overflow: hidden;
+}

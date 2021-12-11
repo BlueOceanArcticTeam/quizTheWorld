@@ -25,7 +25,7 @@ import NavBar from './components/helperComponents/NavBar.jsx';
 
 const App = function () {
   return (
-    <div>
+    <div className="mainContainer">
       <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<HomePage />} />

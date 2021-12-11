@@ -1,9 +1,81 @@
 body {
     background: linear-gradient(#6A418A, #930DFF);
-    height: 100vh;
+    height: 100;
+    overflow: hidden;
     font-family: 'Poppins', sans-serif;
 }
 
 .Link {
     padding: 2em
 }
+
+.Button {
+    background: red;
+}
+
+.homeContainer {
+    margin : none;
+    max-width: 100%;
+    margin: auto;
+    float: none;
+    height: 88vh;
+    overflow: hidden;
+}
+
+.heroSectionContainer {
+    grid-template-columns: repeat(12, 1fr);
+    max-width: 90%;
+    margin: auto;
+    height: 50vh;
+    border-top: 5px solid #FE6845;
+    border-bottom: 5px solid #FE6845;
+
+}
+
+.heroSectionContainerInner {
+    display: grid;
+    align-content: center;
+    max-width: 95%;
+    margin: auto;
+    height: 100%;
+}
+
+
+
+.heroTextGrid {
+    display: inline-grid;
+    max-width: 98%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    color: #FFDAD1;
+    font-size: 4rem;
+    grid-column: 3/8;
+    overflow: hidden;
+    align-content: center;
+}
+
+.heroTextImage {
+    display: inline-grid;
+    grid-column: 9/13;
+    height: 100%;
+}
+
+.heroSectionSlider {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+    max-width: 95%;
+    margin: auto;
+    height: 75%;
+    overflow: hidden;
+}
+
+.heroSectionSliderText {
+    font-family: 'Poppins', sans-serif;
+    color: #FFDAD1;
+    font-size: 1.85rem;
+    grid-column: 1/13;
+}
+
+

@@ -13,33 +13,26 @@ import { Outlet } from 'react-router';
 import Button from '@mui/material/Button';
 // import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
-import ChatBox from '../chat/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
 
 export default function NavBar() {
-  // set state variables below:
-
-  // component functions - event handlers
-
-  // use Effect:
-
-  // render component:
   return (
     <div style={{
-      width: '100vw',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      fontStyle: '',
+      alignItems: 'stretch',
+      height: '10vh',
+      margin: 'none',
+      padding: 'none',
     }}
     >
       <Box sx={{
-        width: '90%',
+        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         margin: '2em',
-        paddingTop: '1em',
+
       }}
       >
         <Link
@@ -89,13 +82,12 @@ export default function NavBar() {
             background: '#FE6845',
             color: '#FFF1EA',
             textDecoration: 'none',
-            marginRight: '5em',
           }}
         >
           Login
         </Button>
       </Box>
-      <Outlet />
+
     </div>
   );
 }
