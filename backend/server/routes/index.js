@@ -9,8 +9,8 @@ const profile = require('./profile.js');
 
 module.exports = {
   template,
+  profile,
   quiz,
   answers,
   messages
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT
-
