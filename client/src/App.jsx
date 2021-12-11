@@ -18,6 +18,7 @@ import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
 import ChatPage from './components/chatbox/ChatPage.jsx';
+import '../dist/styles.css';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -34,7 +35,7 @@ export const App = function () {
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
-    <div>
+    <div className="app">
       <AppContext.Provider value={{ userID, isLoggedIn, setUserID, setIsLoggedIn }}>
         <Routes>
           <Route path="/" element={<Header />}>
@@ -50,6 +51,7 @@ export const App = function () {
             <Route path="*" element={<NoPath />} />
           </Route>
         </Routes>
+        <button type="button" className="chatButton">Chat</button>
       </AppContext.Provider>
     </div>
   );
