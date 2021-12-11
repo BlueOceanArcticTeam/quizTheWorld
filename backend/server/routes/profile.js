@@ -21,9 +21,9 @@ profile.route('/:user_id/meta').get((req, res) => {
   }));
   promiseArray.push(new Promise((resolve, reject) => {
     db
-      .query('SELECT quiz_id, dateCompleted, TRUNC(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100, 2) as score FROM userQuizStatus WHERE user_id=$1 AND completed = true ORDER BY dateCompleted DESC;', [req.params.user_id], (err, data) => {
+      .query('SELECT quiz_id, quizzes.title, dateCompleted, TRUNC(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100, 2) as score FROM userQuizStatus INNER JOIN quizzes ON quiz_id = quizzes.id WHERE user_id=$1 AND completed = true ORDER BY dateCompleted DESC;', [req.params.user_id], (err, data) => {
         if (err) reject();
-        output = { ...output, meta: data.rows };
+        output = { ...output, data: data.rows };
         resolve();
       });
   }));
