@@ -33,4 +33,10 @@ messageRoute.route('/').post((req, res) => {
     .catch((err) => { console.log(err); });
 });
 
-module.exports = messageRoute; // CHANGE 'TEMPLATE' TO YOUR ROUTE
+messageRoute.route('/').delete((req, res) => {
+  db.query(`DELETE FROM messages WHERE id=10`, [])
+    .then()
+    .catch();
+});
+
+module.exports = messageRoute;

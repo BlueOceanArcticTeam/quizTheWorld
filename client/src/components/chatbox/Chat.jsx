@@ -42,6 +42,7 @@ const Chat = ({ userID }) => {
       }
     })
       .then((results) => {
+        const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
         const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
         setChat(messageHistory);
       })

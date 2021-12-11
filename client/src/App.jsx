@@ -35,7 +35,7 @@ export const App = function () {
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
     <div>
-      <AppContext.Provider value={{ userID }}>
+      <AppContext.Provider value={{ userID, setUserID, setIsLoggedIn }}>
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
@@ -45,7 +45,6 @@ export const App = function () {
             <Route path="/quizzes/quiz" element={<QuizPage />} />
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<NoPath />} />
