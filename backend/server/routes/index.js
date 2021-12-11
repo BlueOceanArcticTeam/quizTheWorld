@@ -13,5 +13,6 @@ module.exports = {
   quiz,
   answers,
   messages,
-  authRouter
+  authRouter,
+  profile
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT

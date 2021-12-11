@@ -26,6 +26,7 @@
     "@mui/styled-engine": "^5.2.0",
     "axios": "^0.24.0",
     "concurrently": "^6.4.0",
+    "cookie-session": "^1.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "install": "^0.13.0",

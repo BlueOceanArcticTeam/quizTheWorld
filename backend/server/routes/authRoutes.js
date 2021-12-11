@@ -29,7 +29,7 @@ authRouter.get('/google', passport.authenticate('google', {
 
 // callback route for google to redirect to
 authRouter.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.send('you reached the callback URI');
+  res.send('you reached the callback URI', req.user);
 });
 
 // authRouter.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE

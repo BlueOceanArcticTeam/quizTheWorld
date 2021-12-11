@@ -36,7 +36,6 @@ const App = function () {
           <Route path="/quizzes/quiz" element={<QuizPage />} />
           <Route path="/quizzes/create" element={<CreateQuiz />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<NoPath />} />
         </Route>
