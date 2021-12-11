@@ -4,6 +4,7 @@ const passportSetup = require('../config/passport-setup.js');
 
 const authRouter = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR ROUTE
 const db = require('../../database/db.js');
+const { default: axios } = require('axios');
 
 // auth login
 // authRouter.route('/login').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
@@ -22,7 +23,8 @@ authRouter.get('/logout', (req, res) => {
 // auth with google
 authRouter.get('/google', passport.authenticate('google', {
   // tell passport what we want to get from the user profile
-  scope: ['profile'],
+  scope: ['https://www.googleapis.com/auth/userinfo.profile',
+    'https://www.googleapis.com/auth/userinfo.email'],
 }));
 
 // callback route for google to redirect to
