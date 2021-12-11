@@ -14,6 +14,14 @@ export default function QuizPage() {
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionState, setQuestions] = useState();
+
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+  // THIS PAGE IS NOT A REAL PAGE
+
   const { currentQuestion, answers } = useContext(AppContext);
   const [selected, setSelected] = useState();
 
