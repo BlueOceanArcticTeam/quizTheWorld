@@ -1,6 +1,6 @@
 import React from 'react';
 import Chat from './Chat.jsx';
-import FriendList from '../friendlist/FriendList.jsx';
+import FriendList from '../profile/FriendsList.jsx';
 
 const ChatPage = () => {
   return (

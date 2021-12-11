@@ -27,6 +27,8 @@ import ChatPage from './components/chatbox/Chat.jsx';
 
 const App = function () {
   // const [user, setUser] = useState(null);
+  // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
+  // OR, just have a bool checking if user is logged in and conditionally render pages
   return (
     <div>
       <Routes>

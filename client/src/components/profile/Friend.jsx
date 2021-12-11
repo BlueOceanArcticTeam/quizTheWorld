@@ -2,7 +2,7 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 
-const Friend = () => {
+const Friend = ({ userID }) => {
   return (
     <div>
       <div>
