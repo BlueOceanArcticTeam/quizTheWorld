@@ -1,6 +1,27 @@
+.chatBoxContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1000px;
+}
+
 .chatRoom,
 .chatHeader {
   font-size: 40px;
+}
+
+.chatArea {
+  width: 300px;
+  background-color: white;
+}
+
+.message {
+  cursor: pointer;
+}
+
+.message:hover {
+  background-color: grey;
 }
 
 input {
