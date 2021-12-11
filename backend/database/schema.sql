@@ -71,7 +71,7 @@ CREATE TABLE public.users(
 );
 
 CREATE TABLE public.friends(
-    id INT SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     user_id INT,
     friend_id INT
 );
