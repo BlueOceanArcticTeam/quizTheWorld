@@ -9,6 +9,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
+import Message from './Message.jsx';
 import './chat.css';
 
 const Chat = ({ userID }) => {
@@ -19,18 +20,16 @@ const Chat = ({ userID }) => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientID, setRecipientID] = useState(2);
+  const [recipientID, setRecipientID] = useState(2); // TODO: Make this dynamic
   const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
-    if (room) initiateSocket(room);
+    if (room) { initiateSocket(room); }
     subscribeToChat((err, data) => {
       if (err) return;
       setChat((oldChats) => [data, ...oldChats]);
     });
-    return () => {
-      disconnectSocket();
-    };
+    return () => { disconnectSocket(); };
   }, [room]);
 
   // HELPER FUNCTIONS
@@ -44,7 +43,7 @@ const Chat = ({ userID }) => {
       .then((results) => {
         const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
         const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
-        setChat(messageHistory);
+        setChat(messageObjHistory);
       })
       .catch((err) => { console.log(err); });
   };
@@ -81,11 +80,11 @@ const Chat = ({ userID }) => {
           return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
         })}
       </div>
-      <h1 className="chatHeader">Live Chat:</h1>
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
-          return <p key={i} className="message">{m}</p>;
+          // return <p key={i} className="message">{m}</p>;
+          return <Message messageObj={m} key={i} />;
         })}
       </div>
       <div>
