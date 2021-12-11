@@ -4,10 +4,9 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 
-export default function QuestionWidget() {
+export default function Question() {
   // set state variables below:
-  const { currentQuestion, answers } = useContext(AppContext);
-  const [selected, setSelected] = useState();
+  
 
   // component functions - event handlers
   const selectAnswer = () => {

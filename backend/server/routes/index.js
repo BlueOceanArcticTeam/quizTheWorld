@@ -11,7 +11,6 @@ module.exports = {
   template,
   quiz,
   answers,
-  profile,
-  messages
+  messages,
+  profile
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT
-
