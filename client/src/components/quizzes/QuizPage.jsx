@@ -8,48 +8,64 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
+import QuizContext from './quizContext.js';
+import Question from './Question.jsx';
 
 export default function QuizPage() {
   // set state variables below:
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
-  const [questionState, setQuestions] = useState();
+  const [questionsArray, setQuestions] = useState();
+  const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
+  const [toggle, setToggle] = useState(true);
+  const [questionIndex, setIndex] = useState(10000000);
+  const [currentQuestion, setCurrent] = useState();
+  const [last, setLast] = useState(0);
+  const [render, setRender] = useState(false);
+  const [buttonText, setButton] = useState('START QUIZ!');
 
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-  // THIS PAGE IS NOT A REAL PAGE
-
-  const { currentQuestion, answers } = useContext(AppContext);
-  const [selected, setSelected] = useState();
+  // This function will let you start a quiz and then let you submit one later!
+  const startSubmit = () => {
+    if (!render) {
+      setRender(true);
+      setIndex(0);
+      setButton('SUBMIT QUIZ');
+    }
+  };
 
   const nextHandler = () => {
+    let i = questionIndex;
+    if (i < questionsArray.length - 1) {
+      setIndex(i += 1);
+    }
     // handle the button that moves to the next question
   };
-
   const backHandler = () => {
+    let i = questionIndex;
+    if (i > 0) {
+      setIndex(i -= 1);
+    }
     // handle the button that moves to the previous question
   };
-  // use Effect:
-  console.log(quiz_id);
+
+  // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    if (typeof (quiz_id) === 'number') {
-      axios.get(`/api/quiz/${quiz_id}`)
+    if (toggle) { // TEMP HOLD TO PREVENT INFINITE FETCHES, USE QUIZ_ID
+      setToggle(false);
+      axios.get('/api/quiz/5') // 1 should be quiz_id
         .then((res) => {
           const { data } = res;
           const quiz = {
-            id: data.quiz_id,
-            category: data.category,
-            difficulty: data.difficulty,
-            source: data.source,
-            datecreated: data.datecreated,
-            numsubmissions: data.numsubmissions,
+            id: data[0].quiz_id,
+            category: data[0].category,
+            difficulty: data[0].difficulty,
+            source: data[0].source,
+            datecreated: data[0].datecreated,
+            numsubmissions: data[0].numsubmissions,
           };
           setQuiz(quiz);
           const questions = [];
-          res.forEach((ele) => {
+          data.forEach((ele) => {
             const {
               id, text, thumbnail_url, questiontype, learnmore_url,
             } = ele;
@@ -65,7 +81,31 @@ export default function QuizPage() {
           setQuestions(questions);
         });
     }
-  });
+  }, [quiz_id]);
+  // Fetch answers when the question changes
+  useEffect(() => {
+    if (questionsArray) {
+      const query = questionsArray[questionIndex]?.id;
+      axios.get(`/api/answers/${query}`)
+        .then((res) => {
+          const { data } = res;
+          const store = [];
+          data.forEach((ele) => {
+            const answer = {
+              text: ele.text,
+              correct: ele.correct,
+            };
+            store.push(answer);
+          });
+          const question = questionsArray[questionIndex].text;
+          const l = questionsArray.length - 1;
+          setCurrent(question);
+          setAnswers(store);
+          setLast(l);
+        });
+    }
+  }, [questionIndex]);
+  useEffect(() => { console.log('test'); }, [render]);
 
   // render component:
   return (
@@ -109,6 +149,7 @@ export default function QuizPage() {
           }}
           >
             <Button
+              onClick={backHandler}
               variant="contained"
               sx={{
                 width: '30%',
@@ -124,8 +165,15 @@ export default function QuizPage() {
               Previous
             </Button>
             {/* Span where the current question goes */}
-            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>13/22</span>
+            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>
+              {questionIndex + 1}
+              {' '}
+              /
+              {' '}
+              {last + 1}
+            </span>
             <Button
+              onClick={nextHandler}
               variant="contained"
               sx={{
                 width: '30%',
@@ -155,7 +203,7 @@ export default function QuizPage() {
             color: '#DBD7D1',
           }}
           >
-            <h3 style={{ fontSize: '2em' }}>What kind of potato is best?</h3>
+            <h3 style={{ fontSize: '2em' }}>{currentQuestion}</h3>
             <div style={{
               display: 'flex',
               flexDirection: 'column',
@@ -164,13 +212,26 @@ export default function QuizPage() {
               height: '23em',
             }}
             >
-              <span style={{ fontSize: '2em' }}>- Baked Potato</span>
-              <span style={{ fontSize: '2em' }}>- Mashed Potato</span>
-              <span style={{ fontSize: '2em' }}>- French Fried</span>
-              <span style={{ fontSize: '2em' }}>- Potato Cannon</span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[0]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[1]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[2]?.text}
+              </span>
+              <span style={{ fontSize: '2em' }}>
+                {' '}
+                {answersArray[3]?.text}
+              </span>
               {/* Submit Quiz Button */}
               {/* Youll want to hide this one until the last question appears */}
               <Button
+                onClick={startSubmit}
                 variant="contained"
                 sx={{
                   width: '100%',
@@ -183,7 +244,7 @@ export default function QuizPage() {
                   },
                 }}
               >
-                Submit Quiz
+                {buttonText}
               </Button>
             </div>
           </div>
