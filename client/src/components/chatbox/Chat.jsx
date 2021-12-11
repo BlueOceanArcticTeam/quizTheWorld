@@ -58,33 +58,46 @@ const Chat = () => {
       .catch((err) => { console.log(err); });
   };
 
+  const getUsername = (id) => {
+    axios.get('/api/messages', { id })
+      .then()
+      .catch((err) => { console.log(err); });
+  };
+
   return (
-    <div>
+    <div className="chatBoxContainer">
       <h1 className="chatRoom">Room: {room}</h1>
-      {rooms.map((r, i) => {
-        return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
-      })}
+      <div>
+        {rooms.map((r, i) => {
+          return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
+        })}
+      </div>
       <h1 className="chatHeader">Live Chat:</h1>
-      {chat.map((m, i) => {
-        return <p key={i}>{m}</p>;
-      })}
-      <input
-        type="text"
-        name="name"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button
-        type="submit"
-        onClick={() => {
-          addMessageToDB();
-          setChat((oldChats) => [message, ...oldChats]);
-          sendMessage(room, message);
-          setMessage('');
-        }}
-      >
-        Send
-      </button>
+      <div className="chatArea">
+        {chat.map((m, i) => {
+          // TODO: render message to left/right for sender/receiver
+          return <p key={i} className="message">{m}</p>;
+        })}
+      </div>
+      <div>
+        <input
+          type="text"
+          name="name"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button
+          type="submit"
+          onClick={() => {
+            addMessageToDB();
+            setChat((oldChats) => [message, ...oldChats]);
+            sendMessage(room, message);
+            setMessage('');
+          }}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 };

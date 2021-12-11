@@ -2,17 +2,17 @@
 /* eslint-disable import/extensions */
 const express = require('express');
 
-const messagesRoutes = express.Router();
+const messageRoutes = express.Router();
 const db = require('../../database/db.js');
 
-messagesRoutes.route('/').get((req, res) => {
+messageRoutes.route('/').get((req, res) => {
   db.query('SELECT * FROM messages', [], (err, data) => {
     if (err) throw err;
     res.send(data.fields);
   });
 });
 
-messagesRoutes.route('/history').get((req, res) => {
+messageRoutes.route('/history').get((req, res) => {
   const { senderID, recipientID } = req.body;
   db.query(
     // `SELECT * FROM messages
@@ -27,7 +27,7 @@ messagesRoutes.route('/history').get((req, res) => {
   );
 });
 
-messagesRoutes.route('/').post((req, res) => {
+messageRoutes.route('/').post((req, res) => {
   const { senderID, recipientID, text, date } = req.body;
   db.query(
     'INSERT INTO messages (sender_user_id, recipient_user_id, text, date) VALUES ($1, $2, $3, $4)',
@@ -39,4 +39,4 @@ messagesRoutes.route('/').post((req, res) => {
   );
 });
 
-module.exports = messagesRoutes; // CHANGE 'TEMPLATE' TO YOUR ROUTE
+module.exports = messageRoutes; // CHANGE 'TEMPLATE' TO YOUR ROUTE
