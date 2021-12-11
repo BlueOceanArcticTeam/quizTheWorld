@@ -36,7 +36,7 @@ profile.route('/:user_id/friends/:friend_id').delete((req, res) => {
 });
 
 // route to make a query adding friends
-profile.route('/:;user_id/friends/:friend_id').post((req, res) => {
+profile.route('/:user_id/friends/:friend_id').post((req, res) => {
   db.query('INSERT INTO friends VALUES ($1, $2); INSERT INTO friends VALUES ($2, $1)', [req.params.user_id, req.params.friend_id], (err, data) => {
     if (err) throw err;
     res.send(data);

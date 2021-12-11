@@ -23,14 +23,12 @@ const Chat = ({ userID }) => {
   const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
-    if (room) initiateSocket(room);
+    if (room) { initiateSocket(room); }
     subscribeToChat((err, data) => {
       if (err) return;
       setChat((oldChats) => [data, ...oldChats]);
     });
-    return () => {
-      disconnectSocket();
-    };
+    return () => { disconnectSocket(); };
   }, [room]);
 
   // HELPER FUNCTIONS
@@ -81,7 +79,6 @@ const Chat = ({ userID }) => {
           return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
         })}
       </div>
-      <h1 className="chatHeader">Live Chat:</h1>
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
