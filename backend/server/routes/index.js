@@ -9,6 +9,7 @@ const profile = require('./profile.js');
 
 module.exports = {
   template,
+  profile,
   quiz,
   answers,
   messages,
