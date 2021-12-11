@@ -52,6 +52,8 @@ export const App = function () {
           </Route>
         </Routes>
         <button type="button" className="chatButton">Chat</button>
+        {/* <img alt="chatIcon" src="../dist/chatCircularIcon.png" /> */}
+        {/* <div>Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
       </AppContext.Provider>
     </div>
   );

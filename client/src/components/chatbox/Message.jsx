@@ -6,9 +6,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import './chat.css';
 
-const Message = ({ messageObj }) => {
+const Message = ({ messageObj, messageClassName }) => {
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
-
   const deleteMessage = () => {
     axios.delete('/api/messages', { params: { messageID: messageObj.id } })
       .then()
@@ -17,7 +16,7 @@ const Message = ({ messageObj }) => {
 
   return (
     <div
-      className="message"
+      className={`message ${messageClassName}`}
       onMouseEnter={() => { setDisplayDeleteButton(true); }}
       onMouseLeave={() => { setDisplayDeleteButton(false); }}
     >

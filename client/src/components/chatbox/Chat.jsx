@@ -83,8 +83,8 @@ const Chat = ({ userID }) => {
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
-          // return <p key={i} className="message">{m}</p>;
-          return <Message messageObj={m} key={i} setSenderID={setSenderID}/>;
+          const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
+          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
         })}
       </div>
       <div>
