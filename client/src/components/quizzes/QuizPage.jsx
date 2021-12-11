@@ -5,12 +5,17 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import Button from '@mui/material/Button';
+import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
 import QuizContext from './quizContext.js';
 import Question from './Question.jsx';
 
 export default function QuizPage() {
   // set state variables below:
+  const quiz_id = useContext(AppContext);
+  const [quizState, setQuiz] = useState();
+  const [questionState, setQuestions] = useState();
 
   const quiz_id = useContext(AppContext);
   const [quizState, setQuiz] = useState();
@@ -86,8 +91,140 @@ export default function QuizPage() {
     );
   }
   return (
-    <QuizContext.Provider value={{ questionsArray }}>
-      <Question index={questionIndex} />
-    </QuizContext.Provider>
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: '-100',
+      position: 'relative',
+    }}
+    >
+      <img
+        src={QuizBackground}
+        alt=""
+        style={{
+          zIndex: '-100',
+          width: '100vw',
+          height: '100vh',
+          position: 'relative',
+        }}
+      />
+      {/* This div hold the question and the chat */}
+      <div style={{
+        background: '#D6C0E5',
+        width: '85em',
+        height: '47em',
+        position: 'absolute',
+        marginTop: '5em',
+        display: 'flex',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        borderRadius: '15px',
+      }}
+      >
+        {/* This is the question container */}
+        <div>
+          <div style={{
+            display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
+          }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                width: '30%',
+                marginTop: '10px',
+                float: 'right',
+                backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)',
+                ':hover': {
+                  bgcolor: '#ff9100', // theme.palette.primary.main
+                  color: 'white',
+                },
+              }}
+            >
+              Previous
+            </Button>
+            {/* Span where the current question goes */}
+            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>13/22</span>
+            <Button
+              variant="contained"
+              sx={{
+                width: '30%',
+                marginTop: '10px',
+                float: 'right',
+                backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)',
+                ':hover': {
+                  bgcolor: '#ff9100', // theme.palette.primary.main
+                  color: 'white',
+                },
+              }}
+            >
+              Next
+            </Button>
+          </div>
+          {/* This is for the question itself and answer selection */}
+          <div style={{
+            width: '40em',
+            height: '35em',
+            width: '35em',
+            backgroundImage: 'linear-gradient(#9D56CE, #9925E6)',
+            borderRadius: '15px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            color: '#DBD7D1',
+          }}
+          >
+            <h3 style={{ fontSize: '2em' }}>What kind of potato is best?</h3>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+              height: '23em',
+            }}
+            >
+              <span style={{ fontSize: '2em' }}>- Baked Potato</span>
+              <span style={{ fontSize: '2em' }}>- Mashed Potato</span>
+              <span style={{ fontSize: '2em' }}>- French Fried</span>
+              <span style={{ fontSize: '2em' }}>- Potato Cannon</span>
+              {/* Submit Quiz Button */}
+              {/* Youll want to hide this one until the last question appears */}
+              <Button
+                variant="contained"
+                sx={{
+                  width: '100%',
+                  marginTop: '10px',
+                  float: 'right',
+                  backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)',
+                  ':hover': {
+                    bgcolor: '#ff9100', // theme.palette.primary.main
+                    color: 'white',
+                  },
+                }}
+              >
+                Submit Quiz
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        {/* This is the Chat container  */}
+        <div style={{
+          display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
+        }}
+        >
+          <h2 style={{ marginBottom: '1.25em', color: '#F78670' }}>Chat with Friends</h2>
+          <div style={{
+            width: '25em', height: '35em', background: 'pink', borderRadius: '15px',
+          }}
+          >
+            Goodbye
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
