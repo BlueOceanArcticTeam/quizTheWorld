@@ -74,11 +74,9 @@ const Chat = ({ userID }) => {
 
   return (
     <div className="chatBoxContainer">
-      <h4 className="chatTitle">Chat with: {recipientUsername}</h4>
+      <h4 className="chatTitle">{recipientUsername}</h4>
       <div>
-        {rooms.map((r, i) => {
-          return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
-        })}
+        {rooms.map((r, i) => { return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>; })}
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
