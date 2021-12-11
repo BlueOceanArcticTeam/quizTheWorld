@@ -71,6 +71,12 @@ CREATE TABLE public.users(
     email TEXT NOT NULL
 );
 
+CREATE TABLE public.friends(
+    id INT PRIMARY KEY,
+    user INT,
+    friend INT
+);
+
 
 ALTER TABLE public.answers ADD CONSTRAINT fk_answers FOREIGN KEY (question_id) REFERENCES public.questions(id);
 ALTER TABLE public.questions ADD CONSTRAINT fk_questions FOREIGN KEY (quiz_id) REFERENCES public.quizzes(id);
@@ -80,5 +86,6 @@ ALTER TABLE public.userAnswers ADD CONSTRAINT fk_questions_stats FOREIGN KEY (qu
 ALTER TABLE public.userAnswers ADD CONSTRAINT fk_answers_stats FOREIGN KEY (submittedAnswer_id) REFERENCES public.answers(id);
 ALTER TABLE public.quizzes ADD CONSTRAINT fk_source FOREIGN KEY (source) REFERENCES public.users(id);
 ALTER TABLE public.userQuizStatus ADD CONSTRAINT fk_user_quiz FOREIGN KEY (quiz_id) REFERENCES public.quizzes(id);
-ALTER TABLE public.userQuizStatus ADD CONSTRAINT fk_user_friends FOREIGN KEY (user_id) REFERENCES public.users(id);
 ALTER TABLE public.userQuizStatus ADD CONSTRAINT fk_user_history FOREIGN KEY (lastAnswered) REFERENCES public.questions(id);
+ALTER TABLE public.friends ADD CONSTRAINT fk_friends_user FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE public.friends ADD CONSTRAINT fk_friends_friend FOREIGN KEY (user_id) REFERENCES public.users(id);
