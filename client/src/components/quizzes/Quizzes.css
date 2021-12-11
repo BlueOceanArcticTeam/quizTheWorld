@@ -1,0 +1,5 @@
+.coverImages {
+    transition: all .2s ease-in-out; 
+}
+
+.coverImages:hover { transform: scale(1.1); } 

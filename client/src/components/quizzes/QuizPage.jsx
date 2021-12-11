@@ -39,6 +39,7 @@ export default function QuizPage() {
       setIndex(i += 1);
     }
     // handle the button that moves to the next question
+    console.log('works');
   };
   const backHandler = () => {
     let i = questionIndex;
