@@ -35,6 +35,7 @@ export const App = function () {
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
+
     <div className="app">
       <AppContext.Provider value={{ userID, isLoggedIn, setUserID, setIsLoggedIn }}>
         <Routes>
