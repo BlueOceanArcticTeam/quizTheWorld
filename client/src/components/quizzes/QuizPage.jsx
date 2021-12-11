@@ -27,6 +27,7 @@ export default function QuizPage() {
 
   const nextHandler = () => {
     // handle the button that moves to the next question
+    console.log('works');
   };
 
   const backHandler = () => {
@@ -109,6 +110,7 @@ export default function QuizPage() {
           }}
           >
             <Button
+              onClick={nextHandler}
               variant="contained"
               sx={{
                 width: '30%',
