@@ -19,6 +19,9 @@
 }
 
 .message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -36,4 +39,9 @@ button {
   width: 100px;
   background-color: white;
   cursor: pointer;
+}
+
+.deleteMessageButton {
+  width: 60px;
+  justify-content: center;
 }
