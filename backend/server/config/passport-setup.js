@@ -1,26 +1,39 @@
+/* eslint-disable import/extensions */
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
-const axios = require('axios');
 const keys = require('./keys');
 const db = require('../../database/db.js');
 
 // check the db for the user by google_id
-const googleCheck = (googleId) => {
+const googleCheck = async (googleId) => {
   console.log('google_id', googleId);
-  db.query('SELECT * FROM users WHERE google_id = $1;', [googleId], (err, data) => {
-    if (err) { throw err; } else {
-      console.log('here googleCheck', data.rows[0]);
-      return data.rows[0];
-    }
-    // TODO: res.send();
-  });
+  const details = await db.query('SELECT * FROM users WHERE google_id = $1;', [googleId]);
+  //   (err, data) => {
+  //   if (err) { throw err; } else {
+  //     console.log('here googleCheck', data.rows[0]);
+  //     return data.rows[0];
+  //   }
+  // });
+  // console.log('details=', details);
+  if (details.rows[0]) {
+    return details.rows[0];
+  }
+  return false;
+
+  // return details.row[0];
 };
 
 // add the user to the db
 const addGoogleUser = (info, callback) => {
   db.query(
-    'INSERT INTO users(google_id, username, password,firstname,lastname,thumbnail_url,email) VALUES ($1,$2,$3, $4, $5, $6, $7) RETURNING *;',
-    [info.google_id, info.username, info.password, info.firstname, info.lastname, info.thumbnail_url, info.email],
+    'INSERT INTO users(id, google_id, username, password,firstname,lastname,thumbnail_url,email) VALUES (DEFAULT, $1,$2,$3, $4, $5, $6, $7) RETURNING *;',
+    [info.google_id,
+      info.username,
+      info.password,
+      info.firstname,
+      info.lastname,
+      info.thumbnail_url,
+      info.email],
     (err, data) => {
       if (err) {
         throw err;
@@ -35,18 +48,20 @@ const addGoogleUser = (info, callback) => {
 };
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser((id, done) => {
-  console.log('here i am');
-  db.query('SELECT * FROM users WHERE id=$1', [id], (err, user) => {
-    if (err) {
-      throw err;
-    } else {
-      done(null, user);
-    }
-  });
+passport.deserializeUser(async (user, done) => {
+  console.log('here i am', user);
+  const userDbInformation = await db.query('SELECT * FROM users WHERE id=$1', [user.id]);
+  // , (err, user) => {
+  // if (err) {
+  //   throw err;
+  // } else {
+  console.log(userDbInformation);
+  done(null, userDbInformation);
+  // }
+  // });
 });
 
 passport.use(new GoogleStrategy({
@@ -75,8 +90,8 @@ passport.use(new GoogleStrategy({
   const checkUser = async () => {
     // this async await is not waiting for the function to return...FIXME
     const user = await googleCheck(userInformation.google_id);
-    console.log(user);
-    if (user.id > 0) {
+    console.log('==user==', user);
+    if (user) {
     // user exists in the db
       console.log('user exists');
       done(null, user.id);

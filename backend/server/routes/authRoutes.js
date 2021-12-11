@@ -6,14 +6,6 @@ const authRouter = express.Router(); // CHANGE 'TEMPLATE' TO THE NAME OF YOUR RO
 const db = require('../../database/db.js');
 const { default: axios } = require('axios');
 
-// auth login
-// authRouter.route('/login').get((req, res) => { // CHANGE GET TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-//   db.query('QUERY', [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
-//     if (err) throw err;
-//     // TODO: res.send();
-//   });
-// });
-
 // auth logout
 authRouter.get('/logout', (req, res) => {
   // handle with passport
@@ -29,14 +21,7 @@ authRouter.get('/google', passport.authenticate('google', {
 
 // callback route for google to redirect to
 authRouter.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.send('you reached the callback URI', req.user);
+  res.status(400).send(`you reached the callback URI ${req.user}`);
 });
-
-// authRouter.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-//   db.query('QUERY', [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
-//     if (err) throw err;
-//     // TODO: res.send();
-//   });
-// });
 
 module.exports = authRouter; // CHANGE 'TEMPLATE' TO YOUR ROUTE
