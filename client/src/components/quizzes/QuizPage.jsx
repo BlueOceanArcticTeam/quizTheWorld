@@ -75,6 +75,8 @@ export default function QuizPage() {
     console.log('quiz ', quizState);
   }, [questionsArray]);
 
+  useEffect(() => {}, [questionIndex]);
+
   // render component:
   if (!questionsArray) {
     return (
