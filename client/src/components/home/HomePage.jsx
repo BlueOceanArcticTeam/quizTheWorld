@@ -3,7 +3,6 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import ChatBox from '../chatbox/ChatBox.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
 import './homepage.css';
 
@@ -16,6 +15,8 @@ export default function HomePage() {
 
   // render component:
   return (
-    <div />
+    <div>
+      Text in the Div
+    </div>
   );
 }

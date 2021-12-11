@@ -15,7 +15,7 @@ export default function Header() {
 
   // render component:
   return (
-    <div>
+    <div style={{ position: 'absolute' }}>
       <NavBar />
       <Outlet />
     </div>
