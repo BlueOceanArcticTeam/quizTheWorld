@@ -52,10 +52,9 @@ export const App = function () {
           </Route>
         </Routes>
         <ChatPage />
-        <button type="button" className="chatButton">
-          {/* Chat */}
+        {/* <button type="button" className="chatButton"> */}
           <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
-        </button>
+        {/* </button> */}
         {/* <div>Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> */}
       </AppContext.Provider>
     </div>

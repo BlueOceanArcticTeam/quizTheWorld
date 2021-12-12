@@ -1,6 +1,6 @@
 /* Use Classnames and ID's */
 .app {
-  display: flex;
+  /* display: flex; */
 }
 
 .chatButton {
@@ -14,4 +14,11 @@
 .chatIcon {
   height: 50px;
   width: 50px;
+}
+
+/* .chatIcon, */
+.chatButton {
+  position: absolute;
+  bottom: 6em;
+  right: 6em;
 }
