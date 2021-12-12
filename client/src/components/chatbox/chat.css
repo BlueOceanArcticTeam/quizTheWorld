@@ -1,9 +1,8 @@
 .chatBoxContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 1000px;
+  position: absolute;
+  bottom: 10em;
+  right: 0em;
+  z-index: 200;
 }
 
 .chatRoom,
