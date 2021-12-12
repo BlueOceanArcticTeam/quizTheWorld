@@ -12,8 +12,10 @@
 }
 
 .chatArea {
+  height: 300px;
   width: 300px;
   background-color: white;
+  overflow: scroll;
 }
 
 .message {

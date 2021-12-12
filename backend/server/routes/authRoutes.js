@@ -8,7 +8,7 @@ const authRouter = express.Router();
 // auth logout
 authRouter.get('/logout', (req, res) => {
   // handle with passport
-  req.logout();
+  req.logOut();
   // console.log('logged out');
   res.redirect('../../');
 });

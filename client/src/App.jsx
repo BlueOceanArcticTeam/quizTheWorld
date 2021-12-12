@@ -20,6 +20,7 @@ import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
 import ChatPage from './components/chatbox/ChatPage.jsx';
+import '../dist/styles.css';
 
 // We're using fetch!
 // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
@@ -46,20 +47,12 @@ export const App = function () {
   };
 
   const handleLogOut = () => {
-    setIsLoggedIn(true);
-    setUserData(res.data);
-    setUserID(res.data.id);
+    setIsLoggedIn(false);
+    setUserData();
+    setUserID();
+    console.log('logged out', userData);
   };
 
-  // const testLocation = () => {
-  //   const location = useLocation();
-  //   const possibleUser = parseInt(location.pathname.slice(1));
-  //   if (typeof possibleUser === Number) {
-  //     console.log(`${possibleUser} is logged in`);
-  //     getUserInformation(possibleUser);
-  //   }
-  // };
-  // testLocation();
   useEffect(() => {
     getUserInformation();
   }, []);
@@ -67,9 +60,10 @@ export const App = function () {
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
-    <div>
+
+    <div className="app">
       <AppContext.Provider value={{
-        userID, setUserID, setIsLoggedIn, userData, handleLogOut
+        userID, isLoggedIn, setUserID, setIsLoggedIn, userData, handleLogOut
       }}
       >
         <Routes>
@@ -88,6 +82,7 @@ export const App = function () {
             <Route path="*" element={<NoPath />} />
           </Route>
         </Routes>
+        <button type="button" className="chatButton">Chat</button>
       </AppContext.Provider>
     </div>
   );

@@ -57,8 +57,7 @@ CREATE TABLE public.userQuizStatus(
     dateCompleted DATE NOT NULL,
     lastAnswered INT NOT NULL,
     numCorrect INT,
-    numAttempted INT
-
+    totalQuestions INT
 );
 
 CREATE TABLE public.users(
@@ -73,9 +72,9 @@ CREATE TABLE public.users(
 );
 
 CREATE TABLE public.friends(
-    id INT PRIMARY KEY,
-    user INT,
-    friend INT
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    friend_id INT
 );
 
 
@@ -89,4 +88,4 @@ ALTER TABLE public.quizzes ADD CONSTRAINT fk_source FOREIGN KEY (source) REFEREN
 ALTER TABLE public.userQuizStatus ADD CONSTRAINT fk_user_quiz FOREIGN KEY (quiz_id) REFERENCES public.quizzes(id);
 ALTER TABLE public.userQuizStatus ADD CONSTRAINT fk_user_history FOREIGN KEY (lastAnswered) REFERENCES public.questions(id);
 ALTER TABLE public.friends ADD CONSTRAINT fk_friends_user FOREIGN KEY (user_id) REFERENCES public.users(id);
-ALTER TABLE public.friends ADD CONSTRAINT fk_friends_friend FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE public.friends ADD CONSTRAINT fk_friends_friend FOREIGN KEY (friend_id) REFERENCES public.users(id);

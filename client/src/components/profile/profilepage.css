@@ -1,0 +1,113 @@
+.mainProfileContainer {
+  grid-template-columns: repeat(12, 1fr);
+  display: grid;
+  overflow: hidden;
+  border: 15px solid black;
+  border-radius: 2%;
+  height: 80vh;
+  max-width: 95%;
+  margin: auto;
+}
+.infoContainer {
+  font-family: 'Poppins', sans-serif;
+  color: #FE6845;
+  font-size: 1.85rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: grid;
+  grid-column: 1/4;
+}
+
+.info {
+  display: grid;
+  justify-content: center;
+  color: white;
+  padding-top: 2rem;
+}
+
+.key {
+  font-size: 1.5rem;
+  justify-content: center;
+  display: grid;
+  color: white;
+}
+
+.property {
+  font-size: 1.25rem;
+  justify-content: center;
+  display: grid;
+  color: white;
+  opacity: 50%;
+}
+
+.statsContainer {
+  font-family: 'Poppins', sans-serif;
+  color: #FE6845;
+  font-size: 1.85rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: white;
+  grid-column: 4/11;
+  height: 100%;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+  max-width: 100%;
+
+}
+
+.friendsContainer {
+  font-family: 'Poppins', sans-serif;
+  color: #FE6845;
+  font-size: 1.85rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  grid-column: 11/13;
+}
+
+.friendsListText {
+  font-size: 1.25rem;
+  justify-content: center;
+  display: grid;
+  color: white;
+  opacity: 50%;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  align-content: center;
+}
+
+
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding-top: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  max-width: 100%;
+
+}
+
+.cards > div {
+  flex: 1;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.infoChart {
+  font-family: 'Poppins', sans-serif;
+  color: #FE6845;
+  font-size: 1.85rem;
+  padding-top: 4rem;
+  display: grid;
+  justify-content: center;
+}
+
+.infoChart > div {
+  display: grid;
+  justify-content: center;
+  padding-top: 2rem;
+}

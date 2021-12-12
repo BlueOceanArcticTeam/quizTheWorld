@@ -4,18 +4,43 @@ const profile = express.Router();
 const db = require('../../database/db.js');
 
 // route to get profile information of user
-profile.route('/:user_id').get((req, res) => {
-  db.query('SELECT users.username, users.firstname, users.lastname, users.thumbnail_url, users/email,  FROM users, userQuizStatus WHERE user_id = $1;', [req.params.user_id], (err, data) => {
-    if (err) throw err;
-    // TODO: res.send();
-  });
-}); // THIS WILL NEED TESTING ONCE A USER POST ROUTE IS CREATED
-// WITH myconstants (user_id) as (values (req.param.user_id)) SELECT * FROM users, userQuizStatus WHERE id = user_id;
+profile.route('/:user_id/meta').get((req, res) => {
+  let output = {};
+  const promiseArray = [];
+  promiseArray.push(new Promise((resolve, reject) => {
+    db
+      .query(
+        'SELECT TRUNC(AVG(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100), 2) AS average, COUNT(*) FROM userQuizStatus WHERE user_id=$1 AND userQuizStatus.completed = true;',
+        [req.params.user_id],
+        (err, data) => {
+          if (err) reject();
+          output = { ...output, average: data.rows[0].average, count: data.rows[0].count };
+          resolve();
+        },
+      );
+  }));
+  promiseArray.push(new Promise((resolve, reject) => {
+    db
+      .query('SELECT quiz_id, dateCompleted, TRUNC(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100, 2) as score FROM userQuizStatus WHERE user_id=$1 AND completed = true ORDER BY dateCompleted DESC;', [req.params.user_id], (err, data) => {
+        if (err) reject();
+        output = { ...output, meta: data.rows };
+        resolve();
+      });
+  }));
+  Promise.all(promiseArray)
+    .then(() => {
+      res.send(output);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
-// route to create a new user
-profile.route('/create').post((req, res) => {
-  // console.log(req.query);
-  // db.query('INSERT INTO users VALUES ()')
+profile.route('/:user_id').get((req, res) => {
+  db.query('SELECT id, username, firstname, lastname, email, thumbnail_url FROM users WHERE id = $1', [req.params.user_id], (err, data) => {
+    if (err) throw err;
+    res.send(data.rows);
+  });
 });
 
 // route to get friends list for user
@@ -29,15 +54,31 @@ profile.route('/:user_id/friends').get((req, res) => {
 
 // route to make a query removing friends
 profile.route('/:user_id/friends/:friend_id').delete((req, res) => {
-  db.query('DELETE FROM friends WHERE user = $1 AND friend = $2; DELETE FROM friends WHERE user = $2 AND friend = $1;', [req.params.user_id, req.params.friend_id], (err, data) => {
-    if (err) throw err;
-    res.send(data);
-  });
+  const promiseArray = [];
+  promiseArray.push(new Promise((resolve, reject) => {
+    db.query('DELETE FROM friends WHERE user_id = $1 AND friend_id = $2;', [req.params.user_id, req.params.friend_id], (err, data) => {
+      if (err) reject();
+      resolve();
+    });
+  }));
+  promiseArray.push(new Promise((resolve, reject) => {
+    db.query('DELETE FROM friends WHERE user_id = $1 AND friend_id = $2', [req.params.friend_id, req.params.user_id], (err, data) => {
+      if (err) reject();
+      resolve();
+    });
+  }));
+  Promise.all(promiseArray)
+    .then(() => {
+      res.send('deleted');
+    })
+    .catch(() => {
+      res.send('error');
+    });
 });
 
 // route to make a query adding friends
 profile.route('/:user_id/friends/:friend_id').post((req, res) => {
-  db.query('INSERT INTO friends VALUES ($1, $2); INSERT INTO friends VALUES ($2, $1)', [req.params.user_id, req.params.friend_id], (err, data) => {
+  db.query('INSERT INTO friends VALUES (DEFAULT, $1, $2), (DEFAULT, $2, $1)', [req.params.user_id, req.params.friend_id], (err, data) => {
     if (err) throw err;
     res.send(data);
   });

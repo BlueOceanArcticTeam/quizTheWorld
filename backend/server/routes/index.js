@@ -10,6 +10,7 @@ const authRouter = require('./authRoutes.js');
 
 module.exports = {
   template,
+  profile,
   quiz,
   answers,
   messages,

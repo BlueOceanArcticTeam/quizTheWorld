@@ -28,22 +28,24 @@ export default function NavBar() {
   // render component:
   return (
     <div style={{
-      width: '100vw',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center',
-      fontStyle: '',
+      alignItems: 'stretch',
+      height: '10vh',
+      margin: 'none',
+      padding: 'none',
       position: 'absolute',
       zIndex: '100',
+
     }}
     >
       <Box sx={{
-        width: '90%',
+        width: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         margin: '2em',
-        paddingTop: '1em',
+
       }}
       >
         <Link
@@ -78,14 +80,28 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        <Link
-          style={{
-            color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-          }}
-          to="/profile/:user_id"
-        >
-          My Account
-        </Link>
+        { userData
+          ? (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to={`/profile/${userData.id}`}
+            >
+              {' '}
+              My Account
+            </Link>
+          )
+          : (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to="/login"
+            >
+              My Account
+            </Link>
+          ) }
         {/* {console.log('userData', userData)} */}
         {
         userData
@@ -94,12 +110,15 @@ export default function NavBar() {
             <Button
               href="/api/auth/logout"
               variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogOut();
+              }}
               sx={{
                 marginLeft: 'auto',
                 background: '#FE6845',
                 color: '#FFF1EA',
                 textDecoration: 'none',
-                marginRight: '5em',
               }}
             >
               Logout
@@ -115,7 +134,6 @@ export default function NavBar() {
                 background: '#FE6845',
                 color: '#FFF1EA',
                 textDecoration: 'none',
-                marginRight: '5em',
               }}
             >
               Login
