@@ -20,7 +20,7 @@ import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
   // set state variables below:
-  const { userData, handleLogOut } = useContext(AppContext);
+  const { user, handleLogOut } = useContext(AppContext);
   // component functions - event handlers
 
   // use Effect:
@@ -80,13 +80,14 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        { userData
+        {console.log(user)}
+        { user
           ? (
             <Link
               style={{
                 color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
               }}
-              to={`/profile/${userData.id}`}
+              to={`/profile/${user.id}`}
             >
               {' '}
               My Account
@@ -104,11 +105,11 @@ export default function NavBar() {
           ) }
         {/* {console.log('userData', userData)} */}
         {
-        userData
+        user
           ? (
         // logout button
             <Button
-              href="/api/auth/logout"
+              to="/"
               variant="contained"
               onClick={(e) => {
                 e.preventDefault();

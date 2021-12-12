@@ -17,6 +17,7 @@ const googleCheck = async (googleId) => {
 const addGoogleUser = (info, callback) => {
   db.query(
     'INSERT INTO users(id, google_id, username, password,firstname,lastname,thumbnail_url,email) VALUES (DEFAULT, $1,$2,$3, $4, $5, $6, $7) RETURNING *;',
+    // 'INSERT INTO users VALUES (DEFAULT, $1,$2,$3, $4, $5, $6, $7) RETURNING id;',
     [info.google_id,
       info.username,
       info.password,
@@ -25,6 +26,7 @@ const addGoogleUser = (info, callback) => {
       info.thumbnail_url,
       info.email],
     (err, data) => {
+      console.log('data returned', data);
       if (err) {
         throw err;
       } else {
@@ -45,7 +47,14 @@ passport.deserializeUser(async (data, done) => {
     // console.log('userid:', data.id);
     // const userDbInformation = await db.query('SELECT * FROM users WHERE id=$1', [data.id]);
     // console.log('deserialize', userDbInformation);
+    // const { id } = data;
+    // const {
+    //   email, firstname, google_id, lastname, password, thumbnail_url, username, ...data
+    // } = data;
+    // console.log('IANs data', data);
     done(null, data);
+  } else {
+    done(null, null);
   }
 });
 

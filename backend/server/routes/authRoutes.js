@@ -5,11 +5,16 @@ const passportSetup = require('../config/passport-setup.js');
 
 const authRouter = express.Router();
 
-// auth logout
-authRouter.get('/logout', (req, res) => {
-  // handle with passport
+const logout = (req, res, next) => {
   req.logOut();
-  // console.log('logged out');
+  delete req.session;
+  next();
+};
+
+// auth logout
+authRouter.get('/logout', logout, (req, res) => {
+  // handle with passport
+  console.log('logged out');
   res.redirect('../../');
 });
 

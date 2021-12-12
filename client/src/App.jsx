@@ -34,36 +34,88 @@ export const App = function () {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
   const [userID, setUserID] = useState(1); // TODO: Make this dynamic
+  const [searched, setSearched] = useState('');
+  const [user, setUser] = useState();
+  const [users, setUsers] = useState({});
+  const [friends, setFriends] = useState({});
+
+  function fetchFriends(userId) {
+    // axios
+    //   .get(`/api/profile/${userID}`)
+    //   .then((data) => {
+    //     setUser(data.data[0]);
+    //   })
+    //   .catch((err) => {
+    //     throw err;
+    //   });
+    console.log('App.jsx userId on 51', userId);
+    axios
+      .get(`/api/profile/${userId}/friends`)
+      .then((data) => {
+        setFriends(data.data.rows);
+      });
+  }
+  function fetchAllUsers() {
+    axios
+      .get('/api/profile/users')
+      .then((data) => {
+        setUsers(data.data.rows);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  // will need a function to fetch all quizzes for search bar
 
   const getUserInformation = () => {
     axios
       .get('/api/auth/userInformation')
       .then((res) => {
-        setIsLoggedIn(true);
-        setUserData(res.data);
-        setUserID(res.data.id);
+        console.log('getUserInformation', res);
+        if (res.data) {
+          setIsLoggedIn(true);
+          setUser(res.data);
+          setUserID(res.data.id);
+          fetchFriends(res.data.id);
+        }
         // console.log('response', res.data);
       });
   };
 
   const handleLogOut = () => {
-    setIsLoggedIn(false);
-    setUserData();
-    setUserID();
-    console.log('logged out', userData);
+    axios.get('/api/auth/logout')
+      .then((res) => {
+        console.log('response from logging out', res);
+        setIsLoggedIn(false);
+        setUser();
+        setUserID();
+        console.log('logged out', user);
+      });
   };
 
+  // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   useEffect(() => {
     getUserInformation();
+    fetchAllUsers();
+    // if the user is logged in, get their info and friends
+    // if (isLoggedIn) {
+    //   fetchFriends();
+    // }
   }, []);
-
-  // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
 
     <div className="app">
       <AppContext.Provider value={{
-        userID, isLoggedIn, setUserID, setIsLoggedIn, userData, handleLogOut
+        userID,
+        isLoggedIn,
+        setUserID,
+        setIsLoggedIn,
+        user,
+        friends,
+        users,
+        handleLogOut
       }}
       >
         <Routes>

@@ -15,5 +15,4 @@ module.exports = {
   answers,
   messages,
   authRouter,
-  profile
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT
