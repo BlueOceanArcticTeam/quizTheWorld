@@ -49,8 +49,8 @@ input {
 button {
   height: 30px;
   width: 100px;
-  /* background-color: white; */
   border-radius: 10px;
+  color: white;
   background-color: #ff9100;
   border: none;
   cursor: pointer;
