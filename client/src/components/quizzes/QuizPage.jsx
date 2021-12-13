@@ -10,8 +10,6 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
-import QuizContext from './quizContext.js';
-import Question from './Question.jsx';
 import './Quizzes.css';
 
 export default function QuizPage() {
