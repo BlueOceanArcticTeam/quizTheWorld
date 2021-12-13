@@ -20,7 +20,7 @@ import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
   // set state variables below:
-  const { user, handleLogOut } = useContext(AppContext);
+  const { user, handleLogOut, userID } = useContext(AppContext);
   // component functions - event handlers
 
   // use Effect:
@@ -87,7 +87,7 @@ export default function NavBar() {
               style={{
                 color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
               }}
-              to={`/profile/${user.id}`}
+              to={`/profile/${userID}`}
             >
               {' '}
               My Account
