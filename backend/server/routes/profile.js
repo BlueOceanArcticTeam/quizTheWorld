@@ -18,7 +18,7 @@ profile.route('/:user_id/meta').get((req, res) => {
   promiseArray.push(new Promise((resolve, reject) => {
     db
       .query(
-        'SELECT TRUNC(AVG(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100), 2) AS average, COUNT(*) FROM userQuizStatus WHERE user_id=$1 AND userQuizStatus.completed = true;',
+        'SELECT ROUND(AVG(CAST(numCorrect AS decimal) / CAST(totalQuestions AS decimal) * 100), 0) AS average, COUNT(*) FROM userQuizStatus WHERE user_id=$1 AND userQuizStatus.completed = true;',
         [req.params.user_id],
         (err, data) => {
           if (err) reject();

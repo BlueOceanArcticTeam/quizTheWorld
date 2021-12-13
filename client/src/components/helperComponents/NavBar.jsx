@@ -16,8 +16,10 @@ import Box from '@mui/material/Box';
 import Login from '../login/Login.jsx';
 import ChatBox from '../chatbox/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
+import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
+  const { userID } = useContext(AppContext);
   return (
     <div style={{
       display: 'flex',
@@ -76,7 +78,7 @@ export default function NavBar() {
           style={{
             color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
           }}
-          to="/profile/:user_id"
+          to={`/profile/${userID}`}
         >
           My Account
         </Link>
