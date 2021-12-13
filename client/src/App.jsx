@@ -19,22 +19,18 @@ import Quizzes from './components/quizzes/Quizzes.jsx';
 import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
-import ChatPage from './components/chatbox/ChatPage.jsx';
 import Chat from './components/chatbox/Chat.jsx';
+import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import '../dist/styles.css';
-
-// We're using fetch!
-// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//* fetch('http://example.com/movies.json',)
-//  .then(response => response.json())
-//  .then(data => console.log(data));
+import ChatFriend from './components/chatbox/ChatFriend.jsx';
 
 export const AppContext = React.createContext();
 
 export const App = function () {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [displayChat, setDisplayChat] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayChat, setDisplayChat] = useState(true);
+  const [displayChatFriendList, setDisplayChatFriendList] = useState(false);
   const [userID, setUserID] = useState(2); // TODO: Make this dynamic
   const [userData, setUserData] = useState();
   const [searched, setSearched] = useState('');
@@ -113,6 +109,9 @@ export const App = function () {
       <AppContext.Provider value={{
         userID,
         isLoggedIn,
+        setDisplayModal,
+        setDisplayChat,
+        setDisplayChatFriendList,
         setUserID,
         setIsLoggedIn,
         user,
@@ -132,13 +131,14 @@ export const App = function () {
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<NoPath />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
-        {displayChat ? <Chat /> : null}
-        <button type="button" className="chatButton" onClick={() => { setDisplayChat(!displayChat); }}>
+        {displayModal
+          ? (displayChat ? <Chat /> : <ChatFriendList />)
+          : null}
+        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
           <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
         </button>
         <div className="chatButtonSource">Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>

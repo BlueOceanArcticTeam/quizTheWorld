@@ -1,5 +1,8 @@
-.chatBoxContainer {
+.chatBoxContainer,
+.chatFriendListContainer {
   position: absolute;
+  height: 400px;
+  width: 300px;
   bottom: 15em;
   right: 5em;
   z-index: 200;
@@ -31,7 +34,7 @@
 }
 
 .recipient {
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 /* .message:hover {

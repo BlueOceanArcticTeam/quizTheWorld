@@ -10,6 +10,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
+import RenderFriend from '../profile/RenderFriend.jsx';
 import { AppContext } from '../../App.jsx';
 import './chat.css';
 
@@ -17,7 +18,7 @@ const Chat = () => {
   const today = new Date();
   const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
 
-  const { userID } = useContext(AppContext);
+  const { userID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
   const rooms = ['A', 'B', 'C'];
   const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
@@ -38,12 +39,15 @@ const Chat = () => {
   // HELPER FUNCTIONS
   const handleKeyDown = (e) => {console.log(e); if (e.key === 'Enter') { handleMessageSubmit(); }};
 
+  const handleClickFriendsButton = () => {
+    // TODO: Show friends list instead of chat history
+    // setDisplayChatFriendList(true);
+    setDisplayChat(false);
+  };
+
   const getMessageHistory = () => {
     axios.get('/api/messages', {
-      params: {
-        senderID: senderID,
-        recipientID: 2
-      }
+      params: { senderID: senderID, recipientID: 2 } // TODO: Make recipientID dynamic
     })
       .then((results) => {
         const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
@@ -80,7 +84,7 @@ const Chat = () => {
   useEffect(() => {
     setSenderID(userID);
     getRecipientUsername(recipientID);
-  }, []);
+  }, [recipientID]);
 
   useEffect(() => {
     getMessageHistory();
@@ -89,8 +93,8 @@ const Chat = () => {
   return (
     <div className="chatBoxContainer">
       <h4 className="chatTitle">{recipientUsername}</h4>
-      <div>
-        {/* {rooms.map((r, i) => { return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>; })} */}
+      <button type="button" onClick={handleClickFriendsButton}>Friends</button>
+      <div className="chatFriendList">
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
