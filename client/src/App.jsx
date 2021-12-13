@@ -6,9 +6,10 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect, useParams,
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
 } from 'react-router-dom';
 
+// import e from 'cors';
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
 import HomePage from './components/home/HomePage.jsx';
@@ -39,6 +40,8 @@ export const App = function () {
   const [users, setUsers] = useState({});
   const [friends, setFriends] = useState({});
 
+  const navigate = useNavigate();
+  const goToHome = () => { navigate('/'); };
   function fetchFriends(userId) {
     // axios
     //   .get(`/api/profile/${userID}`)
@@ -48,7 +51,6 @@ export const App = function () {
     //   .catch((err) => {
     //     throw err;
     //   });
-    console.log('App.jsx userId on 51', userId);
     axios
       .get(`/api/profile/${userId}/friends`)
       .then((data) => {
@@ -72,7 +74,7 @@ export const App = function () {
     axios
       .get('/api/auth/userInformation')
       .then((res) => {
-        console.log('getUserInformation', res);
+        // console.log('getUserInformation', res);
         if (res.data) {
           setIsLoggedIn(true);
           setUser(res.data);
@@ -86,11 +88,12 @@ export const App = function () {
   const handleLogOut = () => {
     axios.get('/api/auth/logout')
       .then((res) => {
-        console.log('response from logging out', res);
+        // console.log('response from logging out', res);
         setIsLoggedIn(false);
         setUser();
         setUserID();
-        console.log('logged out', user);
+        // console.log('logged out', user);
+        goToHome();
       });
   };
 
@@ -115,7 +118,8 @@ export const App = function () {
         user,
         friends,
         users,
-        handleLogOut
+        handleLogOut,
+        goToHome
       }}
       >
         <Routes>

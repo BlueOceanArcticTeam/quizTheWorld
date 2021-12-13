@@ -80,7 +80,6 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        {console.log(user)}
         { user
           ? (
             <Link
@@ -103,7 +102,7 @@ export default function NavBar() {
               My Account
             </Link>
           ) }
-        {/* {console.log('userData', userData)} */}
+        {/* {user ? console.log(user.username) : console.log('not logged in')} */}
         {
         user
           ? (
@@ -113,7 +112,7 @@ export default function NavBar() {
               variant="contained"
               onClick={(e) => {
                 e.preventDefault();
-                handleLogOut();
+                handleLogOut(e);
               }}
               sx={{
                 marginLeft: 'auto',
@@ -122,7 +121,7 @@ export default function NavBar() {
                 textDecoration: 'none',
               }}
             >
-              Logout
+              { `${user.username} Logout` }
             </Button>
           )
           : (
