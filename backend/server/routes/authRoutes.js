@@ -15,7 +15,7 @@ const logout = (req, res, next) => {
 authRouter.get('/logout', logout, (req, res) => {
   // handle with passport
   console.log('logged out');
-  res.redirect('../../');
+  res.redirect('/login'); // BUG: this doesn't redirect to the home, because it is alreaady at the / directory (thanks to react component rendering)
 });
 
 // auth with google

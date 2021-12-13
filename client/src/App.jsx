@@ -129,10 +129,10 @@ export const App = function () {
             <Route path="/quizzes/quiz" element={<QuizPage />} />
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
             <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<NoPath />} />
           </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
         <button type="button" className="chatButton">Chat</button>
       </AppContext.Provider>

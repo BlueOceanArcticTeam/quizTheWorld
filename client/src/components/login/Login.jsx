@@ -91,6 +91,21 @@ export default function Login() {
             >
               Login
             </Button>
+            <Button
+              variant="contained"
+              sx={{
+                width: '50%',
+                marginTop: '10px',
+                float: 'right',
+                background: '#930DFF',
+                ':hover': {
+                  bgcolor: '#ff9100', // theme.palette.primary.main
+                  color: 'white',
+                },
+              }}
+            >
+              Register
+            </Button>
             <div>
               <Button
                 variant="contained"
