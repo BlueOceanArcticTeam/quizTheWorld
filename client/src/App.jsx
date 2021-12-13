@@ -98,9 +98,9 @@ export const App = function () {
     getUserInformation();
     fetchAllUsers();
     // if the user is logged in, get their info and friends
-    if (isLoggedIn) {
-      fetchFriends(userID);
-    }
+    // if (isLoggedIn) {
+    //   fetchFriends(userID);
+    // }
   }, []);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
