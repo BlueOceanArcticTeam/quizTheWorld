@@ -23,7 +23,7 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientID, setRecipientID] = useState(2); // TODO: Make this dynamic
+  const [recipientID, setRecipientID] = useState(1);
   const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
@@ -36,6 +36,22 @@ const Chat = () => {
   }, [room]);
 
   // HELPER FUNCTIONS
+  const handleKeyDown = (e) => {console.log(e); if (e.key === 'Enter') { handleMessageSubmit(); }};
+
+  const getMessageHistory = () => {
+    axios.get('/api/messages', {
+      params: {
+        senderID: senderID,
+        recipientID: 2
+      }
+    })
+      .then((results) => {
+        const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
+        setChat(messageObjHistory);
+      })
+      .catch((err) => { console.log(err); });
+  };
+
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: senderID,
@@ -55,23 +71,6 @@ const Chat = () => {
     setMessage('');
   };
 
-  const handleKeyDown = (e) => {console.log(e); if (e.key === 'Enter') { handleMessageSubmit(); }};
-
-  const getMessageHistory = () => {
-    axios.get('/api/messages', {
-      params: {
-        senderID: senderID,
-        recipientID: 2
-      }
-    })
-      .then((results) => {
-        const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
-        // const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
-        setChat(messageObjHistory);
-      })
-      .catch((err) => { console.log(err); });
-  };
-
   const getRecipientUsername = (id) => {
     axios.get(`/api/messages/${id}`)
       .then((results) => { setRecipientUsername(results.data); })
@@ -86,8 +85,6 @@ const Chat = () => {
   useEffect(() => {
     getMessageHistory();
   }, [chat]);
-
-  // useEffect(() => { console.log(chat); });
 
   return (
     <div className="chatBoxContainer">

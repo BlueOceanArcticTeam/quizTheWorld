@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect
+  Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect, useParams,
 } from 'react-router-dom';
 
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
@@ -34,23 +34,26 @@ export const AppContext = React.createContext();
 export const App = function () {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [displayChat, setDisplayChat] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState();
   const [userID, setUserID] = useState(1); // TODO: Make this dynamic
   const [searched, setSearched] = useState('');
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
   const [users, setUsers] = useState({});
-  const [friends, setFriends] = useState({});
+  const [friends, setFriends] = useState([]);
 
-  function fetchUser() {
+  function fetchFriends(userId) {
+    // axios
+    //   .get(`/api/profile/${userID}`)
+    //   .then((data) => {
+    //     setUser(data.data[0]);
+    //   })
+    //   .catch((err) => {
+    //     throw err;
+    //   });
+    console.log('App.jsx userId on 51', userId);
     axios
-      .get(`/api/profile/${userID}`)
-      .then((data) => {
-        setUser(data.data[0]);
-      })
-      .catch((err) => {
-        throw err;
-      });
-    axios
-      .get(`/api/profile/${userID}/friends`)
+      .get(`/api/profile/${userId}/friends`)
       .then((data) => {
         setFriends(data.data.rows);
       });
@@ -68,13 +71,40 @@ export const App = function () {
 
   // will need a function to fetch all quizzes for search bar
 
+  const getUserInformation = () => {
+    axios
+      .get('/api/auth/userInformation')
+      .then((res) => {
+        console.log('getUserInformation', res);
+        if (res.data) {
+          setIsLoggedIn(true);
+          setUser(res.data);
+          setUserID(res.data.id);
+          fetchFriends(res.data.id);
+        }
+        // console.log('response', res.data);
+      });
+  };
+
+  const handleLogOut = () => {
+    axios.get('/api/auth/logout')
+      .then((res) => {
+        console.log('response from logging out', res);
+        setIsLoggedIn(false);
+        setUser();
+        setUserID();
+        console.log('logged out', user);
+      });
+  };
+
   // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   useEffect(() => {
+    getUserInformation();
     fetchAllUsers();
     // if the user is logged in, get their info and friends
-    if (isLoggedIn) {
-      fetchUser();
-    }
+    // if (isLoggedIn) {
+    //   fetchFriends();
+    // }
   }, []);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
@@ -87,12 +117,15 @@ export const App = function () {
         setIsLoggedIn,
         user,
         friends,
-        users
+        users,
+        handleLogOut
       }}
       >
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
+            {/* <Route path="/:user_id" element={setUserID(user_id)} /> */ }
+            <Route path="/:user_id" element={<HomePage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
@@ -100,8 +133,10 @@ export const App = function () {
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/chat" element={<ChatPage />} />
             <Route path="*" element={<NoPath />} />
           </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
         {displayChat ? <Chat /> : null}
         <button type="button" className="chatButton" onClick={() => { setDisplayChat(!displayChat); }}>
