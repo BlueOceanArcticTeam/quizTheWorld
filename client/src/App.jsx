@@ -32,13 +32,13 @@ import '../dist/styles.css';
 export const AppContext = React.createContext();
 
 export const App = function () {
+  const [userID, setUserID] = useState(2); // TODO: Make this dynamic
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState();
-  const [userID, setUserID] = useState(1); // TODO: Make this dynamic
   const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
   const [users, setUsers] = useState({});
-  const [friends, setFriends] = useState({});
+  const [friends, setFriends] = useState([]);
 
   const navigate = useNavigate();
   const goToHome = () => { navigate('/'); };
@@ -125,9 +125,8 @@ export const App = function () {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
-            {/* <Route path="/:user_id" element={setUserID(user_id)} /> */ }
+            <Route path={`/profile/${userID}`} element={<ProfilePage />} />
             <Route path="/:user_id" element={<HomePage />} />
-            <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
