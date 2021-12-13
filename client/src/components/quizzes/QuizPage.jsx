@@ -23,6 +23,8 @@ export default function QuizPage() {
   const [last, setLast] = useState(0);
   const [render, setRender] = useState(false);
   const [buttonText, setButton] = useState('START QUIZ!');
+  const [correctAnswers, setCorrectAnswers] = useState({});
+  const [submittedAnswers, setSubmittedAnswers] = useState({});
 
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
@@ -32,6 +34,11 @@ export default function QuizPage() {
       setButton('SUBMIT QUIZ');
     }
   };
+  const selectAnswer = (e) => {
+    submittedAnswers[questionIndex + 1] = Number(e.target.id);
+    console.log('submittedAnswers ', submittedAnswers);
+    console.log('correctAnswers ', correctAnswers);
+  };
 
   const nextHandler = () => {
     let i = questionIndex;
@@ -39,7 +46,6 @@ export default function QuizPage() {
       setIndex(i += 1);
     }
     // handle the button that moves to the next question
-    console.log('works');
   };
   const backHandler = () => {
     let i = questionIndex;
@@ -97,6 +103,11 @@ export default function QuizPage() {
               correct: ele.correct,
             };
             store.push(answer);
+            for (let i = 0; i < store.length; i += 1) {
+              if (store[i].correct === true) {
+                correctAnswers[questionIndex + 1] = i;
+              }
+            }
           });
           const question = questionsArray[questionIndex].text;
           const l = questionsArray.length - 1;
@@ -106,7 +117,8 @@ export default function QuizPage() {
         });
     }
   }, [questionIndex]);
-  useEffect(() => { console.log('test'); }, [render]);
+
+  useEffect(() => {}, [render]);
 
   // render component:
   return (
@@ -213,19 +225,19 @@ export default function QuizPage() {
               height: '23em',
             }}
             >
-              <span style={{ fontSize: '2em' }}>
+              <span id="1" onClick={selectAnswer} style={{ fontSize: '2em' }}>
                 {' '}
                 {answersArray[0]?.text}
               </span>
-              <span style={{ fontSize: '2em' }}>
+              <span id="2" onClick={selectAnswer} style={{ fontSize: '2em' }}>
                 {' '}
                 {answersArray[1]?.text}
               </span>
-              <span style={{ fontSize: '2em' }}>
+              <span id="3" onClick={selectAnswer} style={{ fontSize: '2em' }}>
                 {' '}
                 {answersArray[2]?.text}
               </span>
-              <span style={{ fontSize: '2em' }}>
+              <span id="4" onClick={selectAnswer} style={{ fontSize: '2em' }}>
                 {' '}
                 {answersArray[3]?.text}
               </span>
