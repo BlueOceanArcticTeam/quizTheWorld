@@ -16,11 +16,11 @@ const Message = ({ messageObj, messageClassName }) => {
 
   return (
     <div
-      className={`message ${messageClassName}`}
+      className="messageContainer"
       onMouseEnter={() => { setDisplayDeleteButton(true); }}
       onMouseLeave={() => { setDisplayDeleteButton(false); }}
     >
-      <div>
+      <div className={`messageText ${messageClassName}`}>
         {messageObj.text}
       </div>
       <div className="deleteMessageButtonContainer">

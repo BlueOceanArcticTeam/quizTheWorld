@@ -1,8 +1,9 @@
 .chatBoxContainer {
   position: absolute;
-  bottom: 10em;
-  right: 0em;
+  bottom: 15em;
+  right: 5em;
   z-index: 200;
+  border: solid 2px black;
 }
 
 .chatRoom,
@@ -17,7 +18,7 @@
   overflow: scroll;
 }
 
-.message {
+.messageContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,6 +27,7 @@
 
 .sender {
   /* background-color: green; */
+
 }
 
 .recipient {

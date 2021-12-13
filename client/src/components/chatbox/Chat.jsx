@@ -6,15 +6,18 @@
 /* eslint-disable block-spacing */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
+import { AppContext } from '../../App.jsx';
 import './chat.css';
 
-const Chat = ({ userID }) => {
-  let today = new Date();
-  let todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+const Chat = () => {
+  const today = new Date();
+  const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+
+  const { userID } = useContext(AppContext);
   const rooms = ['A', 'B', 'C'];
   const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
@@ -33,21 +36,6 @@ const Chat = ({ userID }) => {
   }, [room]);
 
   // HELPER FUNCTIONS
-  const getMessageHistory = () => {
-    axios.get('/api/messages', {
-      params: {
-        senderID: senderID,
-        recipientID: 2
-      }
-    })
-      .then((results) => {
-        const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
-        const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
-        setChat(messageObjHistory);
-      })
-      .catch((err) => { console.log(err); });
-  };
-
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: senderID,
@@ -60,6 +48,30 @@ const Chat = ({ userID }) => {
       .catch((err) => { console.log(err); });
   };
 
+  const handleMessageSubmit = () => {
+    addMessageToDB();
+    setChat([message, ...chat]);
+    sendMessage(room, message);
+    setMessage('');
+  };
+
+  const handleKeyDown = (e) => {console.log(e); if (e.key === 'Enter') { handleMessageSubmit(); }};
+
+  const getMessageHistory = () => {
+    axios.get('/api/messages', {
+      params: {
+        senderID: senderID,
+        recipientID: 2
+      }
+    })
+      .then((results) => {
+        const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
+        // const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
+        setChat(messageObjHistory);
+      })
+      .catch((err) => { console.log(err); });
+  };
+
   const getRecipientUsername = (id) => {
     axios.get(`/api/messages/${id}`)
       .then((results) => { setRecipientUsername(results.data); })
@@ -68,15 +80,20 @@ const Chat = ({ userID }) => {
 
   useEffect(() => {
     setSenderID(userID);
-    getMessageHistory();
     getRecipientUsername(recipientID);
   }, []);
+
+  useEffect(() => {
+    getMessageHistory();
+  }, [chat]);
+
+  // useEffect(() => { console.log(chat); });
 
   return (
     <div className="chatBoxContainer">
       <h4 className="chatTitle">{recipientUsername}</h4>
       <div>
-        {rooms.map((r, i) => { return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>; })}
+        {/* {rooms.map((r, i) => { return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>; })} */}
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
@@ -85,22 +102,14 @@ const Chat = ({ userID }) => {
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
         })}
       </div>
-      <div>
+      <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
         <input
           type="text"
           name="name"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button
-          type="submit"
-          onClick={() => {
-            addMessageToDB();
-            setChat((oldChats) => [message, ...oldChats]);
-            sendMessage(room, message);
-            setMessage('');
-          }}
-        >
+        <button type="submit" onClick={handleMessageSubmit}>
           Send
         </button>
       </div>

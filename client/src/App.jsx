@@ -100,11 +100,9 @@ export const App = function () {
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/chat" element={<ChatPage />} /> */}
             <Route path="*" element={<NoPath />} />
           </Route>
         </Routes>
-        {/* {displayChat ? <ChatPage /> : null} */}
         {displayChat ? <Chat /> : null}
         <button type="button" className="chatButton" onClick={() => { setDisplayChat(!displayChat); }}>
           <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
