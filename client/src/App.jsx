@@ -35,8 +35,8 @@ export const App = function () {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [displayChat, setDisplayChat] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userID, setUserID] = useState(2); // TODO: Make this dynamic
   const [userData, setUserData] = useState();
-  const [userID, setUserID] = useState(1); // TODO: Make this dynamic
   const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
   const [users, setUsers] = useState({});
@@ -124,9 +124,8 @@ export const App = function () {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
-            {/* <Route path="/:user_id" element={setUserID(user_id)} /> */ }
+            <Route path={`/profile/${userID}`} element={<ProfilePage />} />
             <Route path="/:user_id" element={<HomePage />} />
-            <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
