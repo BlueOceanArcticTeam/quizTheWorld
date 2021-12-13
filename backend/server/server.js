@@ -1,27 +1,39 @@
 /* eslint-disable import/extensions */
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
 const passport = require('passport');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 
-const axios = require('axios');
 const server = require('http').createServer(app);
 // const io = require('socket.io')(server);
 const keys = require('./config/keys.js');
-const db = require('../database/db.js');
 const router = require('./routes/index.js');
 
 // instantiate app
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
-
+app.use(bodyParser.urlencoded({ extended: true })); // used for passport local
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 // encrypt our cookies
 app.use(cookieSession({
   maxAge: 12 * 60 * 60 * 1000, // max age of the cookie is one day
   keys: [keys.session.cookieKey],
 }));
+app.use(session({
+  secret: 'secretcode',
+  resave: true,
+  saveUninitialized: true,
+}));
+app.use(cookieParser('secretcode'));
 
 // initialize passport
 app.use(passport.initialize());
