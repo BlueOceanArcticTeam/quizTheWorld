@@ -51,7 +51,7 @@ export const App = function () {
     axios
       .get(`/api/profile/${userId}/friends`)
       .then((data) => {
-        setFriends(data.data.rows);
+        setFriends(data.rows);
       });
   }
   function fetchAllUsers() {
@@ -98,9 +98,9 @@ export const App = function () {
     getUserInformation();
     fetchAllUsers();
     // if the user is logged in, get their info and friends
-    // if (isLoggedIn) {
-    //   fetchFriends();
-    // }
+    if (isLoggedIn) {
+      fetchFriends(userID);
+    }
   }, []);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
@@ -135,6 +135,7 @@ export const App = function () {
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
+        {friends}
         {displayModal
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}
