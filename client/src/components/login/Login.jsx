@@ -73,6 +73,7 @@ export default function Login() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            flexWrap: 'wrap',
           }}
           >
             <Button
@@ -90,6 +91,39 @@ export default function Login() {
             >
               Login
             </Button>
+            <Button
+              variant="contained"
+              sx={{
+                width: '50%',
+                marginTop: '10px',
+                float: 'right',
+                background: '#930DFF',
+                ':hover': {
+                  bgcolor: '#ff9100', // theme.palette.primary.main
+                  color: 'white',
+                },
+              }}
+            >
+              Register
+            </Button>
+            <div>
+              <Button
+                variant="contained"
+                sx={{
+                  width: '382px',
+                  height: '90px',
+                  marginTop: '10px',
+                  float: 'right',
+                  background: '#930DFF',
+                  ':hover': {
+                    bgcolor: '#ff9100', // theme.palette.primary.main
+                    color: 'white',
+                  },
+                }}
+                href="/api/auth/google"
+                style={{ backgroundImage: 'url(./btn_google_signin_light_normal_web@2x.png)' }}
+              />
+            </div>
           </div>
         </div>
       </div>

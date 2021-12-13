@@ -61,7 +61,8 @@ CREATE TABLE public.userQuizStatus(
 );
 
 CREATE TABLE public.users(
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
+    google_id TEXT,
     username VARCHAR(40) NOT NULL,
     password VARCHAR(40) NOT NULL,
     firstname VARCHAR(40) NOT NULL,

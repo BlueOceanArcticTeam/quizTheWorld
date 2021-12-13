@@ -16,8 +16,16 @@ import Box from '@mui/material/Box';
 import Login from '../login/Login.jsx';
 import ChatBox from '../chatbox/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
+import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
+  // set state variables below:
+  const { user, handleLogOut } = useContext(AppContext);
+  // component functions - event handlers
+
+  // use Effect:
+
+  // render component:
   return (
     <div style={{
       display: 'flex',
@@ -72,27 +80,67 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        <Link
-          style={{
-            color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-          }}
-          to="/profile/:user_id"
-        >
-          My Account
-        </Link>
-        <Button
-          to="/login"
-          component={Link}
-          variant="contained"
-          sx={{
-            marginLeft: 'auto',
-            background: '#FE6845',
-            color: '#FFF1EA',
-            textDecoration: 'none',
-          }}
-        >
-          Login
-        </Button>
+        {console.log(user)}
+        { user
+          ? (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to={`/profile/${user.id}`}
+            >
+              {' '}
+              My Account
+            </Link>
+          )
+          : (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to="/login"
+            >
+              My Account
+            </Link>
+          ) }
+        {/* {console.log('userData', userData)} */}
+        {
+        user
+          ? (
+        // logout button
+            <Button
+              to="/"
+              variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogOut();
+              }}
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+              }}
+            >
+              Logout
+            </Button>
+          )
+          : (
+            <Button
+              to="/login"
+              component={Link}
+              variant="contained"
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+              }}
+            >
+              Login
+            </Button>
+          )
+}
       </Box>
     </div>
   );
