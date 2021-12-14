@@ -9,14 +9,12 @@ const profile = require('./profile.js');
 const topQuizzes = require('./topQuizzesRoute.js');
 const authRouter = require('./authRoutes.js');
 
-
 module.exports = {
   template,
   profile,
   quiz,
   answers,
   messages,
-  profile,
-  topQuizzes
+  topQuizzes,
   authRouter,
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT
