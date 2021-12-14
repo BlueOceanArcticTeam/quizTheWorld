@@ -1,1 +1,17 @@
 /* Use Classnames and ID's */
+
+.app {
+  display: flex;
+    padding: none;
+  margin : none;
+  max-width: 90%;
+  height: 100vh;
+  margin: auto;
+  float: none;
+  overflow: hidden;
+}
+
+.chatButton {
+  cursor: pointer;
+}
+
