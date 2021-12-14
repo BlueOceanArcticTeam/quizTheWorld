@@ -15,9 +15,9 @@ import './Quizzes.css';
 export default function QuizPage() {
   // set state variables below:
   const [quiz_id, setQuizID] = useState(1);
-  let userID = useContext(AppContext);
+  const userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
-  const [questionsArray, setQuestions] = useState();
+  const [questionsArray, setQuestions] = useState([]);
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
@@ -30,7 +30,7 @@ export default function QuizPage() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
-
+  console.log('is the quiz_id passing? ', quiz_id);
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
