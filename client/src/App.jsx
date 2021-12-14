@@ -25,18 +25,11 @@ import ChatPage from './components/chatbox/ChatPage.jsx';
 import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
 import '../dist/styles.css';
 
-// We're using fetch!
-// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-//* fetch('http://example.com/movies.json',)
-//  .then(response => response.json())
-//  .then(data => console.log(data));
-
 export const AppContext = React.createContext();
 
 export const App = function () {
   const [userID, setUserID] = useState(2); // TODO: Make this dynamic
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userData, setUserData] = useState();
   const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
   const [users, setUsers] = useState({});
@@ -72,6 +65,7 @@ export const App = function () {
 
   // will need a function to fetch all quizzes for search bar
 
+  // this function will fetch the user information if they are logged in
   const getUserInformation = () => {
     axios
       .get('/api/auth/userInformation')
@@ -83,18 +77,15 @@ export const App = function () {
           setUserID(res.data.id);
           fetchFriends(res.data.id);
         }
-        // console.log('response', res.data);
       });
   };
 
   const handleLogOut = () => {
     axios.get('/api/auth/logout')
       .then((res) => {
-        // console.log('response from logging out', res);
         setIsLoggedIn(false);
         setUser();
         setUserID();
-        // console.log('logged out', user);
         goToHome();
       });
   };
@@ -125,24 +116,27 @@ export const App = function () {
         friends,
         users,
         handleLogOut,
-        goToHome
+        goToHome,
       }}
       >
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
+            {/* <Route path="/profile" element={<PrivateRoute />}> // KEEP */}
             <Route path="/profile" element={<ProfilePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            {/* <Route path="/:user_id" element={<HomePage />} /> */}
+            {/* </Route>  //KEEP */}
+            {/* <Route path="/:user_id" element={<HomePage />} /> // not sure we need */}
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
+            {/* <Route path="/quizzes" element={<PrivateRoute />}> //KEEP */}
             <Route path="/quizzes/create" element={<CreateQuiz />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/chat" element={<PrivateRoute />}>
-              <Route path="/chat" element={<ChatPage />} />
-            </Route>
+            {/* </Route> //KEEP */}
+            {/* <Route path="/chat" element={<PrivateRoute />}> //KEEP */}
+            <Route path="/chat" element={<ChatPage />} />
+            {/* </Route> //KEEP */}
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
@@ -151,22 +145,3 @@ export const App = function () {
     </div>
   );
 };
-
-// const authContext = createContext();
-
-// function ProvideAuth({ children }) {
-//   const auth = useProvideAuth();
-//   return (
-//     <authContext.Provider value={ auth }>
-//       {children}
-//     </authContext.Provider>
-//   )
-// }
-
-// function useAuth() {
-//   return useContext(authContext);
-// }
-
-// function useProvideAuth() {
-//   const [user, setUser] = useState(null);
-// }

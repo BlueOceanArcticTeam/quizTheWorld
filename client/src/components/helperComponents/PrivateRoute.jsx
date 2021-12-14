@@ -7,7 +7,8 @@ import { AppContext } from '../../App.jsx';
 
 export default function PrivateRoute() {
   const { user } = useContext(AppContext);
-  return user // used to be auth.user
+  const production = false; // turn this to true when deployed.  This will turn on private routes
+  return (user)
     ? <Outlet />
     : <Navigate to={{ pathname: '/login' }} />; // , state: { from: location } this will get it to redirect back
 }
