@@ -45,9 +45,14 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
             // value={age}
               label="Category"
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="General Knowledge">General Knowledge</MenuItem>
+              <MenuItem value="Animals">Animals</MenuItem>
+              <MenuItem value="Geography">Geography</MenuItem>
+              <MenuItem value="Entertainment: Film">Entertainment: Film</MenuItem>
+              <MenuItem value="Science & Nature">Science & Nature</MenuItem>
+              <MenuItem value="Mythology">Mythology</MenuItem>
+              <MenuItem value="Entertainment: Books">Entertainment: Books</MenuItem>
+              <MenuItem value="Entertainment: Music">Entertainment: Music</MenuItem>
             </Select>
           </FormControl>
           <FormControl variant="filled" sx={{ width: '15em' }}>
@@ -59,9 +64,9 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
             // value={age}
               label="Difficulty"
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="easy">Easy</MenuItem>
+              <MenuItem value="medium">Medium</MenuItem>
+              <MenuItem value="hard">Hard</MenuItem>
             </Select>
           </FormControl>
           <input
