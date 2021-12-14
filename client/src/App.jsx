@@ -111,8 +111,10 @@ export const App = function () {
 
     <div className="app">
       <AppContext.Provider value={{
-        userID, isLoggedIn, setUserID, setIsLoggedIn
         userID,
+        isLoggedIn,
+        setUserID,
+        setIsLoggedIn,
         isLoggedIn,
         setUserID,
         setIsLoggedIn,
