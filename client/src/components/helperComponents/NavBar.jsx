@@ -79,7 +79,7 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        {console.log(user)}
+        {/* {console.log(user)} */}
         { user
           ? (
             <Link

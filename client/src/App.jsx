@@ -32,6 +32,7 @@ export const App = function () {
   const [displayChat, setDisplayChat] = useState(true);
   const [displayChatFriendList, setDisplayChatFriendList] = useState(false);
   const [userID, setUserID] = useState(2); // TODO: Make this dynamic
+  const [recipientID, setRecipientID] = useState(1);
   const [userData, setUserData] = useState();
   const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
@@ -51,9 +52,10 @@ export const App = function () {
     axios
       .get(`/api/profile/${userId}/friends`)
       .then((data) => {
-        setFriends(data.rows);
+        setFriends(data.data.rows);
       });
   }
+
   function fetchAllUsers() {
     axios
       .get('/api/profile/users')
@@ -98,10 +100,11 @@ export const App = function () {
     getUserInformation();
     fetchAllUsers();
     // if the user is logged in, get their info and friends
-    // if (isLoggedIn) {
-    //   fetchFriends(userID);
-    // }
+    if (isLoggedIn) {
+      fetchFriends(userID);
+    }
   }, []);
+  // console.log('AFTER USEEFFECT', friends);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
 
@@ -113,6 +116,7 @@ export const App = function () {
         setDisplayChat,
         setDisplayChatFriendList,
         setUserID,
+        setRecipientID,
         setIsLoggedIn,
         user,
         friends,
@@ -135,7 +139,6 @@ export const App = function () {
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
-        {friends}
         {displayModal
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}

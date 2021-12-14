@@ -2,7 +2,7 @@
 .chatFriendListContainer {
   position: absolute;
   height: 400px;
-  width: 300px;
+  width: 330px;
   bottom: 15em;
   right: 5em;
   z-index: 200;
@@ -16,7 +16,7 @@
 
 .chatArea {
   height: 300px;
-  width: 300px;
+  width: 330px;
   background-color: white;
   overflow: scroll;
 }
@@ -37,9 +37,9 @@
   /* background-color: blue; */
 }
 
-/* .message:hover {
+.message:hover {
   background-color: grey;
-} */
+}
 
 input {
   height: 30px;

@@ -18,13 +18,12 @@ const Chat = () => {
   const today = new Date();
   const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
 
-  const { userID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
+  const { userID, recipientID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
   const rooms = ['A', 'B', 'C'];
   const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientID, setRecipientID] = useState(1);
   const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
@@ -37,17 +36,13 @@ const Chat = () => {
   }, [room]);
 
   // HELPER FUNCTIONS
-  const handleKeyDown = (e) => {console.log(e); if (e.key === 'Enter') { handleMessageSubmit(); }};
+  const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
 
-  const handleClickFriendsButton = () => {
-    // TODO: Show friends list instead of chat history
-    // setDisplayChatFriendList(true);
-    setDisplayChat(false);
-  };
+  const handleClickFriendsButton = () => { setDisplayChat(false); };
 
   const getMessageHistory = () => {
     axios.get('/api/messages', {
-      params: { senderID: senderID, recipientID: 2 } // TODO: Make recipientID dynamic
+      params: { senderID: senderID, recipientID: recipientID } // TODO: Make recipientID dynamic
     })
       .then((results) => {
         const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
@@ -59,7 +54,7 @@ const Chat = () => {
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: senderID,
-      recipientID: 2,
+      recipientID: recipientID,
       text: message,
       date: todayString
     })
@@ -86,9 +81,7 @@ const Chat = () => {
     getRecipientUsername(recipientID);
   }, [recipientID]);
 
-  useEffect(() => {
-    getMessageHistory();
-  }, [chat]);
+  useEffect(() => { getMessageHistory(); }, [chat]);
 
   return (
     <div className="chatBoxContainer">
@@ -99,6 +92,7 @@ const Chat = () => {
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
+          console.log('Rendering a message');
           const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
         })}
