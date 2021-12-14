@@ -6,12 +6,12 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import './chat.css';
 
-const Message = ({ messageObj, messageClassName }) => {
+const Message = ({ messageObj, messageClassName, chat, setChat }) => {
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
 
   const deleteMessage = () => {
     axios.delete('/api/messages', { params: { messageID: messageObj.id } })
-      .then()
+      .then(() => { setChat([...chat]); })
       .catch((err) => { console.log(err); });
   };
 

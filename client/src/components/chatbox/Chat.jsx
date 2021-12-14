@@ -80,19 +80,21 @@ const Chat = () => {
     getRecipientUsername(recipientID);
   }, [recipientID]);
 
-  useEffect(() => { getMessageHistory(); }, [message]);
+  useEffect(() => { getMessageHistory(); }, [chat, message]);
 
   return (
     <div className="chatBoxContainer">
       <div className="chatTitleContainer">
-        <h4 className="chatTitle">{recipientUsername}</h4>
+        <h4 className="chatTitle">Chat: {recipientUsername}</h4>
+      </div>
+      <div className="friendsButtonContainer">
         <button type="button" className="friendsButton" onClick={handleClickFriendsButton}>Friends</button>
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
           const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
-          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
+          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} chat={chat} setChat={setChat}/>;
         })}
       </div>
       <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
