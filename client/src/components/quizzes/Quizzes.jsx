@@ -5,6 +5,10 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import Router from 'react-router';
+import {
+  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
+} from 'react-router-dom';
 import {
   FormControl, InputLabel, Select, MenuItem, MenuIcon,
 } from '@mui/material';
@@ -18,12 +22,28 @@ export default function Quizzes() {
   // set state variables below:
   const fakeData = ['https://images.unsplash.com/photo-1539628399213-d6aa89c93074?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1595429035839-c99c298ffdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
     'https://images.unsplash.com/photo-1627856014754-2907e2355d34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80'];
+  const [difficultyQuizzes, setDQuizzes] = useState([]);
+  const [difficulty, setDifficulty] = useState('easy');
+  const [toggle, setToggle] = useState(true);
 
   // The idea here is that when you click on a quiz from the homepage it will pass the ID down
   // to this component and that can be used to populate the quiz questions and answers
   // component functions - event handlers
 
   // use Effect:
+  useEffect(() => {
+    if (toggle) {
+      setToggle(false);
+      axios.get(`/api/quizzes/${difficulty}`)
+        .then((res) => {
+          const { data } = res;
+          for (let i = 0; i < data.length; i += 1) {
+            data[i].url = fakeData[i];
+          }
+          setDQuizzes(data);
+        });
+    }
+  });
   // render component:
   return (
     <div style={{
@@ -81,6 +101,7 @@ export default function Quizzes() {
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
+              defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
@@ -95,6 +116,7 @@ export default function Quizzes() {
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
+              defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
@@ -137,18 +159,24 @@ export default function Quizzes() {
         >
           {/* Second Row of Images Here: */}
           {
-            fakeData.map((image) => (
-              <img
-                className="coverImages"
-                src={image}
-                alt="quizImages"
-                style={{
-                  width: '200px',
-                  height: '200px',
-                  objectFit: 'cover',
-                  borderRadius: '15px',
-                }}
-              />
+            difficultyQuizzes.map((ele) => (
+              <Link to={{
+                pathname: '/quizzes/quiz/',
+              }}
+              >
+                <img
+                  key={ele.id}
+                  className="coverImages"
+                  src={ele.url}
+                  alt="quizImages"
+                  style={{
+                    width: '200px',
+                    height: '200px',
+                    objectFit: 'cover',
+                    borderRadius: '15px',
+                  }}
+                />
+              </Link>
             ))
           }
         </div>

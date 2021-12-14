@@ -7,14 +7,18 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import Router from 'react-router';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
 import './Quizzes.css';
+import {
+  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
+} from 'react-router-dom';
 
 export default function QuizPage() {
   // set state variables below:
-  let quiz_id = useContext(AppContext);
+  let quiz_id = location.state;
   let userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
