@@ -1,7 +1,9 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React, {
+  useState, useEffect, useContext, createContext
+} from 'react';
 import axios from 'axios';
 import {
   Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect
@@ -37,11 +39,14 @@ export const App = function () {
   return (
 
     <div className="app">
-      <AppContext.Provider value={{ userID, isLoggedIn, setUserID, setIsLoggedIn }}>
+      <AppContext.Provider value={{
+        userID, isLoggedIn, setUserID, setIsLoggedIn
+      }}
+      >
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
-            <Route path="/profile/:user_id" element={<ProfilePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
@@ -52,7 +57,7 @@ export const App = function () {
             <Route path="*" element={<NoPath />} />
           </Route>
         </Routes>
-        <button type="button" className="chatButton">Chat</button>
+        {/* <button type="button" className="chatButton">Chat</button> */}
       </AppContext.Provider>
     </div>
   );
@@ -88,19 +93,15 @@ function useAuth() {
 function useProvideAuth() {
   const [user, setUser] = useState(null);
 
-  const signin = cb => {
-    return fakeAuth.signin(() => {
-      setUser("user");
-      cb();
-    });
-  };
+  const signin = (cb) => fakeAuth.signin(() => {
+    setUser('user');
+    cb();
+  });
 
-  const signout = cb => {
-    return fakeAuth.signout(() => {
-      setUser(null);
-      cb();
-    });
-  };
+  const signout = (cb) => fakeAuth.signout(() => {
+    setUser(null);
+    cb();
+  });
 
   return {
     user,
@@ -110,15 +111,16 @@ function useProvideAuth() {
 }
 
 function AuthButton() {
-  let history = useHistory();
-  let auth = useAuth();
+  const history = useHistory();
+  const auth = useAuth();
 
   return auth.user ? (
     <p>
-      Welcome!{" "}
+      Welcome!
+      {' '}
       <button
         onClick={() => {
-          auth.signout(() => history.push("/"));
+          auth.signout(() => history.push('/'));
         }}
       >
         Sign out
@@ -132,22 +134,20 @@ function AuthButton() {
 // A wrapper for <Route> that redirects to the login
 // screen if you're not yet authenticated.
 function PrivateRoute({ children, ...rest }) {
-  let auth = useAuth();
+  const auth = useAuth();
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        auth.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: location }
-            }}
-          />
-        )
-      }
+      render={({ location }) => (auth.user ? (
+        children
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: location }
+          }}
+        />
+      ))}
     />
   );
 }
@@ -161,12 +161,12 @@ function ProtectedPage() {
 }
 
 function LoginPage() {
-  let history = useHistory();
-  let location = useLocation();
-  let auth = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+  const auth = useAuth();
 
-  let { from } = location.state || { from: { pathname: "/" } };
-  let login = () => {
+  const { from } = location.state || { from: { pathname: '/' } };
+  const login = () => {
     auth.signin(() => {
       history.replace(from);
     });

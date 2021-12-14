@@ -24,10 +24,9 @@ export default function NavBar() {
       justifyContent: 'center',
       alignItems: 'stretch',
       height: '10vh',
-      margin: 'none',
-      padding: 'none',
-      position: 'absolute',
+
       zIndex: '100',
+      width: '90vw',
 
     }}
     >
