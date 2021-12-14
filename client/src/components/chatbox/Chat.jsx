@@ -42,7 +42,7 @@ const Chat = () => {
 
   const getMessageHistory = () => {
     axios.get('/api/messages', {
-      params: { senderID: senderID, recipientID: recipientID } // TODO: Make recipientID dynamic
+      params: { senderID: senderID, recipientID: recipientID }
     })
       .then((results) => {
         const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
@@ -81,7 +81,7 @@ const Chat = () => {
     getRecipientUsername(recipientID);
   }, [recipientID]);
 
-  useEffect(() => { getMessageHistory(); }, [chat]);
+  useEffect(() => { getMessageHistory(); }, [message]);
 
   return (
     <div className="chatBoxContainer">
@@ -92,7 +92,6 @@ const Chat = () => {
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
-          console.log('Rendering a message');
           const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
         })}
@@ -102,7 +101,7 @@ const Chat = () => {
           type="text"
           name="name"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => { setMessage(e.target.value); }}
         />
         <button type="submit" onClick={handleMessageSubmit}>
           Send
