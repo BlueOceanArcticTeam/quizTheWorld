@@ -8,7 +8,9 @@ const messages = require('./messageRoute.js');
 const profile = require('./profile.js');
 const topQuizzes = require('./topQuizzesRoute.js');
 const authRouter = require('./authRoutes.js');
+
 const quizzes = require('./quizzes.js');
+
 
 module.exports = {
   template,
