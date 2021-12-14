@@ -8,6 +8,7 @@ import './chat.css';
 
 const Message = ({ messageObj, messageClassName }) => {
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
+
   const deleteMessage = () => {
     axios.delete('/api/messages', { params: { messageID: messageObj.id } })
       .then()

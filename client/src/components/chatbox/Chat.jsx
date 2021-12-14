@@ -84,9 +84,9 @@ const Chat = () => {
 
   return (
     <div className="chatBoxContainer">
-      <h4 className="chatTitle">{recipientUsername}</h4>
-      <button type="button" onClick={handleClickFriendsButton}>Friends</button>
-      <div className="chatFriendList">
+      <div className="chatTitleContainer">
+        <h4 className="chatTitle">{recipientUsername}</h4>
+        <button type="button" className="friendsButton" onClick={handleClickFriendsButton}>Friends</button>
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
