@@ -32,12 +32,11 @@ export default function CreateQuiz() {
   // render component:
   return (
     <div style={{
-      width: '100vw',
-      height: '100vh',
+      width: '100%',
+      height: '77vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundImage: 'linear-gradient(#6A418A, #930DFF)',
     }}
     >
 
