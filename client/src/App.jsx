@@ -107,7 +107,6 @@ export const App = function () {
       fetchFriends(userID);
     }
   }, []);
-  // console.log('AFTER USEEFFECT', friends);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
 
@@ -119,6 +118,7 @@ export const App = function () {
         setDisplayChat,
         setDisplayChatFriendList,
         setUserID,
+        recipientID,
         setRecipientID,
         setIsLoggedIn,
         isLoggedIn,
