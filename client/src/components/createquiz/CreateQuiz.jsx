@@ -4,12 +4,12 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
+import gsap, { Power3 } from 'gsap';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
-import {
-  Input, FormControl, InputLabel, FormHelperText, Select, MenuItem,
-} from '@mui/material';
 import CategoryDifficultyNameCard from './CategoryDifficulyNameCard.jsx';
 import QuestionInputCard from './QuestionInputCard.jsx';
 import AnswerInputCard from './AnswerInputCard.jsx';
@@ -21,13 +21,22 @@ export default function CreateQuiz() {
   const [inputQuestion, setInputQuestion] = useState(false);
   const [goBackToSelectCategoryDifficultyNameCard, setGoBackToSelectCategoryDifficultyNameCard] = useState(false);
   const [stepCount, setStepCount] = useState(1);
+  const moveElement = useRef(null);
+  // const tween = gsap.to('.cardContainer', {
+  //   duration: 4,
+  //   x: 750,
+  //   rotation: 360,
+  //   ease: 'none',
+  //   paused: true,
+  // });
   // component functions - event handlers
 
   // use Effect:
-  useEffect(() => {
-    // Update the document title using the browser API
-    console.log('happening');
-  }, [stepCount]);
+  // useEffect(() => {
+  //   tween.play();
+  //   // Update the document title using the browser API
+  //   console.log('happening', moveElement);
+  // });
 
   // render component:
   return (

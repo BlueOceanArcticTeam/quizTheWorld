@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
+import gsap, { Power3, Power2 } from 'gsap';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
 import {
@@ -14,9 +17,20 @@ import {
 } from 'react-router-dom';
 
 export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) {
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to(boxRef.current, {
+      ease: Power2.out,
+      opacity: 1,
+      duration: 1.75,
+    });
+    // Update the document title using the browser API
+  }, [stepCount]);
+
   return (
 
-    <div id="cardContainer">
+    <div id="cardContainer" ref={boxRef} style={{ opacity: '0' }}>
       <div
         id="card"
         style={{
@@ -39,6 +53,7 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
           <FormControl variant="filled" sx={{ width: '12em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
+              defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
@@ -58,6 +73,7 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
+              defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
