@@ -8,13 +8,11 @@ quiz.route('/:quiz_id').get((req, res) => {
   const id = req.params.quiz_id;
   db.query('SELECT * FROM quizzes, questions WHERE quizzes.id = $1 and questions.quiz_id = $1;', [id], (err, data) => {
     if (err) throw (err);
-    console.log(data.rows);
     res.send(data.rows);
   });
 });
 
 quiz.route('/').post((req, res) => {
-  console.log(req.body);
   const {
     user_id, quizID, numCorrect, totalQuestions, lastAnswered, completed, dateCompleted,
   } = req.body;

@@ -30,7 +30,6 @@ export default function Quizzes() {
   const [trigger, setTrigger] = useState(true);
 
   const pageLink = (e) => {
-    console.log(e.target.id);
     localStorage.setItem('quizID', e.target.id);
   };
   const cSelector = (e) => {
