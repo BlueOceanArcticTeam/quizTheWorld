@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable camelcase */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
@@ -8,21 +10,26 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
-import QuizContext from './quizContext.js';
-import Question from './Question.jsx';
+import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
-  const quiz_id = useContext(AppContext);
+  let quiz_id = useContext(AppContext);
+  let userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(true);
-  const [questionIndex, setIndex] = useState(10000000);
+  const [questionIndex, setIndex] = useState(-1);
   const [currentQuestion, setCurrent] = useState();
   const [last, setLast] = useState(0);
   const [render, setRender] = useState(false);
   const [buttonText, setButton] = useState('START QUIZ!');
+  const [correctAnswers, setCorrectAnswers] = useState({});
+  const [submittedAnswers, setSubmittedAnswers] = useState({});
+  const [totalCorrect, setTotalCorrect] = useState(0);
+  const [selected, setSelected] = useState();
+  const [submit, setSubmit] = useState(false);
 
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
@@ -30,30 +37,55 @@ export default function QuizPage() {
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
+    } else if (render) {
+      let correctCount = 0;
+      setTotalCorrect(0);
+      for (let i = 1; i < questionsArray.length + 1; i += 1) {
+        if (submittedAnswers[i] !== undefined && submittedAnswers[i] === correctAnswers[i]) {
+          correctCount += 1;
+        }
+      }
+      setTotalCorrect(correctCount);
+      setAnswers([]);
+      setButton('TRY AGAIN');
+      setSubmit(true);
     }
+  };
+  const selectAnswer = (e) => {
+    setSelected(e.target.id);
+    const question = questionIndex + 1;
+    setSubmittedAnswers({ ...submittedAnswers, [question]: Number(e.target.id) });
   };
 
   const nextHandler = () => {
+    setSelected(0);
     let i = questionIndex;
     if (i < questionsArray.length - 1) {
       setIndex(i += 1);
     }
     // handle the button that moves to the next question
-    console.log('works');
   };
   const backHandler = () => {
+    setSelected(0);
     let i = questionIndex;
     if (i > 0) {
       setIndex(i -= 1);
     }
-    // handle the button that moves to the previous question
   };
+  // handle the button that moves to the previous question
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    if (toggle) { // TEMP HOLD TO PREVENT INFINITE FETCHES, USE QUIZ_ID
+    if (questionsArray) {
+      const obj = {};
+      for (let i = 0; i < questionsArray.length; i += 1) {
+        obj[i] = 5;
+      }
+      setCorrectAnswers(obj);
+    }
+    if (toggle) {
       setToggle(false);
-      axios.get('/api/quiz/5') // 1 should be quiz_id
+      axios.get(`/api/quiz/${quiz_id || 1}`)
         .then((res) => {
           const { data } = res;
           const quiz = {
@@ -85,6 +117,10 @@ export default function QuizPage() {
   }, [quiz_id]);
   // Fetch answers when the question changes
   useEffect(() => {
+    if (submittedAnswers[questionIndex + 1]) {
+      const s = submittedAnswers[questionIndex + 1];
+      setSelected(s);
+    }
     if (questionsArray) {
       const query = questionsArray[questionIndex]?.id;
       axios.get(`/api/answers/${query}`)
@@ -97,6 +133,11 @@ export default function QuizPage() {
               correct: ele.correct,
             };
             store.push(answer);
+            for (let i = 0; i < store.length; i += 1) {
+              if (store[i].correct === true) {
+                correctAnswers[questionIndex + 1] = i + 1;
+              }
+            }
           });
           const question = questionsArray[questionIndex].text;
           const l = questionsArray.length - 1;
@@ -106,7 +147,37 @@ export default function QuizPage() {
         });
     }
   }, [questionIndex]);
-  useEffect(() => { console.log('test'); }, [render]);
+
+  useEffect(() => {
+    if (submit) {
+      // These if statements are placeholders
+      if (!userID) {
+        userID = 1;
+      }
+      if (!quiz_id) {
+        quiz_id = 1;
+      }
+      const date = new Date();
+      let done = false;
+      if (Object.keys(submittedAnswers).length === Object.keys(correctAnswers).length) {
+        done = true;
+      }
+      const statement = `Congratulations! You got ${totalCorrect} out of ${last + 1} answers correct!`;
+      setCurrent(statement);
+      axios.post('/api/quiz', {
+        user_id: userID,
+        quizID: quiz_id,
+        numCorrect: totalCorrect,
+        totalQuestions: last + 1,
+        lastAnswered: questionIndex,
+        completed: done,
+        dateCompleted: date,
+      })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  }, [submit]);
 
   // render component:
   return (
@@ -213,22 +284,22 @@ export default function QuizPage() {
               height: '23em',
             }}
             >
-              <span style={{ fontSize: '2em' }}>
-                {' '}
-                {answersArray[0]?.text}
-              </span>
-              <span style={{ fontSize: '2em' }}>
-                {' '}
-                {answersArray[1]?.text}
-              </span>
-              <span style={{ fontSize: '2em' }}>
-                {' '}
-                {answersArray[2]?.text}
-              </span>
-              <span style={{ fontSize: '2em' }}>
-                {' '}
-                {answersArray[3]?.text}
-              </span>
+              {answersArray.map((ele) => {
+                const num = answersArray.indexOf(ele) + 1;
+                return (
+                  <span
+                    key={num}
+                    id={num}
+                    onClick={selectAnswer}
+                    style={{ fontSize: '2em' }}
+                    className={(num === Number(selected)) ? 'active' : ''}
+                  >
+                    {' '}
+                    {ele.text}
+                  </span>
+                );
+              })}
+
               {/* Submit Quiz Button */}
               {/* Youll want to hide this one until the last question appears */}
               <Button
