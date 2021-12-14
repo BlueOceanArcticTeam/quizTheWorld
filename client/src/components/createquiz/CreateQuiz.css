@@ -1,0 +1,34 @@
+#cardContainer {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-image: url('./assets/Question.png');
+}
+
+#card {
+    width: 70em;
+    height: 40em;
+    border-radius: 25px;
+    margin-top: 4em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-direction: row;
+    align-items: center;
+    filter: drop-shadow(5px 5px 10px #2f2b1e);
+}
+
+input {
+    background-color: rgb(238, 232, 226);
+    size: 210;
+    width: 120px;
+}
+
+span {
+    margin: 0.5em;
+}
