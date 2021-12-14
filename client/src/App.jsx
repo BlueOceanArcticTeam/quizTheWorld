@@ -147,7 +147,6 @@ export const App = function () {
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             {/* </Route> //KEEP */}
             {/* <Route path="/chat" element={<PrivateRoute />}> //KEEP */}
-            <Route path="/chat" element={<ChatPage />} />
             {/* </Route> //KEEP */}
           </Route>
           <Route path="/login" element={<Login />} />
