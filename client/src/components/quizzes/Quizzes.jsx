@@ -29,6 +29,10 @@ export default function Quizzes() {
   // The idea here is that when you click on a quiz from the homepage it will pass the ID down
   // to this component and that can be used to populate the quiz questions and answers
   // component functions - event handlers
+  const pageLink = (e) => {
+    console.log('checking id ', e.target.id);
+    localStorage.setItem('quizID', e.target.id);
+  };
 
   // use Effect:
   useEffect(() => {
@@ -165,7 +169,9 @@ export default function Quizzes() {
               }}
               >
                 <img
+                  onClick={pageLink}
                   key={ele.id}
+                  id={ele.id}
                   className="coverImages"
                   src={ele.url}
                   alt="quizImages"
