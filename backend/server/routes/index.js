@@ -7,6 +7,8 @@ const messages = require('./messageRoute.js');
 // IMPORT YOUR ROUTER AS SHOWN ABOVE
 const profile = require('./profile.js');
 const topQuizzes = require('./topQuizzesRoute.js');
+const authRouter = require('./authRoutes.js');
+
 
 module.exports = {
   template,
@@ -16,4 +18,5 @@ module.exports = {
   messages,
   profile,
   topQuizzes
+  authRouter,
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT

@@ -16,8 +16,16 @@ import Box from '@mui/material/Box';
 import Login from '../login/Login.jsx';
 import ChatBox from '../chatbox/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
+import { AppContext } from '../../App.jsx';
 
 export default function NavBar() {
+  // set state variables below:
+  const { user, handleLogOut, userID } = useContext(AppContext);
+  // component functions - event handlers
+
+  // use Effect:
+
+  // render component:
   return (
     <div style={{
       display: 'flex',
@@ -71,27 +79,66 @@ export default function NavBar() {
         >
           Chat
         </Link>
-        <Link
-          style={{
-            color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-          }}
-          to="/profile/:user_id"
-        >
-          My Account
-        </Link>
-        <Button
-          to="/login"
-          component={Link}
-          variant="contained"
-          sx={{
-            marginLeft: 'auto',
-            background: '#FE6845',
-            color: '#FFF1EA',
-            textDecoration: 'none',
-          }}
-        >
-          Login
-        </Button>
+        { user
+          ? (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to={`/profile/${userID}`}
+            >
+              {' '}
+              My Account
+            </Link>
+          )
+          : (
+            <Link
+              style={{
+                color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+              }}
+              to="/login"
+            >
+              My Account
+            </Link>
+          ) }
+        {/* {user ? console.log(user.username) : console.log('not logged in')} */}
+        {
+        user
+          ? (
+        // logout button
+            <Button
+              to="/"
+              variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLogOut(e);
+              }}
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+              }}
+            >
+              { `${user.username} Logout` }
+            </Button>
+          )
+          : (
+            <Button
+              to="/login"
+              component={Link}
+              variant="contained"
+              sx={{
+                marginLeft: 'auto',
+                background: '#FE6845',
+                color: '#FFF1EA',
+                textDecoration: 'none',
+              }}
+            >
+              Login
+            </Button>
+          )
+}
       </Box>
     </div>
   );

@@ -11,6 +11,8 @@ import placehold from './Assets/placehold.png';
 import TopQuizSlider from './TopQuizSlider.jsx';
 import Example from './test.jsx';
 import TopQuizCard from './TopQuizCard.jsx';
+import NavBar from '../helperComponents/NavBar.jsx';
+
 
 export default function HomePage() {
   const [data, setData] = useState();
