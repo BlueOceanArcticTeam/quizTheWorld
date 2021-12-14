@@ -62,8 +62,9 @@ CREATE TABLE public.userQuizStatus(
 
 CREATE TABLE public.users(
     id SERIAL PRIMARY KEY,
+    google_id TEXT,
     username VARCHAR(40) NOT NULL,
-    password VARCHAR(40) NOT NULL,
+    password VARCHAR(200) NOT NULL,
     firstname VARCHAR(40) NOT NULL,
     lastname VARCHAR(40) NOT NULL,
     thumbnail_url TEXT,
