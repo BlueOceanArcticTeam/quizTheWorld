@@ -10,7 +10,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
-import RenderFriend from '../profile/RenderFriend.jsx';
 import { AppContext } from '../../App.jsx';
 import './chat.css';
 
