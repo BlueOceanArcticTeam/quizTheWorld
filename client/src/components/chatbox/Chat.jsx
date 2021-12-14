@@ -23,7 +23,6 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  // const [recipientUsername, setRecipientUsername] = useState('');
   const [recipientFirstName, setRecipientFirstName] = useState('');
   const [recipientLastName, setRecipientLastName] = useState('');
 
@@ -118,7 +117,7 @@ const Chat = () => {
           value={message}
           onChange={(e) => { setMessage(e.target.value); }}
         />
-        <button type="submit" onClick={handleMessageSubmit}>
+        <button type="submit" className="sendMessageButton" onClick={handleMessageSubmit}>
           Send
         </button>
       </div>
