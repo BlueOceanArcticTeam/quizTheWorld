@@ -18,13 +18,16 @@ export default function Register() {
   const [lastName, setLastName] = useState('');
   const [registerPassword1, setRegisterPassword1] = useState('');
   const [registerPassword2, setRegisterPassword2] = useState('');
+  const [message, setMessage] = useState('');
   // const [~, set~] = useState('');
   // component functions - event handlers
-  const handleRegister = () => {
-    // TODO: verify no other user has the same username or email
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // verify no other user has the same username or email
     // veryify the passwords are the same
     if (registerPassword1 !== registerPassword2) {
-      alert('passwords must be equal');
+      setMessage('passwords must be equal');
+      // alert('passwords must be equal');
       document.getElementById('password1').focus();
     }
     axios({
@@ -41,12 +44,12 @@ export default function Register() {
       url: '/api/auth/register',
     })
       .then((res) => {
-        // console.log('register response', res);
-        if (res.data) {
+        if (res.data === 'user created') {
           alert('Thank you for registering');
           goToHome();
+          window.location.reload(true);
         } else {
-          alert('someone with that email already exists');
+          setMessage('Sorry, someone has already registered with that email or username');
         }
       });
   };
@@ -74,20 +77,23 @@ export default function Register() {
             position: 'absolute',
           }}
         />
-        <h1>QuizKnows</h1>
+        {/* <h1>QuizKnows</h1> */}
         <div style={{
           zIndex: '100',
           position: 'absolute',
           display: 'flex',
           width: '18em',
           height: '14em',
-          top: '50%',
+          top: '30%',
           left: '40%',
           flexDirection: 'column',
           gap: '.35em',
           color: '#930DFF',
         }}
         >
+          <div>
+            {message}
+          </div>
           {/* This is the Input for the Email */}
           <label htmlFor="email" style={{ fontSize: '1.5em' }}>Email:</label>
           <input
@@ -131,7 +137,7 @@ export default function Register() {
           {/* This is the input for the PassWord1 */}
           <label htmlFor="password1" style={{ fontSize: '1.5em' }}>Password:</label>
           <input
-            type="text"
+            type="password"
             id="password1"
             onChange={(e) => { setRegisterPassword1(e.target.value); }}
             style={{
@@ -141,7 +147,7 @@ export default function Register() {
           {/* This is the input for the PassWord2 */}
           <label htmlFor="password2" style={{ fontSize: '1.5em' }}>Re-enter Password:</label>
           <input
-            type="text"
+            type="password"
             id="password2"
             onChange={(e) => { setRegisterPassword2(e.target.value); }}
             style={{
@@ -167,7 +173,10 @@ export default function Register() {
                   color: 'white',
                 },
               }}
-              onClick={handleRegister}
+              onClick={(event) => {
+                event.preventDefault();
+                handleRegister(event);
+              }}
             >
               Register
             </Button>

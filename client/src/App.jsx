@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
@@ -6,7 +7,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate,
 } from 'react-router-dom';
 
 // import e from 'cors';
@@ -22,6 +23,7 @@ import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
 import Chat from './components/chatbox/Chat.jsx';
 import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
+import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
 import '../dist/styles.css';
 import './components/chatbox/chat.css';
 
@@ -71,6 +73,7 @@ export const App = function () {
 
   // will need a function to fetch all quizzes for search bar
 
+  // this function will fetch the user information if they are logged in
   const getUserInformation = () => {
     axios
       .get('/api/auth/userInformation')
@@ -82,18 +85,15 @@ export const App = function () {
           setUserID(res.data.id);
           fetchFriends(res.data.id);
         }
-        // console.log('response', res.data);
       });
   };
 
   const handleLogOut = () => {
     axios.get('/api/auth/logout')
       .then((res) => {
-        // console.log('response from logging out', res);
         setIsLoggedIn(false);
         setUser();
         setUserID();
-        // console.log('logged out', user);
         goToHome();
       });
   };
@@ -128,21 +128,26 @@ export const App = function () {
         friends,
         users,
         handleLogOut,
-        goToHome
+        goToHome,
       }}
       >
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
+            {/* <Route path="/profile" element={<PrivateRoute />}> // KEEP */}
             <Route path="/profile" element={<ProfilePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            {/* <Route path="/:user_id" element={<HomePage />} /> */}
+            {/* </Route>  //KEEP */}
+            {/* <Route path="/:user_id" element={<HomePage />} /> // not sure we need */}
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
+            {/* <Route path="/quizzes" element={<PrivateRoute />}> //KEEP */}
             <Route path="/quizzes/create" element={<CreateQuiz />} />
-            <Route path="/register" element={<Register />} />
+            {/* </Route> //KEEP */}
+            {/* <Route path="/chat" element={<PrivateRoute />}> //KEEP */}
+            {/* </Route> //KEEP */}
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
@@ -153,120 +158,14 @@ export const App = function () {
           <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
         </button>
         <div className="chatButtonSource">
-          Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
-          from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+          Icons made by
+          {' '}
+          <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
+          from
+          {' '}
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
         </div>
       </AppContext.Provider>
     </div>
   );
 };
-
-const fakeAuth = {
-  isAuthenticated: false,
-  signin(cb) {
-    fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};
-
-const authContext = createContext();
-
-function ProvideAuth({ children }) {
-  const auth = useProvideAuth();
-  return (
-    <authContext.Provider value={auth}>
-      {children}
-    </authContext.Provider>
-  );
-}
-
-function useAuth() {
-  return useContext(authContext);
-}
-
-function useProvideAuth() {
-  const [user, setUser] = useState(null);
-
-  const signin = (cb) => fakeAuth.signin(() => {
-    setUser('user');
-    cb();
-  });
-
-  const signout = (cb) => fakeAuth.signout(() => {
-    setUser(null);
-    cb();
-  });
-
-  return {
-    user,
-    signin,
-    signout
-  };
-}
-
-function AuthButton() {
-  const history = useHistory();
-  const auth = useAuth();
-
-  return auth.user ? (
-    <p>
-      Welcome!
-      {' '}
-      <button
-        onClick={() => {
-          auth.signout(() => history.push('/'));
-        }}
-      >
-        Sign out
-      </button>
-    </p>
-  ) : (
-    <p>You are not logged in.</p>
-  );
-}
-
-// A wrapper for <Route> that redirects to the login
-// screen if you're not yet authenticated.
-function PrivateRoute({ children, ...rest }) {
-  const auth = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={({ location }) => (auth.user ? (
-        children
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { from: location }
-          }}
-        />
-      ))}
-    />
-  );
-}
-
-function PublicPage() {
-  return <h3>Public</h3>;
-}
-
-function ProtectedPage() {
-  return <h3>Protected</h3>;
-}
-
-function LoginPage() {
-  const history = useHistory();
-  const location = useLocation();
-  const auth = useAuth();
-
-  const { from } = location.state || { from: { pathname: '/' } };
-  const login = () => {
-    auth.signin(() => {
-      history.replace(from);
-    });
-  };
-}
