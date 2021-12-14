@@ -17,7 +17,7 @@ export default function QuizPage() {
   const [quiz_id, setQuizID] = useState(1);
   const userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
-  const [questionsArray, setQuestions] = useState([]);
+  const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
