@@ -20,3 +20,5 @@ INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 3), (DEFAULT, 3
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 4), (DEFAULT, 4, 1);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 2, 4), (DEFAULT, 4, 2);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 3, 4), (DEFAULT, 4, 3);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 5, 4), (DEFAULT, 4, 5);
+

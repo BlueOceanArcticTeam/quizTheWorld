@@ -10,7 +10,7 @@ const ChatFriendList = () => {
   // HELPER FUNCTIONS
   return (
     <div className="chatFriendListContainer">
-      <h4>My Friends</h4>
+      <h4 className="chatFriendListTitle">My Friends</h4>
       <div className="chatFriendList">
         {friends.map((friend) => { return <ChatFriend friend={friend} key={friend.id} />; })}
       </div>

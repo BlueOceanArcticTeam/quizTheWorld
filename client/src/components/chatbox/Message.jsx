@@ -3,32 +3,37 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { AppContext } from '../../App.jsx';
 import './chat.css';
 
 const Message = ({ messageObj, messageClassName, chat, setChat }) => {
+
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
+  const { userID } = useContext(AppContext);
 
   const deleteMessage = () => {
     axios.delete('/api/messages', { params: { messageID: messageObj.id } })
       .then(() => { setChat([...chat]); })
       .catch((err) => { console.log(err); });
   };
-
+  useEffect(() => {
+    console.log(messageObj);
+  }, []);
   return (
     <div
-      className="messageContainer"
+      className={`messageText ${messageClassName}`}
       onMouseEnter={() => { setDisplayDeleteButton(true); }}
       onMouseLeave={() => { setDisplayDeleteButton(false); }}
     >
-      <div className={`messageText ${messageClassName}`}>
+      <div className="messageText">
         {messageObj.text}
       </div>
-      <div className="deleteMessageButtonContainer">
-        {displayDeleteButton
+      {(userID === messageObj.sender_user_id)
+        ? displayDeleteButton
           ? <button type="submit" className="deleteMessageButton" onClick={deleteMessage}>Delete</button>
-          : null}
-      </div>
+          : null
+        : null}
     </div>
   );
 };

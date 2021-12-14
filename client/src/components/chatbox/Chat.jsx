@@ -23,7 +23,9 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientUsername, setRecipientUsername] = useState('');
+  // const [recipientUsername, setRecipientUsername] = useState('');
+  const [recipientFirstName, setRecipientFirstName] = useState('');
+  const [recipientLastName, setRecipientLastName] = useState('');
 
   useEffect(() => {
     if (room) { initiateSocket(room); }
@@ -69,15 +71,18 @@ const Chat = () => {
     setMessage('');
   };
 
-  const getRecipientUsername = (id) => {
+  const getRecipientName = (id) => {
     axios.get(`/api/messages/${id}`)
-      .then((results) => { setRecipientUsername(results.data); })
+      .then((results) => {
+        setRecipientFirstName(results.data.firstname);
+        setRecipientLastName(results.data.lastname);
+      })
       .catch((err) => { console.log(err); });
   };
 
   useEffect(() => {
     setSenderID(userID);
-    getRecipientUsername(recipientID);
+    getRecipientName(recipientID);
   }, [recipientID]);
 
   useEffect(() => { getMessageHistory(); }, [chat, message]);
@@ -85,14 +90,23 @@ const Chat = () => {
   return (
     <div className="chatBoxContainer">
       <div className="chatTitleContainer">
-        <h4 className="chatTitle">Chat: {recipientUsername}</h4>
+        <div className="chatTitle">
+          <div>
+            {recipientFirstName}
+          </div>
+          <div className="chatTitleSpace">
+            {' '}
+          </div>
+          <div>
+            {recipientLastName}
+          </div>
+        </div>
       </div>
       <div className="friendsButtonContainer">
         <button type="button" className="friendsButton" onClick={handleClickFriendsButton}>Friends</button>
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
-          // TODO: render message to left/right for sender/receiver
           const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} chat={chat} setChat={setChat}/>;
         })}

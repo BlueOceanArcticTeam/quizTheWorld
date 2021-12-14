@@ -24,8 +24,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70px;
+  height: 50px;
   background-color: #9130E2;
+}
+
+.chatTitle {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.chatTitleSpace {
+  width: 5px;
 }
 
 .friendsButtonContainer {
@@ -36,7 +46,6 @@
 }
 
 .friendsButton {
-  margin-bottom: 5px;
   height: 30px;
 }
 
@@ -49,33 +58,31 @@
 }
 
 .chatArea {
-  height: 200px;
+  height: 330px;
   width: 330px;
   overflow: scroll;
 }
 
 .messageContainer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   cursor: pointer;
 }
 
 .messageText {
   color: #FAEDEA;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .sender {
-  /* background-color: green; */
-
+  display: flex;
+  justify-content: flex-end;
 }
 
 .recipient {
-  /* background-color: blue; */
-}
-
-.message:hover {
-  background-color: grey;
+  display: flex;
+  justify-content: flex-start;
 }
 
 input {
