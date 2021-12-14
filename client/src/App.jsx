@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
@@ -6,7 +7,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate,
 } from 'react-router-dom';
 
 // import e from 'cors';
@@ -21,6 +22,7 @@ import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
 import ChatPage from './components/chatbox/ChatPage.jsx';
+import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
 import '../dist/styles.css';
 
 // We're using fetch!
@@ -111,7 +113,10 @@ export const App = function () {
 
     <div className="app">
       <AppContext.Provider value={{
-        userID, isLoggedIn, setUserID, setIsLoggedIn
+        userID,
+        isLoggedIn,
+        setUserID,
+        setIsLoggedIn,
         userID,
         isLoggedIn,
         setUserID,
@@ -135,7 +140,9 @@ export const App = function () {
             <Route path="/quizzes/quiz" element={<QuizPage />} />
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/chat" element={<PrivateRoute />}>
+              <Route path="/chat" element={<ChatPage />} />
+            </Route>
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
@@ -144,3 +151,22 @@ export const App = function () {
     </div>
   );
 };
+
+// const authContext = createContext();
+
+// function ProvideAuth({ children }) {
+//   const auth = useProvideAuth();
+//   return (
+//     <authContext.Provider value={ auth }>
+//       {children}
+//     </authContext.Provider>
+//   )
+// }
+
+// function useAuth() {
+//   return useContext(authContext);
+// }
+
+// function useProvideAuth() {
+//   const [user, setUser] = useState(null);
+// }
