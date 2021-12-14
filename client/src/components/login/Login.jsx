@@ -60,7 +60,12 @@ export default function Login() {
             position: 'absolute',
           }}
         />
-        <h1>QuizKnows</h1>
+        <h1
+          onClick={() => { goToHome(); }}
+          style={{ cursor: 'pointer' }}
+        >
+          QuizKnows
+        </h1>
         <div style={{
           zIndex: '100',
           position: 'absolute',

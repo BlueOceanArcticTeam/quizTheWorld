@@ -124,16 +124,16 @@ export const App = function () {
       >
         <Routes>
           <Route path="/" element={<Header />}>
+            <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            <Route path="/:user_id" element={<HomePage />} />
+            {/* <Route path="/:user_id" element={<HomePage />} /> */}
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
             <Route path="/chat" element={<ChatPage />} />
-            <Route path="*" element={<NoPath />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
