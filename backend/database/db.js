@@ -3,10 +3,10 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 const pool = new Pool({
-  user: process.env.USERNAME,
+  user: 'postgres',
   host: 'localhost',
   database: 'quizknows',
-  password: process.env.PASSWORD,
+  password: 'password',
   port: 5432 // Default port
 });
 
