@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
@@ -141,8 +140,6 @@ export const App = function () {
             <Route path="/quizzes/quiz" element={<QuizPage />} />
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="*" element={<NoPath />} />
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
