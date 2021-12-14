@@ -1,14 +1,12 @@
 /* Use Classnames and ID's */
 
 .app {
-  display: flex;
-    padding: none;
-  margin : none;
-  max-width: 90%;
+  padding: none;
+  max-width: 90vw;
   height: 100vh;
   margin: auto;
-  float: none;
   overflow: hidden;
+  position: relative;
 }
 
 .chatButton {
