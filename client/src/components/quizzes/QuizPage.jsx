@@ -7,15 +7,10 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import Router from 'react-router';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
 import './Quizzes.css';
-import {
-  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
-} from 'react-router-dom';
-import regeneratorRuntime from 'regenerator-runtime';
 
 export default function QuizPage() {
   // set state variables below:
@@ -81,7 +76,6 @@ export default function QuizPage() {
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    console.log('quiz id ', quiz_id);
     if (toggle) {
       setToggle(false);
       axios.get(`/api/quiz/${quiz_id}`)
@@ -150,12 +144,6 @@ export default function QuizPage() {
   useEffect(() => {
     if (submit) {
       // These if statements are placeholders
-      if (!userID) {
-        userID = 1;
-      }
-      if (!quiz_id) {
-        quiz_id = 1;
-      }
       const date = new Date();
       let done = false;
       if (Object.keys(submittedAnswers).length === Object.keys(correctAnswers).length) {

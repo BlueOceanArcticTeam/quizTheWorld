@@ -1,20 +1,18 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable camelcase */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Router from 'react-router';
-import {
-  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   FormControl, InputLabel, Select, MenuItem, MenuIcon,
 } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import AppContext from '../../context.js';
 import QuizBackground from './assets/Question.png';
 import './Quizzes.css';
 
@@ -26,11 +24,7 @@ export default function Quizzes() {
   const [difficulty, setDifficulty] = useState('easy');
   const [toggle, setToggle] = useState(true);
 
-  // The idea here is that when you click on a quiz from the homepage it will pass the ID down
-  // to this component and that can be used to populate the quiz questions and answers
-  // component functions - event handlers
   const pageLink = (e) => {
-    console.log('checking id ', e.target.id);
     localStorage.setItem('quizID', e.target.id);
   };
 
