@@ -12,11 +12,25 @@ quiz.route('/:quiz_id').get((req, res) => {
   });
 });
 
-quiz.route('/').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  db.query('QUERY', [], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
-    if (err) throw err;
-    // TODO: res.send();
+quiz.route('/').post((req, res) => {
+  console.log(req.body);
+  const {
+    user_id, quizID, numCorrect, totalQuestions, lastAnswered, completed, dateCompleted,
+  } = req.body;
+  // completed = completed.toString();
+
+  db.query('INSERT INTO userQuizStatus(quiz_id, user_id,completed, dateCompleted, lastAnswered, numCorrect, totalQuestions) VALUES ($1, $2, $3, $4, $5, $6, $7);', [quizID, user_id, completed, dateCompleted, lastAnswered, numCorrect, totalQuestions], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+    if (err) console.log(err);
+    if (!err) console.log('great success!');
   });
 });
 
 module.exports = quiz; // CHANGE 'TEMPLATE' TO YOUR ROUTE
+
+// user_id: 1,
+// quizID: 1,
+// numCorrect: 1,
+// totalQuestions: 10,
+// lastAnswered: 4,
+// completed: false,
+// dateCompleted: '2021-12-13T23:20:50.072Z'

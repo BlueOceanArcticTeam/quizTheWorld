@@ -45,6 +45,7 @@ app.use('/api/profile', router.profile);
 app.use('/api/quiz', router.quiz);
 app.use('/api/messages', router.messages);
 app.use('/api/answers', router.answers);
+app.use('/api/topQuizzes', router.topQuizzes);
 app.use('/api/auth', router.authRouter);
 
 // WEB ROUTES

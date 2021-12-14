@@ -15,7 +15,7 @@ CREATE TABLE public.answers (
 );
 
 CREATE TABLE public.questions (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   quiz_id INT,
   text VARCHAR(200) NOT NULL,
   thumbnail_url TEXT,
@@ -33,14 +33,14 @@ CREATE TABLE public.messages (
 );
 
 CREATE TABLE public.userAnswers (
-  id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   user_id INT,
   question_id INT,
   submittedAnswer_id INT
 );
 
 CREATE TABLE public.quizzes(
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     category VARCHAR(30) NOT NULL,
     difficulty VARCHAR(30) NOT NULL,
     title VARCHAR(30) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE public.quizzes(
 );
 
 CREATE TABLE public.userQuizStatus(
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     quiz_id INT NOT NULL,
     user_id INT NOT NULL,
     completed BOOLEAN NOT NULL,

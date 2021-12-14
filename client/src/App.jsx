@@ -111,6 +111,7 @@ export const App = function () {
 
     <div className="app">
       <AppContext.Provider value={{
+        userID, isLoggedIn, setUserID, setIsLoggedIn
         userID,
         isLoggedIn,
         setUserID,
@@ -126,6 +127,7 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
             {/* <Route path="/:user_id" element={<HomePage />} /> */}
             <Route path="/register" element={<Register />} />
@@ -137,7 +139,7 @@ export const App = function () {
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
-        <button type="button" className="chatButton">Chat</button>
+        {/* <button type="button" className="chatButton">Chat</button> */}
       </AppContext.Provider>
     </div>
   );
