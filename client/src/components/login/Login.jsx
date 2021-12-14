@@ -35,7 +35,7 @@ export default function Login() {
         if (res.data === 'success') {
           // set user data in state and redirect
           goToHome();
-          window.location.reload(true);
+          window.location.reload(true); // HACK:
         } else {
           setMessage('Sorry, that user does not exist');
           // alert('Sorry, that user does not exist');

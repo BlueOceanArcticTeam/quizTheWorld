@@ -2,7 +2,7 @@
 
 \c quizknows
 
-INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (1,'QuizKnows', 'iamcool', 'Quiz', 'Knows', 'null', 'empty@empty.com');
+INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'QuizKnows', 'iamcool', 'Quiz', 'Knows', 'null', 'empty@empty.com');
 INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'Gerald', 'iamcool', 'Gerald', 'Anderson', 'null', 'gerald@anderson.com');
 INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'SomoneElse', 'iamcool', 'Tanya', 'Turkey', 'null', 'tanyat@emailprovider.com');
 
