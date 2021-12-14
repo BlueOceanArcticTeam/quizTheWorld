@@ -1,34 +1,30 @@
 /* Use Classnames and ID's */
 
 .app {
-  display: flex;
-    padding: none;
-  margin : none;
-  max-width: 90%;
+  padding: none;
+  max-width: 90vw;
   height: 100vh;
   margin: auto;
-  float: none;
   overflow: hidden;
+  position: relative;
 }
 
 .chatButton {
-  align-self: flex-end;
+  position: absolute;
+  bottom: 5em;
+  right: 0em;
   height: 80px;
   width: 80px;
   border-radius: 40px;
   cursor: pointer;
   color: #ff9100;
+  z-index: 100;
 }
 
 .chatIcon {
   height: 50px;
   width: 50px;
-}
-
-.chatButton {
-  position: absolute;
-  bottom: 6em;
-  right: 6em;
+  z-index: 200;
 }
 
 .chatButtonSource {

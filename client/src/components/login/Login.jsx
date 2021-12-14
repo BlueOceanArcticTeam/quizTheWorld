@@ -2,16 +2,40 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import './login.css';
 import Button from '@mui/material/Button';
+import { SettingsSystemDaydreamOutlined } from '@mui/icons-material';
+import axios from 'axios';
 import LoginImage from './assets/Login.png';
+import { AppContext } from '../../App.jsx';
 
 export default function Login() {
+  const { goToHome } = useContext(AppContext);
   // set state variables below:
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
 
   // component functions - event handlers
-
+  const handleLogin = () => {
+    axios({
+      method: 'post',
+      data: {
+        // login data
+        email: loginEmail,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: '/api/auth/loginlocal',
+    })
+      .then((res) => {
+        if (res.data === 'success') {
+          // set user data in state and redirect
+          goToHome();
+          window.location.reload(true);
+        }
+      });
+  };
   // use Effect:
 
   // render component:
@@ -36,7 +60,12 @@ export default function Login() {
             position: 'absolute',
           }}
         />
-        <h1>QuizKnows</h1>
+        <h1
+          onClick={() => { goToHome(); }}
+          style={{ cursor: 'pointer' }}
+        >
+          QuizKnows
+        </h1>
         <div style={{
           zIndex: '100',
           position: 'absolute',
@@ -55,6 +84,7 @@ export default function Login() {
           <input
             type="text"
             id="email"
+            onChange={(e) => { setLoginEmail(e.target.value); }}
             style={{
               height: '3em', borderRadius: '3px', border: '.5px solid orange', fontSize: '1.25em',
             }}
@@ -64,6 +94,7 @@ export default function Login() {
           <input
             type="text"
             id="password"
+            onChange={(e) => { setLoginPassword(e.target.value); }}
             style={{
               height: '3em', borderRadius: '3px', fontSize: '1.25em', border: '.5px solid orange',
             }}
@@ -77,6 +108,7 @@ export default function Login() {
           }}
           >
             <Button
+              onClick={handleLogin}
               variant="contained"
               sx={{
                 width: '50%',

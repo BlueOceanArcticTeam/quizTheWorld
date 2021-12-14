@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
@@ -6,9 +7,10 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, BrowserRouter, useHistory, useLocation, Redirect, useParams,
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
 } from 'react-router-dom';
 
+// import e from 'cors';
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
 import HomePage from './components/home/HomePage.jsx';
@@ -22,7 +24,7 @@ import NavBar from './components/helperComponents/NavBar.jsx';
 import Chat from './components/chatbox/Chat.jsx';
 import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import '../dist/styles.css';
-import ChatFriend from './components/chatbox/ChatFriend.jsx';
+import './components/chatbox/chat.css';
 
 export const AppContext = React.createContext();
 
@@ -39,6 +41,8 @@ export const App = function () {
   const [users, setUsers] = useState({});
   const [friends, setFriends] = useState([]);
 
+  const navigate = useNavigate();
+  const goToHome = () => { navigate('/'); };
   function fetchFriends(userId) {
     // axios
     //   .get(`/api/profile/${userID}`)
@@ -48,7 +52,6 @@ export const App = function () {
     //   .catch((err) => {
     //     throw err;
     //   });
-    console.log('App.jsx userId on 51', userId);
     axios
       .get(`/api/profile/${userId}/friends`)
       .then((data) => {
@@ -73,7 +76,7 @@ export const App = function () {
     axios
       .get('/api/auth/userInformation')
       .then((res) => {
-        console.log('getUserInformation', res);
+        // console.log('getUserInformation', res);
         if (res.data) {
           setIsLoggedIn(true);
           setUser(res.data);
@@ -87,11 +90,12 @@ export const App = function () {
   const handleLogOut = () => {
     axios.get('/api/auth/logout')
       .then((res) => {
-        console.log('response from logging out', res);
+        // console.log('response from logging out', res);
         setIsLoggedIn(false);
         setUser();
         setUserID();
-        console.log('logged out', user);
+        // console.log('logged out', user);
+        goToHome();
       });
   };
 
@@ -121,14 +125,17 @@ export const App = function () {
         user,
         friends,
         users,
-        handleLogOut
+        handleLogOut,
+        goToHome
       }}
       >
         <Routes>
           <Route path="/" element={<Header />}>
+            <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            <Route path="/:user_id" element={<HomePage />} />
+            {/* <Route path="/:user_id" element={<HomePage />} /> */}
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
@@ -145,7 +152,10 @@ export const App = function () {
         <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
           <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
         </button>
-        <div className="chatButtonSource">Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <div className="chatButtonSource">
+          Icons made by <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
+          from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
       </AppContext.Provider>
     </div>
   );

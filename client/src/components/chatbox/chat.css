@@ -4,7 +4,7 @@
   height: 400px;
   width: 330px;
   bottom: 15em;
-  right: 5em;
+  right: 2em;
   z-index: 200;
   border: solid 2px black;
 }
@@ -17,7 +17,7 @@
 .chatArea {
   height: 300px;
   width: 330px;
-  background-color: white;
+  background-color: #FAEDEA;
   overflow: scroll;
 }
 

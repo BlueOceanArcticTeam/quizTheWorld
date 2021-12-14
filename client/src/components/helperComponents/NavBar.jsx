@@ -31,10 +31,9 @@ export default function NavBar() {
       justifyContent: 'center',
       alignItems: 'stretch',
       height: '10vh',
-      margin: 'none',
-      padding: 'none',
-      position: 'absolute',
+
       zIndex: '100',
+      width: '90vw',
 
     }}
     >
@@ -102,7 +101,7 @@ export default function NavBar() {
               My Account
             </Link>
           ) }
-        {/* {console.log('userData', userData)} */}
+        {/* {user ? console.log(user.username) : console.log('not logged in')} */}
         {
         user
           ? (
@@ -112,7 +111,7 @@ export default function NavBar() {
               variant="contained"
               onClick={(e) => {
                 e.preventDefault();
-                handleLogOut();
+                handleLogOut(e);
               }}
               sx={{
                 marginLeft: 'auto',
@@ -121,7 +120,7 @@ export default function NavBar() {
                 textDecoration: 'none',
               }}
             >
-              Logout
+              { `${user.username} Logout` }
             </Button>
           )
           : (
