@@ -17,3 +17,6 @@ INSERT INTO userQuizStatus (id, quiz_id, user_id, completed, dateCompleted, last
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 2), (DEFAULT, 2, 1);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 3, 2), (DEFAULT, 2, 3);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 3), (DEFAULT, 3, 1);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 4), (DEFAULT, 4, 1);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 2, 4), (DEFAULT, 4, 2);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 3, 4), (DEFAULT, 4, 3);

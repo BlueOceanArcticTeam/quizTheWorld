@@ -31,9 +31,10 @@ messageRoute.route('/').post((req, res) => {
 });
 
 messageRoute.route('/').delete((req, res) => {
-  db.query(`DELETE FROM messages WHERE id=10`, [])
-    .then()
-    .catch();
+  const { messageID } = req.query;
+  db.query('DELETE FROM messages WHERE id=$1', [messageID])
+    .then((data) => { res.send(data); })
+    .catch((err) => { console.log(err); });
 });
 
 module.exports = messageRoute;

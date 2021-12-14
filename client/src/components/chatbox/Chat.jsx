@@ -6,21 +6,24 @@
 /* eslint-disable block-spacing */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
+import RenderFriend from '../profile/RenderFriend.jsx';
+import { AppContext } from '../../App.jsx';
 import './chat.css';
 
-const Chat = ({ userID }) => {
-  let today = new Date();
-  let todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+const Chat = () => {
+  const today = new Date();
+  const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
+
+  const { userID, recipientID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
   const rooms = ['A', 'B', 'C'];
   const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientID, setRecipientID] = useState(2); // TODO: Make this dynamic
   const [recipientUsername, setRecipientUsername] = useState('');
 
   useEffect(() => {
@@ -33,16 +36,16 @@ const Chat = ({ userID }) => {
   }, [room]);
 
   // HELPER FUNCTIONS
+  const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
+
+  const handleClickFriendsButton = () => { setDisplayChat(false); };
+
   const getMessageHistory = () => {
     axios.get('/api/messages', {
-      params: {
-        senderID: senderID,
-        recipientID: 2
-      }
+      params: { senderID: senderID, recipientID: recipientID } // TODO: Make recipientID dynamic
     })
       .then((results) => {
         const messageObjHistory = results.data.map((messageObj) => { return messageObj; });
-        const messageHistory = results.data.map((messageObj) => { return messageObj.text; });
         setChat(messageObjHistory);
       })
       .catch((err) => { console.log(err); });
@@ -51,13 +54,20 @@ const Chat = ({ userID }) => {
   const addMessageToDB = () => {
     axios.post('/api/messages', {
       senderID: senderID,
-      recipientID: 2,
+      recipientID: recipientID,
       text: message,
       date: todayString
     })
       .then(() => { setMessage(''); })
       .then(() => { getMessageHistory(); })
       .catch((err) => { console.log(err); });
+  };
+
+  const handleMessageSubmit = () => {
+    addMessageToDB();
+    setChat([message, ...chat]);
+    sendMessage(room, message);
+    setMessage('');
   };
 
   const getRecipientUsername = (id) => {
@@ -68,41 +78,33 @@ const Chat = ({ userID }) => {
 
   useEffect(() => {
     setSenderID(userID);
-    getMessageHistory();
     getRecipientUsername(recipientID);
-  }, []);
+  }, [recipientID]);
+
+  useEffect(() => { getMessageHistory(); }, [chat]);
 
   return (
     <div className="chatBoxContainer">
-      <h4 className="chatTitle">Chat with: {recipientUsername}</h4>
-      <div>
-        {rooms.map((r, i) => {
-          return <button type="submit" onClick={() => { setRoom(r); }} key={i}>{r}</button>;
-        })}
+      <h4 className="chatTitle">{recipientUsername}</h4>
+      <button type="button" onClick={handleClickFriendsButton}>Friends</button>
+      <div className="chatFriendList">
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
           // TODO: render message to left/right for sender/receiver
-          // return <p key={i} className="message">{m}</p>;
-          return <Message messageObj={m} key={i} />;
+          console.log('Rendering a message');
+          const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
+          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
         })}
       </div>
-      <div>
+      <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
         <input
           type="text"
           name="name"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button
-          type="submit"
-          onClick={() => {
-            addMessageToDB();
-            setChat((oldChats) => [message, ...oldChats]);
-            sendMessage(room, message);
-            setMessage('');
-          }}
-        >
+        <button type="submit" onClick={handleMessageSubmit}>
           Send
         </button>
       </div>
