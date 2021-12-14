@@ -21,15 +21,22 @@ import Quizzes from './components/quizzes/Quizzes.jsx';
 import QuizPage from './components/quizzes/QuizPage.jsx';
 import Register from './components/register/Register.jsx';
 import NavBar from './components/helperComponents/NavBar.jsx';
-import ChatPage from './components/chatbox/ChatPage.jsx';
+import Chat from './components/chatbox/Chat.jsx';
+import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
 import '../dist/styles.css';
+import './components/chatbox/chat.css';
 
 export const AppContext = React.createContext();
 
 export const App = function () {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [displayModal, setDisplayModal] = useState(false);
+  const [displayChat, setDisplayChat] = useState(true);
+  const [displayChatFriendList, setDisplayChatFriendList] = useState(false);
   const [userID, setUserID] = useState(2); // TODO: Make this dynamic
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [recipientID, setRecipientID] = useState(1);
+  const [userData, setUserData] = useState();
   const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
   const [users, setUsers] = useState({});
@@ -52,6 +59,7 @@ export const App = function () {
         setFriends(data.data.rows);
       });
   }
+
   function fetchAllUsers() {
     axios
       .get('/api/profile/users')
@@ -95,9 +103,9 @@ export const App = function () {
     getUserInformation();
     fetchAllUsers();
     // if the user is logged in, get their info and friends
-    // if (isLoggedIn) {
-    //   fetchFriends();
-    // }
+    if (isLoggedIn) {
+      fetchFriends(userID);
+    }
   }, []);
   // OR: Just have a bool checking if user is logged in and then conditionally render pages
   return (
@@ -106,9 +114,13 @@ export const App = function () {
       <AppContext.Provider value={{
         userID,
         isLoggedIn,
+        setDisplayModal,
+        setDisplayChat,
+        setDisplayChatFriendList,
         setUserID,
+        recipientID,
+        setRecipientID,
         setIsLoggedIn,
-        userID,
         isLoggedIn,
         setUserID,
         setIsLoggedIn,
@@ -140,7 +152,20 @@ export const App = function () {
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
-        {/* <button type="button" className="chatButton">Chat</button> */}
+        {displayModal
+          ? (displayChat ? <Chat /> : <ChatFriendList />)
+          : null}
+        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+          <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
+        </button>
+        <div className="chatButtonSource">
+          Icons made by
+          {' '}
+          <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
+          from
+          {' '}
+          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        </div>
       </AppContext.Provider>
     </div>
   );

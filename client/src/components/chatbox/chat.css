@@ -1,9 +1,12 @@
-.chatBoxContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 1000px;
+.chatBoxContainer,
+.chatFriendListContainer {
+  position: absolute;
+  height: 400px;
+  width: 330px;
+  bottom: 15em;
+  right: 2em;
+  z-index: 200;
+  border: solid 2px black;
 }
 
 .chatRoom,
@@ -11,15 +14,36 @@
   font-size: 40px;
 }
 
-.chatArea {
-  height: 300px;
-  width: 300px;
-  background-color: white;
+.chatTitle,
+.chatFriendListContainer {
+  color: white;
+}
+
+.chatFriendList {
   overflow: scroll;
 }
 
-.message {
+.chatArea {
+  height: 300px;
+  width: 330px;
+  background-color: #FAEDEA;
+  overflow: scroll;
+}
+
+.messageContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
+}
+
+.sender {
+  /* background-color: green; */
+
+}
+
+.recipient {
+  /* background-color: blue; */
 }
 
 .message:hover {
@@ -34,6 +58,15 @@ input {
 button {
   height: 30px;
   width: 100px;
-  background-color: white;
+  border-radius: 10px;
+  color: white;
+  background-color: #ff9100;
+  border: none;
   cursor: pointer;
+}
+
+.deleteMessageButton {
+  width: 60px;
+  justify-content: center;
+  color: white;
 }
