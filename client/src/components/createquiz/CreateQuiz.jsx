@@ -35,7 +35,10 @@ export default function CreateQuiz() {
   const [answers, setAnswers] = useState({
     question_id: null, // unique hashing function
     correct: false,
-    text: '',
+    A: '',
+    B: '',
+    C: '',
+    D: '',
   });
   const [question, setQuestion] = useState({
     user_id: null,
@@ -81,11 +84,6 @@ export default function CreateQuiz() {
       { stepCount === 5
         ? <AddAnotherQuestion setStepCount={setStepCount} stepCount={stepCount} />
         : ''}
-      {
-        user
-          ? <div>{question.user_id}</div>
-          : ''
-      }
     </div>
   );
 }

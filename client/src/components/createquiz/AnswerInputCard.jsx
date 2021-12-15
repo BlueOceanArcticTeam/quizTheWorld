@@ -33,6 +33,42 @@ export default function AnswerInputCard({
     });
   }
 
+  function updateAnswerA(e) {
+    setAnswers({
+      ...answers,
+      A: e.target.value,
+    });
+  }
+
+  function updateAnswerB(e) {
+    setAnswers({
+      ...answers,
+      B: e.target.value,
+    });
+  }
+
+  function updateAnswerC(e) {
+    setAnswers({
+      ...answers,
+      C: e.target.value,
+    });
+  }
+
+  function updateAnswerD(e) {
+    setAnswers({
+      ...answers,
+      D: e.target.value,
+    });
+  }
+
+  function storeAnswersForSubmitting() {
+    for (const key in answers) {
+      if (key === answers.correct) {
+        console.log('yep you smartie!', key);
+      }
+    }
+  }
+
   return (
 
     <div id="cardContainer" ref={boxRef} style={{ opacity: '0' }}>
@@ -75,6 +111,7 @@ export default function AnswerInputCard({
             </Select>
           </FormControl>
           <input
+            onChange={updateAnswerA}
             type="text"
             className="input"
             style={{
@@ -82,6 +119,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerB}
             type="text"
             className="input"
             style={{
@@ -89,6 +127,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerC}
             type="text"
             className="input"
             style={{
@@ -96,6 +135,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerD}
             type="text"
             className="input"
             style={{
@@ -103,7 +143,7 @@ export default function AnswerInputCard({
             }}
           />
           <Button
-            onClick={() => { setStepCount(stepCount + 2); }}
+            onClick={() => { setStepCount(stepCount + 2); storeAnswersForSubmitting(); }}
             variant="contained"
             sx={{
               position: 'absolute',
