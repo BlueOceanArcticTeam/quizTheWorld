@@ -2,7 +2,7 @@
 
 .app {
   padding: none;
-  max-width: 90vw;
+  width: 90vw;
   height: 100vh;
   margin: auto;
   overflow: hidden;
