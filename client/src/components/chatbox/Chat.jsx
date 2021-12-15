@@ -19,22 +19,11 @@ const Chat = () => {
   const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
 
   const { userID, recipientID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
-  const rooms = ['A', 'B', 'C'];
-  const [room, setRoom] = useState(rooms[0]);
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
   const [recipientFirstName, setRecipientFirstName] = useState('');
   const [recipientLastName, setRecipientLastName] = useState('');
-
-  useEffect(() => {
-    if (room) { initiateSocket(room); }
-    subscribeToChat((err, data) => {
-      if (err) return;
-      setChat((oldChats) => [data, ...oldChats]);
-    });
-    return () => { disconnectSocket(); };
-  }, [room]);
 
   // HELPER FUNCTIONS
   const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
@@ -67,7 +56,6 @@ const Chat = () => {
   const handleMessageSubmit = () => {
     addMessageToDB();
     setChat([message, ...chat]);
-    sendMessage(room, message);
     setMessage('');
   };
 
