@@ -24,6 +24,7 @@ import NavBar from './components/helperComponents/NavBar.jsx';
 import Chat from './components/chatbox/Chat.jsx';
 import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
+import ChatIcon from '@mui/icons-material/Chat';
 import '../dist/styles.css';
 import './components/chatbox/chat.css';
 
@@ -154,17 +155,7 @@ export const App = function () {
         {displayModal
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}
-        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-          <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
-        </button>
-        <div className="chatButtonSource">
-          Icons made by
-          {' '}
-          <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
-          from
-          {' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
+        <ChatIcon className="chatButton" onClick={() => { setDisplayModal(!displayModal); }} />
       </AppContext.Provider>
     </div>
   );

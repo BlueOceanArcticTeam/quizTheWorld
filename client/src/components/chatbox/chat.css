@@ -124,3 +124,9 @@ button {
   justify-content: center;
   color: white;
 }
+
+.chatButton {
+  transform: scale(3);
+  z-index: 300;
+  right: 10em;
+}
