@@ -1,27 +1,29 @@
 body {
     background: linear-gradient(#6A418A, #930DFF);
-    height: 100;
-    overflow: hidden;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
 }
 
-.Link {
-    padding: 2em
+.wrapper {
+    width: 85vw;
+    margin: auto;
+    padding: none;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.homeContainer {
-    margin : none;
-    max-width: 100%;
-    margin: auto;
-    float: none;
+.test {
+    width: 80vw;
     height: 88vh;
-    overflow: hidden;
+    padding: none;
+    margin: auto;
 }
 
 .heroSectionContainer {
     grid-template-columns: repeat(12, 1fr);
-    max-width: 90%;
+    width: 90vw;
     margin: auto;
     height: 50vh;
     border-top: 5px solid #FE6845;
@@ -31,9 +33,10 @@ body {
 .heroSectionContainerInner {
     display: grid;
     align-content: center;
-    max-width: 95%;
+    width: 95%;
     margin: auto;
     height: 100%;
+    grid-column: 1/13;
 }
 
 .heroTextGrid {
@@ -43,15 +46,13 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #FFDAD1;
     font-size: 4rem;
-    grid-column: 3/8;
-    overflow: hidden;
+    grid-column: 2/8;
     align-content: center;
 }
 
 .heroTextImage {
     display: inline-grid;
-    grid-column: 9/13;
-    height: 100%;
+    grid-column: 9/12;
 }
 
 .heroSectionSlider {
@@ -61,8 +62,8 @@ body {
     display: grid;
     max-width: 95%;
     margin: auto;
-    height: 75%;
-    overflow: hidden;
+    height: 65%;
+
 }
 
 .heroSectionSliderText {
@@ -70,4 +71,35 @@ body {
     color: #FFDAD1;
     font-size: 1.85rem;
     grid-column: 1/13;
+}
+
+.heroSlider {
+    margin-top: 12%;
+    height: 70%;
+}
+
+.quizCardBox {
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    height: auto;
+    width: 15%;
+    margin: 2%;
+    font-size: 1vw;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+h4 {
+    font-family: 'Poppins', sans-serif;
+    word-spacing: 1000px;
+    text-align: center;
+}
+
+.quizCardBox:hover {
+    transform: scale(1.2);
 }

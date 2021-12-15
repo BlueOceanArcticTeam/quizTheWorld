@@ -2,7 +2,7 @@
 
 \c quizknows
 
-INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (1,'QuizKnows', 'iamcool', 'Quiz', 'Knows', 'null', 'empty@empty.com');
+INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'QuizKnows', 'iamcool', 'Quiz', 'Knows', 'null', 'empty@empty.com');
 INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'Gerald', 'iamcool', 'Gerald', 'Anderson', 'null', 'gerald@anderson.com');
 INSERT INTO users (id, username, password, firstname, lastname, thumbnail_url, email) VALUES (DEFAULT,'SomoneElse', 'iamcool', 'Tanya', 'Turkey', 'null', 'tanyat@emailprovider.com');
 
@@ -17,3 +17,8 @@ INSERT INTO userQuizStatus (id, quiz_id, user_id, completed, dateCompleted, last
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 2), (DEFAULT, 2, 1);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 3, 2), (DEFAULT, 2, 3);
 INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 3), (DEFAULT, 3, 1);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 1, 4), (DEFAULT, 4, 1);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 2, 4), (DEFAULT, 4, 2);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 3, 4), (DEFAULT, 4, 3);
+INSERT INTO friends (id, user_id, friend_id) VALUES (DEFAULT, 5, 4), (DEFAULT, 4, 5);
+

@@ -3,6 +3,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 import Button from '@mui/material/Button';
 import { SettingsSystemDaydreamOutlined } from '@mui/icons-material';
@@ -15,6 +16,8 @@ export default function Login() {
   // set state variables below:
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   // component functions - event handlers
   const handleLogin = () => {
@@ -32,7 +35,10 @@ export default function Login() {
         if (res.data === 'success') {
           // set user data in state and redirect
           goToHome();
-          window.location.reload(true);
+          window.location.reload(true); // HACK:
+        } else {
+          setMessage('Sorry, that user does not exist');
+          // alert('Sorry, that user does not exist');
         }
       });
   };
@@ -60,20 +66,28 @@ export default function Login() {
             position: 'absolute',
           }}
         />
-        <h1>QuizKnows</h1>
+        <h1
+          onClick={() => { goToHome(); }}
+          style={{ cursor: 'pointer' }}
+        >
+          QuizKnows
+        </h1>
         <div style={{
           zIndex: '100',
           position: 'absolute',
           display: 'flex',
           width: '18em',
           height: '14em',
-          top: '50%',
+          top: '30%',
           left: '40%',
           flexDirection: 'column',
           gap: '.35em',
           color: '#930DFF',
         }}
         >
+          <div>
+            {message}
+          </div>
           {/* This is the Input for the Email */}
           <label htmlFor="email" style={{ fontSize: '1.5em' }}>Email:</label>
           <input
@@ -87,7 +101,7 @@ export default function Login() {
           {/* This is the input for the PassWord */}
           <label htmlFor="email" style={{ fontSize: '1.5em' }}>Password:</label>
           <input
-            type="text"
+            type="password"
             id="password"
             onChange={(e) => { setLoginPassword(e.target.value); }}
             style={{
@@ -130,6 +144,7 @@ export default function Login() {
                   color: 'white',
                 },
               }}
+              onClick={() => { navigate('/register'); }}
             >
               Register
             </Button>
