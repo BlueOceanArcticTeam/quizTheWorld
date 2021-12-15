@@ -23,7 +23,7 @@ body {
 
 .heroSectionContainer {
     grid-template-columns: repeat(12, 1fr);
-    width: 80vw;
+    width: 90vw;
     margin: auto;
     height: 50vh;
     border-top: 5px solid #FE6845;
@@ -75,7 +75,7 @@ body {
 
 .heroSlider {
     margin-top: 12%;
-    height: 80%;
+    height: 70%;
 }
 
 .quizCardBox {
@@ -90,7 +90,7 @@ body {
     margin: 2%;
     font-size: 1vw;
     color: white;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
 

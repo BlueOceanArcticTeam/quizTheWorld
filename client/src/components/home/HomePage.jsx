@@ -13,7 +13,6 @@ import Example from './test.jsx';
 import TopQuizCard from './TopQuizCard.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
 
-
 export default function HomePage() {
   const [data, setData] = useState();
 
@@ -66,7 +65,7 @@ export default function HomePage() {
                   display: 'flex', alignItems: 'stretch', margin: '2.5%', width: '95%', justifyContent: 'center',
                 }}
               >
-                {data ? data.map((item) => <TopQuizCard title={item.title} category={item.category} />) : null}
+                {data ? data.map((item) => <TopQuizCard title={item.title} category={item.category} quizId={item.id} />) : null}
                 {/* <TopQuizCard />
                 <TopQuizCard />
                 <TopQuizCard />
