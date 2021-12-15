@@ -23,6 +23,7 @@ export default function QuizPage() {
   const [questionIndex, setIndex] = useState(-1);
   const [currentQuestion, setCurrent] = useState();
   const [last, setLast] = useState(0);
+  const [backup, setBackup] = useState();
   const [render, setRender] = useState(false);
   const [buttonText, setButton] = useState('START QUIZ!');
   const [correctAnswers, setCorrectAnswers] = useState({});
@@ -36,7 +37,7 @@ export default function QuizPage() {
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
-    } else if (render) {
+    } if (buttonText === 'SUBMIT QUIZ') {
       let correctCount = 0;
       setTotalCorrect(0);
       for (let i = 1; i < questionsArray.length + 1; i += 1) {
@@ -45,9 +46,19 @@ export default function QuizPage() {
         }
       }
       setTotalCorrect(correctCount);
+      setBackup(answersArray);
       setAnswers([]);
       setButton('TRY AGAIN');
       setSubmit(true);
+    } if (buttonText === 'TRY AGAIN') {
+      setButton('SUBMIT QUIZ');
+      setSelected(0);
+      setSubmittedAnswers({});
+      setAnswers(backup);
+      setIndex(0);
+      const question = questionsArray[questionIndex].text;
+      setCurrent(question);
+      setSubmit(false);
     }
   };
   const selectAnswer = (e) => {
