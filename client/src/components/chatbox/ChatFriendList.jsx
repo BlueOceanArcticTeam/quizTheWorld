@@ -12,7 +12,9 @@ const ChatFriendList = () => {
     <div className="chatFriendListContainer">
       <h4 className="chatFriendListTitle">My Friends</h4>
       <div className="chatFriendList">
-        {friends.map((friend) => { return <ChatFriend friend={friend} key={friend.id} />; })}
+        <div className="chatFriendTile">
+          {friends.map((friend) => { return <ChatFriend friend={friend} key={friend.id} />; })}
+        </div>
       </div>
     </div>
   );

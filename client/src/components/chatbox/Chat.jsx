@@ -8,6 +8,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import SendIcon from '@mui/icons-material/Send';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
 import { AppContext } from '../../App.jsx';
@@ -110,16 +111,14 @@ const Chat = () => {
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} chat={chat} setChat={setChat}/>;
         })}
       </div>
-      <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
+      <div className="messageInputContainer" role="button" tabIndex="0" onKeyDown={handleKeyDown}>
         <input
           type="text"
           name="name"
           value={message}
           onChange={(e) => { setMessage(e.target.value); }}
         />
-        <button type="submit" className="sendMessageButton" onClick={handleMessageSubmit}>
-          Send
-        </button>
+        <SendIcon className="sendMessageButton" onClick={handleMessageSubmit} />
       </div>
     </div>
   );
