@@ -1,38 +1,60 @@
 import React from 'react';
 import './homepage.css';
+import { Link } from 'react-router-dom';
 import { getTypographyUtilityClass } from '@mui/material';
-import AnimalsLogo from './Assets/AnimalsLogo.png';
-import FilmLogo from './Assets/FilmLogo.png';
-import GenKnowl from './Assets/GenKnowl.png';
-import Geography from './Assets/Geography.png';
-import Mythology from './Assets/Mythology.png';
-import SNLogo from './Assets/SNLogo.png';
+import AnimalSm from './Assets/AnimalSm.png';
+import AnimalMd from './Assets/AnimalMd.png';
+import AnimalLg from './Assets/AnimalLg.png';
+import GeoSm from './Assets/GeoSm.png';
+import GeoMd from './Assets/GeoMd.png';
+import GeoLg from './Assets/GeoLg.png';
+import GKSm from './Assets/GKSm.png';
+import GKMd from './Assets/GKMd.png';
+import GKLg from './Assets/GKLg.png';
+import MovieSm from './Assets/MovieSm.png';
+import MovieMd from './Assets/MovieMd.png';
+import MovieLg from './Assets/MovieLg.png';
+import MythSm from './Assets/MythSm.png';
+import MythMd from './Assets/MythMd.png';
+import MythLg from './Assets/MythLg.png';
+import SciSm from './Assets/SciSm.png';
+import SciMd from './Assets/SciMd.png';
+import SciLg from './Assets/SciLg.png';
 
-const TopQuizCard = function ({ title, category }) {
+const TopQuizCard = function ({ title, category, quizId }) {
+  const handleClick = function () {
+    localStorage.setItem('quizID', quizId);
+  };
   let bgStyle;
-  let fontColor;
   if (category === 'General Knowledge') {
-    bgStyle = GenKnowl;
-    fontColor = 'white';
+    bgStyle = GKLg;
   } else if (category === 'Animals') {
-    bgStyle = AnimalsLogo;
+    bgStyle = AnimalLg;
   } else if (category === 'Geography') {
-    bgStyle = Geography;
+    bgStyle = GeoLg;
   } else if (category === 'Entertainment: Film') {
-    bgStyle = FilmLogo;
+    bgStyle = MovieLg;
   } else if (category === 'Science & Nature') {
-    bgStyle = SNLogo;
+    bgStyle = SciLg;
   } else if (category === 'Mythology') {
-    bgStyle = Mythology;
+    bgStyle = MythLg;
   }
   return (
     <div
       className="quizCardBox"
+      onClick={handleClick}
       style={{
-        backgroundImage: `url(${bgStyle})`, backgroundSize: 'cover', color: 'orange', fontWeight: 'bold',
+        backgroundImage: `url(${bgStyle})`, backgroundSize: 'cover', fontWeight: 'bold', border: '1px solid purple',
       }}
     >
-      <h4 style={{ fontWeight: 'bold' }}>{title}</h4>
+      <Link
+        style={{
+          textDecoration: 'none', color: '#FFDAD1',
+        }}
+        to="/quizzes/quiz"
+      >
+        <h4 style={{ fontWeight: 'bold', color: '#FFDAD1' }}>{title}</h4>
+      </Link>
     </div>
   );
 };
