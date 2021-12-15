@@ -7,20 +7,15 @@
 
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import Router from 'react-router';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
 import AppContext from '../../context.js';
 import './Quizzes.css';
-import {
-  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
-} from 'react-router-dom';
-import regeneratorRuntime from 'regenerator-runtime';
 
 export default function QuizPage() {
   // set state variables below:
-  const [quiz_id, setQuizID] = useState(1);
-  let userID = useContext(AppContext);
+  const [quiz_id, setQuizID] = useState();
+  const userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
@@ -35,7 +30,6 @@ export default function QuizPage() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
-
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
@@ -81,7 +75,6 @@ export default function QuizPage() {
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    console.log('quiz id ', quiz_id);
     if (toggle) {
       setToggle(false);
       axios.get(`/api/quiz/${quiz_id}`)
@@ -150,12 +143,6 @@ export default function QuizPage() {
   useEffect(() => {
     if (submit) {
       // These if statements are placeholders
-      if (!userID) {
-        userID = 1;
-      }
-      if (!quiz_id) {
-        quiz_id = 1;
-      }
       const date = new Date();
       let done = false;
       if (Object.keys(submittedAnswers).length === Object.keys(correctAnswers).length) {
@@ -209,7 +196,7 @@ export default function QuizPage() {
       {/* This div hold the question and the chat */}
       <div style={{
         background: '#D6C0E5',
-        width: '85em',
+        width: '65em',
         height: '47em',
         position: 'absolute',
         marginTop: '5em',
@@ -328,7 +315,7 @@ export default function QuizPage() {
         </div>
 
         {/* This is the Chat container  */}
-        <div style={{
+        {/* <div style={{
           display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
         }}
         >
@@ -339,7 +326,7 @@ export default function QuizPage() {
           >
             Goodbye
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

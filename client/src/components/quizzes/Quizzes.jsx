@@ -1,44 +1,50 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable camelcase */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-cycle */
 
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Router from 'react-router';
-import {
-  Routes, Switch, Route, Link, useLocation, Redirect, useParams, useNavigate,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   FormControl, InputLabel, Select, MenuItem, MenuIcon,
 } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import AppContext from '../../context.js';
 import QuizBackground from './assets/Question.png';
 import './Quizzes.css';
+import { orange } from '@mui/material/colors';
 
 export default function Quizzes() {
   // set state variables below:
   const fakeData = ['https://images.unsplash.com/photo-1539628399213-d6aa89c93074?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1595429035839-c99c298ffdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
     'https://images.unsplash.com/photo-1627856014754-2907e2355d34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80'];
+  const moarData = ['https://www.dictionary.com/e/wp-content/uploads/2020/01/WisdomvsKnowledge_1000x700_jpg_OHVUvmTo.jpg', 'https://i0.wp.com/www.edulastic.com/blog/wp-content/uploads/2017/04/Brain_neurons_3720x2631.jpeg?resize=550%2C389&ssl=1', 'https://www.stockvault.net/data/2019/08/28/268988/preview16.jpg'];
   const [difficultyQuizzes, setDQuizzes] = useState([]);
   const [difficulty, setDifficulty] = useState('easy');
+  const [categoryQuizzes, setCQuizzes] = useState([]);
+  const [category, setCategory] = useState('Animals');
   const [toggle, setToggle] = useState(true);
+  const [trigger, setTrigger] = useState(true);
 
-  // The idea here is that when you click on a quiz from the homepage it will pass the ID down
-  // to this component and that can be used to populate the quiz questions and answers
-  // component functions - event handlers
   const pageLink = (e) => {
-    console.log('checking id ', e.target.id);
     localStorage.setItem('quizID', e.target.id);
   };
-
+  const cSelector = (e) => {
+    setCategory(e.target.value);
+    setTrigger(true);
+  };
+  const dSelector = (e) => {
+    setDifficulty(e.target.value);
+    setToggle(true);
+  };
   // use Effect:
   useEffect(() => {
     if (toggle) {
       setToggle(false);
-      axios.get(`/api/quizzes/${difficulty}`)
+      axios.get(`/api/quizzes/d/${difficulty}`)
         .then((res) => {
           const { data } = res;
           for (let i = 0; i < data.length; i += 1) {
@@ -47,7 +53,21 @@ export default function Quizzes() {
           setDQuizzes(data);
         });
     }
-  });
+  }, [difficulty]);
+  useEffect(() => {
+    if (trigger) {
+      setTrigger(false);
+      axios.get(`/api/quizzes/c/${category}`)
+        .then((res) => {
+          const { data } = res;
+          for (let i = 0; i < data.length; i += 1) {
+            data[i].url = moarData[i];
+          }
+          setCQuizzes(data);
+        });
+    }
+  }, [category]);
+
   // render component:
   return (
     <div style={{
@@ -105,6 +125,7 @@ export default function Quizzes() {
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
+              onChange={cSelector}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -112,14 +133,20 @@ export default function Quizzes() {
             // value={age}
               label="Category"
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="General Knowledge">General Knowledge</MenuItem>
+              <MenuItem value="Animals">Animals</MenuItem>
+              <MenuItem value="Geography">Geography</MenuItem>
+              <MenuItem value="Entertainment: Music">Entertainment: Music</MenuItem>
+              <MenuItem value="Entertainment: Film">Entertainment: Film</MenuItem>
+              <MenuItem value="Science & Nature">Science & Nature</MenuItem>
+              <MenuItem value="Mythology">Mythology</MenuItem>
+              <MenuItem value="Entertainment: Books">Entertainment: Books</MenuItem>
             </Select>
           </FormControl>
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
+              onChange={dSelector}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -140,18 +167,29 @@ export default function Quizzes() {
         >
           {/* First Row Images Mapped Here:  */}
           {
-            fakeData.map((image) => (
-              <img
-                className="coverImages"
-                src={image}
-                alt="quizImages"
-                style={{
-                  width: '200px',
-                  height: '200px',
-                  objectFit: 'cover',
-                  borderRadius: '15px',
+            categoryQuizzes.map((ele) => (
+              <div>
+                <h2>{ele.title}</h2>
+                <Link to={{
+                  pathname: '/quizzes/quiz/',
                 }}
-              />
+                >
+                  <img
+                    onClick={pageLink}
+                    key={ele.id}
+                    id={ele.id}
+                    className="coverImages"
+                    src={ele.url}
+                    alt="quizImages"
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      objectFit: 'cover',
+                      borderRadius: '15px',
+                    }}
+                  />
+                </Link>
+              </div>
             ))
           }
         </div>
@@ -164,25 +202,28 @@ export default function Quizzes() {
           {/* Second Row of Images Here: */}
           {
             difficultyQuizzes.map((ele) => (
-              <Link to={{
-                pathname: '/quizzes/quiz/',
-              }}
-              >
-                <img
-                  onClick={pageLink}
-                  key={ele.id}
-                  id={ele.id}
-                  className="coverImages"
-                  src={ele.url}
-                  alt="quizImages"
-                  style={{
-                    width: '200px',
-                    height: '200px',
-                    objectFit: 'cover',
-                    borderRadius: '15px',
-                  }}
-                />
-              </Link>
+              <div>
+                <h2>{ele.title}</h2>
+                <Link to={{
+                  pathname: '/quizzes/quiz/',
+                }}
+                >
+                  <img
+                    onClick={pageLink}
+                    key={ele.id}
+                    id={ele.id}
+                    className="coverImages"
+                    src={ele.url}
+                    alt="quizImages"
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      objectFit: 'cover',
+                      borderRadius: '15px',
+                    }}
+                  />
+                </Link>
+              </div>
             ))
           }
         </div>
