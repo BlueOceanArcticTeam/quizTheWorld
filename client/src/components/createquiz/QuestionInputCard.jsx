@@ -28,7 +28,6 @@ export default function QuestionInputCard({
       duration: 1.75,
     });
     // Update the document title using the browser API
-    console.log(stepCount);
   }, [stepCount]);
 
   function updateQuestionType(e) {
@@ -90,7 +89,7 @@ export default function QuestionInputCard({
           >
             <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="100" rows="10" maxLength="200" style={{ fontSize: '15px', borderRadius: '15px' }} />
             <Button
-              onClick={() => { console.log('works'); setStepCount(stepCount + multipleChoiceOrTrueFalse); }}
+              onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); }}
               variant="contained"
               sx={{
                 position: 'absolute',
@@ -106,7 +105,7 @@ export default function QuestionInputCard({
               Next
             </Button>
             <Button
-              onClick={() => { console.log('works'); setStepCount(stepCount - 1); }}
+              onClick={() => { setStepCount(stepCount - 1); }}
               variant="contained"
               sx={{
                 position: 'absolute',

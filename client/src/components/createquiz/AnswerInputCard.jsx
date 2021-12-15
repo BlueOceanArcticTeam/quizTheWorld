@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
@@ -62,11 +63,41 @@ export default function AnswerInputCard({
   }
 
   function storeAnswersForSubmitting() {
+    const answersArr = [];
+    let correct;
+    const answerA = {
+      question_id: null,
+      correct: false,
+      text: answers.A,
+    };
+    const answerB = {
+      question_id: null,
+      correct: false,
+      text: answers.B,
+    };
+    const answerC = {
+      question_id: null,
+      correct: false,
+      text: answers.C,
+    };
+    const answerD = {
+      question_id: null,
+      correct: false,
+      text: answers.D,
+    };
+    answersArr.push(answerA, answerB, answerC, answerD);
     for (const key in answers) {
       if (key === answers.correct) {
-        console.log('yep you smartie!', key);
+        correct = answers[key];
       }
     }
+    answersArr.map((item) => {
+      if (item.text === correct) {
+        item.correct = true;
+      }
+      return item;
+    });
+    console.log(answersArr);
   }
 
   return (

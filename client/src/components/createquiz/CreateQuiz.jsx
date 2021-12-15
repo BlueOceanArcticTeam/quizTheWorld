@@ -34,7 +34,7 @@ export default function CreateQuiz() {
   });
   const [answers, setAnswers] = useState({
     question_id: null, // unique hashing function
-    correct: false,
+    correct: null,
     A: '',
     B: '',
     C: '',
