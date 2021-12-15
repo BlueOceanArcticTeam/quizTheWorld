@@ -1,17 +1,41 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
-import React, { useState, useContext, useEffect } from 'react';
+import React, {
+  useState, useContext, useEffect, useRef,
+} from 'react';
 import QuestionImage from './assets/Question.png';
+import gsap, { Power3, Power2 } from 'gsap';
 import './CreateQuiz.css';
 import {
   Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
 } from '@mui/material';
 
-export default function AnswerInputCard({ stepCount, setStepCount }) {
+export default function AnswerInputCard({
+  stepCount, setStepCount, answers, setAnswers,
+}) {
+  const boxRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to(boxRef.current, {
+      ease: Power2.out,
+      opacity: 1,
+      duration: 1.75,
+    });
+    // Update the document title using the browser API
+  }, [stepCount]);
+
+  function updateCorrectAnswer(e) {
+    setAnswers({
+      ...answers,
+      correct: e.target.value,
+    });
+  }
+
   return (
 
-    <div id="cardContainer">
+    <div id="cardContainer" ref={boxRef} style={{ opacity: '0' }}>
       <div
         id="card"
         style={{
@@ -36,7 +60,8 @@ export default function AnswerInputCard({ stepCount, setStepCount }) {
           <FormControl variant="filled" sx={{ width: '12em' }}>
             <InputLabel id="demo-simple-select-label">Correct Answer</InputLabel>
             <Select
-              onChange={(e) => console.log(e.target.value)}
+              defaultValue=""
+              onChange={(e) => updateCorrectAnswer(e)}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
