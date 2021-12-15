@@ -174,8 +174,8 @@ export default function QuizPage() {
   // render component:
   return (
     <div style={{
-      width: '100vw',
-      height: '100vh',
+      width: '90%',
+      height: '90%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -188,9 +188,10 @@ export default function QuizPage() {
         alt=""
         style={{
           zIndex: '-100',
-          width: '100vw',
-          height: '100vh',
+          width: '99%',
+          height: '99%',
           position: 'relative',
+          marginLeft: '6em',
         }}
       />
       {/* This div hold the question and the chat */}
@@ -199,11 +200,11 @@ export default function QuizPage() {
         width: '65em',
         height: '47em',
         position: 'absolute',
-        marginTop: '5em',
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
         borderRadius: '15px',
+        marginLeft: '5em',
       }}
       >
         {/* This is the question container */}
