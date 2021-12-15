@@ -4,6 +4,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Link,
   BrowserRouter as Router,
@@ -31,8 +32,7 @@ export default function NavBar() {
       justifyContent: 'center',
       alignItems: 'stretch',
       height: '10vh',
-
-      zIndex: '100',
+      zIndex: '300',
       width: '90vw',
 
     }}
@@ -70,15 +70,19 @@ export default function NavBar() {
         >
           Quizzes
         </Link>
-        <Link
+        {/* <Link
           style={{
             color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
           }}
           to="/chat"
         >
           Chat
+<<<<<<< HEAD
+        </Link> */}
+=======
         </Link>
         {/* {console.log(user)} */}
+>>>>>>> 580dc42acaec46799b3784550a95af7233a14b1e
         { user
           ? (
             <Link
@@ -101,6 +105,9 @@ export default function NavBar() {
               My Account
             </Link>
           ) }
+        {/* HERE IS THE SEARCH BAR */}
+        <input type="text" placeholder="Search for quizzes or people.." style={{ borderRadius: '20px', marginRight: '10px' }} />
+        <SearchIcon style={{ color: 'white' }} className={'search'} />
         {/* {user ? console.log(user.username) : console.log('not logged in')} */}
         {
         user

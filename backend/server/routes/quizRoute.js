@@ -13,7 +13,6 @@ quiz.route('/:quiz_id').get((req, res) => {
 });
 
 quiz.route('/').post((req, res) => {
-  console.log(req.body);
   const {
     user_id, quizID, numCorrect, totalQuestions, lastAnswered, completed, dateCompleted,
   } = req.body;

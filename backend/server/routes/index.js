@@ -11,7 +11,6 @@ const authRouter = require('./authRoutes.js');
 
 const quizzes = require('./quizzes.js');
 
-
 module.exports = {
   template,
   profile,
