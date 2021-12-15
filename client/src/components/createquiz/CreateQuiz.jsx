@@ -49,8 +49,8 @@ export default function CreateQuiz() {
 
   // use Effect:
   useEffect(() => {
-    console.log('happening', quiz);
-  }, [quiz]);
+    console.log(answers);
+  }, [answers]);
 
   // render component:
   return (
@@ -70,10 +70,10 @@ export default function CreateQuiz() {
           : ''
       }
       { stepCount === 2
-        ? <QuestionInputCard setStepCount={setStepCount} stepCount={stepCount} />
+        ? <QuestionInputCard setStepCount={setStepCount} stepCount={stepCount} setQuestion={setQuestion} question={question} />
         : ''}
       { stepCount === 3
-        ? <AnswerInputCard setStepCount={setStepCount} stepCount={stepCount} />
+        ? <AnswerInputCard setStepCount={setStepCount} stepCount={stepCount} answers={answers} setAnswers={setAnswers} />
         : ''}
       { stepCount === 4
         ? <TrueFalseSelectCard setStepCount={setStepCount} stepCount={stepCount} />

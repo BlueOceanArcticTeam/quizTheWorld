@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
@@ -11,7 +12,9 @@ import {
   Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
 } from '@mui/material';
 
-export default function AnswerInputCard({ stepCount, setStepCount }) {
+export default function AnswerInputCard({
+  stepCount, setStepCount, answers, setAnswers,
+}) {
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +25,13 @@ export default function AnswerInputCard({ stepCount, setStepCount }) {
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function updateCorrectAnswer(e) {
+    setAnswers({
+      ...answers,
+      correct: e.target.value,
+    });
+  }
 
   return (
 
@@ -51,7 +61,7 @@ export default function AnswerInputCard({ stepCount, setStepCount }) {
             <InputLabel id="demo-simple-select-label">Correct Answer</InputLabel>
             <Select
               defaultValue=""
-              onChange={(e) => console.log(e.target.value)}
+              onChange={(e) => updateCorrectAnswer(e)}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}

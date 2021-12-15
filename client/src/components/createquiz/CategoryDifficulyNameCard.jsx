@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
@@ -6,6 +8,7 @@ import React, {
   useState, useContext, useEffect, useRef,
 } from 'react';
 import gsap, { Power3, Power2 } from 'gsap';
+import { AppContext } from '../../App.jsx';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
 import {
@@ -20,6 +23,7 @@ import {
 export default function CategoryDifficultyNameCard({
   stepCount, setStepCount, quiz, setQuiz,
 }) {
+  const { user } = useContext(AppContext);
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -34,6 +38,7 @@ export default function CategoryDifficultyNameCard({
   function updateQuizCat(e) {
     setQuiz({
       ...quiz,
+      source: user.id,
       category: e.target.value,
     });
   }

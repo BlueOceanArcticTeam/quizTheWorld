@@ -15,7 +15,6 @@ import Button from '@mui/material/Button';
 // import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Login from '../login/Login.jsx';
-import ChatBox from '../chatbox/ChatBox.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
 import { AppContext } from '../../App.jsx';
 
@@ -78,7 +77,12 @@ export default function NavBar() {
           to="/chat"
         >
           Chat
+<<<<<<< HEAD
         </Link> */}
+=======
+        </Link>
+        {/* {console.log(user)} */}
+>>>>>>> 580dc42acaec46799b3784550a95af7233a14b1e
         { user
           ? (
             <Link

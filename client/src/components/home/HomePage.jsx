@@ -66,7 +66,7 @@ export default function HomePage() {
                   display: 'flex', alignItems: 'stretch', margin: '2.5%', width: '95%', justifyContent: 'center',
                 }}
               >
-                {data ? data.map((item) => <TopQuizCard title={item.title} category={item.category} />) : null}
+                {data ? data.map((item) => <TopQuizCard title={item.title} category={item.category} key={item.title}/>) : null}
                 {/* <TopQuizCard />
                 <TopQuizCard />
                 <TopQuizCard />
