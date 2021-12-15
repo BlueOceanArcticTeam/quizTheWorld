@@ -126,6 +126,7 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route index element={<HomePage />} />
             <Route path={`/profile/${userID}`} element={<ProfilePage />} />
+            <Route path={`/profile/:${userID}`} element={<ProfilePage />} />
             <Route path="/:user_id" element={<HomePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
