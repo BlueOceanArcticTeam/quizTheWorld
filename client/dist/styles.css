@@ -10,6 +10,25 @@
 }
 
 .chatButton {
+  position: absolute;
+  bottom: 5em;
+  right: 0em;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
   cursor: pointer;
+  color: #ff9100;
+  z-index: 100;
 }
 
+.chatIcon {
+  height: 50px;
+  width: 50px;
+  z-index: 200;
+}
+
+.chatButtonSource {
+  position: absolute;
+  bottom: 1em;
+  right: 6em;
+}

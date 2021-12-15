@@ -14,12 +14,12 @@ import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
-  let quiz_id = useContext(AppContext);
-  let userID = useContext(AppContext);
+  const [quiz_id, setQuizID] = useState();
+  const userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
-  const [toggle, setToggle] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
   const [currentQuestion, setCurrent] = useState();
   const [last, setLast] = useState(0);
@@ -30,7 +30,6 @@ export default function QuizPage() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
-
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
@@ -76,16 +75,9 @@ export default function QuizPage() {
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    if (questionsArray) {
-      const obj = {};
-      for (let i = 0; i < questionsArray.length; i += 1) {
-        obj[i] = 5;
-      }
-      setCorrectAnswers(obj);
-    }
     if (toggle) {
       setToggle(false);
-      axios.get(`/api/quiz/${quiz_id || 1}`)
+      axios.get(`/api/quiz/${quiz_id}`)
         .then((res) => {
           const { data } = res;
           const quiz = {
@@ -151,12 +143,6 @@ export default function QuizPage() {
   useEffect(() => {
     if (submit) {
       // These if statements are placeholders
-      if (!userID) {
-        userID = 1;
-      }
-      if (!quiz_id) {
-        quiz_id = 1;
-      }
       const date = new Date();
       let done = false;
       if (Object.keys(submittedAnswers).length === Object.keys(correctAnswers).length) {
@@ -178,6 +164,12 @@ export default function QuizPage() {
         });
     }
   }, [submit]);
+
+  useEffect(() => {
+    const data = localStorage.getItem('quizID');
+    setQuizID(Number(data));
+    setToggle(true);
+  });
 
   // render component:
   return (
@@ -204,7 +196,7 @@ export default function QuizPage() {
       {/* This div hold the question and the chat */}
       <div style={{
         background: '#D6C0E5',
-        width: '85em',
+        width: '65em',
         height: '47em',
         position: 'absolute',
         marginTop: '5em',
@@ -323,7 +315,7 @@ export default function QuizPage() {
         </div>
 
         {/* This is the Chat container  */}
-        <div style={{
+        {/* <div style={{
           display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
         }}
         >
@@ -334,7 +326,7 @@ export default function QuizPage() {
           >
             Goodbye
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
