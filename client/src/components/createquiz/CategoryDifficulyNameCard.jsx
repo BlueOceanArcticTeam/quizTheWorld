@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
@@ -16,7 +17,9 @@ import {
   Route,
 } from 'react-router-dom';
 
-export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) {
+export default function CategoryDifficultyNameCard({
+  stepCount, setStepCount, quiz, setQuiz,
+}) {
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -27,6 +30,27 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function updateQuizCat(e) {
+    setQuiz({
+      ...quiz,
+      category: e.target.value,
+    });
+  }
+
+  function updateQuizDif(e) {
+    setQuiz({
+      ...quiz,
+      difficulty: e.target.value,
+    });
+  }
+
+  function updateQuizName(e) {
+    setQuiz({
+      ...quiz,
+      title: e.target.value,
+    });
+  }
 
   return (
 
@@ -53,6 +77,7 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
           <FormControl variant="filled" sx={{ width: '12em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
+              onChange={updateQuizCat}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -73,6 +98,7 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
+              onChange={updateQuizDif}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -86,6 +112,7 @@ export default function CategoryDifficultyNameCard({ stepCount, setStepCount }) 
             </Select>
           </FormControl>
           <input
+            onChange={updateQuizName}
             type="text"
             className="input"
             style={{

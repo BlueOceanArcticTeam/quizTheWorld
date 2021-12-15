@@ -8,6 +8,7 @@ import React, {
   useState, useContext, useEffect, useRef,
 } from 'react';
 import gsap, { Power3 } from 'gsap';
+import { AppContext } from '../../App.jsx';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
 import CategoryDifficultyNameCard from './CategoryDifficulyNameCard.jsx';
@@ -17,26 +18,39 @@ import TrueFalseSelectCard from './TrueFalseSelectCard.jsx';
 import AddAnotherQuestion from './AddAnotherQuestion.jsx';
 
 export default function CreateQuiz() {
+  const { user } = useContext(AppContext);
   // set state variables below:
   const [inputQuestion, setInputQuestion] = useState(false);
   const [goBackToSelectCategoryDifficultyNameCard, setGoBackToSelectCategoryDifficultyNameCard] = useState(false);
   const [stepCount, setStepCount] = useState(1);
   const moveElement = useRef(null);
-  // const tween = gsap.to('.cardContainer', {
-  //   duration: 4,
-  //   x: 750,
-  //   rotation: 360,
-  //   ease: 'none',
-  //   paused: true,
-  // });
+  const [quiz, setQuiz] = useState({
+    category: '',
+    difficulty: '',
+    title: '',
+    source: null, // This is the user_id
+    dateCreated: new Date(),
+    numSubmissions: 0,
+  });
+  const [answers, setAnswers] = useState({
+    question_id: null, // unique hashing function
+    correct: false,
+    text: '',
+  });
+  const [question, setQuestion] = useState({
+    user_id: null,
+    quiz_id: null,
+    text: '',
+    questionType: '',
+  });
+  const [questionGroup, setQuestionGroup] = useState([]);
+  const [answerGroup, setAnswerGroup] = useState([]);
   // component functions - event handlers
 
   // use Effect:
-  // useEffect(() => {
-  //   tween.play();
-  //   // Update the document title using the browser API
-  //   console.log('happening', moveElement);
-  // });
+  useEffect(() => {
+    console.log('happening', quiz);
+  }, [quiz]);
 
   // render component:
   return (
@@ -52,7 +66,7 @@ export default function CreateQuiz() {
       {/* If next hasnt been clicked on first modal, display the first modal. When next is clicked, it shows the second modal, input question. */}
       {
         stepCount === 1
-          ? <CategoryDifficultyNameCard setStepCount={setStepCount} stepCount={stepCount} />
+          ? <CategoryDifficultyNameCard setStepCount={setStepCount} stepCount={stepCount} setQuiz={setQuiz} quiz={quiz} />
           : ''
       }
       { stepCount === 2
@@ -67,7 +81,11 @@ export default function CreateQuiz() {
       { stepCount === 5
         ? <AddAnotherQuestion setStepCount={setStepCount} stepCount={stepCount} />
         : ''}
-
+      {
+        user
+          ? <div>{question.user_id}</div>
+          : ''
+      }
     </div>
   );
 }

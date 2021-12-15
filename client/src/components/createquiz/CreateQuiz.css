@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    z-index: 100;
+    z-index: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,6 +33,6 @@ span {
     margin: 0.5em;
 }
 
-.cardContainer {
-    
+.search:hover {
+    color: orange;
 }
