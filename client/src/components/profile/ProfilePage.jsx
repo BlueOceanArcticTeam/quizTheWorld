@@ -3,29 +3,64 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
+import { autocompleteClasses } from '@mui/material';
+import { CategoryScale } from 'chart.js';
 import NewCard from './NewCard.jsx';
 import RenderFriend from './RenderFriend.jsx';
 import './profilepage.css';
 import placehold from '../home/Assets/placehold.png';
-import { autocompleteClasses } from '@mui/material';
 import { AppContext } from '../../App.jsx';
+import UserChart from './UserChart.jsx';
 
 export default function ProfilePage() {
   const { user, friends, userID } = useContext(AppContext);
 
   const [userMetaData, setUserMetaData] = useState({});
   const [lastQuiz, setLastQuiz] = useState();
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: 'Score',
+        data: [],
+        backgroundColor: [
+          '#ffbb11',
+          '#ecf0f1',
+          '#50AF95',
+          '#f3ba2f',
+          '#2a71d0',
+        ],
+      },
+    ],
+  });
 
   function fetchUserMetaData() {
     axios
       .get(`/api/profile/${userID}/meta`)
       .then((data) => {
         setUserMetaData(data.data);
-        setLastQuiz(data.data.data[0].title);
+        setLastQuiz(data.data.data[data.data.data.length - 1].title);
+        setChartData({
+          labels: data.data.data.map((quiz) => quiz.title),
+          datasets: [
+            {
+              label: 'Score',
+              data: data.data.data.map((quiz) => quiz.score),
+              backgroundColor: [
+                '#ffbb11',
+                '#ecf0f1',
+                '#50AF95',
+                '#f3ba2f',
+                '#2a71d0',
+              ],
+            },
+          ],
+        });
       });
   }
 
@@ -35,7 +70,6 @@ export default function ProfilePage() {
     fetchUserMetaData();
   }, []);
 
-  console.log(friends);
   return (
     <div className="mainProfileContainer">
       <div className="infoContainer">
@@ -80,18 +114,18 @@ export default function ProfilePage() {
             {NewCard('Quizzes Taken', `${userMetaData.count}`)}
           </div>
           <div>
-            {NewCard('Average', `${userMetaData.average}%`)}
+            {NewCard('Average', `${userMetaData.average || '-'}%`)}
           </div>
           <div>
-            {NewCard('Last Quiz Taken', `${lastQuiz}`)}
+            {NewCard('Last Quiz Taken', `${lastQuiz || ''}`)}
           </div>
         </div>
         <div className="infoChart">
           <div style={{ fontWeight: 'bold' }}>
-            Average Score Over Career
+            Quiz Scores
           </div>
-          <div>
-            chart goes here
+          <div id="userchartcontainer">
+            <UserChart data={chartData} />
           </div>
         </div>
       </div>
@@ -99,11 +133,7 @@ export default function ProfilePage() {
         <div style={{ fontWeight: 'bold' }}>
           Friends
         </div>
-        {friends.map((friend, index) => (
-          <div key={index}>
-            {RenderFriend(friend)}
-          </div>
-        ))}
+        {friends.map((friend, index) => RenderFriend(friend, index))}
       </div>
     </div>
   );

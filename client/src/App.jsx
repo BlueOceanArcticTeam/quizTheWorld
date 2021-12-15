@@ -135,19 +135,18 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
-            {/* <Route path="/profile" element={<PrivateRoute />}> // KEEP */}
+            <Route path="/profile" element={<PrivateRoute />}> // KEEP
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            {/* </Route>  //KEEP */}
-            {/* <Route path="/:user_id" element={<HomePage />} /> // not sure we need */}
+            <Route path={`/profile/:${userID}`} element={<ProfilePage />} />
+            </Route>  //KEEP 
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
-            {/* <Route path="/quizzes" element={<PrivateRoute />}> //KEEP */}
+            <Route path="/quizzes" element={<PrivateRoute />}> //KEEP
             <Route path="/quizzes/create" element={<CreateQuiz />} />
-            {/* </Route> //KEEP */}
-            {/* <Route path="/chat" element={<PrivateRoute />}> //KEEP */}
-            {/* </Route> //KEEP */}
+            </Route> //KEEP 
+            <Route path="/chat" element={<PrivateRoute />}> //KEEP
+            </Route> //KEEP
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
