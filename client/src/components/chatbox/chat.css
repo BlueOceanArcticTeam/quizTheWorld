@@ -9,7 +9,7 @@
   border-radius: 10px;
   bottom: 15em;
   right: 2em;
-  z-index: 200;
+  z-index: 100;
   background-image: linear-gradient(#5A1791, #3F195F);
   border: solid 2px black;
 }
@@ -125,8 +125,8 @@ button {
   color: white;
 }
 
-.chatButton {
-  transform: scale(3);
-  z-index: 300;
-  right: 10em;
+.chatIcon {
+  transform: scale(1);
+  color: black;
+  z-index: 500;
 }

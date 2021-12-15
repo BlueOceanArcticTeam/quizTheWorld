@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 // import e from 'cors';
+import ChatIcon from '@mui/icons-material/Chat';
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
 import HomePage from './components/home/HomePage.jsx';
@@ -24,7 +25,6 @@ import NavBar from './components/helperComponents/NavBar.jsx';
 import Chat from './components/chatbox/Chat.jsx';
 import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
-import ChatIcon from '@mui/icons-material/Chat';
 import '../dist/styles.css';
 import './components/chatbox/chat.css';
 
@@ -155,7 +155,9 @@ export const App = function () {
         {displayModal
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}
-        <ChatIcon className="chatButton" onClick={() => { setDisplayModal(!displayModal); }} />
+        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+          <ChatIcon classname="chatIcon" />
+        </button>
       </AppContext.Provider>
     </div>
   );
