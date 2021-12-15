@@ -9,15 +9,15 @@ const db = require('../../database/db.js');
 messageRoute.route('/').get((req, res) => {
   const { senderID, recipientID } = req.query;
   db.query(
-    'SELECT * FROM messages WHERE (sender_user_id=$1 AND recipient_user_id=$2) OR (sender_user_id=$2 OR recipient_user_id=$1)',
+    'SELECT * FROM messages WHERE (sender_user_id=$1 AND recipient_user_id=$2) OR (sender_user_id=$2 AND recipient_user_id=$1)',
     [senderID, recipientID])
     .then((data) => { res.send(data.rows); })
     .catch((err) => { console.log(err); });
 });
 
 messageRoute.route('/:user_id').get((req, res) => {
-  db.query(`SELECT username FROM users WHERE id=${req.params.user_id}`)
-    .then((data) => { res.send(data.rows[0].username); })
+  db.query(`SELECT firstname, lastname FROM users WHERE id=${req.params.user_id}`)
+    .then((data) => { res.send(data.rows[0]); })
     .catch((err) => { console.log(err); });
 });
 

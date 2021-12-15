@@ -8,6 +8,7 @@
 /* eslint-disable react/function-component-definition */
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import SendIcon from '@mui/icons-material/Send';
 import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
 import { AppContext } from '../../App.jsx';
@@ -23,7 +24,8 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
   const [senderID, setSenderID] = useState(userID);
-  const [recipientUsername, setRecipientUsername] = useState('');
+  const [recipientFirstName, setRecipientFirstName] = useState('');
+  const [recipientLastName, setRecipientLastName] = useState('');
 
   useEffect(() => {
     if (room) { initiateSocket(room); }
@@ -69,42 +71,54 @@ const Chat = () => {
     setMessage('');
   };
 
-  const getRecipientUsername = (id) => {
+  const getRecipientName = (id) => {
     axios.get(`/api/messages/${id}`)
-      .then((results) => { setRecipientUsername(results.data); })
+      .then((results) => {
+        setRecipientFirstName(results.data.firstname);
+        setRecipientLastName(results.data.lastname);
+      })
       .catch((err) => { console.log(err); });
   };
 
   useEffect(() => {
     setSenderID(userID);
-    getRecipientUsername(recipientID);
+    getRecipientName(recipientID);
   }, [recipientID]);
 
-  useEffect(() => { getMessageHistory(); }, [message]);
+  useEffect(() => { getMessageHistory(); }, [chat, message]);
 
   return (
     <div className="chatBoxContainer">
-      <h4 className="chatTitle">{recipientUsername}</h4>
-      <button type="button" onClick={handleClickFriendsButton}>Friends</button>
-      <div className="chatFriendList">
+      <div className="chatTitleContainer">
+        <div className="chatTitle">
+          <div>
+            {recipientFirstName}
+          </div>
+          <div className="chatTitleSpace">
+            {' '}
+          </div>
+          <div>
+            {recipientLastName}
+          </div>
+        </div>
+      </div>
+      <div className="friendsButtonContainer">
+        <button type="button" className="friendsButton" onClick={handleClickFriendsButton}>Friends</button>
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
-          // TODO: render message to left/right for sender/receiver
           const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
-          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} />;
+          return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} chat={chat} setChat={setChat}/>;
         })}
       </div>
-      <div role="button" tabIndex="0" onKeyDown={handleKeyDown}>
+      <div className="messageInputContainer" role="button" tabIndex="0" onKeyDown={handleKeyDown}>
         <input
           type="text"
           name="name"
           value={message}
           onChange={(e) => { setMessage(e.target.value); }}
         />
-        <button type="submit" onClick={handleMessageSubmit}>
-          Send
-        </button>
+        <SendIcon className="sendMessageButton" onClick={handleMessageSubmit} />
       </div>
     </div>
   );

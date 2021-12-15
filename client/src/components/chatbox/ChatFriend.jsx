@@ -16,7 +16,7 @@ const ChatFriend = ({ friend }) => {
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', paddingTop: '2rem' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '2rem' }}>
       <img src={placehold} style={{ width: '3vw' }} />
       <span className="friendsListText">
         <div>
