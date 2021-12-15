@@ -220,11 +220,14 @@ export default function QuizPage() {
       >
         {/* This is the question container */}
         <div>
-          <div style={{
-            display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
-          }}
+          <div
+            style={{
+              display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
+            }}
+            className={submit ? 'hide' : ''}
           >
             <Button
+              className={submit ? 'hide' : ''}
               onClick={backHandler}
               variant="contained"
               sx={{
@@ -241,7 +244,10 @@ export default function QuizPage() {
               Previous
             </Button>
             {/* Span where the current question goes */}
-            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>
+            <span
+              style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}
+              className={submit ? 'hide' : ''}
+            >
               {questionIndex + 1}
               {' '}
               /
@@ -249,6 +255,7 @@ export default function QuizPage() {
               {last + 1}
             </span>
             <Button
+              className={submit ? 'hide' : ''}
               onClick={nextHandler}
               variant="contained"
               sx={{
