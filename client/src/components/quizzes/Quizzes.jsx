@@ -25,7 +25,7 @@ export default function Quizzes() {
   const [difficultyQuizzes, setDQuizzes] = useState([]);
   const [difficulty, setDifficulty] = useState('easy');
   const [categoryQuizzes, setCQuizzes] = useState([]);
-  const [category, setCategory] = useState('General Knowledge');
+  const [category, setCategory] = useState('Animals');
   const [toggle, setToggle] = useState(true);
   const [trigger, setTrigger] = useState(true);
 
@@ -143,7 +143,7 @@ export default function Quizzes() {
               <MenuItem value="Entertainment: Books">Entertainment: Books</MenuItem>
             </Select>
           </FormControl>
-          {/* <FormControl variant="filled" sx={{ width: '15em' }}>
+          <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
               onChange={dSelector}
@@ -158,7 +158,7 @@ export default function Quizzes() {
               <MenuItem value="medium">Medium</MenuItem>
               <MenuItem value="hard">Hard</MenuItem>
             </Select>
-          </FormControl> */}
+          </FormControl>
         </div>
         {/* First Image Row Container */}
         <div style={{
@@ -200,10 +200,10 @@ export default function Quizzes() {
         }}
         >
           {/* Second Row of Images Here: */}
-          {/* {
+          {
             difficultyQuizzes.map((ele) => (
               <div>
-                <h3>{ele.title}</h3>
+                <h2>{ele.title}</h2>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
                 }}
@@ -225,7 +225,7 @@ export default function Quizzes() {
                 </Link>
               </div>
             ))
-          } */}
+          }
         </div>
 
       </div>

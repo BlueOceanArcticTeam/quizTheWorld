@@ -14,7 +14,7 @@ import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
-  const [quiz_id, setQuizID] = useState(1);
+  const [quiz_id, setQuizID] = useState();
   const userID = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
@@ -196,7 +196,7 @@ export default function QuizPage() {
       {/* This div hold the question and the chat */}
       <div style={{
         background: '#D6C0E5',
-        width: '85em',
+        width: '65em',
         height: '47em',
         position: 'absolute',
         marginTop: '5em',
@@ -315,7 +315,7 @@ export default function QuizPage() {
         </div>
 
         {/* This is the Chat container  */}
-        <div style={{
+        {/* <div style={{
           display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
         }}
         >
@@ -326,7 +326,7 @@ export default function QuizPage() {
           >
             Goodbye
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
