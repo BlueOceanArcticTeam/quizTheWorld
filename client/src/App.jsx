@@ -3,7 +3,7 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 import React, {
-  useState, useEffect, useContext, createContext
+  useState, useEffect, useContext, useRef, createContext
 } from 'react';
 import axios from 'axios';
 import {
@@ -157,16 +157,16 @@ export const App = function () {
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
-        {displayModal
-          ? (displayChat ? <Chat /> : <ChatFriendList />)
-          : null}
-        {isLoggedIn
-          ? (
-              <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+        {/* <div className="chatButton" tabIndex={0} onBlur={() => { setDisplayModal(false); }}> */}
+          {displayModal
+            ? (displayChat ? <Chat /> : <ChatFriendList />)
+            : null}
+          {isLoggedIn
+            ? (<button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
                 <ChatIcon className="chatIcon" />
-              </button>
-            )
-          : null}
+              </button>)
+            : null}
+        {/* </div> */}
       </AppContext.Provider>
     </div>
   );

@@ -24,9 +24,6 @@ const Chat = () => {
   const [recipientFirstName, setRecipientFirstName] = useState('');
   const [recipientLastName, setRecipientLastName] = useState('');
 
-  // CHAT COMMENTS
-  // Make chatbox disappear after clicking outside of it
-
   // HELPER FUNCTIONS
   const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
 

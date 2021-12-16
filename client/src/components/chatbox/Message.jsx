@@ -21,7 +21,6 @@ const Message = ({ messageObj, messageClassName, chat, setChat }) => {
     <div
       className={`messageText ${messageClassName}`}
       onClick={() => { setDisplayDeleteButton(!displayDeleteButton); }}
-      // onMouseLeave={() => { setDisplayDeleteButton(false); }}
     >
       <div className="messageText">
         {messageObj.text}
