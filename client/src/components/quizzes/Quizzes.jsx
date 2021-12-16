@@ -171,14 +171,14 @@ export default function Quizzes() {
             // value={age}
               label="Category"
             >
-              <MenuItem value="General Knowledge">General Knowledge</MenuItem>
-              <MenuItem value="Animals">Animals</MenuItem>
-              <MenuItem value="Geography">Geography</MenuItem>
-              <MenuItem value="Entertainment: Music">Entertainment: Music</MenuItem>
-              <MenuItem value="Entertainment: Film">Entertainment: Film</MenuItem>
-              <MenuItem value="Science & Nature">Science & Nature</MenuItem>
-              <MenuItem value="Mythology">Mythology</MenuItem>
-              <MenuItem value="Entertainment: Books">Entertainment: Books</MenuItem>
+              <MenuItem key="a" value="General Knowledge">General Knowledge</MenuItem>
+              <MenuItem key="b" value="Animals">Animals</MenuItem>
+              <MenuItem key="c" value="Geography">Geography</MenuItem>
+              <MenuItem key="d" value="Entertainment: Music">Entertainment: Music</MenuItem>
+              <MenuItem key="e" value="Entertainment: Film">Entertainment: Film</MenuItem>
+              <MenuItem key="f" value="Science & Nature">Science & Nature</MenuItem>
+              <MenuItem key="g" value="Mythology">Mythology</MenuItem>
+              <MenuItem key="h" value="Entertainment: Books">Entertainment: Books</MenuItem>
             </Select>
           </FormControl>
           <FormControl variant="filled" sx={{ width: '15em' }}>
@@ -192,9 +192,9 @@ export default function Quizzes() {
             // value={age}
               label="Difficulty"
             >
-              <MenuItem value="easy">Easy</MenuItem>
-              <MenuItem value="medium">Medium</MenuItem>
-              <MenuItem value="hard">Hard</MenuItem>
+              <MenuItem key="aa" value="easy">Easy</MenuItem>
+              <MenuItem key-="ab" value="medium">Medium</MenuItem>
+              <MenuItem key="ac" value="hard">Hard</MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -214,7 +214,7 @@ export default function Quizzes() {
                 >
                   <img
                     onClick={pageLink}
-                    key={ele.id}
+                    key={Math.floor(Math.random() * 100)}
                     id={ele.id}
                     className="coverImages"
                     src={ele.url}
@@ -248,7 +248,7 @@ export default function Quizzes() {
                 >
                   <img
                     onClick={pageLink}
-                    key={ele.id}
+                    key={Math.floor(Math.random() * 100)}
                     id={ele.id}
                     className="coverImages"
                     src={ele.url}

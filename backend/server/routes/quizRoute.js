@@ -20,7 +20,6 @@ quiz.route('/').post((req, res) => {
 
   db.query('INSERT INTO userQuizStatus(quiz_id, user_id,completed, dateCompleted, lastAnswered, numCorrect, totalQuestions) VALUES ($1, $2, $3, $4, $5, $6, $7);', [quizID, user_id, completed, dateCompleted, lastAnswered, numCorrect, totalQuestions], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
     if (err) console.log(err);
-    if (!err) console.log('great success!');
   });
 });
 
