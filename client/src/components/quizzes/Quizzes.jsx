@@ -147,19 +147,22 @@ export default function Quizzes() {
       />
       {/* This div contains all of the image tiles */}
       <div style={{
+
         background: 'none',
         width: '70vw',
-        height: '42em',
+        height: '50em',
         position: 'absolute',
         marginTop: '5em',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        marginBottom: '5em',
+
       }}
       >
         {/* This is for the category and difficulty Selectors */}
-        <div style={{ display: 'flex', width: '28vw', justifyContent: 'space-between' }}>
+        <div>
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
@@ -181,22 +184,6 @@ export default function Quizzes() {
               <MenuItem key="h" value="Entertainment: Books">Entertainment: Books</MenuItem>
             </Select>
           </FormControl>
-          <FormControl variant="filled" sx={{ width: '15em' }}>
-            <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
-            <Select
-              onChange={dSelector}
-              defaultValue=""
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
-            // value={age}
-              label="Difficulty"
-            >
-              <MenuItem key="aa" value="easy">Easy</MenuItem>
-              <MenuItem key-="ab" value="medium">Medium</MenuItem>
-              <MenuItem key="ac" value="hard">Hard</MenuItem>
-            </Select>
-          </FormControl>
         </div>
         {/* First Image Row Container */}
         <div style={{
@@ -205,8 +192,8 @@ export default function Quizzes() {
         >
           {/* First Row Images Mapped Here:  */}
           {
-            categoryQuizzes.map((ele) => (
-              <div>
+            categoryQuizzes.map((ele, index) => (
+              <div key={index}>
                 <h2>{ele.title}</h2>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
@@ -214,7 +201,6 @@ export default function Quizzes() {
                 >
                   <img
                     onClick={pageLink}
-                    key={Math.floor(Math.random() * 100)}
                     id={ele.id}
                     className="coverImages"
                     src={ele.url}
@@ -233,14 +219,32 @@ export default function Quizzes() {
         </div>
         {/* Second Row Images Container */}
         {/* <div style={{ width: '70vw', border: '2px solid orange' }} /> */}
+        <div>
+          <FormControl variant="filled" sx={{ width: '15em' }}>
+            <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
+            <Select
+              onChange={dSelector}
+              defaultValue=""
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
+            // value={age}
+              label="Difficulty"
+            >
+              <MenuItem key="aa" value="easy">Easy</MenuItem>
+              <MenuItem key-="ab" value="medium">Medium</MenuItem>
+              <MenuItem key="ac" value="hard">Hard</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
         <div style={{
           width: '60vw', height: '25em', background: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}
         >
           {/* Second Row of Images Here: */}
           {
-            difficultyQuizzes.map((ele) => (
-              <div>
+            difficultyQuizzes.map((ele, index) => (
+              <div key={index}>
                 <h2>{ele.title}</h2>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
@@ -248,7 +252,7 @@ export default function Quizzes() {
                 >
                   <img
                     onClick={pageLink}
-                    key={Math.floor(Math.random() * 100)}
+
                     id={ele.id}
                     className="coverImages"
                     src={ele.url}
