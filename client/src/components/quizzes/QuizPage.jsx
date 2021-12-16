@@ -21,7 +21,7 @@ export default function QuizPage() {
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
-  const [currentQuestion, setCurrent] = useState('ARE YOU READY TO START AN AMAZING QUIZ? CLICK BELOW TO GET GOING!');
+  const [currentQuestion, setCurrent] = useState('ARE YOU READY TO START AN AMAZING QUIZ? CLICK BELOW TO GET GOING! DON\'T FORGET TO ANSWER ALL THE QUESTIONS ');
   const [last, setLast] = useState(0);
   const [backup, setBackup] = useState();
   const [render, setRender] = useState(false);
@@ -84,8 +84,10 @@ export default function QuizPage() {
       setIndex(i += 1);
     }
     if (i === questionsArray.length - 1) {
-      setHide(false);
       setNext(true);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
+      setHide(false);
     }
     // handle the button that moves to the next question
   };
@@ -98,6 +100,9 @@ export default function QuizPage() {
     if (i !== questionsArray.length - 1) {
       setHide(true);
       setNext(false);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
+      setHide(false);
     }
   };
   // handle the button that moves to the previous question
