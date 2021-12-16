@@ -23,6 +23,7 @@ export default function QuizPage() {
   const [questionIndex, setIndex] = useState(-1);
   const [currentQuestion, setCurrent] = useState();
   const [last, setLast] = useState(0);
+  const [backup, setBackup] = useState();
   const [render, setRender] = useState(false);
   const [buttonText, setButton] = useState('START QUIZ!');
   const [correctAnswers, setCorrectAnswers] = useState({});
@@ -36,7 +37,7 @@ export default function QuizPage() {
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
-    } else if (render) {
+    } if (buttonText === 'SUBMIT QUIZ') {
       let correctCount = 0;
       setTotalCorrect(0);
       for (let i = 1; i < questionsArray.length + 1; i += 1) {
@@ -45,9 +46,19 @@ export default function QuizPage() {
         }
       }
       setTotalCorrect(correctCount);
+      setBackup(answersArray);
       setAnswers([]);
       setButton('TRY AGAIN');
       setSubmit(true);
+    } if (buttonText === 'TRY AGAIN') {
+      setButton('SUBMIT QUIZ');
+      setSelected(0);
+      setSubmittedAnswers({});
+      setAnswers(backup);
+      setIndex(0);
+      const question = questionsArray[questionIndex].text;
+      setCurrent(question);
+      setSubmit(false);
     }
   };
   const selectAnswer = (e) => {
@@ -174,8 +185,8 @@ export default function QuizPage() {
   // render component:
   return (
     <div style={{
-      width: '100vw',
-      height: '100vh',
+      width: '90%',
+      height: '90%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -188,9 +199,10 @@ export default function QuizPage() {
         alt=""
         style={{
           zIndex: '-100',
-          width: '100vw',
-          height: '100vh',
+          width: '99%',
+          height: '99%',
           position: 'relative',
+          marginLeft: '6em',
         }}
       />
       {/* This div hold the question and the chat */}
@@ -199,20 +211,23 @@ export default function QuizPage() {
         width: '65em',
         height: '47em',
         position: 'absolute',
-        marginTop: '5em',
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
         borderRadius: '15px',
+        marginLeft: '5em',
       }}
       >
         {/* This is the question container */}
         <div>
-          <div style={{
-            display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
-          }}
+          <div
+            style={{
+              display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
+            }}
+            className={submit ? 'hide' : ''}
           >
             <Button
+              className={submit ? 'hide' : ''}
               onClick={backHandler}
               variant="contained"
               sx={{
@@ -229,7 +244,10 @@ export default function QuizPage() {
               Previous
             </Button>
             {/* Span where the current question goes */}
-            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>
+            <span
+              style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}
+              className={submit ? 'hide' : ''}
+            >
               {questionIndex + 1}
               {' '}
               /
@@ -237,6 +255,7 @@ export default function QuizPage() {
               {last + 1}
             </span>
             <Button
+              className={submit ? 'hide' : ''}
               onClick={nextHandler}
               variant="contained"
               sx={{
