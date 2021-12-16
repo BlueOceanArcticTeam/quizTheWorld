@@ -71,6 +71,13 @@ export default function QuizPage() {
       setSubmit(false);
     }
   };
+  const show = () => {
+    if (questionsArray) {
+      if (Object.keys(submittedAnswers).length === questionsArray.length) {
+        setHide(false);
+      }
+    }
+  };
   const selectAnswer = (e) => {
     setSelected(e.target.id);
     const question = questionIndex + 1;
@@ -205,6 +212,9 @@ export default function QuizPage() {
     setToggle(true);
   });
 
+  useEffect(() => {
+    show();
+  }, [submittedAnswers]);
   // render component:
   return (
     <div style={{
