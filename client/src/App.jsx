@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 
 // import e from 'cors';
+import ChatIcon from '@mui/icons-material/Chat';
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
 import HomePage from './components/home/HomePage.jsx';
@@ -162,16 +163,11 @@ export const App = function () {
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}
         <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-          <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
+          <ChatIcon classname="chatIcon" />
+          {/* client/src/components/chatbox/assets/chatCircularIcon.png */}
+          {/* <img alt="chatIcon" src="./components/chatbox/assets/chatCircularIcon.png" className="chatIcon" /> */}
+          {/* <img alt="chatIcon" src="./components/chatbox/assets/chatCircularIcon.png" className="chatIcon" /> */}
         </button>
-        <div className="chatButtonSource">
-          Icons made by
-          {' '}
-          <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
-          from
-          {' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
       </AppContext.Provider>
     </div>
   );
