@@ -1,25 +1,25 @@
-id,title, category, difficulty, source, dateCreated, numSubmissions
-1,"General Knowledge - Hard","General Knowledge","hard",1,"2021-12-09T19:26:16.816Z",0
-2,"Animals - Hard","Animals","hard",1,"2021-12-09T19:26:16.822Z",0
-3,"Geography - Hard","Geography","hard",1,"2021-12-09T19:26:16.825Z",0
-4,"Films - Easy","Entertainment: Film","easy",1,"2021-12-09T19:26:16.829Z",0
-5,"Films - Medium","Entertainment: Film","medium",1,"2021-12-09T19:26:16.833Z",0
-6,"Science & Nature - Easy", "Science & Nature","easy",1,"2021-12-09T19:26:16.836Z",0
-7,"General Knowledge - Medium","General Knowledge","medium",1,"2021-12-09T19:26:16.840Z",0
-8,"Animals - Easy","Animals","easy",1,"2021-12-09T19:26:16.844Z",0
-9,"Mythology - Easy","Mythology","easy",1,"2021-12-09T19:26:16.848Z",0
-10,"Books - Hard", "Entertainment: Books","hard",1,"2021-12-09T19:26:16.852Z",0
-11,"General Knowledge - Easy","General Knowledge","easy",1,"2021-12-09T19:26:16.855Z",0
-12,"Films - Hard","Entertainment: Film","hard",1,"2021-12-09T19:26:16.859Z",0
-13,"Animals - Medium","Animals","medium",1,"2021-12-09T19:26:16.862Z",0
-14,"Books - Easy","Entertainment: Books","easy",1,"2021-12-09T19:26:16.865Z",0
-15,"Books - Medium","Entertainment: Books","medium",1,"2021-12-09T19:26:16.869Z",0
-16,"Mythology - Medium","Mythology","medium",1,"2021-12-09T19:26:16.873Z",0
-17,"Music - Easy","Entertainment: Music","easy",1,"2021-12-09T19:26:16.876Z",0
-18,"Geography - Easy","Geography","easy",1,"2021-12-09T19:26:16.879Z",0
-19,"Music - Hard","Entertainment: Music","hard",1,"2021-12-09T19:26:16.883Z",0
-20,"Music - Medium","Entertainment: Music","medium",1,"2021-12-09T19:26:16.886Z",0
-21,"Science & Nature - Hard","Science & Nature","hard",1,"2021-12-09T19:26:16.890Z",0
-22,"Geography - Medium","Geography","medium",1,"2021-12-09T19:26:16.893Z",0
-23,"Mythology - Hard","Mythology","hard",1,"2021-12-09T19:26:16.896Z",0
-24,"Science & Nature - Medium","Science & Nature","medium",1,"2021-12-09T19:26:16.900Z",0
+title, category, difficulty, source, dateCreated, numSubmissions
+"General Knowledge - Hard","General Knowledge","hard",1,"2021-12-09T19:26:16.816Z",0
+"Animals - Hard","Animals","hard",1,"2021-12-09T19:26:16.822Z",0
+"Geography - Hard","Geography","hard",1,"2021-12-09T19:26:16.825Z",0
+"Films - Easy","Entertainment: Film","easy",1,"2021-12-09T19:26:16.829Z",0
+"Films - Medium","Entertainment: Film","medium",1,"2021-12-09T19:26:16.833Z",0
+"Science & Nature - Easy", "Science & Nature","easy",1,"2021-12-09T19:26:16.836Z",0
+"General Knowledge - Medium","General Knowledge","medium",1,"2021-12-09T19:26:16.840Z",0
+"Animals - Easy","Animals","easy",1,"2021-12-09T19:26:16.844Z",0
+"Mythology - Easy","Mythology","easy",1,"2021-12-09T19:26:16.848Z",0
+"Books - Hard", "Entertainment: Books","hard",1,"2021-12-09T19:26:16.852Z",0
+"General Knowledge - Easy","General Knowledge","easy",1,"2021-12-09T19:26:16.855Z",0
+"Films - Hard","Entertainment: Film","hard",1,"2021-12-09T19:26:16.859Z",0
+"Animals - Medium","Animals","medium",1,"2021-12-09T19:26:16.862Z",0
+"Books - Easy","Entertainment: Books","easy",1,"2021-12-09T19:26:16.865Z",0
+"Books - Medium","Entertainment: Books","medium",1,"2021-12-09T19:26:16.869Z",0
+"Mythology - Medium","Mythology","medium",1,"2021-12-09T19:26:16.873Z",0
+"Music - Easy","Entertainment: Music","easy",1,"2021-12-09T19:26:16.876Z",0
+"Geography - Easy","Geography","easy",1,"2021-12-09T19:26:16.879Z",0
+"Music - Hard","Entertainment: Music","hard",1,"2021-12-09T19:26:16.883Z",0
+"Music - Medium","Entertainment: Music","medium",1,"2021-12-09T19:26:16.886Z",0
+"Science & Nature - Hard","Science & Nature","hard",1,"2021-12-09T19:26:16.890Z",0
+"Geography - Medium","Geography","medium",1,"2021-12-09T19:26:16.893Z",0
+"Mythology - Hard","Mythology","hard",1,"2021-12-09T19:26:16.896Z",0
+"Science & Nature - Medium","Science & Nature","medium",1,"2021-12-09T19:26:16.900Z",0

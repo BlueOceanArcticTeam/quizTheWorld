@@ -6,7 +6,7 @@ import { AppContext } from '../../App.jsx';
 const RenderFriend = function (friend, index) {
   return (
     <div key={index} style={{ display: 'flex', alignItems: 'center', paddingTop: '2rem' }}>
-      <img src={placehold} style={{ width: '3vw' }} />
+      <img src={friend.thumbnail_url === 'null' ? placehold : friend.thumbnail_url} style={{ width: '3vw' }} />
       <span className="friendsListText">
         <div>
           {friend.username}
