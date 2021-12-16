@@ -88,72 +88,41 @@ export default function Login() {
           <div>
             {message}
           </div>
-          {/* This is the Input for the Email */}
-          <label htmlFor="email" style={{ fontSize: '1.5em' }}>Email:</label>
-          <input
-            type="text"
-            id="email"
-            onChange={(e) => { setLoginEmail(e.target.value); }}
-            style={{
-              height: '3em', borderRadius: '3px', border: '.5px solid orange', fontSize: '1.25em',
-            }}
-          />
-          {/* This is the input for the PassWord */}
-          <label htmlFor="email" style={{ fontSize: '1.5em' }}>Password:</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => { setLoginPassword(e.target.value); }}
-            style={{
-              height: '3em', borderRadius: '3px', fontSize: '1.25em', border: '.5px solid orange',
-            }}
-          />
-          {/* This div holds the login submit button */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-          >
-            <Button
-              onClick={handleLogin}
-              variant="contained"
-              sx={{
-                width: '50%',
-                marginTop: '10px',
-                float: 'right',
-                background: '#930DFF',
-                ':hover': {
-                  bgcolor: '#ff9100', // theme.palette.primary.main
-                  color: 'white',
-                },
+          <form>
+            {/* This is the Input for the Email */}
+            <label htmlFor="email" style={{ fontSize: '1.5em' }}>Email:</label>
+            <input
+              type="text"
+              id="email"
+              onChange={(e) => { setLoginEmail(e.target.value); }}
+            // required
+              style={{
+                height: '3em', borderRadius: '3px', border: '.5px solid orange', fontSize: '1.25em',
               }}
-            >
-              Login
-            </Button>
-            <Button
-              variant="contained"
-              sx={{
-                width: '50%',
-                marginTop: '10px',
-                float: 'right',
-                background: '#930DFF',
-                ':hover': {
-                  bgcolor: '#ff9100', // theme.palette.primary.main
-                  color: 'white',
-                },
+            />
+            {/* This is the input for the PassWord */}
+            <label htmlFor="email" style={{ fontSize: '1.5em' }}>Password:</label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => { setLoginPassword(e.target.value); }}
+              style={{
+                height: '3em', borderRadius: '3px', fontSize: '1.25em', border: '.5px solid orange',
               }}
-              onClick={() => { navigate('/register'); }}
+            />
+            {/* This div holds the login submit button */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+            }}
             >
-              Register
-            </Button>
-            <div>
               <Button
+                onClick={handleLogin}
                 variant="contained"
                 sx={{
-                  width: '382px',
-                  height: '90px',
+                  width: '50%',
                   marginTop: '10px',
                   float: 'right',
                   background: '#930DFF',
@@ -162,14 +131,47 @@ export default function Login() {
                     color: 'white',
                   },
                 }}
-                href="/api/auth/google"
-                style={{ backgroundImage: 'url(./btn_google_signin_light_normal_web@2x.png)' }}
-              />
+              >
+                Login
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  width: '50%',
+                  marginTop: '10px',
+                  float: 'right',
+                  background: '#930DFF',
+                  ':hover': {
+                    bgcolor: '#ff9100', // theme.palette.primary.main
+                    color: 'white',
+                  },
+                }}
+                onClick={() => { navigate('/register'); }}
+              >
+                Register
+              </Button>
+              <div>
+                <Button
+                  variant="contained"
+                  sx={{
+                    width: '382px',
+                    height: '90px',
+                    marginTop: '10px',
+                    float: 'right',
+                    background: '#930DFF',
+                    ':hover': {
+                      bgcolor: '#ff9100', // theme.palette.primary.main
+                      color: 'white',
+                    },
+                  }}
+                  href="/api/auth/google"
+                  style={{ backgroundImage: 'url(./btn_google_signin_light_normal_web@2x.png)' }}
+                />
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-
     </div>
   );
 }
