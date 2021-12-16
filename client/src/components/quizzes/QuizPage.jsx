@@ -390,20 +390,6 @@ export default function QuizPage() {
             </div>
           </div>
         </div>
-
-        {/* This is the Chat container  */}
-        {/* <div style={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
-        }}
-        >
-          <h2 style={{ marginBottom: '1.25em', color: '#F78670' }}>Chat with Friends</h2>
-          <div style={{
-            width: '25em', height: '35em', background: 'pink', borderRadius: '15px',
-          }}
-          >
-            Goodbye
-          </div>
-        </div> */}
       </div>
     </div>
   );
