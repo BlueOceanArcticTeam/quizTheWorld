@@ -77,8 +77,7 @@ export default function NavBar() {
           to="/chat"
         >
           Chat
-        </Link>
-        {/* {console.log(user)} */}
+        </Link> */}
         { user
           ? (
             <Link
