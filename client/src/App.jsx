@@ -164,9 +164,6 @@ export const App = function () {
           : null}
         <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
           <ChatIcon classname="chatIcon" />
-          {/* client/src/components/chatbox/assets/chatCircularIcon.png */}
-          {/* <img alt="chatIcon" src="./components/chatbox/assets/chatCircularIcon.png" className="chatIcon" /> */}
-          {/* <img alt="chatIcon" src="./components/chatbox/assets/chatCircularIcon.png" className="chatIcon" /> */}
         </button>
       </AppContext.Provider>
     </div>
