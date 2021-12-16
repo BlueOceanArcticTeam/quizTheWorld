@@ -25,7 +25,6 @@ export default function Register() {
   // component functions - event handlers
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log('handleRegister');
     // verify no other user has the same username or email
     // veryify the passwords are the same
     if (registerPassword1 !== registerPassword2) {
@@ -55,7 +54,6 @@ export default function Register() {
       return;
     }
     if (thumbnail_url.length > 0) {
-      console.log('1');
       const thumbnailCheck = inputValidation(thumbnail_url, 'message');
       if (thumbnailCheck.valid === false) {
         setMessage(emailCheck.errorMessage);
@@ -65,7 +63,6 @@ export default function Register() {
     // Check the password,
     // something isn't working in the password function, so we are temp using the username func
     const passwordCheck = inputValidation(registerPassword1, 'username');
-    console.log('2');
     if (passwordCheck.valid === false) {
       setMessage('Please check that the passwords match and are longer than 8 charaters');
       return;
