@@ -126,7 +126,7 @@ button {
 }
 
 .chatIcon {
-  transform: scale(1);
+  transform: scale(3);
   color: black;
   z-index: 500;
 }

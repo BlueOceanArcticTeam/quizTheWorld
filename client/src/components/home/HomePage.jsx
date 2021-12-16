@@ -9,7 +9,6 @@ import Container from '@mui/material/Container';
 import axios from 'axios';
 import placehold from './Assets/placehold.png';
 import TopQuizSlider from './TopQuizSlider.jsx';
-import Example from './test.jsx';
 import TopQuizCard from './TopQuizCard.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
 
