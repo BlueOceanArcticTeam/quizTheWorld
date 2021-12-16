@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
@@ -9,7 +10,7 @@ import gsap, { Power3, Power2 } from 'gsap';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
 import {
-  Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button, quizId, setQuizId,
+  Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
 } from '@mui/material';
 import {
   Link,
@@ -23,8 +24,11 @@ export default function AddAnotherQuestion({
   quiz, answers, question,
   answerGroup, questionGroup,
   setAnswerGroup, setQuestionGroup,
+  quizId, setQuizId,
 }) {
   const boxRef = useRef(null);
+  let updatedQuestions;
+  let questionIds = [];
 
   useEffect(() => {
     gsap.to(boxRef.current, {
@@ -35,10 +39,46 @@ export default function AddAnotherQuestion({
     // Update the document title using the browser API
   }, [stepCount]);
 
+  function updateAllQuestionIds(id) {
+    updatedQuestions = questionGroup.map((question) => ({ ...question, quiz_id: id }));
+    console.log(updatedQuestions, 'EEEEEE****');
+  }
+
+  function updateAllAnswerIds(idArr) {
+    let tempAnswers = answerGroup;
+
+    for (let i = 0; i < idArr.length; i += 1) {
+      for (let j = 0; j < tempAnswers[i].length; j += 1) {
+        tempAnswers[i][j].question_id = idArr[i];
+      }
+    }
+    submitAnswers(tempAnswers);
+  }
+
+  function submitAnswers(answersArr) {
+    for (let i = 0; i < answersArr.length; i += 1) {
+      axios.post('/api/create/answers', answersArr[i])
+        .then((res) => { console.log(res.data); })
+        .catch((err) => console.log(err));
+    }
+  }
+
+  function submitQuestions() {
+    let promiseArr = [];
+    for (let i = 0; i < updatedQuestions.length; i += 1) {
+      promiseArr.push(axios.post('/api/create/questions', updatedQuestions[i])
+        .then((res) => res.data)
+        .catch((err) => console.log(err)));
+    }
+    Promise.all(promiseArr)
+      .then((res) => { updateAllAnswerIds(res); });
+  }
+
   function createQuiz() {
     console.log(quiz, '-----');
     axios.post('/api/create', quiz)
-      .then((res) => { setQuizId(res.data); console.log(res.data, typeof res.data, 'here'); })
+      .then((res) => { setQuizId(res.data); updateAllQuestionIds(res.data); })
+      .then(() => { submitQuestions(); })
       .catch((err) => console.log(err));
   }
 
@@ -84,7 +124,8 @@ export default function AddAnotherQuestion({
         </span>
         <Button
           onClick={() => { createQuiz(); }}
-          to="/login"
+          to="/"
+          component={Link}
           variant="contained"
           sx={{
             position: 'absolute',

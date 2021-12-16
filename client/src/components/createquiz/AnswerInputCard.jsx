@@ -14,7 +14,10 @@ import {
 } from '@mui/material';
 
 export default function AnswerInputCard({
-  stepCount, setStepCount, answers, setAnswers,
+  stepCount, setStepCount, answers,
+  setAnswers, currentQuestionId, question,
+  setQuestion, setCurrentQuestionId,
+  answerGroup, setAnswerGroup,
 }) {
   const boxRef = useRef(null);
 
@@ -62,26 +65,37 @@ export default function AnswerInputCard({
     });
   }
 
+  function clearOldQuestionAndCreateNewOne() {
+    setQuestion({
+      question_id: null,
+      user_id: null,
+      quiz_id: null,
+      text: '',
+      questionType: '',
+    });
+  }
+
   function storeAnswersForSubmitting() {
+    console.log('yo ---', currentQuestionId);
     const answersArr = [];
     let correct;
     const answerA = {
-      question_id: null,
+      question_id: currentQuestionId,
       correct: false,
       text: answers.A,
     };
     const answerB = {
-      question_id: null,
+      question_id: currentQuestionId,
       correct: false,
       text: answers.B,
     };
     const answerC = {
-      question_id: null,
+      question_id: currentQuestionId,
       correct: false,
       text: answers.C,
     };
     const answerD = {
-      question_id: null,
+      question_id: currentQuestionId,
       correct: false,
       text: answers.D,
     };
@@ -100,6 +114,9 @@ export default function AnswerInputCard({
       return item;
     });
     console.log(answersArr);
+    setAnswerGroup((answerGroup) => [...answerGroup, answersArr]);
+    setCurrentQuestionId(currentQuestionId + 1);
+    clearOldQuestionAndCreateNewOne();
   }
 
   function submitQuestion() {

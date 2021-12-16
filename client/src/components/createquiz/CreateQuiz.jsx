@@ -25,6 +25,7 @@ export default function CreateQuiz() {
   const [stepCount, setStepCount] = useState(1);
   const moveElement = useRef(null);
   const [quizId, setQuizId] = useState(null);
+  const [currentQuestionId, setCurrentQuestionId] = useState(0);
   const [quiz, setQuiz] = useState({
     title: '',
     category: '',
@@ -33,8 +34,13 @@ export default function CreateQuiz() {
     dateCreated: new Date(),
     numSubmissions: 0,
   });
+  const [trueFalseAnswer, setTrueFalseAnswer] = useState({
+    question_id: 0,
+    correct: null,
+    text: '',
+  });
   const [answers, setAnswers] = useState({
-    question_id: 0, // unique hashing function
+    question_id: 0,
     correct: null,
     A: '',
     B: '',
@@ -48,21 +54,38 @@ export default function CreateQuiz() {
     text: '',
     questionType: '',
   });
+
+  // loop over questionGroup
+  // for each question
+  // change quiestionId of to backend Id
+
   const [questionGroup, setQuestionGroup] = useState([]);
   const [answerGroup, setAnswerGroup] = useState([]);
   // component functions - event handlers
 
   useEffect(() => {
-    console.log(question);
+    console.log(question, 'CURRENT QUESTION');
   }, [question]);
 
   useEffect(() => {
-    console.log(questionGroup, '}---***---{');
+    console.log(questionGroup, '}---***---{ QUESTION GROUP');
   }, [questionGroup]);
 
   useEffect(() => {
-    console.log(answers, '}---***---{');
+    console.log(answers, 'CURRENT ANSWERS');
   }, [answers]);
+
+  useEffect(() => {
+    console.log(currentQuestionId, 'CURRENT QUESTION ID');
+  }, [currentQuestionId]);
+
+  useEffect(() => {
+    console.log(answerGroup, 'ANSWER GROUP');
+  }, [answerGroup]);
+
+  useEffect(() => {
+    console.log(trueFalseAnswer, 'TRUE/FALSE ANSWER');
+  }, [trueFalseAnswer]);
 
   // render component:
   return (
@@ -90,14 +113,42 @@ export default function CreateQuiz() {
             setQuestionGroup={setQuestionGroup}
             questionGroup={questionGroup}
             question={question}
+            setCurrentQuestionId={setCurrentQuestionId}
+            currentQuestionId={currentQuestionId}
+            setAnswers={setAnswers}
+            answers={answers}
+            trueFalseAnswer={trueFalseAnswer}
+            setTrueFalseAnswer={setTrueFalseAnswer}
           />
         )
         : ''}
       { stepCount === 3
-        ? <AnswerInputCard setStepCount={setStepCount} stepCount={stepCount} answers={answers} setAnswers={setAnswers} question={question} />
+        ? (
+          <AnswerInputCard
+            setStepCount={setStepCount}
+            stepCount={stepCount}
+            answers={answers}
+            setAnswers={setAnswers}
+            question={question}
+            setQuestion={setQuestion}
+            currentQuestionId={currentQuestionId}
+            setCurrentQuestionId={setCurrentQuestionId}
+            answerGroup={answerGroup}
+            setAnswerGroup={setAnswerGroup}
+          />
+        )
         : ''}
       { stepCount === 4
-        ? <TrueFalseSelectCard setStepCount={setStepCount} stepCount={stepCount} />
+        ? (
+          <TrueFalseSelectCard
+            setStepCount={setStepCount}
+            stepCount={stepCount}
+            trueFalseAnswer={trueFalseAnswer}
+            setTrueFalseAnswer={setTrueFalseAnswer}
+            answerGroup={answerGroup}
+            setAnswerGroup={setAnswerGroup}
+          />
+        )
         : ''}
       { stepCount === 5
         ? (
@@ -107,12 +158,15 @@ export default function CreateQuiz() {
             quiz={quiz}
             answers={answers}
             question={question}
+            setQuestion={setQuestion}
             setQuestionGroup={setQuestionGroup}
             setAnswerGroup={setAnswerGroup}
             answerGroup={answerGroup}
             questionGroup={questionGroup}
             quizId={quizId}
             setQuizId={setQuizId}
+            currentQuestionId={currentQuestionId}
+            setCurrentQuestionId={setCurrentQuestionId}
           />
         )
         : ''}

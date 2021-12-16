@@ -11,7 +11,9 @@ import {
   Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
 } from '@mui/material';
 
-export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
+export default function TrueFalseSelectCard({
+  stepCount, setStepCount, trueFalseAnswer, setTrueFalseAnswer, answerGroup, setAnswerGroup,
+}) {
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +24,17 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function updateTrueFalseAnswer(e) {
+    setTrueFalseAnswer({
+      ...trueFalseAnswer,
+      correct: e.target.value,
+    });
+  }
+
+  function addAnswerToAnswerGroup() {
+    setAnswerGroup((answerGroup) => [...answerGroup, trueFalseAnswer]);
+  }
 
   return (
 
@@ -46,6 +59,7 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
           <FormControl variant="filled" sx={{ width: '12em' }}>
             <InputLabel id="demo-simple-select-label">True / False</InputLabel>
             <Select
+              onChange={updateTrueFalseAnswer}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -53,13 +67,13 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
             // value={age}
               label="Category"
             >
-              <MenuItem value="1">True</MenuItem>
-              <MenuItem value="0">False</MenuItem>
+              <MenuItem value="true">True</MenuItem>
+              <MenuItem value="false">False</MenuItem>
 
             </Select>
           </FormControl>
           <Button
-            onClick={() => { setStepCount(stepCount + 1); }}
+            onClick={() => { setStepCount(stepCount + 1); addAnswerToAnswerGroup(); }}
             variant="contained"
             sx={{
               position: 'absolute',

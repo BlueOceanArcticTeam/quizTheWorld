@@ -16,7 +16,10 @@ import {
 } from '@mui/material';
 
 export default function QuestionInputCard({
-  stepCount, setStepCount, question, setQuestion, questionGroup, setQuestionGroup,
+  stepCount, setStepCount, question,
+  setQuestion, questionGroup, setQuestionGroup,
+  currentQuestionId, setCurrentQuestionId, answers,
+  setAnswers, trueFalseAnswer, setTrueFalseAnswer,
 }) {
   const { user } = useContext(AppContext);
   const [multipleChoiceOrTrueFalse, setMultipleChoiceOrTrueFalse] = useState(null);
@@ -41,8 +44,20 @@ export default function QuestionInputCard({
 
     setQuestion({
       ...question,
+      question_id: currentQuestionId,
       user_id: user.id,
       questionType: type,
+    });
+  }
+
+  function updateAnswerId() {
+    setAnswers({
+      ...answers,
+      question_id: currentQuestionId,
+    });
+    setTrueFalseAnswer({
+      ...trueFalseAnswer,
+      question_id: currentQuestionId,
     });
   }
 
@@ -55,6 +70,8 @@ export default function QuestionInputCard({
 
   function updateQuestionGroup() {
     setQuestionGroup((questionGroup) => [...questionGroup, question]);
+    updateAnswerId();
+
     console.log('happening');
   }
 
