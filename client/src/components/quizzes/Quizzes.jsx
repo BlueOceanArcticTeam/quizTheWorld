@@ -15,7 +15,12 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import QuizBackground from './assets/Question.png';
 import './Quizzes.css';
-import { orange } from '@mui/material/colors';
+import AnimalLg from '../home/Assets/AnimalLg.png';
+import GeoLg from '../home/Assets/GeoLg.png';
+import GKLg from '../home/Assets/GKLg.png';
+import MovieLg from '../home/Assets/MovieLg.png';
+import MythLg from '../home/Assets/MythLg.png';
+import SciLg from '../home/Assets/SciLg.png';
 
 export default function Quizzes() {
   // set state variables below:
@@ -80,7 +85,21 @@ export default function Quizzes() {
         .then((res) => {
           const { data } = res;
           for (let i = 0; i < data.length; i += 1) {
-            data[i].url = moarData[i];
+            let bgStyle;
+            if (data[i].category === 'General Knowledge') {
+              bgStyle = GKLg;
+            } else if (data[i].category === 'Animals') {
+              bgStyle = AnimalLg;
+            } else if (data[i].category === 'Geography') {
+              bgStyle = GeoLg;
+            } else if (data[i].category === 'Entertainment: Film') {
+              bgStyle = MovieLg;
+            } else if (data[i].category === 'Science & Nature') {
+              bgStyle = SciLg;
+            } else if (data[i].category === 'Mythology') {
+              bgStyle = MythLg;
+            }
+            data[i].url = bgStyle;
           }
           setCQuizzes(data);
         });
@@ -96,7 +115,21 @@ export default function Quizzes() {
     }
     if (store.length === 4) {
       for (let i = 0; i < store.length; i += 1) {
-        store[i].url = fakeData[i];
+        let bgStyle;
+        if (store[i].category === 'General Knowledge') {
+          bgStyle = GKLg;
+        } else if (store[i].category === 'Animals') {
+          bgStyle = AnimalLg;
+        } else if (store[i].category === 'Geography') {
+          bgStyle = GeoLg;
+        } else if (store[i].category === 'Entertainment: Film') {
+          bgStyle = MovieLg;
+        } else if (store[i].category.includes('Science')) {
+          bgStyle = SciLg;
+        } else if (store[i].category === 'Mythology') {
+          bgStyle = MythLg;
+        }
+        store[i].url = bgStyle;
       }
       setDQuizzes(store);
     }
