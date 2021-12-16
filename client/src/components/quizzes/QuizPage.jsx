@@ -31,12 +31,14 @@ export default function QuizPage() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
+  const [hide, setHide] = useState(false);
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
+      setHide(true);
     } if (buttonText === 'SUBMIT QUIZ') {
       let correctCount = 0;
       setTotalCorrect(0);
@@ -51,6 +53,7 @@ export default function QuizPage() {
       setButton('TRY AGAIN');
       setSubmit(true);
     } if (buttonText === 'TRY AGAIN') {
+      setHide(true);
       setButton('SUBMIT QUIZ');
       setSelected(0);
       setSubmittedAnswers({});
@@ -73,6 +76,9 @@ export default function QuizPage() {
     if (i < questionsArray.length - 1) {
       setIndex(i += 1);
     }
+    if (i === questionsArray.length - 1) {
+      setHide(false);
+    }
     // handle the button that moves to the next question
   };
   const backHandler = () => {
@@ -80,6 +86,9 @@ export default function QuizPage() {
     let i = questionIndex;
     if (i > 0) {
       setIndex(i -= 1);
+    }
+    if (i !== questionsArray.length - 1) {
+      setHide(true);
     }
   };
   // handle the button that moves to the previous question
@@ -314,6 +323,7 @@ export default function QuizPage() {
               {/* Submit Quiz Button */}
               {/* Youll want to hide this one until the last question appears */}
               <Button
+                className={hide ? 'hide' : ''}
                 onClick={startSubmit}
                 variant="contained"
                 sx={{
