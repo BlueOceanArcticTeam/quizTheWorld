@@ -145,6 +145,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 * [React](https://reactjs.org/)
 
   * _Including_ [React Hooks](https://reactjs.org/docs/hooks-intro.html) _and class-less components_
+  * _And [React Router](https://reactrouter.com/)
 
 
 * [NodeJS](https://nodejs.org/en/)
