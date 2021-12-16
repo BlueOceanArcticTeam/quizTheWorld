@@ -126,13 +126,31 @@ export default function Quizzes() {
       />
       {/* This is the Arrows for back and forward */}
       <ArrowBackIosIcon
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          left: '10%',
+          top: '32vh',
+        }}
+      />
+      <ArrowForwardIosIcon
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          right: '10%',
+          top: '32vh',
+        }}
+      />
+      <ArrowBackIosIcon
         onClick={leftArrow}
         style={{
           position: 'absolute',
           fontSize: '100px',
           color: 'white',
           left: '10%',
-          top: '52vh',
+          top: '69vh',
         }}
       />
       <ArrowForwardIosIcon
@@ -142,7 +160,7 @@ export default function Quizzes() {
           fontSize: '100px',
           color: 'white',
           right: '10%',
-          top: '52vh',
+          top: '69vh',
         }}
       />
       {/* This div contains all of the image tiles */}
