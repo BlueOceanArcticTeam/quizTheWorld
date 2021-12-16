@@ -34,7 +34,7 @@
 }
 
 .property {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   justify-content: center;
   display: grid;
   color: white;
@@ -48,13 +48,12 @@
   padding-top: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: white;
   grid-column: 4/11;
   height: 100%;
   border-left: 3px solid black;
   border-right: 3px solid black;
   max-width: 100%;
-
+  background-color: #E9CEFF;
 }
 
 .friendsContainer {
@@ -82,10 +81,6 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding-top: 2rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-  max-width: 100%;
 
 }
 
@@ -93,6 +88,7 @@
   flex: 1;
   margin-left: 2rem;
   margin-right: 2rem;
+  width: 100%;
 }
 
 .infoChart {
@@ -108,4 +104,14 @@
   display: grid;
   justify-content: center;
   padding-top: 2rem;
+}
+
+#userchartcontainer {
+  width: 100%;
+  height: 100%;
+}
+
+#profilepic {
+  height: 96px;
+  width: 96px;
 }

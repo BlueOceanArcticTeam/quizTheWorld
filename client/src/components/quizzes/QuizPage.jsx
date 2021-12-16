@@ -6,23 +6,25 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
-import AppContext from '../../context.js';
+import { AppContext } from '../../App.jsx';
 import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
   const [quiz_id, setQuizID] = useState();
-  const userID = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
-  const [currentQuestion, setCurrent] = useState();
+  const [currentQuestion, setCurrent] = useState('ARE YOU READY TO START AN AMAZING QUIZ? CLICK BELOW TO GET GOING! DON\'T FORGET TO ANSWER ALL THE QUESTIONS ');
   const [last, setLast] = useState(0);
+  const [backup, setBackup] = useState();
   const [render, setRender] = useState(false);
   const [buttonText, setButton] = useState('START QUIZ!');
   const [correctAnswers, setCorrectAnswers] = useState({});
@@ -30,13 +32,22 @@ export default function QuizPage() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
+  const [hide, setHide] = useState(false);
+  const [hideNext, setNext] = useState(true);
+  const [hideBack, setBack] = useState(true);
+  const [hideNum, setNum] = useState(true);
+  const [link, setLink] = useState(true);
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
+      setBack(false);
+      setNext(false);
+      setNum(false);
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
-    } else if (render) {
+      setHide(true);
+    } if (buttonText === 'SUBMIT QUIZ') {
       let correctCount = 0;
       setTotalCorrect(0);
       for (let i = 1; i < questionsArray.length + 1; i += 1) {
@@ -45,9 +56,30 @@ export default function QuizPage() {
         }
       }
       setTotalCorrect(correctCount);
+      setBackup(answersArray);
       setAnswers([]);
       setButton('TRY AGAIN');
       setSubmit(true);
+      setLink(false);
+    } if (buttonText === 'TRY AGAIN') {
+      setNext(false);
+      setHide(true);
+      setButton('SUBMIT QUIZ');
+      setSelected(0);
+      setSubmittedAnswers({});
+      setAnswers(backup);
+      setIndex(0);
+      const question = questionsArray[questionIndex].text;
+      setCurrent(question);
+      setSubmit(false);
+      setLink(true);
+    }
+  };
+  const show = () => {
+    if (questionsArray) {
+      if (Object.keys(submittedAnswers).length === questionsArray.length) {
+        setHide(false);
+      }
     }
   };
   const selectAnswer = (e) => {
@@ -62,6 +94,12 @@ export default function QuizPage() {
     if (i < questionsArray.length - 1) {
       setIndex(i += 1);
     }
+    if (i === questionsArray.length - 1) {
+      setNext(true);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
+      setHide(false);
+    }
     // handle the button that moves to the next question
   };
   const backHandler = () => {
@@ -69,6 +107,13 @@ export default function QuizPage() {
     let i = questionIndex;
     if (i > 0) {
       setIndex(i -= 1);
+    }
+    if (i !== questionsArray.length - 1) {
+      setHide(true);
+      setNext(false);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
+      setHide(false);
     }
   };
   // handle the button that moves to the previous question
@@ -151,7 +196,7 @@ export default function QuizPage() {
       const statement = `Congratulations! You got ${totalCorrect} out of ${last + 1} answers correct!`;
       setCurrent(statement);
       axios.post('/api/quiz', {
-        user_id: userID,
+        user_id: user.id,
         quizID: quiz_id,
         numCorrect: totalCorrect,
         totalQuestions: last + 1,
@@ -171,11 +216,14 @@ export default function QuizPage() {
     setToggle(true);
   });
 
+  useEffect(() => {
+    show();
+  }, [submittedAnswers]);
   // render component:
   return (
     <div style={{
-      width: '100vw',
-      height: '100vh',
+      width: '90%',
+      height: '90%',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -188,9 +236,10 @@ export default function QuizPage() {
         alt=""
         style={{
           zIndex: '-100',
-          width: '100vw',
-          height: '100vh',
+          width: '99%',
+          height: '99%',
           position: 'relative',
+          marginLeft: '6em',
         }}
       />
       {/* This div hold the question and the chat */}
@@ -199,20 +248,22 @@ export default function QuizPage() {
         width: '65em',
         height: '47em',
         position: 'absolute',
-        marginTop: '5em',
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'center',
         borderRadius: '15px',
+        marginLeft: '5em',
       }}
       >
         {/* This is the question container */}
         <div>
-          <div style={{
-            display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
-          }}
+          <div
+            style={{
+              display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
+            }}
           >
             <Button
+              className={hideBack ? 'hide' : ''}
               onClick={backHandler}
               variant="contained"
               sx={{
@@ -229,7 +280,10 @@ export default function QuizPage() {
               Previous
             </Button>
             {/* Span where the current question goes */}
-            <span style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}>
+            <span
+              style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}
+              className={hideNum ? 'hide' : ''}
+            >
               {questionIndex + 1}
               {' '}
               /
@@ -237,6 +291,7 @@ export default function QuizPage() {
               {last + 1}
             </span>
             <Button
+              className={hideNext ? 'hide' : ''}
               onClick={nextHandler}
               variant="contained"
               sx={{
@@ -295,6 +350,7 @@ export default function QuizPage() {
               {/* Submit Quiz Button */}
               {/* Youll want to hide this one until the last question appears */}
               <Button
+                className={hide ? 'hide' : ''}
                 onClick={startSubmit}
                 variant="contained"
                 sx={{
@@ -310,23 +366,30 @@ export default function QuizPage() {
               >
                 {buttonText}
               </Button>
+              <Link to={{
+                pathname: '/quizzes/',
+              }}
+              >
+                <Button
+                  className={link ? 'hide' : ''}
+                  variant="contained"
+                  sx={{
+                    width: '100%',
+                    marginTop: '10px',
+                    float: 'right',
+                    backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)',
+                    ':hover': {
+                      bgcolor: '#ff9100', // theme.palette.primary.main
+                      color: 'white',
+                    },
+                  }}
+                >
+                  More Quizzes!
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* This is the Chat container  */}
-        {/* <div style={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
-        }}
-        >
-          <h2 style={{ marginBottom: '1.25em', color: '#F78670' }}>Chat with Friends</h2>
-          <div style={{
-            width: '25em', height: '35em', background: 'pink', borderRadius: '15px',
-          }}
-          >
-            Goodbye
-          </div>
-        </div> */}
       </div>
     </div>
   );

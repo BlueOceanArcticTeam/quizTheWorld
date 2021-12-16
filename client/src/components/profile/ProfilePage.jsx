@@ -3,108 +3,199 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
+import { autocompleteClasses } from '@mui/material';
+import { CategoryScale } from 'chart.js';
 import NewCard from './NewCard.jsx';
 import RenderFriend from './RenderFriend.jsx';
 import './profilepage.css';
 import placehold from '../home/Assets/placehold.png';
-import { autocompleteClasses } from '@mui/material';
 import { AppContext } from '../../App.jsx';
+import UserChart from './UserChart.jsx';
+import NoPath from '../nopath/NoPath.jsx';
 
 export default function ProfilePage() {
-  const { user, friends, userID } = useContext(AppContext);
+  const { goToHome } = useContext(AppContext);
+  const { user_id } = useParams();
 
   const [userMetaData, setUserMetaData] = useState({});
   const [lastQuiz, setLastQuiz] = useState();
+  const [userId, setUserId] = useState(user_id);
+  const [userFriends, setUserFriends] = useState([]);
+  const [userData, setUserData] = useState();
+  const [userExist, setUserExist] = useState(true);
+  const [chartData, setChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: 'Score',
+        data: [],
+        backgroundColor: [
+          '#ffbb11',
+          '#ecf0f1',
+          '#50AF95',
+          '#f3ba2f',
+          '#2a71d0',
+        ],
+      },
+    ],
+  });
+
+  function fetchUserFriends() {
+    axios
+      .get(`/api/profile/${userId}/friends`)
+      .then((data) => {
+        setUserFriends(data.data.rows);
+      });
+  }
 
   function fetchUserMetaData() {
     axios
-      .get(`/api/profile/${userID}/meta`)
+      .get(`/api/profile/${userId}/meta`)
       .then((data) => {
         setUserMetaData(data.data);
-        setLastQuiz(data.data.data[0].title);
+        if (data.data.count > 0) {
+          setLastQuiz(data.data.data[data.data.data.length - 1].title);
+          setChartData({
+            labels: data.data.data.map((quiz) => quiz.title),
+            datasets: [
+              {
+                label: 'Score',
+                data: data.data.data.map((quiz) => quiz.score),
+                backgroundColor: [
+                  '#FE6845',
+                ],
+              },
+            ],
+          });
+        } else {
+          setLastQuiz();
+          setChartData({
+            labels: [],
+            datasets: [
+              {
+                label: 'Score',
+                data: [],
+                backgroundColor: [
+                  '#ffbb11',
+                  '#ecf0f1',
+                  '#50AF95',
+                  '#f3ba2f',
+                  '#2a71d0',
+                ],
+              },
+            ],
+          });
+        }
       });
+  }
+
+  function fetchUserData() {
+    if (!isNaN(user_id)) {
+      axios
+        .get(`/api/profile/${userId}`)
+        .then((data) => {
+          setUserData(data.data[0]);
+          fetchUserFriends();
+          fetchUserMetaData();
+        })
+        .catch((err) => {
+          console.log('big error time');
+        });
+    }
   }
 
   // use effect - load data when rendering the page
   useEffect(() => {
     // get user meta data
-    fetchUserMetaData();
-  }, []);
+    fetchUserData();
+  }, [userId]);
 
-  console.log(friends);
   return (
-    <div className="mainProfileContainer">
-      <div className="infoContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Profile
-          <br />
-          <div className="info">
-            <img
-              src={placehold}
-              alt="ProfilePicture"
-              style={{
-                height: '7vh', width: '7vw', margin: 'auto', paddingBottom: '2rem', borderRadius: '100%',
-              }}
-            />
-            <div className="key">
-              Screen Name
+    userData
+      ? (
+        <div className="mainProfileContainer">
+          <div className="infoContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Profile
+              <br />
+              <div className="info">
+                <img
+                  src={userData.thumbnail_url === null || userData.thumbnail_url === 'null' ? placehold : userData.thumbnail_url}
+                  alt="ProfilePicture"
+                  style={{
+                    margin: 'auto', borderRadius: '100%',
+                  }}
+                  id="profilepic"
+                />
+                <div className="key">
+                  Screen Name
+                </div>
+                <div className="property">
+                  {`${userData.username}`}
+                </div>
+                <div className="key">
+                  Full Name
+                </div>
+                <div className="property">
+                  {`${userData.firstname} ${userData.lastname}`}
+                </div>
+                <div className="key">
+                  Email
+                </div>
+                <div className="property">
+                  {`${userData.email}`}
+                </div>
+              </div>
             </div>
-            <div className="property">
-              {`${user.username}`}
+          </div>
+          <div className="statsContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Quiz Overview
             </div>
-            <div className="key">
-              Full Name
+            <div className="cards">
+              <div>
+                {NewCard('Quizzes Taken', userMetaData.count > 0 ? `${userMetaData.count}` : '')}
+              </div>
+              <div>
+                {NewCard('Average', userMetaData.average ? `${userMetaData.average}%` : '')}
+              </div>
+              <div>
+                {NewCard('Last Quiz Taken', lastQuiz ? `${lastQuiz}` : '')}
+              </div>
             </div>
-            <div className="property">
-              {`${user.firstname} ${user.lastname}`}
+            <div className="infoChart">
+              <div style={{ fontWeight: 'bold' }}>
+                Quiz Scores
+              </div>
+              <div id="userchartcontainer">
+                <UserChart data={chartData} />
+              </div>
             </div>
-            <div className="key">
-              Email
+          </div>
+          <div className="friendsContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Friends
             </div>
-            <div className="property">
-              {`${user.email}`}
-            </div>
+            {userFriends.map((friend, index) => (
+              <Link
+                style={{
+                  color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+                }}
+                to={`/profile/${friend.id}`}
+                key={index}
+                onClick={() => { setUserId(friend.id); }}
+              >
+                {RenderFriend(friend, index)}
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
-      <div className="statsContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Quiz Overview
-        </div>
-        <div className="cards">
-          <div>
-            {NewCard('Quizzes Taken', `${userMetaData.count}`)}
-          </div>
-          <div>
-            {NewCard('Average', `${userMetaData.average}%`)}
-          </div>
-          <div>
-            {NewCard('Last Quiz Taken', `${lastQuiz}`)}
-          </div>
-        </div>
-        <div className="infoChart">
-          <div style={{ fontWeight: 'bold' }}>
-            Average Score Over Career
-          </div>
-          <div>
-            chart goes here
-          </div>
-        </div>
-      </div>
-      <div className="friendsContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Friends
-        </div>
-        {friends.map((friend, index) => (
-          <div key={index}>
-            {RenderFriend(friend)}
-          </div>
-        ))}
-      </div>
-    </div>
+      )
+      : <NoPath />
   );
 }

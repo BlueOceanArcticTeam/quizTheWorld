@@ -8,7 +8,6 @@ import { AppContext } from '../../App.jsx';
 import './chat.css';
 
 const Message = ({ messageObj, messageClassName, chat, setChat }) => {
-
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
   const { userID } = useContext(AppContext);
 
@@ -17,14 +16,11 @@ const Message = ({ messageObj, messageClassName, chat, setChat }) => {
       .then(() => { setChat([...chat]); })
       .catch((err) => { console.log(err); });
   };
-  useEffect(() => {
-    console.log(messageObj);
-  }, []);
+
   return (
     <div
       className={`messageText ${messageClassName}`}
-      onMouseEnter={() => { setDisplayDeleteButton(true); }}
-      onMouseLeave={() => { setDisplayDeleteButton(false); }}
+      onClick={() => { setDisplayDeleteButton(!displayDeleteButton); }}
     >
       <div className="messageText">
         {messageObj.text}

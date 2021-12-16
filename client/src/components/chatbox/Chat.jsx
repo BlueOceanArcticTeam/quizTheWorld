@@ -9,7 +9,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import SendIcon from '@mui/icons-material/Send';
-import { initiateSocket, disconnectSocket, subscribeToChat, sendMessage } from './Socket.jsx';
 import Message from './Message.jsx';
 import { AppContext } from '../../App.jsx';
 import './chat.css';
@@ -18,23 +17,12 @@ const Chat = () => {
   const today = new Date();
   const todayString = `${today.getUTCFullYear()}-${today.getUTCMonth() + 1}-${today.getUTCDate()}`;
 
-  const { userID, recipientID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
-  const rooms = ['A', 'B', 'C'];
-  const [room, setRoom] = useState(rooms[0]);
+  const { user, recipientID, setDisplayModal, setDisplayChat, setDisplayChatFriendList } = useContext(AppContext);
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
-  const [senderID, setSenderID] = useState(userID);
+  const [senderID, setSenderID] = useState(user.id);
   const [recipientFirstName, setRecipientFirstName] = useState('');
   const [recipientLastName, setRecipientLastName] = useState('');
-
-  useEffect(() => {
-    if (room) { initiateSocket(room); }
-    subscribeToChat((err, data) => {
-      if (err) return;
-      setChat((oldChats) => [data, ...oldChats]);
-    });
-    return () => { disconnectSocket(); };
-  }, [room]);
 
   // HELPER FUNCTIONS
   const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
@@ -67,7 +55,6 @@ const Chat = () => {
   const handleMessageSubmit = () => {
     addMessageToDB();
     setChat([message, ...chat]);
-    sendMessage(room, message);
     setMessage('');
   };
 
@@ -81,7 +68,7 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    setSenderID(userID);
+    setSenderID(user.id);
     getRecipientName(recipientID);
   }, [recipientID]);
 
@@ -107,7 +94,7 @@ const Chat = () => {
       </div>
       <div className="chatArea">
         {chat.map((m, i) => {
-          const className = (m.sender_user_id === userID) ? 'sender' : 'recipient';
+          const className = (m.sender_user_id === user.id) ? 'sender' : 'recipient';
           return <Message messageObj={m} key={i} setSenderID={setSenderID} messageClassName={className} chat={chat} setChat={setChat}/>;
         })}
       </div>
