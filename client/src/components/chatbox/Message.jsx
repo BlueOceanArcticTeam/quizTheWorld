@@ -16,14 +16,12 @@ const Message = ({ messageObj, messageClassName, chat, setChat }) => {
       .then(() => { setChat([...chat]); })
       .catch((err) => { console.log(err); });
   };
-  useEffect(() => {
-    console.log(messageObj);
-  }, []);
+
   return (
     <div
       className={`messageText ${messageClassName}`}
-      onMouseEnter={() => { setDisplayDeleteButton(true); }}
-      onMouseLeave={() => { setDisplayDeleteButton(false); }}
+      onClick={() => { setDisplayDeleteButton(!displayDeleteButton); }}
+      // onMouseLeave={() => { setDisplayDeleteButton(false); }}
     >
       <div className="messageText">
         {messageObj.text}

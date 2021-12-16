@@ -81,7 +81,6 @@
 .messageContainer {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .messageText {
@@ -93,6 +92,7 @@
 .sender {
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .recipient {
