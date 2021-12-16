@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate,
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
 } from 'react-router-dom';
 
 // import e from 'cors';
@@ -43,7 +43,10 @@ export const App = function () {
   const [friends, setFriends] = useState([]);
 
   const navigate = useNavigate();
-  const goToHome = () => { navigate('/'); };
+  const goToHome = () => {
+    navigate('/');
+  };
+
   function fetchFriends(userId) {
     // axios
     //   .get(`/api/profile/${userID}`)
