@@ -9,21 +9,21 @@ import Typography from '@mui/material/Typography';
 const NewCard = function (header, content) {
   return (
     <Card sx={{
-      width: '10vw', background: 'linear-gradient(#FE6845, #570A9A)', borderRadius: 5, height: '20vh',
+      width: 'auto', background: 'linear-gradient(#FE6845, #570A9A)', borderRadius: 5,
     }}
     >
       <CardContent style={{
         display: 'grid', justifyContent: 'center', color: 'white', textAlign: 'center', position: 'relative',
       }}
       >
-        <h6 style={{
+        <h5 style={{
           display: 'grid', justifyContent: 'center', marginBottom: '0px', aligntext: 'center', marginTop: '0px',
         }}
         >
           {header}
-        </h6>
+        </h5>
         <h6 style={{
-          padding: 'none', margin: 'auto', marginTop: '0px', marginBottom: '0px', position: 'absolute', width: '100%', bottom: '-50%',
+          padding: 'none', margin: 'auto', marginTop: '0px', marginBottom: '0px', width: '100%',
         }}
         >
           {content}

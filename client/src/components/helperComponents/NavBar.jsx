@@ -77,12 +77,7 @@ export default function NavBar() {
           to="/chat"
         >
           Chat
-<<<<<<< HEAD
         </Link> */}
-=======
-        </Link>
-        {/* {console.log(user)} */}
->>>>>>> 580dc42acaec46799b3784550a95af7233a14b1e
         { user
           ? (
             <Link

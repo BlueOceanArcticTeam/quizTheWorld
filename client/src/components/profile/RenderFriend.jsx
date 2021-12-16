@@ -4,9 +4,8 @@ import placehold from '../home/Assets/placehold.png';
 import { AppContext } from '../../App.jsx';
 
 const RenderFriend = function (friend, index) {
-  const { setViewingUserId } = useContext(AppContext);
   return (
-    <div key={index} style={{ display: 'flex', alignItems: 'center', paddingTop: '2rem' }} onClick={() => { setViewingUserId(friend.id); }}>
+    <div key={index} style={{ display: 'flex', alignItems: 'center', paddingTop: '2rem' }}>
       <img src={placehold} style={{ width: '3vw' }} />
       <span className="friendsListText">
         <div>
