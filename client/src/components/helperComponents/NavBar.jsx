@@ -113,7 +113,7 @@ export default function NavBar() {
               ? (
                 <div
                   style={{
-                    display: 'flex', float: 'right', width: '8em', flexDirection: 'column', top: '8em', marginLeft: 'auto',
+                    display: 'flex', float: 'right', width: '10em', flexDirection: 'column', marginLeft: 'auto',
                   }}
                   sx={{
                     marginLeft: 'auto',
@@ -124,7 +124,7 @@ export default function NavBar() {
                 >
                   <div
                     variant="contained"
-                    style={{ width: '8em', height: '2em' }}
+                    style={{ width: '10em', height: '2em' }}
                     sx={{
                       marginLeft: 'auto',
                       background: '#FE6845',
@@ -135,7 +135,7 @@ export default function NavBar() {
                   <Button
                     to="/"
                     variant="contained"
-                    style={{ width: '8em' }}
+                    style={{ width: '10em' }}
                     onClick={(e) => {
                       e.preventDefault();
                       setUserDropDown(!userDropDown);
@@ -153,7 +153,7 @@ export default function NavBar() {
                   <Button
                     to="/"
                     variant="contained"
-                    style={{ width: '8em' }}
+                    style={{ width: '10em' }}
                     onClick={(e) => {
                       e.preventDefault();
                       // setUserDropDown(!userDropDown);
@@ -175,7 +175,7 @@ export default function NavBar() {
                 <Button
                   to="/"
                   variant="contained"
-                  style={{ width: '8em' }}
+                  style={{ width: '10em' }}
                   onClick={(e) => {
                     e.preventDefault();
                     setUserDropDown(!userDropDown);
@@ -197,6 +197,7 @@ export default function NavBar() {
               to="/login"
               component={Link}
               variant="contained"
+              style={{ width: '10em' }}
               sx={{
                 marginLeft: 'auto',
                 background: '#FE6845',
