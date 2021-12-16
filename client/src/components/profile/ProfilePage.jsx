@@ -62,6 +62,7 @@ export default function ProfilePage() {
             ],
           });
         } else {
+          setLastQuiz();
           setChartData({
             labels: [],
             datasets: [
@@ -109,7 +110,7 @@ export default function ProfilePage() {
           <br />
           <div className="info">
             <img
-              src={userData.thumbnail_url === 'null' ? placehold : userData.thumbnail_url}
+              src={userData.thumbnail_url === undefined || userData.thumbnail_url === 'null' ? placehold : userData.thumbnail_url}
               alt="ProfilePicture"
               style={{
                 margin: 'auto', borderRadius: '100%',
@@ -143,13 +144,13 @@ export default function ProfilePage() {
         </div>
         <div className="cards">
           <div>
-            {NewCard('Quizzes Taken', `${userMetaData.count}` || '')}
+            {NewCard('Quizzes Taken', userMetaData.count > 0 ? `${userMetaData.count}` : '')}
           </div>
           <div>
             {NewCard('Average', userMetaData.average ? `${userMetaData.average}%` : '')}
           </div>
           <div>
-            {NewCard('Last Quiz Taken', `${lastQuiz || ''}`)}
+            {NewCard('Last Quiz Taken', lastQuiz ? `${lastQuiz}` : '')}
           </div>
         </div>
         <div className="infoChart">
