@@ -5,7 +5,7 @@ const db = require('../../database/db.js');
 
 quizzes.route('/d/:difficulty').get((req, res) => {
   const { difficulty } = req.params;
-  db.query('SELECT * FROM quizzes WHERE difficulty = $1 LIMIT 4', [difficulty], (err, data) => {
+  db.query('SELECT * FROM quizzes WHERE difficulty = $1', [difficulty], (err, data) => {
     if (err) throw err;
     res.send(data.rows);
   });

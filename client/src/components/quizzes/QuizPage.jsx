@@ -15,13 +15,13 @@ import './Quizzes.css';
 export default function QuizPage() {
   // set state variables below:
   const [quiz_id, setQuizID] = useState();
-  const { userID } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);
   const [toggle, setToggle] = useState(false);
   const [questionIndex, setIndex] = useState(-1);
-  const [currentQuestion, setCurrent] = useState();
+  const [currentQuestion, setCurrent] = useState('ARE YOU READY TO START AN AMAZING QUIZ? CLICK BELOW TO GET GOING! DON\'T FORGET TO ANSWER ALL THE QUESTIONS ');
   const [last, setLast] = useState(0);
   const [backup, setBackup] = useState();
   const [render, setRender] = useState(false);
@@ -32,9 +32,15 @@ export default function QuizPage() {
   const [selected, setSelected] = useState();
   const [submit, setSubmit] = useState(false);
   const [hide, setHide] = useState(false);
+  const [hideNext, setNext] = useState(true);
+  const [hideBack, setBack] = useState(true);
+  const [hideNum, setNum] = useState(true);
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
+      setBack(false);
+      setNext(false);
+      setNum(false);
       setRender(true);
       setIndex(0);
       setButton('SUBMIT QUIZ');
@@ -53,6 +59,7 @@ export default function QuizPage() {
       setButton('TRY AGAIN');
       setSubmit(true);
     } if (buttonText === 'TRY AGAIN') {
+      setNext(false);
       setHide(true);
       setButton('SUBMIT QUIZ');
       setSelected(0);
@@ -77,6 +84,9 @@ export default function QuizPage() {
       setIndex(i += 1);
     }
     if (i === questionsArray.length - 1) {
+      setNext(true);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
       setHide(false);
     }
     // handle the button that moves to the next question
@@ -89,6 +99,10 @@ export default function QuizPage() {
     }
     if (i !== questionsArray.length - 1) {
       setHide(true);
+      setNext(false);
+    }
+    if (Object.keys(submittedAnswers).length === questionsArray.length) {
+      setHide(false);
     }
   };
   // handle the button that moves to the previous question
@@ -171,7 +185,7 @@ export default function QuizPage() {
       const statement = `Congratulations! You got ${totalCorrect} out of ${last + 1} answers correct!`;
       setCurrent(statement);
       axios.post('/api/quiz', {
-        user_id: userID,
+        user_id: user.id,
         quizID: quiz_id,
         numCorrect: totalCorrect,
         totalQuestions: last + 1,
@@ -233,10 +247,9 @@ export default function QuizPage() {
             style={{
               display: 'flex', justifyContent: 'space-around', alignItems: 'center', marginBottom: '2em',
             }}
-            className={submit ? 'hide' : ''}
           >
             <Button
-              className={submit ? 'hide' : ''}
+              className={hideBack ? 'hide' : ''}
               onClick={backHandler}
               variant="contained"
               sx={{
@@ -255,7 +268,7 @@ export default function QuizPage() {
             {/* Span where the current question goes */}
             <span
               style={{ marginTop: '15px', color: '#F78670', fontWeight: 'bold' }}
-              className={submit ? 'hide' : ''}
+              className={hideNum ? 'hide' : ''}
             >
               {questionIndex + 1}
               {' '}
@@ -264,7 +277,7 @@ export default function QuizPage() {
               {last + 1}
             </span>
             <Button
-              className={submit ? 'hide' : ''}
+              className={hideNext ? 'hide' : ''}
               onClick={nextHandler}
               variant="contained"
               sx={{
