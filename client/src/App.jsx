@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate,
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
 } from 'react-router-dom';
 
 // import e from 'cors';
@@ -43,7 +43,10 @@ export const App = function () {
   const [friends, setFriends] = useState([]);
 
   const navigate = useNavigate();
-  const goToHome = () => { navigate('/'); };
+  const goToHome = () => {
+    navigate('/');
+  };
+
   function fetchFriends(userId) {
     // axios
     //   .get(`/api/profile/${userID}`)
@@ -135,18 +138,30 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
-            <Route path="/profile" element={<PrivateRoute />}> // KEEP
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path={`/profile/:${userID}`} element={<ProfilePage />} />
-            </Route>  //KEEP 
+            <Route path="/profile" element={<PrivateRoute />}>
+              {' '}
+              // KEEP
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path={`/profile/:${userID}`} element={<ProfilePage />} />
+            </Route>
+            {' '}
+            //KEEP
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
-            <Route path="/quizzes" element={<PrivateRoute />}> //KEEP
-            <Route path="/quizzes/create" element={<CreateQuiz />} />
-            </Route> //KEEP 
-            <Route path="/chat" element={<PrivateRoute />}> //KEEP
-            </Route> //KEEP
+            <Route path="/quizzes" element={<PrivateRoute />}>
+              {' '}
+              //KEEP
+              <Route path="/quizzes/create" element={<CreateQuiz />} />
+            </Route>
+            {' '}
+            //KEEP
+            <Route path="/chat" element={<PrivateRoute />}>
+              {' '}
+              //KEEP
+            </Route>
+            {' '}
+            //KEEP
           </Route>
           <Route path="/login" element={<Login />} />
         </Routes>
