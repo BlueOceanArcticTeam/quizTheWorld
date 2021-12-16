@@ -24,6 +24,11 @@ const Chat = () => {
   const [recipientFirstName, setRecipientFirstName] = useState('');
   const [recipientLastName, setRecipientLastName] = useState('');
 
+  // CHAT COMMENTS
+  // Make delete button only show up after clicking a message
+  // Make chatbox disappear after clicking outside of it
+  // Don't let chatbox break App if user not logged in
+
   // HELPER FUNCTIONS
   const handleKeyDown = (e) => { if (e.key === 'Enter') { handleMessageSubmit(); }};
 

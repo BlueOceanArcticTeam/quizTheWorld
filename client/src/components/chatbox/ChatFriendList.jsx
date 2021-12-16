@@ -7,7 +7,6 @@ import ChatFriend from './ChatFriend.jsx';
 const ChatFriendList = () => {
   const { friends } = useContext(AppContext);
 
-  // HELPER FUNCTIONS
   return (
     <div className="chatFriendListContainer">
       <h4 className="chatFriendListTitle">My Friends</h4>

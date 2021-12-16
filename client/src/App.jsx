@@ -31,7 +31,7 @@ import './components/chatbox/chat.css';
 export const AppContext = React.createContext();
 
 export const App = function () {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
   const [displayChat, setDisplayChat] = useState(true);
   const [displayChatFriendList, setDisplayChatFriendList] = useState(false);
@@ -102,16 +102,14 @@ export const App = function () {
       });
   };
 
-  // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   useEffect(() => {
     getUserInformation();
     fetchAllUsers();
-    // if the user is logged in, get their info and friends
     if (isLoggedIn) {
       fetchFriends(userID);
     }
   }, []);
-  // OR: Just have a bool checking if user is logged in and then conditionally render pages
+
   return (
 
     <div className="app">
@@ -162,9 +160,13 @@ export const App = function () {
         {displayModal
           ? (displayChat ? <Chat /> : <ChatFriendList />)
           : null}
-        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-          <ChatIcon classname="chatIcon" />
-        </button>
+        {isLoggedIn
+          ? (
+              <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+                <ChatIcon className="chatIcon" />
+              </button>
+            )
+          : null}
       </AppContext.Provider>
     </div>
   );

@@ -68,13 +68,14 @@
 }
 
 .chatFriendList {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .chatArea {
   height: 330px;
   width: 330px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .messageContainer {
@@ -126,7 +127,7 @@ button {
 }
 
 .chatIcon {
-  transform: scale(3);
-  color: black;
+  transform: scale(2);
+  color: white;
   z-index: 500;
 }

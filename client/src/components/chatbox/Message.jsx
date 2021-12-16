@@ -8,7 +8,6 @@ import { AppContext } from '../../App.jsx';
 import './chat.css';
 
 const Message = ({ messageObj, messageClassName, chat, setChat }) => {
-
   const [displayDeleteButton, setDisplayDeleteButton] = useState(false);
   const { userID } = useContext(AppContext);
 
