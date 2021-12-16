@@ -22,12 +22,34 @@ export default function Quizzes() {
   const fakeData = ['https://images.unsplash.com/photo-1539628399213-d6aa89c93074?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80', 'https://images.unsplash.com/photo-1595429035839-c99c298ffdde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80',
     'https://images.unsplash.com/photo-1627856014754-2907e2355d34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2047&q=80'];
   const moarData = ['https://www.dictionary.com/e/wp-content/uploads/2020/01/WisdomvsKnowledge_1000x700_jpg_OHVUvmTo.jpg', 'https://i0.wp.com/www.edulastic.com/blog/wp-content/uploads/2017/04/Brain_neurons_3720x2631.jpeg?resize=550%2C389&ssl=1', 'https://www.stockvault.net/data/2019/08/28/268988/preview16.jpg'];
+  const [allDifficulty, setAllDifficulty] = useState([]);
   const [difficultyQuizzes, setDQuizzes] = useState([]);
   const [difficulty, setDifficulty] = useState('easy');
   const [categoryQuizzes, setCQuizzes] = useState([]);
   const [category, setCategory] = useState('Animals');
   const [toggle, setToggle] = useState(true);
   const [trigger, setTrigger] = useState(true);
+  const [indices, setIndices] = useState([0, 1, 2, 3]);
+  const [counter, setCounter] = useState(0);
+
+  const leftArrow = () => {
+    if (indices[0] > 0) {
+      const arr = indices.slice(0, 3);
+      arr.unshift(indices[0] - 1);
+      setIndices(arr);
+      setCounter(counter + 1);
+    }
+  };
+
+  const rightArrow = () => {
+    const last = allDifficulty.length - 1;
+    if (indices[3] < last) {
+      const arr = indices.slice(1);
+      arr.push(indices[3] + 1);
+      setIndices(arr);
+      setCounter(counter + 1);
+    }
+  };
 
   const pageLink = (e) => {
     localStorage.setItem('quizID', e.target.id);
@@ -47,10 +69,7 @@ export default function Quizzes() {
       axios.get(`/api/quizzes/d/${difficulty}`)
         .then((res) => {
           const { data } = res;
-          for (let i = 0; i < data.length; i += 1) {
-            data[i].url = fakeData[i];
-          }
-          setDQuizzes(data);
+          setAllDifficulty(data);
         });
     }
   }, [difficulty]);
@@ -67,6 +86,21 @@ export default function Quizzes() {
         });
     }
   }, [category]);
+
+  useEffect(() => {
+    const store = [];
+    if (allDifficulty.length > 1) {
+      for (let j = 0; j < indices.length; j += 1) {
+        store.push(allDifficulty[indices[j]]);
+      }
+    }
+    if (store.length === 4) {
+      for (let i = 0; i < store.length; i += 1) {
+        store[i].url = fakeData[i];
+      }
+      setDQuizzes(store);
+    }
+  }, [allDifficulty, counter]);
 
   // render component:
   return (
@@ -91,21 +125,25 @@ export default function Quizzes() {
         }}
       />
       {/* This is the Arrows for back and forward */}
-      <ArrowBackIosIcon style={{
-        position: 'absolute',
-        fontSize: '100px',
-        color: 'white',
-        left: '10%',
-        top: '52vh',
-      }}
+      <ArrowBackIosIcon
+        onClick={leftArrow}
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          left: '10%',
+          top: '52vh',
+        }}
       />
-      <ArrowForwardIosIcon style={{
-        position: 'absolute',
-        fontSize: '100px',
-        color: 'white',
-        right: '10%',
-        top: '52vh',
-      }}
+      <ArrowForwardIosIcon
+        onClick={rightArrow}
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          right: '10%',
+          top: '52vh',
+        }}
       />
       {/* This div contains all of the image tiles */}
       <div style={{
