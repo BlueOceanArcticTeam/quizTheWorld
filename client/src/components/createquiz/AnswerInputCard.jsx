@@ -4,7 +4,7 @@
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
 import React, {
-  useState, useContext, useEffect, useRef,
+  useState, useContext, useEffect, useRef, question,
 } from 'react';
 import QuestionImage from './assets/Question.png';
 import gsap, { Power3, Power2 } from 'gsap';
@@ -86,11 +86,13 @@ export default function AnswerInputCard({
       text: answers.D,
     };
     answersArr.push(answerA, answerB, answerC, answerD);
+    // get the text of the correct answer
     for (const key in answers) {
       if (key === answers.correct) {
         correct = answers[key];
       }
     }
+    // check the answers and if it matches the correct one, update the correct to true
     answersArr.map((item) => {
       if (item.text === correct) {
         item.correct = true;
@@ -98,6 +100,10 @@ export default function AnswerInputCard({
       return item;
     });
     console.log(answersArr);
+  }
+
+  function submitQuestion() {
+    console.log(question);
   }
 
   return (
@@ -174,7 +180,7 @@ export default function AnswerInputCard({
             }}
           />
           <Button
-            onClick={() => { setStepCount(stepCount + 2); storeAnswersForSubmitting(); }}
+            onClick={() => { setStepCount(stepCount + 2); storeAnswersForSubmitting(); submitQuestion(); }}
             variant="contained"
             sx={{
               position: 'absolute',

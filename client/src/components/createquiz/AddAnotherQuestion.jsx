@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
@@ -8,15 +9,21 @@ import gsap, { Power3, Power2 } from 'gsap';
 import QuestionImage from './assets/Question.png';
 import './CreateQuiz.css';
 import {
-  Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
+  Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button, quizId, setQuizId,
 } from '@mui/material';
 import {
   Link,
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import axios from 'axios';
 
-export default function AddAnotherQuestion({ stepCount, setStepCount }) {
+export default function AddAnotherQuestion({
+  stepCount, setStepCount,
+  quiz, answers, question,
+  answerGroup, questionGroup,
+  setAnswerGroup, setQuestionGroup,
+}) {
   const boxRef = useRef(null);
 
   useEffect(() => {
@@ -27,6 +34,13 @@ export default function AddAnotherQuestion({ stepCount, setStepCount }) {
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function createQuiz() {
+    console.log(quiz, '-----');
+    axios.post('/api/create', quiz)
+      .then((res) => { setQuizId(res.data); console.log(res.data, typeof res.data, 'here'); })
+      .catch((err) => console.log(err));
+  }
 
   return (
 
@@ -69,6 +83,7 @@ export default function AddAnotherQuestion({ stepCount, setStepCount }) {
           Or..finished?
         </span>
         <Button
+          onClick={() => { createQuiz(); }}
           to="/login"
           variant="contained"
           sx={{

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -15,7 +16,7 @@ import {
 } from '@mui/material';
 
 export default function QuestionInputCard({
-  stepCount, setStepCount, question, setQuestion,
+  stepCount, setStepCount, question, setQuestion, questionGroup, setQuestionGroup,
 }) {
   const { user } = useContext(AppContext);
   const [multipleChoiceOrTrueFalse, setMultipleChoiceOrTrueFalse] = useState(null);
@@ -48,8 +49,13 @@ export default function QuestionInputCard({
   function updateQuestionText(e) {
     setQuestion({
       ...question,
-      questionText: e.target.value,
+      text: e.target.value,
     });
+  }
+
+  function updateQuestionGroup() {
+    setQuestionGroup((questionGroup) => [...questionGroup, question]);
+    console.log('happening');
   }
 
   return (
@@ -89,7 +95,7 @@ export default function QuestionInputCard({
           >
             <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="100" rows="10" maxLength="200" style={{ fontSize: '15px', borderRadius: '15px' }} />
             <Button
-              onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); }}
+              onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); updateQuestionGroup(); }}
               variant="contained"
               sx={{
                 position: 'absolute',

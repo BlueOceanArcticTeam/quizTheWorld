@@ -24,16 +24,17 @@ export default function CreateQuiz() {
   const [goBackToSelectCategoryDifficultyNameCard, setGoBackToSelectCategoryDifficultyNameCard] = useState(false);
   const [stepCount, setStepCount] = useState(1);
   const moveElement = useRef(null);
+  const [quizId, setQuizId] = useState(null);
   const [quiz, setQuiz] = useState({
+    title: '',
     category: '',
     difficulty: '',
-    title: '',
     source: null, // This is the user_id
     dateCreated: new Date(),
     numSubmissions: 0,
   });
   const [answers, setAnswers] = useState({
-    question_id: null, // unique hashing function
+    question_id: 0, // unique hashing function
     correct: null,
     A: '',
     B: '',
@@ -41,6 +42,7 @@ export default function CreateQuiz() {
     D: '',
   });
   const [question, setQuestion] = useState({
+    questionId: 0,
     user_id: null,
     quiz_id: null,
     text: '',
@@ -50,9 +52,16 @@ export default function CreateQuiz() {
   const [answerGroup, setAnswerGroup] = useState([]);
   // component functions - event handlers
 
-  // use Effect:
   useEffect(() => {
-    console.log(answers);
+    console.log(question);
+  }, [question]);
+
+  useEffect(() => {
+    console.log(questionGroup, '}---***---{');
+  }, [questionGroup]);
+
+  useEffect(() => {
+    console.log(answers, '}---***---{');
   }, [answers]);
 
   // render component:
@@ -73,16 +82,39 @@ export default function CreateQuiz() {
           : ''
       }
       { stepCount === 2
-        ? <QuestionInputCard setStepCount={setStepCount} stepCount={stepCount} setQuestion={setQuestion} question={question} />
+        ? (
+          <QuestionInputCard
+            setStepCount={setStepCount}
+            stepCount={stepCount}
+            setQuestion={setQuestion}
+            setQuestionGroup={setQuestionGroup}
+            questionGroup={questionGroup}
+            question={question}
+          />
+        )
         : ''}
       { stepCount === 3
-        ? <AnswerInputCard setStepCount={setStepCount} stepCount={stepCount} answers={answers} setAnswers={setAnswers} />
+        ? <AnswerInputCard setStepCount={setStepCount} stepCount={stepCount} answers={answers} setAnswers={setAnswers} question={question} />
         : ''}
       { stepCount === 4
         ? <TrueFalseSelectCard setStepCount={setStepCount} stepCount={stepCount} />
         : ''}
       { stepCount === 5
-        ? <AddAnotherQuestion setStepCount={setStepCount} stepCount={stepCount} />
+        ? (
+          <AddAnotherQuestion
+            setStepCount={setStepCount}
+            stepCount={stepCount}
+            quiz={quiz}
+            answers={answers}
+            question={question}
+            setQuestionGroup={setQuestionGroup}
+            setAnswerGroup={setAnswerGroup}
+            answerGroup={answerGroup}
+            questionGroup={questionGroup}
+            quizId={quizId}
+            setQuizId={setQuizId}
+          />
+        )
         : ''}
     </div>
   );
