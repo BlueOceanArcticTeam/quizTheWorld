@@ -139,14 +139,7 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
-            <Route path="/profile" element={<PrivateRoute />}>
-              {' '}
-              // KEEP
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path={`/profile/:${userID}`} element={<ProfilePage />} />
-            </Route>
-            {' '}
-            //KEEP
+            <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />

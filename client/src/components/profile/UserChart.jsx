@@ -14,7 +14,12 @@ export default function ComponentName(props) {
   // use Effect:
   // render component:
   return (
-    <div id="userbarchart" style={{ height: '100%', width: '100%', transform: 'scale(1.2)' }}>
+    <div
+      id="userbarchart"
+      style={{
+        height: '100%', width: '100%', transform: 'scale(1.2)',
+      }}
+    >
       <Bar
         data={props.data}
         options={{

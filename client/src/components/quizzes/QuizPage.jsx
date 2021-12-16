@@ -9,13 +9,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
-import AppContext from '../../context.js';
+import { AppContext } from '../../App.jsx';
 import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
   const [quiz_id, setQuizID] = useState();
-  const userID = useContext(AppContext);
+  const { userID } = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
   const [answersArray, setAnswers] = useState(['Please', 'Wait', 'Files', 'Loading']);

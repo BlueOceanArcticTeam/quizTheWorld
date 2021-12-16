@@ -34,7 +34,7 @@
 }
 
 .property {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   justify-content: center;
   display: grid;
   color: white;
@@ -82,10 +82,6 @@
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding-top: 2rem;
-  padding-left: 4rem;
-  padding-right: 4rem;
-  max-width: 100%;
 
 }
 
@@ -93,6 +89,7 @@
   flex: 1;
   margin-left: 2rem;
   margin-right: 2rem;
+  width: 100%;
 }
 
 .infoChart {
@@ -113,4 +110,9 @@
 #userchartcontainer {
   width: 100%;
   height: 100%;
+}
+
+#profilepic {
+  height: 96px;
+  width: 96px;
 }
