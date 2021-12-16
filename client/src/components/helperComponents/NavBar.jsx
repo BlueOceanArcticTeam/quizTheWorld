@@ -21,6 +21,7 @@ import { AppContext } from '../../App.jsx';
 export default function NavBar() {
   // set state variables below:
   const { user, handleLogOut, userID } = useContext(AppContext);
+  const [userDropDown, setUserDropDown] = useState(false);
   // component functions - event handlers
 
   // use Effect:
@@ -108,28 +109,95 @@ export default function NavBar() {
         user
           ? (
         // logout button
-            <Button
-              to="/"
-              variant="contained"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLogOut(e);
-              }}
-              sx={{
-                marginLeft: 'auto',
-                background: '#FE6845',
-                color: '#FFF1EA',
-                textDecoration: 'none',
-              }}
-            >
-              { `${user.username} Logout` }
-            </Button>
+            userDropDown
+              ? (
+                <div
+                  style={{
+                    display: 'flex', float: 'right', width: '10em', flexDirection: 'column', marginLeft: 'auto',
+                  }}
+                  sx={{
+                    marginLeft: 'auto',
+                    background: '#FE6845',
+                    color: '#FFF1EA',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <div
+                    variant="contained"
+                    style={{ width: '10em', height: '2em' }}
+                    sx={{
+                      marginLeft: 'auto',
+                      background: '#FE6845',
+                      color: '#FFF1EA',
+                      textDecoration: 'none',
+                    }}
+                  />
+                  <Button
+                    to="/"
+                    variant="contained"
+                    style={{ width: '10em' }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setUserDropDown(!userDropDown);
+                      // handleLogOut(e);
+                    }}
+                    sx={{
+                      marginLeft: 'auto',
+                      background: '#FE6845',
+                      color: '#FFF1EA',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {user.username }
+                  </Button>
+                  <Button
+                    to="/"
+                    variant="contained"
+                    style={{ width: '10em' }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // setUserDropDown(!userDropDown);
+                      setUserDropDown(false);
+                      handleLogOut(e);
+                    }}
+                    sx={{
+                      marginLeft: 'auto',
+                      background: '#FE6845',
+                      color: '#FFF1EA',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </div>
+              )
+              : (
+                <Button
+                  to="/"
+                  variant="contained"
+                  style={{ width: '10em' }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setUserDropDown(!userDropDown);
+                    // handleLogOut(e);
+                  }}
+                  sx={{
+                    marginLeft: 'auto',
+                    background: '#FE6845',
+                    color: '#FFF1EA',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {user.username }
+                </Button>
+              )
           )
           : (
             <Button
               to="/login"
               component={Link}
               variant="contained"
+              style={{ width: '10em' }}
               sx={{
                 marginLeft: 'auto',
                 background: '#FE6845',
