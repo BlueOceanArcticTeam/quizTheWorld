@@ -194,7 +194,7 @@ export default function Quizzes() {
           {
             categoryQuizzes.map((ele, index) => (
               <div key={index}>
-                <h2>{ele.title}</h2>
+                <p>{ele.title}</p>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
                 }}
@@ -245,7 +245,7 @@ export default function Quizzes() {
           {
             difficultyQuizzes.map((ele, index) => (
               <div key={index}>
-                <h2>{ele.title}</h2>
+                <p>{ele.title}</p>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
                 }}
