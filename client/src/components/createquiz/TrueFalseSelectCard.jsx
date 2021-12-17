@@ -11,8 +11,15 @@ import {
   Input, FormControl, InputLabel, FormHelperText, Select, MenuItem, Button,
 } from '@mui/material';
 
-export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
+export default function TrueFalseSelectCard({
+  stepCount, setStepCount, trueFalseAnswer,
+  setTrueFalseAnswer, answerGroup, setAnswerGroup,
+  setTrueFalseOtherAnswer, trueFalseOtherAnswer,
+  setCurrentQuestionId, currentQuestionId,
+}) {
   const boxRef = useRef(null);
+  // eslint-disable-next-line prefer-const
+  const [trueFalseArr, setTrueFalseArr] = useState([]);
 
   useEffect(() => {
     gsap.to(boxRef.current, {
@@ -22,6 +29,45 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function updateTrueFalseAnswer(e) {
+    let opposite;
+    let correctAns;
+    if (e.target.value === 'true') {
+      opposite = false;
+      correctAns = true;
+    } else if (e.target.value === 'false') {
+      opposite = true;
+      correctAns = false;
+    }
+    setTrueFalseAnswer({
+      ...trueFalseAnswer,
+      correct: correctAns,
+      text: 'True',
+    });
+    setTrueFalseOtherAnswer({
+      ...trueFalseOtherAnswer,
+      correct: opposite,
+      text: 'False',
+    });
+    const tfAnswer = {
+      ...trueFalseAnswer,
+      correct: correctAns,
+      text: 'True',
+    };
+    const tfOtherAnswer = {
+      ...trueFalseOtherAnswer,
+      correct: opposite,
+      text: 'False',
+    };
+    console.log(tfAnswer, tfOtherAnswer, 'here!');
+
+    setTrueFalseArr((trueFalseArr) => [...trueFalseArr, tfAnswer, tfOtherAnswer]);
+  }
+
+  function addAnswerToAnswerGroup() {
+    setAnswerGroup((answerGroup) => [...answerGroup, trueFalseArr]);
+  }
 
   return (
 
@@ -46,6 +92,7 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
           <FormControl variant="filled" sx={{ width: '12em' }}>
             <InputLabel id="demo-simple-select-label">True / False</InputLabel>
             <Select
+              onChange={updateTrueFalseAnswer}
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -53,13 +100,13 @@ export default function TrueFalseSelectCard({ stepCount, setStepCount }) {
             // value={age}
               label="Category"
             >
-              <MenuItem value="1">True</MenuItem>
-              <MenuItem value="0">False</MenuItem>
+              <MenuItem value="true">True</MenuItem>
+              <MenuItem value="false">False</MenuItem>
 
             </Select>
           </FormControl>
           <Button
-            onClick={() => { setStepCount(stepCount + 1); }}
+            onClick={() => { setStepCount(stepCount + 1); addAnswerToAnswerGroup(); setCurrentQuestionId(currentQuestionId + 1); }}
             variant="contained"
             sx={{
               position: 'absolute',

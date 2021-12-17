@@ -1,9 +1,10 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
 import React, {
-  useState, useContext, useEffect, useRef,
+  useState, useContext, useEffect, useRef, question,
 } from 'react';
 import QuestionImage from './assets/Question.png';
 import gsap, { Power3, Power2 } from 'gsap';
@@ -13,7 +14,10 @@ import {
 } from '@mui/material';
 
 export default function AnswerInputCard({
-  stepCount, setStepCount, answers, setAnswers,
+  stepCount, setStepCount, answers,
+  setAnswers, currentQuestionId, question,
+  setQuestion, setCurrentQuestionId,
+  answerGroup, setAnswerGroup,
 }) {
   const boxRef = useRef(null);
 
@@ -31,6 +35,92 @@ export default function AnswerInputCard({
       ...answers,
       correct: e.target.value,
     });
+  }
+
+  function updateAnswerA(e) {
+    setAnswers({
+      ...answers,
+      A: e.target.value,
+    });
+  }
+
+  function updateAnswerB(e) {
+    setAnswers({
+      ...answers,
+      B: e.target.value,
+    });
+  }
+
+  function updateAnswerC(e) {
+    setAnswers({
+      ...answers,
+      C: e.target.value,
+    });
+  }
+
+  function updateAnswerD(e) {
+    setAnswers({
+      ...answers,
+      D: e.target.value,
+    });
+  }
+
+  function clearOldQuestionAndCreateNewOne() {
+    setQuestion({
+      question_id: null,
+      user_id: null,
+      quiz_id: null,
+      text: '',
+      questionType: '',
+    });
+  }
+
+  function storeAnswersForSubmitting() {
+    console.log('yo ---', currentQuestionId);
+    const answersArr = [];
+    let correct;
+    const answerA = {
+      question_id: currentQuestionId,
+      correct: false,
+      text: answers.A,
+    };
+    const answerB = {
+      question_id: currentQuestionId,
+      correct: false,
+      text: answers.B,
+    };
+    const answerC = {
+      question_id: currentQuestionId,
+      correct: false,
+      text: answers.C,
+    };
+    const answerD = {
+      question_id: currentQuestionId,
+      correct: false,
+      text: answers.D,
+    };
+    answersArr.push(answerA, answerB, answerC, answerD);
+    // get the text of the correct answer
+    for (const key in answers) {
+      if (key === answers.correct) {
+        correct = answers[key];
+      }
+    }
+    // check the answers and if it matches the correct one, update the correct to true
+    answersArr.map((item) => {
+      if (item.text === correct) {
+        item.correct = true;
+      }
+      return item;
+    });
+    console.log(answersArr);
+    setAnswerGroup((answerGroup) => [...answerGroup, answersArr]);
+    setCurrentQuestionId(currentQuestionId + 1);
+    clearOldQuestionAndCreateNewOne();
+  }
+
+  function submitQuestion() {
+    console.log(question);
   }
 
   return (
@@ -75,6 +165,7 @@ export default function AnswerInputCard({
             </Select>
           </FormControl>
           <input
+            onChange={updateAnswerA}
             type="text"
             className="input"
             style={{
@@ -82,6 +173,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerB}
             type="text"
             className="input"
             style={{
@@ -89,6 +181,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerC}
             type="text"
             className="input"
             style={{
@@ -96,6 +189,7 @@ export default function AnswerInputCard({
             }}
           />
           <input
+            onChange={updateAnswerD}
             type="text"
             className="input"
             style={{
@@ -103,7 +197,7 @@ export default function AnswerInputCard({
             }}
           />
           <Button
-            onClick={() => { setStepCount(stepCount + 2); }}
+            onClick={() => { setStepCount(stepCount + 2); storeAnswersForSubmitting(); submitQuestion(); }}
             variant="contained"
             sx={{
               position: 'absolute',
