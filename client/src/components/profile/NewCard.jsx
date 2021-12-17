@@ -22,6 +22,7 @@ const NewCard = function (header, content) {
         >
           {header}
         </h5>
+        <hr style={{ width: '100%', marginTop: '0' }} />
         <h6 style={{
           padding: 'none', margin: 'auto', marginTop: '0px', marginBottom: '0px', width: '100%',
         }}

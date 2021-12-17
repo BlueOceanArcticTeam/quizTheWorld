@@ -86,9 +86,13 @@ profile.route('/:user_id/friends/:friend_id').delete((req, res) => {
 
 // route to make a query adding friends
 profile.route('/:user_id/friends/:friend_id').post((req, res) => {
-  db.query('INSERT INTO friends VALUES (DEFAULT, $1, $2), (DEFAULT, $2, $1)', [req.params.user_id, req.params.friend_id], (err, data) => {
+  // check if friendship already exists
+  db.query('INSERT INTO friends (user_id, friend_id) SELECT $1, $2 WHERE NOT EXISTS (SELECT user_id, friend_id FROM friends WHERE user_id = $1 AND friend_id = $2);', [req.params.user_id, req.params.friend_id], (err, data) => {
     if (err) throw err;
-    res.send(data);
+    db.query('INSERT INTO friends (user_id, friend_id) SELECT $2, $1 WHERE NOT EXISTS (SELECT user_id, friend_id FROM friends WHERE user_id = $2 AND friend_id = $1);', [req.params.user_id, req.params.friend_id], (err, data) => {
+      if (err) throw err;
+      res.send(data);
+    });
   });
 });
 

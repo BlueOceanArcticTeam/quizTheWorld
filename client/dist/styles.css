@@ -31,3 +31,23 @@
   bottom: 1em;
   right: 6em;
 }
+
+.searchedusers {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.searcheduserbuttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#search {
+  animation-name: animatetop;
+  animation-duration: 1s;
+}
+
+@keyframes animatetop {
+  from {opacity: 0}
+  to {opacity: 1}
+}

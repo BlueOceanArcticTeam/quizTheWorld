@@ -27,6 +27,7 @@ import ChatFriendList from './components/chatbox/ChatFriendList.jsx';
 import PrivateRoute from './components/helperComponents/PrivateRoute.jsx';
 import '../dist/styles.css';
 import './components/chatbox/chat.css';
+import SearchModal from './components/modal/SearchModal.jsx';
 
 export const AppContext = React.createContext();
 
@@ -38,10 +39,13 @@ export const App = function () {
   const [userID, setUserID] = useState(2); // TODO: Make this dynamic
   const [recipientID, setRecipientID] = useState(1);
   const [userData, setUserData] = useState();
-  const [searched, setSearched] = useState('');
   const [user, setUser] = useState();
   const [users, setUsers] = useState({});
   const [friends, setFriends] = useState([]);
+  const [render, setRender] = useState(false);
+  const [search, setSearch] = useState();
+  const [searchLocation, setSearchLocation] = useState({});
+  const [query, setQuery] = useState('');
 
   const navigate = useNavigate();
   const goToHome = () => {
@@ -110,6 +114,11 @@ export const App = function () {
     }
   }, []);
 
+  // load search modal
+  useEffect(() => {
+
+  }, [render]);
+
   return (
 
     <div className="app">
@@ -131,6 +140,14 @@ export const App = function () {
         users,
         handleLogOut,
         goToHome,
+        search,
+        setSearch,
+        setRender,
+        render,
+        searchLocation,
+        setSearchLocation,
+        query,
+        setQuery
       }}
       >
         <Routes>
@@ -161,6 +178,7 @@ export const App = function () {
           )
           : null}
         {/* </div> */}
+        <SearchModal />
       </AppContext.Provider>
     </div>
   );
