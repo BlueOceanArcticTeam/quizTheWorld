@@ -114,7 +114,8 @@ passport.deserializeUser(async (data, done) => { // id might need to be user  28
 passport.use(new GoogleStrategy({
   // options for the strategy
   // these are configured on mbolsen's developer console
-  callbackURL: 'http://localhost:3000/api/auth/google/redirect',
+  // callbackURL: 'http://localhost:3000/api/auth/google/redirect',
+  callbackURL: 'https://quiz-knows.herokuapp.com/api/auth/google/redirect',
   clientID: keys.google.clientID,
   clientSecret: keys.google.clientSecret,
 }, (accessToken, refreshToken, profile, done) => {
