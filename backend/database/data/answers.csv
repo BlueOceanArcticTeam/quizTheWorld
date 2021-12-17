@@ -1,960 +1,960 @@
-question_id, correct, text
-1,false,"Yorkshire Terrier"
-1,true,"Bulldog"
-1,false,"Boxer"
-1,false,"Pug"
-2,false,"15 MPH"
-2,false,"20 MPH"
-2,true,"24 MPH"
-2,false,"200 MPH"
-3,true,"February 14 2005"
-3,false,"May 22 2004"
-3,false,"September 12 2005"
-3,false,"July 19 2009"
-4,false,"Najma"
-4,false,"Kawkab"
-4,false,"Shams"
-4,true,"Qamar"
-5,true,"1 Month"
-5,false,"3 Weeks"
-5,false,"1 Week"
-5,false,"2 Months"
-6,false,"2000"
-6,true,"2004"
-6,false,"2001"
-6,false,"2006"
-7,false,"2 years"
-7,false,"8 years"
-7,false,"6 months"
-7,true,"7 years"
-8,false,"Red"
-8,true,"Purple"
-8,false,"Brown"
-8,false,"Pink"
-9,false,"20%"
-9,false,"10%"
-9,true,"15%"
-9,false,"25%"
-10,false,"The inability to stand up"
-10,false,"The inability to concentrate on anything"
-10,true,"The inability to make decisions"
-10,false,"A feverish desire to rip ones clothes off"
-11,false,"Ethiopian Coyote"
-11,false,"Amharic Fox"
-11,false,"Canis Simiensis"
-11,true,"Simien Jackel"
-12,true,"Syrian Brown Bear"
-12,false,"California Grizzly Bear"
-12,false,"Atlas Bear"
-12,false,"Mexican Grizzly Bear"
-13,false,"8"
-13,true,"4"
-13,false,"2"
-13,false,"6"
-14,false,"Komodo Dragon"
-14,false,"Gila Monster"
-14,true,"Tuatara"
-14,false,"Green Iguana"
-15,false,"Lion"
-15,false,"Parrot"
-15,true,"Ape"
-15,false,"Wildcat"
-16,false,"Chicken"
-16,true,"Frog"
-16,false,"Horse"
-16,false,"Fly"
-17,false,"Hopper"
-17,true,"Gooty"
-17,false,"Silver Stripe"
-17,false,"Woebegone"
-18,false,"Sea Wasp"
-18,false,"Irukandji"
-18,false,"Sea Nettle"
-18,true,"Portuguese Man-of-War"
-19,false,"Ambush"
-19,false,"Building"
-19,true,"Wake"
-19,false,"Gaze"
-20,true,"Chordata"
-20,false,"Echinodermata"
-20,false,"Annelida"
-20,false,"Placazoa"
-21,false,"Swaziland"
-21,false,"Botswana"
-21,false,"Zimbabwe"
-21,true,"Lesotho"
-22,false,"Fujian"
-22,false,"Sichuan"
-22,true,"Yangtze"
-22,false,"Guangdong"
-23,false,"India and Nepal"
-23,false,"Pakistan and India"
-23,true,"Afghanistan and Pakistan"
-23,false,"Tajikistan and Kyrgyzstan"
-24,false,"Nepal"
-24,true,"New Zealand"
-24,false,"China"
-24,false,"Mexico"
-25,false,"Schweizerische Nationalbahnen"
-25,false,"Bundesbahnen der Schweiz"
-25,false,"Schweizerische Staatsbahnen"
-25,true,"Schweizerische Bundesbahnen"
-26,false,"Eesti"
-26,false,"Magyarorszcuteg"
-26,false,"Sverige"
-26,true,"Suomi"
-27,true,"Kaunas"
-27,false,"Panevėžys"
-27,false,"Vilnius"
-27,false,"Klaipėda"
-28,false,"Finland"
-28,true,"Estonia"
-28,false,"Sweden"
-28,false,"Poland"
-29,false,"Milwaukee"
-29,false,"Wisconsin Dells"
-29,true,"Madison"
-29,false,"Green Bay"
-30,false,"Lake Superior"
-30,true,"Lake Baikal"
-30,false,"Lake Huron"
-30,false,"Lake Michigan"
-31,true,"Wilson"
-31,false,"Friday"
-31,false,"Jones"
-31,false,"Billy"
-32,false,"Harrison Ford"
-32,true,"Tommy Lee Jones"
-32,false,"Harvey Keitel"
-32,false,"Martin Landau"
-33,false,"Days of Thunder"
-33,false,"The Color of Money"
-33,true,"Top Gun"
-33,false,"Cocktail"
-34,false,"Jules Winnfield"
-34,false,"Jimmie Dimmick"
-34,true,"Vincent Vega"
-34,false,"Butch Coolidge"
-35,false,"Mosasaurus"
-35,true,"Indominus Rex"
-35,false,"Pteranodon"
-35,false,"Tyrannosaurus Rex "
-36,false,"The Island"
-36,true,"Fight Club"
-36,false,"Unthinkable"
-36,false,"American Pie"
-37,false,"Ted Wiggins"
-37,false,"The Once-Ler"
-37,true,"Aloysius OHare"
-37,false,"Grammy Norma"
-38,false,"Cylons"
-38,false,"Synthetics"
-38,false,"Skinjobs"
-38,true,"Replicants"
-39,true,"Kaltag Nikki and Star"
-39,false,"Dusty Kirby and Ralph"
-39,false,"Nuk Yak and Sumac"
-39,false,"Jenna Sylvie and Dixie"
-40,false,"San Tokyo"
-40,false,"Tokysisco"
-40,false,"Sankyo"
-40,true,"San Fransokyo"
-41,false,"Honey"
-41,false,"Caramel"
-41,true,"Sugar"
-41,false,"Candy"
-42,true,"Guys and Dolls"
-42,false,"Anchors Aweigh"
-42,false,"From Here to Eternity"
-42,false,"High Society"
-43,false,"Jason Dip"
-43,true,"Matthew Taylor"
-43,false,"Eric Mabius"
-43,false,"Jimmy Matts"
-44,false,"Tyler Mane"
-44,true,"Jackie Earle Haley"
-44,false,"Derek Mears"
-44,false,"Gunnar Hansen"
-45,false,"Romans Go Home"
-45,false,"Roxani Ite Domum"
-45,true,"Romani Ite Domum"
-45,false,"Tomate Ite Domum"
-46,true,"1984"
-46,false,"1986"
-46,false,"1985"
-46,false,"1983"
-47,false,"Stanley Kubrick"
-47,false,"Frank Darabont"
-47,false,"Michael Bay"
-47,true,"Jonathan Demme"
-48,false,"Chien-Po"
-48,false,"Li Shang"
-48,true,"Shan Yu"
-48,false,"Fa Zhou"
-49,false,"Chuck Norris"
-49,false,"Steven Seagal"
-49,false,"Scott Adkins"
-49,true,"Jean-Claude Van Damme"
-50,false,"77 mph"
-50,true,"88 mph"
-50,false,"100 mph"
-50,false,"70 mph"
-51,true,"Femur"
-51,false,"Cranium"
-51,false,"Humerus"
-51,false,"Tibia"
-52,false,"Calf"
-52,true,"Joey"
-52,false,"Pup"
-52,false,"Cub"
-53,false,"Ears"
-53,false,"Chin"
-53,true,"Nose"
-53,false,"Neck"
-54,false,"Mars"
-54,false,"Mercury"
-54,true,"Venus"
-54,false,"Jupiter"
-55,false,"Helium"
-55,true,"Hydrogen"
-55,false,"Lithium"
-55,false,"Oxygen"
-56,true,"The presence or absence of a nucleus"
-56,false,"The overall size"
-56,false,"The presence or absence of certain organelles"
-56,false,"The mode of reproduction"
-57,false,"21"
-57,false,"22"
-57,true,"23"
-57,false,"24"
-58,true,"Water"
-58,false,"Deserts"
-58,false,"Continents"
-58,false,"Forests"
-59,false,"Eridanus"
-59,false,"Gamma Cephei"
-59,true,"Polaris"
-59,false,"Iota Cephei"
-60,false,"A wormhole"
-60,false,"A supernova"
-60,false,"A quasar"
-60,true,"A black hole"
-61,false,"Matthew"
-61,true,"Mike"
-61,false,"Mark"
-61,false,"Max"
-62,false,"Going"
-62,false,"Ghost"
-62,true,"Government"
-62,false,"Geronimo"
-63,true,"Ducati"
-63,false,"Nissan"
-63,false,"GMC"
-63,false,"Fiat"
-64,false,"Toshokan"
-64,true,"Daigaku"
-64,false,"Jimusho"
-64,false,"Shokudou"
-65,false,"The Haunted Mansion"
-65,false,"Pirates of the Caribbean"
-65,true,"Twilight Zone Tower of Terror"
-65,false,"Peter Pans Flight"
-66,false,"Eric Tignor"
-66,false,"Bill Nye"
-66,false,"Zach Soldi"
-66,true,"Bobby Henderson"
-67,false,"Sheeps Heart Kidneys and Lungs"
-67,false,"Sheeps Liver Kidneys and Eyes"
-67,true,"Sheeps Heart Liver and Lungs"
-67,false,"Whole Sheep"
-68,false,"Weave"
-68,false,"Guitar"
-68,true,"Horse"
-68,false,"Boat"
-69,false,"Ninja"
-69,false,"Samurai"
-69,false,"Shinobi"
-69,true,"Shogun"
-70,false,"Post hoc ergo propter hoc"
-70,true,"Ad hominem"
-70,false,"Tu quoque"
-70,false,"Argumentum ad populum"
-71,false,"Lion"
-71,true,"Cheetah"
-71,false,"Thomsons Gazelle"
-71,false,"Pronghorn Antelope"
-72,false,"Homo Ergaster"
-72,false,"Homo Erectus"
-72,true,"Homo Sapiens"
-72,false,"Homo Neanderthalensis"
-73,false,"Dolphin"
-73,false,"Whale"
-73,false,"Octopus"
-73,true,"Seahorse"
-74,true,"6"
-74,false,"2"
-74,false,"4"
-74,false,"0"
-75,false,"Cub"
-75,false,"Chick"
-75,true,"Pup"
-75,false,"Kid"
-76,false,"Sauce"
-76,false,"Minnie"
-76,true,"Tardar Sauce"
-76,false,"Broccoli"
-77,false,"Fish"
-77,false,"Reptiles"
-77,false,"Mammals"
-77,true,"Amphibian"
-78,false,"Pack"
-78,false,"Gaggle"
-78,true,"Murder"
-78,false,"Herd"
-79,true,"Brown"
-79,false,"Black"
-79,false,"White"
-79,false,"Yellow"
-80,false,"30"
-80,false,"26"
-80,true,"28"
-80,false,"24"
-81,false,"Demeter"
-81,true,"Apollo"
-81,false,"Zeus"
-81,false,"Athena"
-82,true,"Mars"
-82,false,"Jupiter"
-82,false,"Juno"
-82,false,"Ares"
-83,false,"Castor"
-83,false,"Daedalus"
-83,true,"Jason"
-83,false,"Odysseus"
-84,true,"Zeus"
-84,false,"Apollo"
-84,false,"Hermes"
-84,false,"Poseidon"
-85,false,"Aphrodite"
-85,true,"Apollo"
-85,false,"Artemis"
-85,false,"Athena"
-86,false,"War"
-86,true,"The Sea"
-86,false,"Sun"
-86,false,"Fire"
-87,false,"Hephaestus"
-87,false,"Demeter"
-87,false,"Apollo"
-87,true,"Dionysus"
-88,false,"Aphrodite"
-88,true,"Hera"
-88,false,"Athena"
-88,false,"Hestia"
-89,true,"Greek and Roman"
-89,false,"Roman and Spanish"
-89,false,"Greek and Chinese"
-89,false,"Greek Roman and Norse"
-90,false,"Mermaids"
-90,false,"Nymph"
-90,false,"Lilith"
-90,true,"Harpies"
-91,false,"Edgar Allan Poe"
-91,false,"William Shakespeare"
-91,true,"Rudyard Kipling"
-91,false,"William Wordsworth"
-92,false,"Fox"
-92,false,"Frog"
-92,false,"Rabbit"
-92,true,"Badger"
-93,false,"William Golding"
-93,true,"Herman Melville"
-93,false,"William Shakespeare"
-93,false,"J. R. R. Tolkien"
-94,false,"Arthur"
-94,false,"John"
-94,true,"Bilius"
-94,false,"Dominic"
-95,false,"The Pickwick Papers"
-95,false,"Nicholas Nickleby"
-95,false,"Oliver Twist"
-95,true,"Great Expectations"
-96,true,"The main characters trauma in childhood"
-96,false,"The relation it has with killing the innocents"
-96,false,"The villains favourite meal"
-96,false,"The voice of innocent people being shut by the powerful"
-97,false,"Measure For Measure"
-97,true,"Trial of Temperance"
-97,false,"Titus Andronicus"
-97,false,"Cymbeline"
-98,false,"Spinocerebellar ataxia"
-98,true," Osteogenesis Imperfecta"
-98,false,"Adrenoleukodystrophy"
-98,false,"Cystic Fibrosis"
-99,false,"August"
-99,false,"April"
-99,true,"June"
-99,false,"May"
-100,false,"Hamlet"
-100,false,"Wealthy Boy and the Schmuck"
-100,false,"A Modern Twain Story"
-100,true,"The Prince and the Pauper"
-101,true,"Cancer"
-101,false,"Libra"
-101,false,"Virgo"
-101,false,"Sagittarius"
-102,false,"Target"
-102,false,"Taxi"
-102,true,"Tango"
-102,false,"Turkey"
-103,false,"Tiger"
-103,true,"Gorilla"
-103,false,"Panda"
-103,false,"Crocodile"
-104,false,"Pupcia"
-104,false,"Polszka"
-104,false,"P&oacute;land"
-104,true,"Polska"
-105,false,"Digest"
-105,false,"Look"
-105,false,"Read"
-105,true,"Print"
-106,true,"Twins"
-106,false,"Fish"
-106,false,"Scales"
-106,false,"Maiden"
-107,false,"10"
-107,true,"12"
-107,false,"14"
-107,false,"16"
-108,false,"Red"
-108,true,"Green"
-108,false,"Blue"
-108,false,"Yellow"
-109,false,"Boolie"
-109,false,"Foolie"
-109,true,"Loonie"
-109,false,"Moodie"
-110,false,"Red blood cells"
-110,false,"White blood cells"
-110,false,"Blood plasma"
-110,true,"Platelets"
-111,false,"Psycho"
-111,true,"Rope"
-111,false,"Vertigo"
-111,false,"Rebecca"
-112,true,"23 years 4 months and 8 days"
-112,false,"15 years 2 months and 15 days"
-112,false,"10 months and 6 days"
-112,false,"26 years 4 months and 10 days"
-113,false,"2"
-113,true,"4"
-113,false,"6"
-113,false,"1"
-114,false,"A woman in a dress"
-114,true,"A galloping horse"
-114,false,"A man walking"
-114,false,"A crackling fire"
-115,false,"The Girl with the Dragon Tattoo"
-115,false,"Thor"
-115,true,"Jack and Jill"
-115,false,"The Kings Speech"
-116,false,"Alderaan"
-116,false,"Tatooine"
-116,false,"Naboo"
-116,true,"Stewjon"
-117,false,"Jessica Chastain"
-117,false,"Melissa Beckett"
-117,true,"Sigourney Weaver"
-117,false,"Alyssa Monroe "
-118,false,"Too Loud"
-118,false,"Too Harsh"
-118,true,"Too Agonizing"
-118,false,"Too Violent"
-119,false,"Peace"
-119,true,"Shambala"
-119,false,"Ancient"
-119,false,"Chakra"
-120,true,"Elvis Presley"
-120,false,"Johnny Cash"
-120,false,"Hank Williams Sr."
-120,false,"Buddy Holly"
-121,false,"White"
-121,true,"Black"
-121,false,"Pink"
-121,false,"Green"
-122,true,"Goat"
-122,false,"Sheep"
-122,false,"Camel"
-122,false,"Llama"
-123,false,"Polar Bear"
-123,false,"Ursus Spelaeus"
-123,true,"Ursus Maritimus"
-123,false,"Ursus Arctos"
-124,false,"Bone"
-124,false,"Ivory"
-124,false,"Skin"
-124,true,"Keratin"
-125,true,"Nervousness"
-125,false,"Excitement"
-125,false,"Aggression"
-125,false,"Exhaustion"
-126,false,"Pigeons"
-126,true,"Foxes"
-126,false,"Bears"
-126,false,"Alligators"
-127,false,"Baluchistan Pakistan"
-127,false,"Wallachia Romania"
-127,true,"Tasmania Australia"
-127,false,"Oregon United States"
-128,false,"Japanese sea lion"
-128,true,"Komodo dragon"
-128,false,"Tasmanian tiger"
-128,false,"Saudi gazelle"
-129,false,"Weils disease"
-129,false,"Milk fever"
-129,true,"Mad Cow disease"
-129,false,"Foot-and-mouth disease"
-130,false,"Green Anaconda"
-130,false,"Inland Taipan"
-130,false,"Yellow Bellied Sea Snake"
-130,true,"King Cobra"
-131,true,"Frankenstein"
-131,false,"The Strange Case of Dr. Jekyll and Mr. Hyde "
-131,false,"Dracula"
-131,false,"The Legend of Sleepy Hollow"
-132,false,"Beatrix Potter"
-132,false,"Roald Dahl"
-132,false,"A.A. Milne"
-132,true,"Dr. Seuss"
-133,false,"Joseph Conrad"
-133,true,"Ian Fleming"
-133,false,"John Buchan"
-133,false,"Graham Greene"
-134,false,"J. D. Robb"
-134,false,"Mark Twain"
-134,true,"Richard Bachman"
-134,false,"Lewis Carroll"
-135,false,"Joey Potter"
-135,true,"James Potter"
-135,false,"Frank Potter"
-135,false,"Hairy Potter Sr."
-136,true,"Fluffy"
-136,false,"Spike"
-136,false,"Poofy"
-136,false,"Spot"
-137,false,"A Dance with Dragons"
-137,false,"A Storm of Swords"
-137,false,"A Feast for Crows"
-137,true,"A Clash of Kings"
-138,false,"Neo-Bolshevism"
-138,false,"Obliteration of the Self"
-138,true,"INGSOC"
-138,false,"Earth Alliance"
-139,false,"Charles Darwin"
-139,false,"Mark Twain"
-139,true,"Charles Dickens"
-139,false,"Roald Dahl"
-140,false,"Eagle"
-140,true,"Falcon"
-140,false,"Kyte"
-140,false,"Swallow"
-141,false,"George Orwell"
-141,false,"George Bernard Shaw"
-141,false,"George Saunders"
-141,true,"George Eliot"
-142,true,"The Balmoral"
-142,false,"The Dunstane Hotel"
-142,false,"Hotel Novotel"
-142,false,"Sheraton Grand Hotel &amp; Spa"
-143,false,"My Hatred"
-143,false,"My Sadness"
-143,true,"My Struggle"
-143,false,"My Desire"
-144,false,"F. Scott Fitzgerald"
-144,false,"Ernest Hemingway"
-144,true,"John Steinbeck"
-144,false,"William Faulkner"
-145,false,"Loving everyone around you"
-145,false,"Chocolate"
-145,false,"Death"
-145,true,"42"
-146,true,"Antoine de Saint-Exup&eacute;ry"
-146,false,"Miguel de Cervantes Saavedra"
-146,false,"Jane Austen"
-146,false,"F. Scott Fitzgerald"
-147,false,"The Outsiders"
-147,true,"The Greasers"
-147,false,"The Mafia"
-147,false,"The Socs"
-148,false,"R. L. Stine"
-148,true,"Ray Bradbury"
-148,false,"Wolfgang Amadeus Mozart"
-148,false,"Stephen King"
-149,false,"Glaedr"
-149,false,"Thorn"
-149,true,"Saphira"
-149,false,"Arya"
-150,true,"Steven Erikson"
-150,false,"Ian Cameron Esslemont"
-150,false,"George R. R. Martin"
-150,false,"J. R. R. Tolkien"
-151,false,"Ares"
-151,false,"Artemis"
-151,false,"Apollo"
-151,true,"Athena"
-152,false,"Apollo"
-152,false,"Jupiter"
-152,false,"Mercury"
-152,true,"Vulcan"
-153,false,"Ares"
-153,false,"Zeus"
-153,true,"Poseidon"
-153,false,"Apollo"
-154,false,"Vulcan"
-154,true,"Janus"
-154,false,"Juno"
-154,false,"Mars"
-155,false,"Horus"
-155,false,"Ra"
-155,true,"Set"
-155,false,"Anhur"
-156,true,"Narcissus"
-156,false,"Clotho"
-156,false,"Atropos"
-156,false,"Lachesis"
-157,false,"Wild dog"
-157,true,"Spider"
-157,false,"Monkey"
-157,false,"Crocodile"
-158,false,"Vanuatu"
-158,false,"Fiji"
-158,true,"New Zealand"
-158,false,"Hawaii"
-159,false,"Hina"
-159,false,"Kohara"
-159,false,"Māui"
-159,true,"Oro"
-160,false,"Hades"
-160,true,"Eris"
-160,false,"Ares"
-160,false,"Artemis"
-161,true,"Toto"
-161,false,"Foreigner"
-161,false,"Steely Dan"
-161,false,"Journey"
-162,false,"Fandango"
-162,false,"Take The Money and Run"
-162,false,"Fly Like an Eagle"
-162,true,"The Joker"
-163,false,"1"
-163,false,"5"
-163,false,"2"
-163,true,"4"
-164,false,"Drums"
-164,true,"Bass Guitar"
-164,false,"Guitar"
-164,false,"Keyboards"
-165,true,"Panic! At the Disco"
-165,false,"Twenty One Pilots"
-165,false,"My Chemical Romance"
-165,false,"Fall Out Boy"
-166,false,"Anna Yvette "
-166,false,"Danyka Nadeau"
-166,true,"Laura Brehm"
-166,false,"Veela"
-167,false,"Iron Maiden"
-167,false,"Black Sabbath"
-167,true,"AC/DC"
-167,false,"Metallica"
-168,false,"Green Day"
-168,true,"Red Hot Chilli Peppers"
-168,false,"Linkin Park"
-168,false,"Foo Fighters"
-169,true,"New Musical Express"
-169,false,"New Metro Entertainment"
-169,false,"Next Musical Enterprise"
-169,false,"North Manchester Express"
-170,false,"Dave Mustaine"
-170,false,"James Hetfield"
-170,false,"Little Red Riding Hood"
-170,true,"Dave Grohl"
-171,false,"Bandung"
-171,false,"Medan"
-171,true,"Jakarta"
-171,false,"Palembang"
-172,false,"New South Wales"
-172,true,"Alberta"
-172,false,"Victoria"
-172,false,"Queensland"
-173,false,"Slovenia"
-173,true,"France"
-173,false,"Switzerland"
-173,false,"Slovakia"
-174,false,"White"
-174,true,"Red"
-174,false,"Yellow"
-174,false,"Black"
-175,false,"Florida"
-175,false,"Idaho"
-175,true,"Ohio"
-175,false,"New Mexico"
-176,false,"3"
-176,false,"4"
-176,true,"1"
-176,false,"2"
-177,false,"1"
-177,false,"3"
-177,false,"4"
-177,true,"2"
-178,false,"England"
-178,true,"Wales"
-178,false,"North Ireland"
-178,false,"Scotland"
-179,false,"5"
-179,true,"4"
-179,false,"2"
-179,false,"0"
-180,true,"Country"
-180,false,"Region"
-180,false,"River"
-180,false,"City"
-181,false,"Rocket Man"
-181,true,"Goodbye Yellow Brick Road"
-181,false,"Bennie and the Jets"
-181,false,"Crocodile Rock"
-182,false,"John Denver"
-182,false,"Billy Joel"
-182,true,"Elton John"
-182,false,"Joe Cocker"
-183,false,"Radiohead"
-183,true,"U2"
-183,false,"Rush"
-183,false,"Rolling Stones"
-184,false,"Smoke Weed 420 / Everyday"
-184,false,"Make Your Move 420 / My Mind"
-184,false,"Its All In Your Head 420 / Understand"
-184,true,"Lisa Frank 420 / Modern Computing"
-185,false,"2014"
-185,false,"2013"
-185,false,"2012"
-185,true,"2011"
-186,false,"The Jumpers"
-186,true,"The Go-Getters"
-186,false,"The Kickstarters"
-186,false,"The Beat-Busters"
-187,true,"Ladyhawke"
-187,false,"Lorde"
-187,false,"Kesha"
-187,false,"Anika Moa"
-188,true,"The Black Mages"
-188,false,"The Final Fantasies"
-188,false,"The Espers"
-188,false,"The Rock Summoners"
-189,false,"Tool"
-189,false,"Korn"
-189,true,"Deftones"
-189,false,"Type O Negative"
-190,false,"May 9 2018"
-190,true,"June 22 2018"
-190,false,"March 13 2018"
-190,false,"February 21 2018"
-191,false,"Allan Gardens"
-191,true,"CN Tower"
-191,false,"Union Station"
-191,false,"Prince of Wales Theatre"
-192,false,"United States"
-192,false,"Australia"
-192,true,"Canada"
-192,false,"United Kingdom"
-193,false,"Why Dont We Do It in the Road?"
-193,false,"Everybodys Got Something to Hide Except Me and My Monkey"
-193,false,"The Continuing Story of Bungalow Bill"
-193,true,"Being For The Benefit Of Mr. Kite!"
-194,false,"Swamp Thing"
-194,true,"WiFi Tears"
-194,false,"Emoji"
-194,false,"BAMF"
-195,false,"George Harrison"
-195,true,"Ringo Starr"
-195,false,"John Lennon"
-195,false,"Paul McCartney"
-196,true,"Aubrey Graham"
-196,false,"Shaun Carter"
-196,false,"Dwayne Carter"
-196,false,"Andre Young"
-197,false,"Germany"
-197,false,"Austria"
-197,false,"France"
-197,true,"Italy"
-198,false,"The Chemical Brothers"
-198,false,"The Crystal Method"
-198,false,"Infected Mushroom"
-198,true,"The Prodigy"
-199,false,"R.E.M."
-199,true,"The Connells"
-199,false,"The Ocean Blue"
-199,false,"The Bangles"
-200,true,"Bob Dylan"
-200,false,"Jim Morrison"
-200,false,"Brian Epstein"
-200,false,"Jerry Garcia"
-201,false,"Haplogroup L"
-201,false,"Haplogroup T"
-201,false,"Haplogroup J"
-201,true,"Haplogroup U"
-202,true,"Sulfuric acid"
-202,false,"Hydrochloric acid"
-202,false,"Potassium chloride"
-202,false,"Sodium chloride"
-203,false,"Europa"
-203,true,"Titan"
-203,false,"Miranda"
-203,false,"Callisto"
-204,false,"0.3 Microsievert"
-204,false,"0.5 Microsievert"
-204,true,"0.1 Microsievert"
-204,false,"0.7 Microsievert"
-205,false,"Epimysium"
-205,false,"Myofiaments"
-205,false,"Myocardium"
-205,true,"Myofibrils"
-206,false,"Faradays Law"
-206,true,"Gausss Law"
-206,false,"Amperes Law"
-206,false,"Biot-Savart Law"
-207,false,"Oxygen"
-207,true,"Boron"
-207,false,"Carbon"
-207,false,"Iron"
-208,true,"Botulinum toxin"
-208,false,"Ricin"
-208,false,"Cyanide"
-208,false,"Asbestos"
-209,false,"Contraction of the heart chambers"
-209,false,"Blood exiting the heart"
-209,false,"Relaxation of the heart chambers"
-209,true,"Closure of the heart valves"
-210,false,"2"
-210,false,"3"
-210,true,"6"
-210,false,"4"
-211,false,"Asturias"
-211,false,"Navarre"
-211,true,"Murcia"
-211,false,"Leoacuten"
-212,false,"United Kingdom"
-212,true,"Switzerland"
-212,false,"France"
-212,false,"Belgium"
-213,false,"France"
-213,false,"Norway"
-213,true,"Lithuania"
-213,false,"Netherlands"
-214,true,"Atlanta Georgia USA"
-214,false,"London Illinois ISA"
-214,false,"Tokyo Japan"
-215,false,"Indian"
-215,false,"Punjabi"
-215,false,"Pashto"
-215,true,"Urdu"
-216,false,"Montenegro"
-216,true,"Luxembourg"
-216,false,"Liechtenstein"
-216,false,"Andorra"
-217,false,"Pennsylvania"
-217,false,"Kentucky"
-217,true,"Michigan"
-217,false,"Virginia"
-218,false,"Nagurskoye Russia"
-218,false,"McMurdo Station Antarctica "
-218,true,"Alert Canada"
-218,false,"Honningsv&aring;g Norway"
-219,false,"8"
-219,true,"11"
-219,false,"5"
-219,false,"2"
-220,true,"Rhodesia"
-220,false,"Zambia"
-220,false,"Mozambique"
-220,false," Bulawayo"
-221,false,"Sardinia"
-221,false,"Sicily"
-221,false,"Cyprus"
-221,true,"Crete"
-222,false,"Tied to a boulder for eternity being pecked by birds."
-222,true,"Cursed to roll a boulder up a hill for eternity."
-222,false,"Standing in a lake filled with water he could not drink."
-222,false,"To fell a tree that regenerated after every axe swing."
-223,false,"Excessive mutilation of animal corpses."
-223,false,"Performing a ritual involving murder."
-223,false,"Drinking the blood of many slain animals."
-223,true,"Participating in cannibalism."
-224,false,"Athena"
-224,false,"Ariel"
-224,true,"Ariadne"
-224,false,"Alana"
-225,true,"Nidhogg"
-225,false,"Bragi"
-225,false,"Odin"
-225,false,"Ymir"
-226,false,"Loki"
-226,false,"Tyr"
-226,true,"Jens"
-226,false,"Snotra"
-227,false,"Egyptian"
-227,true,"Norse"
-227,false,"Greek"
-227,false,"Hindu"
-228,false,"Menu"
-228,false,"Mut"
-228,false,"Meret"
-228,true,"Min"
-229,false,"Thor"
-229,false,"Frigg"
-229,true,"Odin"
-229,false,"Balder"
-230,false,"Autonoe"
-230,false,"Carme"
-230,true,"Aristaeus"
-230,false,"Cephisso"
-231,true,"Jupiter"
-231,false,"Uranus"
-231,false,"Neptune"
-231,false,"Mars"
-232,false,"low some"
-232,false,"high all"
-232,false,"high some"
-232,true,"low all"
-233,false,"Arm"
-233,true,"Leg"
-233,false,"Hand"
-233,false,"Head"
-234,false,"Skin"
-234,true,"Bones"
-234,false,"Brain"
-234,false,"Heart"
-235,false,"Joseph John Thomson"
-235,false,"Archimedes"
-235,true,"Ernest Rutherford"
-235,false,"Niels Henrik David Bohr"
-236,false,"Odense"
-236,true,"Copenhagen"
-236,false,"Herning"
-236,false,"Skagen"
-237,false,"Gag reflex"
-237,false,"Pupillary light reflex"
-237,true,"Ankle jerk reflex"
-237,false,"Scratch reflex"
-238,false,"Calcium"
-238,false,"Bone"
-238,false,"Chitin"
-238,true,"Keratin"
-239,false,"Black"
-239,true,"Blue"
-239,false,"Orange"
-239,false,"Brown"
-240,false,"2009"
-240,false,"1999"
-240,true,"1996"
-240,false,"1985"
+question_id,correct,text
+241,FALSE,Yorkshire Terrier
+241,TRUE,Bulldog
+241,FALSE,Boxer
+241,FALSE,Pug
+242,FALSE,15 MPH
+242,FALSE,20 MPH
+242,TRUE,24 MPH
+242,FALSE,200 MPH
+243,TRUE,February 14 2005
+243,FALSE,May 22 2004
+243,FALSE,September 12 2005
+243,FALSE,July 19 2009
+244,FALSE,Najma
+244,FALSE,Kawkab
+244,FALSE,Shams
+244,TRUE,Qamar
+245,TRUE,1 Month
+245,FALSE,3 Weeks
+245,FALSE,1 Week
+245,FALSE,2 Months
+246,FALSE,2000
+246,TRUE,2004
+246,FALSE,2001
+246,FALSE,2006
+247,FALSE,2 years
+247,FALSE,8 years
+247,FALSE,6 months
+247,TRUE,7 years
+248,FALSE,Red
+248,TRUE,Purple
+248,FALSE,Brown
+248,FALSE,Pink
+249,FALSE,20%
+249,FALSE,10%
+249,TRUE,15%
+249,FALSE,25%
+250,FALSE,The inability to stand up
+250,FALSE,The inability to concentrate on anything
+250,TRUE,The inability to make decisions
+250,FALSE,A feverish desire to rip ones clothes off
+251,FALSE,Ethiopian Coyote
+251,FALSE,Amharic Fox
+251,FALSE,Canis Simiensis
+251,TRUE,Simien Jackel
+252,TRUE,Syrian Brown Bear
+252,FALSE,California Grizzly Bear
+252,FALSE,Atlas Bear
+252,FALSE,Mexican Grizzly Bear
+253,FALSE,8
+253,TRUE,4
+253,FALSE,2
+253,FALSE,6
+254,FALSE,Komodo Dragon
+254,FALSE,Gila Monster
+254,TRUE,Tuatara
+254,FALSE,Green Iguana
+255,FALSE,Lion
+255,FALSE,Parrot
+255,TRUE,Ape
+255,FALSE,Wildcat
+256,FALSE,Chicken
+256,TRUE,Frog
+256,FALSE,Horse
+256,FALSE,Fly
+257,FALSE,Hopper
+257,TRUE,Gooty
+257,FALSE,Silver Stripe
+257,FALSE,Woebegone
+258,FALSE,Sea Wasp
+258,FALSE,Irukandji
+258,FALSE,Sea Nettle
+258,TRUE,Portuguese Man-of-War
+259,FALSE,Ambush
+259,FALSE,Building
+259,TRUE,Wake
+259,FALSE,Gaze
+260,TRUE,Chordata
+260,FALSE,Echinodermata
+260,FALSE,Annelida
+260,FALSE,Placazoa
+261,FALSE,Swaziland
+261,FALSE,Botswana
+261,FALSE,Zimbabwe
+261,TRUE,Lesotho
+262,FALSE,Fujian
+262,FALSE,Sichuan
+262,TRUE,Yangtze
+262,FALSE,Guangdong
+263,FALSE,India and Nepal
+263,FALSE,Pakistan and India
+263,TRUE,Afghanistan and Pakistan
+263,FALSE,Tajikistan and Kyrgyzstan
+264,FALSE,Nepal
+264,TRUE,New Zealand
+264,FALSE,China
+264,FALSE,Mexico
+265,FALSE,Schweizerische Nationalbahnen
+265,FALSE,Bundesbahnen der Schweiz
+265,FALSE,Schweizerische Staatsbahnen
+265,TRUE,Schweizerische Bundesbahnen
+266,FALSE,Eesti
+266,FALSE,Magyarorszcuteg
+266,FALSE,Sverige
+266,TRUE,Suomi
+267,TRUE,Kaunas
+267,FALSE,Panevėžys
+267,FALSE,Vilnius
+267,FALSE,Klaipėda
+268,FALSE,Finland
+268,TRUE,Estonia
+268,FALSE,Sweden
+268,FALSE,Poland
+269,FALSE,Milwaukee
+269,FALSE,Wisconsin Dells
+269,TRUE,Madison
+269,FALSE,Green Bay
+270,FALSE,Lake Superior
+270,TRUE,Lake Baikal
+270,FALSE,Lake Huron
+270,FALSE,Lake Michigan
+271,TRUE,Wilson
+271,FALSE,Friday
+271,FALSE,Jones
+271,FALSE,Billy
+272,FALSE,Harrison Ford
+272,TRUE,Tommy Lee Jones
+272,FALSE,Harvey Keitel
+272,FALSE,Martin Landau
+273,FALSE,Days of Thunder
+273,FALSE,The Color of Money
+273,TRUE,Top Gun
+273,FALSE,Cocktail
+274,FALSE,Jules Winnfield
+274,FALSE,Jimmie Dimmick
+274,TRUE,Vincent Vega
+274,FALSE,Butch Coolidge
+275,FALSE,Mosasaurus
+275,TRUE,Indominus Rex
+275,FALSE,Pteranodon
+275,FALSE,Tyrannosaurus Rex 
+276,FALSE,The Island
+276,TRUE,Fight Club
+276,FALSE,Unthinkable
+276,FALSE,American Pie
+277,FALSE,Ted Wiggins
+277,FALSE,The Once-Ler
+277,TRUE,Aloysius OHare
+277,FALSE,Grammy Norma
+278,FALSE,Cylons
+278,FALSE,Synthetics
+278,FALSE,Skinjobs
+278,TRUE,Replicants
+279,TRUE,Kaltag Nikki and Star
+279,FALSE,Dusty Kirby and Ralph
+279,FALSE,Nuk Yak and Sumac
+279,FALSE,Jenna Sylvie and Dixie
+280,FALSE,San Tokyo
+280,FALSE,Tokysisco
+280,FALSE,Sankyo
+280,TRUE,San Fransokyo
+281,FALSE,Honey
+281,FALSE,Caramel
+281,TRUE,Sugar
+281,FALSE,Candy
+282,TRUE,Guys and Dolls
+282,FALSE,Anchors Aweigh
+282,FALSE,From Here to Eternity
+282,FALSE,High Society
+283,FALSE,Jason Dip
+283,TRUE,Matthew Taylor
+283,FALSE,Eric Mabius
+283,FALSE,Jimmy Matts
+284,FALSE,Tyler Mane
+284,TRUE,Jackie Earle Haley
+284,FALSE,Derek Mears
+284,FALSE,Gunnar Hansen
+285,FALSE,Romans Go Home
+285,FALSE,Roxani Ite Domum
+285,TRUE,Romani Ite Domum
+285,FALSE,Tomate Ite Domum
+286,TRUE,1984
+286,FALSE,1986
+286,FALSE,1985
+286,FALSE,1983
+287,FALSE,Stanley Kubrick
+287,FALSE,Frank Darabont
+287,FALSE,Michael Bay
+287,TRUE,Jonathan Demme
+288,FALSE,Chien-Po
+288,FALSE,Li Shang
+288,TRUE,Shan Yu
+288,FALSE,Fa Zhou
+289,FALSE,Chuck Norris
+289,FALSE,Steven Seagal
+289,FALSE,Scott Adkins
+289,TRUE,Jean-Claude Van Damme
+290,FALSE,77 mph
+290,TRUE,88 mph
+290,FALSE,100 mph
+290,FALSE,70 mph
+291,TRUE,Femur
+291,FALSE,Cranium
+291,FALSE,Humerus
+291,FALSE,Tibia
+292,FALSE,Calf
+292,TRUE,Joey
+292,FALSE,Pup
+292,FALSE,Cub
+293,FALSE,Ears
+293,FALSE,Chin
+293,TRUE,Nose
+293,FALSE,Neck
+294,FALSE,Mars
+294,FALSE,Mercury
+294,TRUE,Venus
+294,FALSE,Jupiter
+295,FALSE,Helium
+295,TRUE,Hydrogen
+295,FALSE,Lithium
+295,FALSE,Oxygen
+296,TRUE,The presence or absence of a nucleus
+296,FALSE,The overall size
+296,FALSE,The presence or absence of certain organelles
+296,FALSE,The mode of reproduction
+297,FALSE,21
+297,FALSE,22
+297,TRUE,23
+297,FALSE,24
+298,TRUE,Water
+298,FALSE,Deserts
+298,FALSE,Continents
+298,FALSE,Forests
+299,FALSE,Eridanus
+299,FALSE,Gamma Cephei
+299,TRUE,Polaris
+299,FALSE,Iota Cephei
+300,FALSE,A wormhole
+300,FALSE,A supernova
+300,FALSE,A quasar
+300,TRUE,A black hole
+301,FALSE,Matthew
+301,TRUE,Mike
+301,FALSE,Mark
+301,FALSE,Max
+302,FALSE,Going
+302,FALSE,Ghost
+302,TRUE,Government
+302,FALSE,Geronimo
+303,TRUE,Ducati
+303,FALSE,Nissan
+303,FALSE,GMC
+303,FALSE,Fiat
+304,FALSE,Toshokan
+304,TRUE,Daigaku
+304,FALSE,Jimusho
+304,FALSE,Shokudou
+305,FALSE,The Haunted Mansion
+305,FALSE,Pirates of the Caribbean
+305,TRUE,Twilight Zone Tower of Terror
+305,FALSE,Peter Pans Flight
+306,FALSE,Eric Tignor
+306,FALSE,Bill Nye
+306,FALSE,Zach Soldi
+306,TRUE,Bobby Henderson
+307,FALSE,Sheeps Heart Kidneys and Lungs
+307,FALSE,Sheeps Liver Kidneys and Eyes
+307,TRUE,Sheeps Heart Liver and Lungs
+307,FALSE,Whole Sheep
+308,FALSE,Weave
+308,FALSE,Guitar
+308,TRUE,Horse
+308,FALSE,Boat
+309,FALSE,Ninja
+309,FALSE,Samurai
+309,FALSE,Shinobi
+309,TRUE,Shogun
+310,FALSE,Post hoc ergo propter hoc
+310,TRUE,Ad hominem
+310,FALSE,Tu quoque
+310,FALSE,Argumentum ad populum
+311,FALSE,Lion
+311,TRUE,Cheetah
+311,FALSE,Thomsons Gazelle
+311,FALSE,Pronghorn Antelope
+312,FALSE,Homo Ergaster
+312,FALSE,Homo Erectus
+312,TRUE,Homo Sapiens
+312,FALSE,Homo Neanderthalensis
+313,FALSE,Dolphin
+313,FALSE,Whale
+313,FALSE,Octopus
+313,TRUE,Seahorse
+314,TRUE,6
+314,FALSE,2
+314,FALSE,4
+314,FALSE,0
+315,FALSE,Cub
+315,FALSE,Chick
+315,TRUE,Pup
+315,FALSE,Kid
+316,FALSE,Sauce
+316,FALSE,Minnie
+316,TRUE,Tardar Sauce
+316,FALSE,Broccoli
+317,FALSE,Fish
+317,FALSE,Reptiles
+317,FALSE,Mammals
+317,TRUE,Amphibian
+318,FALSE,Pack
+318,FALSE,Gaggle
+318,TRUE,Murder
+318,FALSE,Herd
+319,TRUE,Brown
+319,FALSE,Black
+319,FALSE,White
+319,FALSE,Yellow
+320,FALSE,30
+320,FALSE,26
+320,TRUE,28
+320,FALSE,24
+321,FALSE,Demeter
+321,TRUE,Apollo
+321,FALSE,Zeus
+321,FALSE,Athena
+322,TRUE,Mars
+322,FALSE,Jupiter
+322,FALSE,Juno
+322,FALSE,Ares
+323,FALSE,Castor
+323,FALSE,Daedalus
+323,TRUE,Jason
+323,FALSE,Odysseus
+324,TRUE,Zeus
+324,FALSE,Apollo
+324,FALSE,Hermes
+324,FALSE,Poseidon
+325,FALSE,Aphrodite
+325,TRUE,Apollo
+325,FALSE,Artemis
+325,FALSE,Athena
+326,FALSE,War
+326,TRUE,The Sea
+326,FALSE,Sun
+326,FALSE,Fire
+327,FALSE,Hephaestus
+327,FALSE,Demeter
+327,FALSE,Apollo
+327,TRUE,Dionysus
+328,FALSE,Aphrodite
+328,TRUE,Hera
+328,FALSE,Athena
+328,FALSE,Hestia
+329,TRUE,Greek and Roman
+329,FALSE,Roman and Spanish
+329,FALSE,Greek and Chinese
+329,FALSE,Greek Roman and Norse
+330,FALSE,Mermaids
+330,FALSE,Nymph
+330,FALSE,Lilith
+330,TRUE,Harpies
+331,FALSE,Edgar Allan Poe
+331,FALSE,William Shakespeare
+331,TRUE,Rudyard Kipling
+331,FALSE,William Wordsworth
+332,FALSE,Fox
+332,FALSE,Frog
+332,FALSE,Rabbit
+332,TRUE,Badger
+333,FALSE,William Golding
+333,TRUE,Herman Melville
+333,FALSE,William Shakespeare
+333,FALSE,J. R. R. Tolkien
+334,FALSE,Arthur
+334,FALSE,John
+334,TRUE,Bilius
+334,FALSE,Dominic
+335,FALSE,The Pickwick Papers
+335,FALSE,Nicholas Nickleby
+335,FALSE,Oliver Twist
+335,TRUE,Great Expectations
+336,TRUE,The main characters trauma in childhood
+336,FALSE,The relation it has with killing the innocents
+336,FALSE,The villains favourite meal
+336,FALSE,The voice of innocent people being shut by the powerful
+337,FALSE,Measure For Measure
+337,TRUE,Trial of Temperance
+337,FALSE,Titus Andronicus
+337,FALSE,Cymbeline
+338,FALSE,Spinocerebellar ataxia
+338,TRUE, Osteogenesis Imperfecta
+338,FALSE,Adrenoleukodystrophy
+338,FALSE,Cystic Fibrosis
+339,FALSE,August
+339,FALSE,April
+339,TRUE,June
+339,FALSE,May
+340,FALSE,Hamlet
+340,FALSE,Wealthy Boy and the Schmuck
+340,FALSE,A Modern Twain Story
+340,TRUE,The Prince and the Pauper
+341,TRUE,Cancer
+341,FALSE,Libra
+341,FALSE,Virgo
+341,FALSE,Sagittarius
+342,FALSE,Target
+342,FALSE,Taxi
+342,TRUE,Tango
+342,FALSE,Turkey
+343,FALSE,Tiger
+343,TRUE,Gorilla
+343,FALSE,Panda
+343,FALSE,Crocodile
+344,FALSE,Pupcia
+344,FALSE,Polszka
+344,FALSE,P&oacute;land
+344,TRUE,Polska
+345,FALSE,Digest
+345,FALSE,Look
+345,FALSE,Read
+345,TRUE,Print
+346,TRUE,Twins
+346,FALSE,Fish
+346,FALSE,Scales
+346,FALSE,Maiden
+347,FALSE,10
+347,TRUE,12
+347,FALSE,14
+347,FALSE,16
+348,FALSE,Red
+348,TRUE,Green
+348,FALSE,Blue
+348,FALSE,Yellow
+349,FALSE,Boolie
+349,FALSE,Foolie
+349,TRUE,Loonie
+349,FALSE,Moodie
+350,FALSE,Red blood cells
+350,FALSE,White blood cells
+350,FALSE,Blood plasma
+350,TRUE,Platelets
+351,FALSE,Psycho
+351,TRUE,Rope
+351,FALSE,Vertigo
+351,FALSE,Rebecca
+352,TRUE,23 years 4 months and 8 days
+352,FALSE,15 years 2 months and 15 days
+352,FALSE,10 months and 6 days
+352,FALSE,26 years 4 months and 10 days
+353,FALSE,2
+353,TRUE,4
+353,FALSE,6
+353,FALSE,1
+354,FALSE,A woman in a dress
+354,TRUE,A galloping horse
+354,FALSE,A man walking
+354,FALSE,A crackling fire
+355,FALSE,The Girl with the Dragon Tattoo
+355,FALSE,Thor
+355,TRUE,Jack and Jill
+355,FALSE,The Kings Speech
+356,FALSE,Alderaan
+356,FALSE,Tatooine
+356,FALSE,Naboo
+356,TRUE,Stewjon
+357,FALSE,Jessica Chastain
+357,FALSE,Melissa Beckett
+357,TRUE,Sigourney Weaver
+357,FALSE,Alyssa Monroe 
+358,FALSE,Too Loud
+358,FALSE,Too Harsh
+358,TRUE,Too Agonizing
+358,FALSE,Too Violent
+359,FALSE,Peace
+359,TRUE,Shambala
+359,FALSE,Ancient
+359,FALSE,Chakra
+360,TRUE,Elvis Presley
+360,FALSE,Johnny Cash
+360,FALSE,Hank Williams Sr.
+360,FALSE,Buddy Holly
+361,FALSE,White
+361,TRUE,Black
+361,FALSE,Pink
+361,FALSE,Green
+362,TRUE,Goat
+362,FALSE,Sheep
+362,FALSE,Camel
+362,FALSE,Llama
+363,FALSE,Polar Bear
+363,FALSE,Ursus Spelaeus
+363,TRUE,Ursus Maritimus
+363,FALSE,Ursus Arctos
+364,FALSE,Bone
+364,FALSE,Ivory
+364,FALSE,Skin
+364,TRUE,Keratin
+365,TRUE,Nervousness
+365,FALSE,Excitement
+365,FALSE,Aggression
+365,FALSE,Exhaustion
+366,FALSE,Pigeons
+366,TRUE,Foxes
+366,FALSE,Bears
+366,FALSE,Alligators
+367,FALSE,Baluchistan Pakistan
+367,FALSE,Wallachia Romania
+367,TRUE,Tasmania Australia
+367,FALSE,Oregon United States
+368,FALSE,Japanese sea lion
+368,TRUE,Komodo dragon
+368,FALSE,Tasmanian tiger
+368,FALSE,Saudi gazelle
+369,FALSE,Weils disease
+369,FALSE,Milk fever
+369,TRUE,Mad Cow disease
+369,FALSE,Foot-and-mouth disease
+370,FALSE,Green Anaconda
+370,FALSE,Inland Taipan
+370,FALSE,Yellow Bellied Sea Snake
+370,TRUE,King Cobra
+371,TRUE,Frankenstein
+371,FALSE,The Strange Case of Dr. Jekyll and Mr. Hyde 
+371,FALSE,Dracula
+371,FALSE,The Legend of Sleepy Hollow
+372,FALSE,Beatrix Potter
+372,FALSE,Roald Dahl
+372,FALSE,A.A. Milne
+372,TRUE,Dr. Seuss
+373,FALSE,Joseph Conrad
+373,TRUE,Ian Fleming
+373,FALSE,John Buchan
+373,FALSE,Graham Greene
+374,FALSE,J. D. Robb
+374,FALSE,Mark Twain
+374,TRUE,Richard Bachman
+374,FALSE,Lewis Carroll
+375,FALSE,Joey Potter
+375,TRUE,James Potter
+375,FALSE,Frank Potter
+375,FALSE,Hairy Potter Sr.
+376,TRUE,Fluffy
+376,FALSE,Spike
+376,FALSE,Poofy
+376,FALSE,Spot
+377,FALSE,A Dance with Dragons
+377,FALSE,A Storm of Swords
+377,FALSE,A Feast for Crows
+377,TRUE,A Clash of Kings
+378,FALSE,Neo-Bolshevism
+378,FALSE,Obliteration of the Self
+378,TRUE,INGSOC
+378,FALSE,Earth Alliance
+379,FALSE,Charles Darwin
+379,FALSE,Mark Twain
+379,TRUE,Charles Dickens
+379,FALSE,Roald Dahl
+380,FALSE,Eagle
+380,TRUE,Falcon
+380,FALSE,Kyte
+380,FALSE,Swallow
+381,FALSE,George Orwell
+381,FALSE,George Bernard Shaw
+381,FALSE,George Saunders
+381,TRUE,George Eliot
+382,TRUE,The Balmoral
+382,FALSE,The Dunstane Hotel
+382,FALSE,Hotel Novotel
+382,FALSE,Sheraton Grand Hotel &amp; Spa
+383,FALSE,My Hatred
+383,FALSE,My Sadness
+383,TRUE,My Struggle
+383,FALSE,My Desire
+384,FALSE,F. Scott Fitzgerald
+384,FALSE,Ernest Hemingway
+384,TRUE,John Steinbeck
+384,FALSE,William Faulkner
+385,FALSE,Loving everyone around you
+385,FALSE,Chocolate
+385,FALSE,Death
+385,TRUE,42
+386,TRUE,Antoine de Saint-Exup&eacute;ry
+386,FALSE,Miguel de Cervantes Saavedra
+386,FALSE,Jane Austen
+386,FALSE,F. Scott Fitzgerald
+387,FALSE,The Outsiders
+387,TRUE,The Greasers
+387,FALSE,The Mafia
+387,FALSE,The Socs
+388,FALSE,R. L. Stine
+388,TRUE,Ray Bradbury
+388,FALSE,Wolfgang Amadeus Mozart
+388,FALSE,Stephen King
+389,FALSE,Glaedr
+389,FALSE,Thorn
+389,TRUE,Saphira
+389,FALSE,Arya
+390,TRUE,Steven Erikson
+390,FALSE,Ian Cameron Esslemont
+390,FALSE,George R. R. Martin
+390,FALSE,J. R. R. Tolkien
+391,FALSE,Ares
+391,FALSE,Artemis
+391,FALSE,Apollo
+391,TRUE,Athena
+392,FALSE,Apollo
+392,FALSE,Jupiter
+392,FALSE,Mercury
+392,TRUE,Vulcan
+393,FALSE,Ares
+393,FALSE,Zeus
+393,TRUE,Poseidon
+393,FALSE,Apollo
+394,FALSE,Vulcan
+394,TRUE,Janus
+394,FALSE,Juno
+394,FALSE,Mars
+395,FALSE,Horus
+395,FALSE,Ra
+395,TRUE,Set
+395,FALSE,Anhur
+396,TRUE,Narcissus
+396,FALSE,Clotho
+396,FALSE,Atropos
+396,FALSE,Lachesis
+397,FALSE,Wild dog
+397,TRUE,Spider
+397,FALSE,Monkey
+397,FALSE,Crocodile
+398,FALSE,Vanuatu
+398,FALSE,Fiji
+398,TRUE,New Zealand
+398,FALSE,Hawaii
+399,FALSE,Hina
+399,FALSE,Kohara
+399,FALSE,Māui
+399,TRUE,Oro
+400,FALSE,Hades
+400,TRUE,Eris
+400,FALSE,Ares
+400,FALSE,Artemis
+401,TRUE,Toto
+401,FALSE,Foreigner
+401,FALSE,Steely Dan
+401,FALSE,Journey
+402,FALSE,Fandango
+402,FALSE,Take The Money and Run
+402,FALSE,Fly Like an Eagle
+402,TRUE,The Joker
+403,FALSE,1
+403,FALSE,5
+403,FALSE,2
+403,TRUE,4
+404,FALSE,Drums
+404,TRUE,Bass Guitar
+404,FALSE,Guitar
+404,FALSE,Keyboards
+405,TRUE,Panic! At the Disco
+405,FALSE,Twenty One Pilots
+405,FALSE,My Chemical Romance
+405,FALSE,Fall Out Boy
+406,FALSE,Anna Yvette 
+406,FALSE,Danyka Nadeau
+406,TRUE,Laura Brehm
+406,FALSE,Veela
+407,FALSE,Iron Maiden
+407,FALSE,Black Sabbath
+407,TRUE,AC/DC
+407,FALSE,Metallica
+408,FALSE,Green Day
+408,TRUE,Red Hot Chilli Peppers
+408,FALSE,Linkin Park
+408,FALSE,Foo Fighters
+409,TRUE,New Musical Express
+409,FALSE,New Metro Entertainment
+409,FALSE,Next Musical Enterprise
+409,FALSE,North Manchester Express
+410,FALSE,Dave Mustaine
+410,FALSE,James Hetfield
+410,FALSE,Little Red Riding Hood
+410,TRUE,Dave Grohl
+411,FALSE,Bandung
+411,FALSE,Medan
+411,TRUE,Jakarta
+411,FALSE,Palembang
+412,FALSE,New South Wales
+412,TRUE,Alberta
+412,FALSE,Victoria
+412,FALSE,Queensland
+413,FALSE,Slovenia
+413,TRUE,France
+413,FALSE,Switzerland
+413,FALSE,Slovakia
+414,FALSE,White
+414,TRUE,Red
+414,FALSE,Yellow
+414,FALSE,Black
+415,FALSE,Florida
+415,FALSE,Idaho
+415,TRUE,Ohio
+415,FALSE,New Mexico
+416,FALSE,3
+416,FALSE,4
+416,TRUE,1
+416,FALSE,2
+417,FALSE,1
+417,FALSE,3
+417,FALSE,4
+417,TRUE,2
+418,FALSE,England
+418,TRUE,Wales
+418,FALSE,North Ireland
+418,FALSE,Scotland
+419,FALSE,5
+419,TRUE,4
+419,FALSE,2
+419,FALSE,0
+420,TRUE,Country
+420,FALSE,Region
+420,FALSE,River
+420,FALSE,City
+421,FALSE,Rocket Man
+421,TRUE,Goodbye Yellow Brick Road
+421,FALSE,Bennie and the Jets
+421,FALSE,Crocodile Rock
+422,FALSE,John Denver
+422,FALSE,Billy Joel
+422,TRUE,Elton John
+422,FALSE,Joe Cocker
+423,FALSE,Radiohead
+423,TRUE,U2
+423,FALSE,Rush
+423,FALSE,Rolling Stones
+424,FALSE,Smoke Weed 420 / Everyday
+424,FALSE,Make Your Move 420 / My Mind
+424,FALSE,Its All In Your Head 420 / Understand
+424,TRUE,Lisa Frank 420 / Modern Computing
+425,FALSE,2014
+425,FALSE,2013
+425,FALSE,2012
+425,TRUE,2011
+426,FALSE,The Jumpers
+426,TRUE,The Go-Getters
+426,FALSE,The Kickstarters
+426,FALSE,The Beat-Busters
+427,TRUE,Ladyhawke
+427,FALSE,Lorde
+427,FALSE,Kesha
+427,FALSE,Anika Moa
+428,TRUE,The Black Mages
+428,FALSE,The Final Fantasies
+428,FALSE,The Espers
+428,FALSE,The Rock Summoners
+429,FALSE,Tool
+429,FALSE,Korn
+429,TRUE,Deftones
+429,FALSE,Type O Negative
+430,FALSE,May 9 2018
+430,TRUE,June 22 2018
+430,FALSE,March 13 2018
+430,FALSE,February 21 2018
+431,FALSE,Allan Gardens
+431,TRUE,CN Tower
+431,FALSE,Union Station
+431,FALSE,Prince of Wales Theatre
+432,FALSE,United States
+432,FALSE,Australia
+432,TRUE,Canada
+432,FALSE,United Kingdom
+433,FALSE,Why Dont We Do It in the Road?
+433,FALSE,Everybodys Got Something to Hide Except Me and My Monkey
+433,FALSE,The Continuing Story of Bungalow Bill
+433,TRUE,Being For The Benefit Of Mr. Kite!
+434,FALSE,Swamp Thing
+434,TRUE,WiFi Tears
+434,FALSE,Emoji
+434,FALSE,BAMF
+435,FALSE,George Harrison
+435,TRUE,Ringo Starr
+435,FALSE,John Lennon
+435,FALSE,Paul McCartney
+436,TRUE,Aubrey Graham
+436,FALSE,Shaun Carter
+436,FALSE,Dwayne Carter
+436,FALSE,Andre Young
+437,FALSE,Germany
+437,FALSE,Austria
+437,FALSE,France
+437,TRUE,Italy
+438,FALSE,The Chemical Brothers
+438,FALSE,The Crystal Method
+438,FALSE,Infected Mushroom
+438,TRUE,The Prodigy
+439,FALSE,R.E.M.
+439,TRUE,The Connells
+439,FALSE,The Ocean Blue
+439,FALSE,The Bangles
+440,TRUE,Bob Dylan
+440,FALSE,Jim Morrison
+440,FALSE,Brian Epstein
+440,FALSE,Jerry Garcia
+441,FALSE,Haplogroup L
+441,FALSE,Haplogroup T
+441,FALSE,Haplogroup J
+441,TRUE,Haplogroup U
+442,TRUE,Sulfuric acid
+442,FALSE,Hydrochloric acid
+442,FALSE,Potassium chloride
+442,FALSE,Sodium chloride
+443,FALSE,Europa
+443,TRUE,Titan
+443,FALSE,Miranda
+443,FALSE,Callisto
+444,FALSE,0.3 Microsievert
+444,FALSE,0.5 Microsievert
+444,TRUE,0.1 Microsievert
+444,FALSE,0.7 Microsievert
+445,FALSE,Epimysium
+445,FALSE,Myofiaments
+445,FALSE,Myocardium
+445,TRUE,Myofibrils
+446,FALSE,Faradays Law
+446,TRUE,Gausss Law
+446,FALSE,Amperes Law
+446,FALSE,Biot-Savart Law
+447,FALSE,Oxygen
+447,TRUE,Boron
+447,FALSE,Carbon
+447,FALSE,Iron
+448,TRUE,Botulinum toxin
+448,FALSE,Ricin
+448,FALSE,Cyanide
+448,FALSE,Asbestos
+449,FALSE,Contraction of the heart chambers
+449,FALSE,Blood exiting the heart
+449,FALSE,Relaxation of the heart chambers
+449,TRUE,Closure of the heart valves
+450,FALSE,2
+450,FALSE,3
+450,TRUE,6
+450,FALSE,4
+451,FALSE,Asturias
+451,FALSE,Navarre
+451,TRUE,Murcia
+451,FALSE,Leoacuten
+452,FALSE,United Kingdom
+452,TRUE,Switzerland
+452,FALSE,France
+452,FALSE,Belgium
+453,FALSE,France
+453,FALSE,Norway
+453,TRUE,Lithuania
+453,FALSE,Netherlands
+454,TRUE,Atlanta Georgia USA
+454,FALSE,London Illinois ISA
+454,FALSE,Tokyo Japan
+455,FALSE,Indian
+455,FALSE,Punjabi
+455,FALSE,Pashto
+455,TRUE,Urdu
+456,FALSE,Montenegro
+456,TRUE,Luxembourg
+456,FALSE,Liechtenstein
+456,FALSE,Andorra
+457,FALSE,Pennsylvania
+457,FALSE,Kentucky
+457,TRUE,Michigan
+457,FALSE,Virginia
+458,FALSE,Nagurskoye Russia
+458,FALSE,McMurdo Station Antarctica 
+458,TRUE,Alert Canada
+458,FALSE,Honningsv&aring;g Norway
+459,FALSE,8
+459,TRUE,11
+459,FALSE,5
+459,FALSE,2
+460,TRUE,Rhodesia
+460,FALSE,Zambia
+460,FALSE,Mozambique
+460,FALSE, Bulawayo
+461,FALSE,Sardinia
+461,FALSE,Sicily
+461,FALSE,Cyprus
+461,TRUE,Crete
+462,FALSE,Tied to a boulder for eternity being pecked by birds.
+462,TRUE,Cursed to roll a boulder up a hill for eternity.
+462,FALSE,Standing in a lake filled with water he could not drink.
+462,FALSE,To fell a tree that regenerated after every axe swing.
+463,FALSE,Excessive mutilation of animal corpses.
+463,FALSE,Performing a ritual involving murder.
+463,FALSE,Drinking the blood of many slain animals.
+463,TRUE,Participating in cannibalism.
+464,FALSE,Athena
+464,FALSE,Ariel
+464,TRUE,Ariadne
+464,FALSE,Alana
+465,TRUE,Nidhogg
+465,FALSE,Bragi
+465,FALSE,Odin
+465,FALSE,Ymir
+466,FALSE,Loki
+466,FALSE,Tyr
+466,TRUE,Jens
+466,FALSE,Snotra
+467,FALSE,Egyptian
+467,TRUE,Norse
+467,FALSE,Greek
+467,FALSE,Hindu
+468,FALSE,Menu
+468,FALSE,Mut
+468,FALSE,Meret
+468,TRUE,Min
+469,FALSE,Thor
+469,FALSE,Frigg
+469,TRUE,Odin
+469,FALSE,Balder
+470,FALSE,Autonoe
+470,FALSE,Carme
+470,TRUE,Aristaeus
+470,FALSE,Cephisso
+471,TRUE,Jupiter
+471,FALSE,Uranus
+471,FALSE,Neptune
+471,FALSE,Mars
+472,FALSE,low some
+472,FALSE,high all
+472,FALSE,high some
+472,TRUE,low all
+473,FALSE,Arm
+473,TRUE,Leg
+473,FALSE,Hand
+473,FALSE,Head
+474,FALSE,Skin
+474,TRUE,Bones
+474,FALSE,Brain
+474,FALSE,Heart
+475,FALSE,Joseph John Thomson
+475,FALSE,Archimedes
+475,TRUE,Ernest Rutherford
+475,FALSE,Niels Henrik David Bohr
+476,FALSE,Odense
+476,TRUE,Copenhagen
+476,FALSE,Herning
+476,FALSE,Skagen
+477,FALSE,Gag reflex
+477,FALSE,Pupillary light reflex
+477,TRUE,Ankle jerk reflex
+477,FALSE,Scratch reflex
+478,FALSE,Calcium
+478,FALSE,Bone
+478,FALSE,Chitin
+478,TRUE,Keratin
+479,FALSE,Black
+479,TRUE,Blue
+479,FALSE,Orange
+479,FALSE,Brown
+480,FALSE,2009
+480,FALSE,1999
+480,TRUE,1996
+480,FALSE,1985
