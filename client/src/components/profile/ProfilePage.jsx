@@ -19,7 +19,9 @@ import UserChart from './UserChart.jsx';
 import NoPath from '../nopath/NoPath.jsx';
 
 export default function ProfilePage() {
-  const { goToHome } = useContext(AppContext);
+  const {
+    goToHome, render, userID, isLoggedIn,
+  } = useContext(AppContext);
   const { user_id } = useParams();
 
   const [userMetaData, setUserMetaData] = useState({});
@@ -28,6 +30,7 @@ export default function ProfilePage() {
   const [userFriends, setUserFriends] = useState([]);
   const [userData, setUserData] = useState();
   const [userExist, setUserExist] = useState(true);
+  const [friendAdded, setFriendAdded] = useState(false);
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [
@@ -44,6 +47,10 @@ export default function ProfilePage() {
       },
     ],
   });
+
+  if (user_id !== userId) {
+    setUserId(user_id);
+  }
 
   function fetchUserFriends() {
     axios
@@ -109,11 +116,26 @@ export default function ProfilePage() {
     }
   }
 
+  function addFriend() {
+    if (isLoggedIn) {
+      axios
+        .post(`/api/profile/${userID}/friends/${userId}`, null, {
+          params: {
+            user_id: userID,
+            friend_id: userId,
+          },
+        })
+        .then((response) => response.status)
+        .catch((err) => console.warn(err));
+      setFriendAdded(true);
+    }
+  }
+
   // use effect - load data when rendering the page
   useEffect(() => {
     // get user meta data
     fetchUserData();
-  }, [userId]);
+  }, [userId, render, friendAdded]);
 
   return (
     userData
@@ -144,12 +166,7 @@ export default function ProfilePage() {
                 <div className="property">
                   {`${userData.firstname} ${userData.lastname}`}
                 </div>
-                <div className="key">
-                  Email
-                </div>
-                <div className="property">
-                  {`${userData.email}`}
-                </div>
+                { userData.id === userID || isLoggedIn === false ? null : <button type="button" id="profilepageaddfriend" onClick={addFriend}>Add Friend</button>}
               </div>
             </div>
           </div>
