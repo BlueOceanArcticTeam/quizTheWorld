@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -76,8 +78,6 @@ export default function QuestionInputCard({
   function updateQuestionGroup() {
     setQuestionGroup((questionGroup) => [...questionGroup, question]);
     updateAnswerId();
-
-    console.log('happening');
   }
 
   return (
@@ -115,7 +115,7 @@ export default function QuestionInputCard({
             justifyContent: 'center', alignItems: 'center', display: 'flex', flexDirection: 'column', width: '18em', gap: '1.5em',
           }}
           >
-            <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="100" rows="10" maxLength="200" style={{ fontSize: '15px', borderRadius: '15px' }} />
+            <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="50" rows="6" maxLength="200" style={{ fontSize: '30px', borderRadius: '15px' }} />
             <Button
               onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); updateQuestionGroup(); }}
               variant="contained"

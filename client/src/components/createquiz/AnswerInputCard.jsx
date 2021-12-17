@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -17,7 +20,8 @@ export default function AnswerInputCard({
   stepCount, setStepCount, answers,
   setAnswers, currentQuestionId, question,
   setQuestion, setCurrentQuestionId,
-  answerGroup, setAnswerGroup,
+  answerGroup, setAnswerGroup, setQuestionGroup,
+  questionGroup,
 }) {
   const boxRef = useRef(null);
 
@@ -76,7 +80,6 @@ export default function AnswerInputCard({
   }
 
   function storeAnswersForSubmitting() {
-    console.log('yo ---', currentQuestionId);
     const answersArr = [];
     let correct;
     const answerA = {
@@ -113,14 +116,13 @@ export default function AnswerInputCard({
       }
       return item;
     });
-    console.log(answersArr);
     setAnswerGroup((answerGroup) => [...answerGroup, answersArr]);
     setCurrentQuestionId(currentQuestionId + 1);
     clearOldQuestionAndCreateNewOne();
   }
 
   function submitQuestion() {
-    console.log(question);
+
   }
 
   return (
@@ -213,7 +215,7 @@ export default function AnswerInputCard({
             Next
           </Button>
           <Button
-            onClick={() => { setStepCount(stepCount - 1); }}
+            onClick={() => { setStepCount(stepCount - 1); setQuestionGroup(questionGroup.filter((item) => item.question_id !== currentQuestionId)); }}
             variant="contained"
             sx={{
               position: 'absolute',

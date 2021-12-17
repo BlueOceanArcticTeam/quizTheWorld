@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-shadow */
+/* eslint-disable no-console */
 /* eslint-disable prefer-const */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -41,7 +44,6 @@ export default function AddAnotherQuestion({
 
   function updateAllQuestionIds(id) {
     updatedQuestions = questionGroup.map((question) => ({ ...question, quiz_id: id }));
-    console.log(updatedQuestions, 'EEEEEE****');
   }
 
   function updateAllAnswerIds(idArr) {
@@ -51,14 +53,11 @@ export default function AddAnotherQuestion({
       for (let j = 0; j < tempAnswers[i].length; j += 1) {
         if (tempAnswers[i][j].type) {
           tempAnswers[i][j].question_id = idArr[i];
-          console.log(tempAnswers[i][j], '**** HERE');
         } else {
           tempAnswers[i][j].question_id = idArr[i];
         }
-        console.log('working!');
       }
     }
-    console.log(tempAnswers);
     submitAnswers(tempAnswers);
   }
 
@@ -82,7 +81,6 @@ export default function AddAnotherQuestion({
   }
 
   function createQuiz() {
-    console.log(quiz, '-----');
     axios.post('/api/create', quiz)
       .then((res) => { setQuizId(res.data); updateAllQuestionIds(res.data); })
       .then(() => { submitQuestions(); })
