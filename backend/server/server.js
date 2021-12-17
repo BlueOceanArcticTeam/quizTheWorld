@@ -19,10 +19,10 @@ const router = require('./routes/index.js');
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.use(bodyParser.urlencoded({ extended: true })); // used for passport local
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+// }));
 // encrypt our cookies
 app.use(cookieSession({
   maxAge: 12 * 60 * 60 * 1000, // max age of the cookie is one day
@@ -60,4 +60,4 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(3000, console.log('Connected to the Arctic'));
+app.listen(process.env.PORT || 3000, console.log('Connected to the Arctic'));
