@@ -106,6 +106,8 @@ export default function CreateQuiz() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      background: 'none',
+      zIndex: '-100',
     }}
     >
 
@@ -132,6 +134,7 @@ export default function CreateQuiz() {
             setTrueFalseAnswer={setTrueFalseAnswer}
             trueFalseOtherAnswer={trueFalseOtherAnswer}
             setTrueFalseOtherAnswer={setTrueFalseOtherAnswer}
+            quiz={quiz}
           />
         )
         : ''}

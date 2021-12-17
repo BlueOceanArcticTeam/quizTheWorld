@@ -156,7 +156,7 @@ export const App = function () {
             <Route index element={<HomePage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/quizzes" element={<Quizzes />} />
-            <Route path="/quizzes/quiz" element={<QuizPage />} />
+            <Route path="/quizzes/quiz/:quiz_id" element={<QuizPage />} />
             {/* <Route path="/quizzes" element={<PrivateRoute />}> */}
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             {/* </Route> */}
@@ -171,10 +171,13 @@ export const App = function () {
           : null}
 
         {isLoggedIn
-          ? (<button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-               <ChatIcon className="chatIcon" />
-             </button>)
+          ? (
+            <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+              <ChatIcon className="chatIcon" />
+            </button>
+          )
           : null}
+        <SearchModal />
       </AppContext.Provider>
     </div>
   );
