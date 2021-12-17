@@ -97,6 +97,8 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 <img src="client/dist/readme/chatbox.png" width="40%">
 
+<img src="client/dist/readme/elonMusk.png" width="40%">
+
 
 
 ---
