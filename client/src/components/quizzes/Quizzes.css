@@ -8,6 +8,12 @@
     color: orange;
 }
 
-h2 {
-    color:orange
+p {
+    color:rgb(245, 160, 3);
+    font-weight: bold;
+}
+
+.hide {
+    display:none;
+    z-index: -100;
 }

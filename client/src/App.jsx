@@ -3,14 +3,15 @@
 /* eslint-disable react/function-component-definition */
 /* eslint-disable import/extensions */
 import React, {
-  useState, useEffect, useContext, createContext
+  useState, useEffect, useContext, useRef, createContext
 } from 'react';
 import axios from 'axios';
 import {
-  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate,
+  Routes, Switch, Route, Link, useHistory, useLocation, Redirect, useParams, useNavigate
 } from 'react-router-dom';
 
 // import e from 'cors';
+import ChatIcon from '@mui/icons-material/Chat';
 import CreateQuiz from './components/createquiz/CreateQuiz.jsx';
 import Header from './components/header/Header.jsx';
 import HomePage from './components/home/HomePage.jsx';
@@ -30,7 +31,7 @@ import './components/chatbox/chat.css';
 export const AppContext = React.createContext();
 
 export const App = function () {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [displayModal, setDisplayModal] = useState(false);
   const [displayChat, setDisplayChat] = useState(true);
   const [displayChatFriendList, setDisplayChatFriendList] = useState(false);
@@ -43,7 +44,10 @@ export const App = function () {
   const [friends, setFriends] = useState([]);
 
   const navigate = useNavigate();
-  const goToHome = () => { navigate('/'); };
+  const goToHome = () => {
+    navigate('/');
+  };
+
   function fetchFriends(userId) {
     // axios
     //   .get(`/api/profile/${userID}`)
@@ -98,16 +102,14 @@ export const App = function () {
       });
   };
 
-  // TODO: useEffect, check if user is logged in. If true, setUser to logged in user
   useEffect(() => {
     getUserInformation();
     fetchAllUsers();
-    // if the user is logged in, get their info and friends
     if (isLoggedIn) {
       fetchFriends(userID);
     }
   }, []);
-  // OR: Just have a bool checking if user is logged in and then conditionally render pages
+
   return (
 
     <div className="app">
@@ -135,36 +137,28 @@ export const App = function () {
           <Route path="/" element={<Header />}>
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
-            {/* <Route path="/profile" element={<PrivateRoute />}> // KEEP */}
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path={`/profile/${userID}`} element={<ProfilePage />} />
-            {/* </Route>  //KEEP */}
-            {/* <Route path="/:user_id" element={<HomePage />} /> // not sure we need */}
-            <Route path="/register" element={<Register />} />
+            <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
-            {/* <Route path="/quizzes" element={<PrivateRoute />}> //KEEP */}
-            <Route path="/quizzes/create" element={<CreateQuiz />} />
-            {/* </Route> //KEEP */}
-            {/* <Route path="/chat" element={<PrivateRoute />}> //KEEP */}
-            {/* </Route> //KEEP */}
+            <Route path="/quizzes" element={<PrivateRoute />}>
+              <Route path="/quizzes/create" element={<CreateQuiz />} />
+            </Route>
+            {/* <Route path="/chat" element={<PrivateRoute />}>
+            </Route> */}
           </Route>
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>
-        {displayModal
-          ? (displayChat ? <Chat /> : <ChatFriendList />)
-          : null}
-        <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-          <img alt="chatIcon" src="./chatCircularIcon.png" className="chatIcon" />
-        </button>
-        <div className="chatButtonSource">
-          Icons made by
-          {' '}
-          <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">Icongeek26</a>
-          from
-          {' '}
-          <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
+        {/* <div className="chatButton" tabIndex={0} onBlur={() => { setDisplayModal(false); }}> */}
+          {displayModal
+            ? (displayChat ? <Chat /> : <ChatFriendList />)
+            : null}
+          {isLoggedIn
+            ? (<button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+                <ChatIcon className="chatIcon" />
+              </button>)
+            : null}
+        {/* </div> */}
       </AppContext.Provider>
     </div>
   );

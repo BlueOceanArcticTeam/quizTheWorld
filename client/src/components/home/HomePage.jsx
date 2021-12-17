@@ -10,7 +10,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import placehold from './Assets/placehold.png';
 import TopQuizSlider from './TopQuizSlider.jsx';
-import Example from './test.jsx';
 import TopQuizCard from './TopQuizCard.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
 import LevelUp from '../helperComponents/Search.jsx';

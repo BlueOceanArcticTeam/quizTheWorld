@@ -9,7 +9,7 @@
   border-radius: 10px;
   bottom: 15em;
   right: 2em;
-  z-index: 200;
+  z-index: 100;
   background-image: linear-gradient(#5A1791, #3F195F);
   border: solid 2px black;
 }
@@ -68,19 +68,20 @@
 }
 
 .chatFriendList {
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .chatArea {
   height: 330px;
   width: 330px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .messageContainer {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .messageText {
@@ -92,6 +93,7 @@
 .sender {
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .recipient {
@@ -123,4 +125,10 @@ button {
   width: 60px;
   justify-content: center;
   color: white;
+}
+
+.chatIcon {
+  transform: scale(2);
+  color: white;
+  z-index: 500;
 }
