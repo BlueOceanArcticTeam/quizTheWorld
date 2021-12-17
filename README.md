@@ -59,7 +59,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 **Profile**:
 
-* Write some stuff here
+* After creating an account with Quizknows all of your quiz data will be stored and viewable. The profile page includes your account information, your records with quizzes taken, and a list of friends! Using the graph centered on the page, you can see your progress over time as you take more quizzes. You also have the ability to click through your friends list and see how your friends did on the quizzes they've taken!
 
 
 <img src="client/dist/readme/profile.png" width="90%">
@@ -115,7 +115,10 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 3) Time to populate the database. Make sure you have postgres installed on your computer and run `npm run load`
 
 
-4) Finally use `npm start` to start the server, navigate to the page on your favorite browser, and enjoy the knowledge!
+4) Create a file in the root project folder called '.env'. Inside that file input your password for postgres in the following format: PASSWORD= '<your password>'
+
+
+5) Finally use `npm start` to start the server, navigate to the page on your favorite browser, and enjoy the knowledge!
 ---
 ---
 
@@ -125,7 +128,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 ## Team Members:
 
- > * **[Ian Swensson](https://www.linkedin.com/)** job title
+ > * **[Ian Swensson](https://www.linkedin.com/)** Project Manager
 
  > * **[Andrew Bunys](https://www.linkedin.com/)** job title
 
@@ -153,10 +156,14 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 * [ExpressJS](https://expressjs.com/)
 
 * [Axios](https://axios-http.com/)
+ 
+* [PostgreSQL](https://www.postgresql.org/)
 
 * [WebPack](https://webpack.js.org/)
 
 * [Material UI](https://mui.com/)
+ 
+* [Chart JS](https://www.chartjs.org/)
 
 ---
 
