@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
@@ -15,9 +17,18 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import axios from 'axios';
 
-export default function AddAnotherQuestion({ stepCount, setStepCount }) {
+export default function AddAnotherQuestion({
+  stepCount, setStepCount,
+  quiz, answers, question,
+  answerGroup, questionGroup,
+  setAnswerGroup, setQuestionGroup,
+  quizId, setQuizId,
+}) {
   const boxRef = useRef(null);
+  let updatedQuestions;
+  let questionIds = [];
 
   useEffect(() => {
     gsap.to(boxRef.current, {
@@ -27,6 +38,56 @@ export default function AddAnotherQuestion({ stepCount, setStepCount }) {
     });
     // Update the document title using the browser API
   }, [stepCount]);
+
+  function updateAllQuestionIds(id) {
+    updatedQuestions = questionGroup.map((question) => ({ ...question, quiz_id: id }));
+    console.log(updatedQuestions, 'EEEEEE****');
+  }
+
+  function updateAllAnswerIds(idArr) {
+    let tempAnswers = answerGroup;
+
+    for (let i = 0; i < idArr.length; i += 1) {
+      for (let j = 0; j < tempAnswers[i].length; j += 1) {
+        if (tempAnswers[i][j].type) {
+          tempAnswers[i][j].question_id = idArr[i];
+          console.log(tempAnswers[i][j], '**** HERE');
+        } else {
+          tempAnswers[i][j].question_id = idArr[i];
+        }
+        console.log('working!');
+      }
+    }
+    console.log(tempAnswers);
+    submitAnswers(tempAnswers);
+  }
+
+  function submitAnswers(answersArr) {
+    for (let i = 0; i < answersArr.length; i += 1) {
+      axios.post('/api/create/answers', answersArr[i])
+        .then((res) => { console.log(res.data); })
+        .catch((err) => console.log(err));
+    }
+  }
+
+  function submitQuestions() {
+    let promiseArr = [];
+    for (let i = 0; i < updatedQuestions.length; i += 1) {
+      promiseArr.push(axios.post('/api/create/questions', updatedQuestions[i])
+        .then((res) => res.data)
+        .catch((err) => console.log(err)));
+    }
+    Promise.all(promiseArr)
+      .then((res) => { updateAllAnswerIds(res); });
+  }
+
+  function createQuiz() {
+    console.log(quiz, '-----');
+    axios.post('/api/create', quiz)
+      .then((res) => { setQuizId(res.data); updateAllQuestionIds(res.data); })
+      .then(() => { submitQuestions(); })
+      .catch((err) => console.log(err));
+  }
 
   return (
 
@@ -69,7 +130,9 @@ export default function AddAnotherQuestion({ stepCount, setStepCount }) {
           Or..finished?
         </span>
         <Button
-          to="/login"
+          onClick={() => { createQuiz(); }}
+          to="/"
+          component={Link}
           variant="contained"
           sx={{
             position: 'absolute',

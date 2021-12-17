@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -15,7 +16,11 @@ import {
 } from '@mui/material';
 
 export default function QuestionInputCard({
-  stepCount, setStepCount, question, setQuestion,
+  stepCount, setStepCount, question,
+  setQuestion, questionGroup, setQuestionGroup,
+  currentQuestionId, setCurrentQuestionId, answers,
+  setAnswers, trueFalseAnswer, setTrueFalseAnswer,
+  setTrueFalseOtherAnswer, trueFalseOtherAnswer,
 }) {
   const { user } = useContext(AppContext);
   const [multipleChoiceOrTrueFalse, setMultipleChoiceOrTrueFalse] = useState(null);
@@ -28,7 +33,6 @@ export default function QuestionInputCard({
       duration: 1.75,
     });
     // Update the document title using the browser API
-    console.log(stepCount);
   }, [stepCount]);
 
   function updateQuestionType(e) {
@@ -41,16 +45,39 @@ export default function QuestionInputCard({
 
     setQuestion({
       ...question,
+      question_id: currentQuestionId,
       user_id: user.id,
       questionType: type,
+    });
+  }
+
+  function updateAnswerId() {
+    setAnswers({
+      ...answers,
+      question_id: currentQuestionId,
+    });
+    setTrueFalseAnswer({
+      ...trueFalseAnswer,
+      question_id: currentQuestionId,
+    });
+    setTrueFalseOtherAnswer({
+      ...trueFalseOtherAnswer,
+      question_id: currentQuestionId,
     });
   }
 
   function updateQuestionText(e) {
     setQuestion({
       ...question,
-      questionText: e.target.value,
+      text: e.target.value,
     });
+  }
+
+  function updateQuestionGroup() {
+    setQuestionGroup((questionGroup) => [...questionGroup, question]);
+    updateAnswerId();
+
+    console.log('happening');
   }
 
   return (
@@ -90,7 +117,7 @@ export default function QuestionInputCard({
           >
             <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="100" rows="10" maxLength="200" style={{ fontSize: '15px', borderRadius: '15px' }} />
             <Button
-              onClick={() => { console.log('works'); setStepCount(stepCount + multipleChoiceOrTrueFalse); }}
+              onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); updateQuestionGroup(); }}
               variant="contained"
               sx={{
                 position: 'absolute',
@@ -106,7 +133,7 @@ export default function QuestionInputCard({
               Next
             </Button>
             <Button
-              onClick={() => { console.log('works'); setStepCount(stepCount - 1); }}
+              onClick={() => { setStepCount(stepCount - 1); }}
               variant="contained"
               sx={{
                 position: 'absolute',

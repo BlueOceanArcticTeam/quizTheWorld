@@ -125,7 +125,7 @@ export default function CategoryDifficultyNameCard({
             }}
           />
           <Button
-            onClick={() => { console.log('works'); setStepCount(stepCount + 1); }}
+            onClick={() => { setStepCount(stepCount + 1); }}
             variant="contained"
             sx={{
               position: 'absolute',
