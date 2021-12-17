@@ -1,3 +1,7 @@
+/* eslint-disable react/jsx-no-bind */
+/* eslint-disable max-len */
+/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable react/function-component-definition */
@@ -61,7 +65,6 @@ export default function TrueFalseSelectCard({
       correct: opposite,
       text: 'False',
     };
-    console.log(tfAnswer, tfOtherAnswer, 'here!');
 
     setTrueFalseArr((trueFalseArr) => [...trueFalseArr, tfAnswer, tfOtherAnswer]);
   }

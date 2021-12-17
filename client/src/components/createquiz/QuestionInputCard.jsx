@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-cycle */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -76,8 +78,6 @@ export default function QuestionInputCard({
   function updateQuestionGroup() {
     setQuestionGroup((questionGroup) => [...questionGroup, question]);
     updateAnswerId();
-
-    console.log('happening');
   }
 
   return (

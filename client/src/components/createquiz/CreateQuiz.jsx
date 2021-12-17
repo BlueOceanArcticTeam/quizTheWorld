@@ -70,33 +70,33 @@ export default function CreateQuiz() {
   const [answerGroup, setAnswerGroup] = useState([]);
   // component functions - event handlers
 
-  useEffect(() => {
-    console.log(question, 'CURRENT QUESTION');
-  }, [question]);
+  // useEffect(() => {
+  //   console.log(question, 'CURRENT QUESTION');
+  // }, [question]);
 
-  useEffect(() => {
-    console.log(questionGroup, '}---***---{ QUESTION GROUP');
-  }, [questionGroup]);
+  // useEffect(() => {
+  //   console.log(questionGroup, '}---***---{ QUESTION GROUP');
+  // }, [questionGroup]);
 
-  useEffect(() => {
-    console.log(answers, 'CURRENT ANSWERS');
-  }, [answers]);
+  // useEffect(() => {
+  //   console.log(answers, 'CURRENT ANSWERS');
+  // }, [answers]);
 
-  useEffect(() => {
-    console.log(currentQuestionId, 'CURRENT QUESTION ID');
-  }, [currentQuestionId]);
+  // useEffect(() => {
+  //   console.log(currentQuestionId, 'CURRENT QUESTION ID');
+  // }, [currentQuestionId]);
 
-  useEffect(() => {
-    console.log(answerGroup, 'ANSWER GROUP');
-  }, [answerGroup]);
+  // useEffect(() => {
+  //   console.log(answerGroup, 'ANSWER GROUP');
+  // }, [answerGroup]);
 
-  useEffect(() => {
-    console.log(trueFalseAnswer, 'TRUE/FALSE ANSWER');
-  }, [trueFalseAnswer]);
+  // useEffect(() => {
+  //   console.log(trueFalseAnswer, 'TRUE/FALSE ANSWER');
+  // }, [trueFalseAnswer]);
 
-  useEffect(() => {
-    console.log(trueFalseOtherAnswer, 'TRUE/FALSE OTHER');
-  }, [trueFalseOtherAnswer]);
+  // useEffect(() => {
+  //   console.log(trueFalseOtherAnswer, 'TRUE/FALSE OTHER');
+  // }, [trueFalseOtherAnswer]);
 
   // render component:
   return (
