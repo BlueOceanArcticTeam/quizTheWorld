@@ -8,7 +8,7 @@ const messages = require('./messageRoute.js');
 const profile = require('./profile.js');
 const topQuizzes = require('./topQuizzesRoute.js');
 const authRouter = require('./authRoutes.js');
-const createQuiz = require('./createQuiz.js');
+const searchQuery = require('./searchRoute.js');
 
 const quizzes = require('./quizzes.js');
 
@@ -21,5 +21,5 @@ module.exports = {
   topQuizzes,
   authRouter,
   quizzes,
-  createQuiz,
+  searchQuery
 }; // INCLUDE YOUR ROUTER IN THIS EXPORT STATEMENT

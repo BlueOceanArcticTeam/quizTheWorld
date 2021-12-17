@@ -48,7 +48,7 @@ app.use('/api/answers', router.answers);
 app.use('/api/topQuizzes', router.topQuizzes);
 app.use('/api/auth', router.authRouter);
 app.use('/api/quizzes', router.quizzes);
-app.use('/api/create', router.createQuiz);
+app.use('/api/searchQuery', router.searchQuery);
 
 // WEB ROUTES
 app.get('*', (req, res) => {

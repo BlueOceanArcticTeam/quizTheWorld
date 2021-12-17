@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable camelcase */
@@ -15,7 +16,14 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import QuizBackground from './assets/Question.png';
 import './Quizzes.css';
-import { orange } from '@mui/material/colors';
+import AnimalLg from '../home/Assets/AnimalLg.png';
+import GeoLg from '../home/Assets/GeoLg.png';
+import GKLg from '../home/Assets/GKLg.png';
+import MovieLg from '../home/Assets/MovieLg.png';
+import MythLg from '../home/Assets/MythLg.png';
+import SciLg from '../home/Assets/SciLg.png';
+import MusicLg from '../home/Assets/MusicLg.png';
+import BookLg from '../home/Assets/BookLg.png';
 
 export default function Quizzes() {
   // set state variables below:
@@ -25,14 +33,16 @@ export default function Quizzes() {
   const [allDifficulty, setAllDifficulty] = useState([]);
   const [difficultyQuizzes, setDQuizzes] = useState([]);
   const [difficulty, setDifficulty] = useState('easy');
+  const [allCategory, setAllCategory] = useState([]);
   const [categoryQuizzes, setCQuizzes] = useState([]);
   const [category, setCategory] = useState('Animals');
   const [toggle, setToggle] = useState(true);
   const [trigger, setTrigger] = useState(true);
   const [indices, setIndices] = useState([0, 1, 2, 3]);
+  const [cIndices, setCIndex] = useState([0, 1, 2, 3]);
   const [counter, setCounter] = useState(0);
 
-  const leftArrow = () => {
+  const leftArrowBot = () => {
     if (indices[0] > 0) {
       const arr = indices.slice(0, 3);
       arr.unshift(indices[0] - 1);
@@ -41,12 +51,31 @@ export default function Quizzes() {
     }
   };
 
-  const rightArrow = () => {
+  const rightArrowBot = () => {
     const last = allDifficulty.length - 1;
     if (indices[3] < last) {
       const arr = indices.slice(1);
       arr.push(indices[3] + 1);
       setIndices(arr);
+      setCounter(counter + 1);
+    }
+  };
+
+  const leftArrowTop = () => {
+    if (cIndices[0] > 0) {
+      const arr = cIndices.slice(0, 3);
+      arr.unshift(cIndices[0] - 1);
+      setCIndex(arr);
+      setCounter(counter + 1);
+    }
+  };
+
+  const rightArrowTop = () => {
+    const last = allCategory.length - 1;
+    if (cIndices[3] < last) {
+      const arr = cIndices.slice(1);
+      arr.push(cIndices[3] + 1);
+      setCIndex(arr);
       setCounter(counter + 1);
     }
   };
@@ -73,6 +102,7 @@ export default function Quizzes() {
         });
     }
   }, [difficulty]);
+
   useEffect(() => {
     if (trigger) {
       setTrigger(false);
@@ -80,9 +110,27 @@ export default function Quizzes() {
         .then((res) => {
           const { data } = res;
           for (let i = 0; i < data.length; i += 1) {
-            data[i].url = moarData[i];
+            let bgStyle;
+            if (data[i].category === 'General Knowledge') {
+              bgStyle = GKLg;
+            } else if (data[i].category === 'Animals') {
+              bgStyle = AnimalLg;
+            } else if (data[i].category === 'Geography') {
+              bgStyle = GeoLg;
+            } else if (data[i].category === 'Entertainment: Film') {
+              bgStyle = MovieLg;
+            } else if (data[i].category === 'Science & Nature') {
+              bgStyle = SciLg;
+            } else if (data[i].category === 'Mythology') {
+              bgStyle = MythLg;
+            } else if (data[i].category.includes('Music')) {
+              bgStyle = MusicLg;
+            } else if (data[i].category.includes('Book')) {
+              bgStyle = BookLg;
+            }
+            data[i].url = bgStyle;
           }
-          setCQuizzes(data);
+          setAllCategory(data);
         });
     }
   }, [category]);
@@ -96,11 +144,65 @@ export default function Quizzes() {
     }
     if (store.length === 4) {
       for (let i = 0; i < store.length; i += 1) {
-        store[i].url = fakeData[i];
+        let bgStyle;
+        if (store[i].category === 'General Knowledge') {
+          bgStyle = GKLg;
+        } else if (store[i].category === 'Animals') {
+          bgStyle = AnimalLg;
+        } else if (store[i].category === 'Geography') {
+          bgStyle = GeoLg;
+        } else if (store[i].category === 'Entertainment: Film') {
+          bgStyle = MovieLg;
+        } else if (store[i].category.includes('Science')) {
+          bgStyle = SciLg;
+        } else if (store[i].category === 'Mythology') {
+          bgStyle = MythLg;
+        } else if (store[i].category.includes('Music')) {
+          bgStyle = MusicLg;
+        } else if (store[i].category.includes('Book')) {
+          bgStyle = BookLg;
+        }
+        store[i].url = bgStyle;
       }
       setDQuizzes(store);
     }
   }, [allDifficulty, counter]);
+  // Prep Categories for Render
+  useEffect(() => {
+    const store = [];
+    if (allCategory.length > 1) {
+      for (let j = 0; j < cIndices.length; j += 1) {
+        store.push(allCategory[cIndices[j]]);
+      }
+    }
+    // console.log(store);
+    if (store.length === 4) {
+      for (let i = 0; i < store.length; i += 1) {
+        let bgStyle;
+        if (store[i]?.category === 'General Knowledge') {
+          bgStyle = GKLg;
+        } else if (store[i]?.category === 'Animals') {
+          bgStyle = AnimalLg;
+        } else if (store[i]?.category === 'Geography') {
+          bgStyle = GeoLg;
+        } else if (store[i]?.category === 'Entertainment: Film') {
+          bgStyle = MovieLg;
+        } else if (store[i]?.category.includes('Science')) {
+          bgStyle = SciLg;
+        } else if (store[i]?.category === 'Mythology') {
+          bgStyle = MythLg;
+        } else if (store[i]?.category.includes('Music')) {
+          bgStyle = MusicLg;
+        } else if (store[i]?.category.includes('Book')) {
+          bgStyle = BookLg;
+        }
+        if (store[i] !== undefined) {
+          store[i].url = bgStyle;
+        }
+      }
+      setCQuizzes(store);
+    }
+  }, [allCategory, counter]);
 
   // render component:
   return (
@@ -126,40 +228,63 @@ export default function Quizzes() {
       />
       {/* This is the Arrows for back and forward */}
       <ArrowBackIosIcon
-        onClick={leftArrow}
+        onClick={leftArrowTop}
         style={{
           position: 'absolute',
           fontSize: '100px',
           color: 'white',
           left: '10%',
-          top: '52vh',
+          top: '32vh',
         }}
       />
       <ArrowForwardIosIcon
-        onClick={rightArrow}
+        onClick={rightArrowTop}
         style={{
           position: 'absolute',
           fontSize: '100px',
           color: 'white',
           right: '10%',
-          top: '52vh',
+          top: '32vh',
+        }}
+      />
+      <ArrowBackIosIcon
+        onClick={leftArrowBot}
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          left: '10%',
+          top: '69vh',
+        }}
+      />
+      <ArrowForwardIosIcon
+        onClick={rightArrowBot}
+        style={{
+          position: 'absolute',
+          fontSize: '100px',
+          color: 'white',
+          right: '10%',
+          top: '69vh',
         }}
       />
       {/* This div contains all of the image tiles */}
       <div style={{
+
         background: 'none',
         width: '70vw',
-        height: '42em',
+        height: '50em',
         position: 'absolute',
         marginTop: '5em',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        marginBottom: '5em',
+
       }}
       >
         {/* This is for the category and difficulty Selectors */}
-        <div style={{ display: 'flex', width: '28vw', justifyContent: 'space-between' }}>
+        <div>
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Category</InputLabel>
             <Select
@@ -181,6 +306,41 @@ export default function Quizzes() {
               <MenuItem key="h" value="Entertainment: Books">Entertainment: Books</MenuItem>
             </Select>
           </FormControl>
+        </div>
+        {/* First Image Row Container */}
+        <div style={{
+          width: '60vw', height: '25em', background: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}
+        >
+          {/* First Row Images Mapped Here:  */}
+          {
+            categoryQuizzes.map((ele, index) => (
+              <div key={index}>
+                <p>{ele?.title}</p>
+                <Link to={{
+                  pathname: '/quizzes/quiz/',
+                }}
+                >
+                  <img
+                    onClick={pageLink}
+                    id={ele?.id}
+                    className="coverImages"
+                    src={ele?.url}
+                    style={{
+                      width: '200px',
+                      height: '200px',
+                      objectFit: 'cover',
+                      borderRadius: '15px',
+                    }}
+                  />
+                </Link>
+              </div>
+            ))
+          }
+        </div>
+        {/* Second Row Images Container */}
+        {/* <div style={{ width: '70vw', border: '2px solid orange' }} /> */}
+        <div>
           <FormControl variant="filled" sx={{ width: '15em' }}>
             <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
             <Select
@@ -198,57 +358,22 @@ export default function Quizzes() {
             </Select>
           </FormControl>
         </div>
-        {/* First Image Row Container */}
-        <div style={{
-          width: '60vw', height: '25em', background: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        }}
-        >
-          {/* First Row Images Mapped Here:  */}
-          {
-            categoryQuizzes.map((ele) => (
-              <div>
-                <h2>{ele.title}</h2>
-                <Link to={{
-                  pathname: '/quizzes/quiz/',
-                }}
-                >
-                  <img
-                    onClick={pageLink}
-                    key={Math.floor(Math.random() * 100)}
-                    id={ele.id}
-                    className="coverImages"
-                    src={ele.url}
-                    alt="quizImages"
-                    style={{
-                      width: '200px',
-                      height: '200px',
-                      objectFit: 'cover',
-                      borderRadius: '15px',
-                    }}
-                  />
-                </Link>
-              </div>
-            ))
-          }
-        </div>
-        {/* Second Row Images Container */}
-        {/* <div style={{ width: '70vw', border: '2px solid orange' }} /> */}
         <div style={{
           width: '60vw', height: '25em', background: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}
         >
           {/* Second Row of Images Here: */}
           {
-            difficultyQuizzes.map((ele) => (
-              <div>
-                <h2>{ele.title}</h2>
+            difficultyQuizzes.map((ele, index) => (
+              <div key={index}>
+                <p>{ele.title}</p>
                 <Link to={{
                   pathname: '/quizzes/quiz/',
                 }}
                 >
                   <img
                     onClick={pageLink}
-                    key={Math.floor(Math.random() * 100)}
+
                     id={ele.id}
                     className="coverImages"
                     src={ele.url}
