@@ -16,6 +16,7 @@ export default function TrueFalseSelectCard({
   setTrueFalseAnswer, answerGroup, setAnswerGroup,
   setTrueFalseOtherAnswer, trueFalseOtherAnswer,
   setCurrentQuestionId, currentQuestionId,
+  setQuestionGroup, questionGroup,
 }) {
   const boxRef = useRef(null);
   // eslint-disable-next-line prefer-const
@@ -122,7 +123,7 @@ export default function TrueFalseSelectCard({
             Next
           </Button>
           <Button
-            onClick={() => { setStepCount(stepCount - 2); }}
+            onClick={() => { setStepCount(stepCount - 2); setQuestionGroup(questionGroup.filter((item) => item.question_id !== currentQuestionId)); }}
             variant="contained"
             sx={{
               position: 'absolute',

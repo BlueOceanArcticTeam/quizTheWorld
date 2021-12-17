@@ -17,7 +17,8 @@ export default function AnswerInputCard({
   stepCount, setStepCount, answers,
   setAnswers, currentQuestionId, question,
   setQuestion, setCurrentQuestionId,
-  answerGroup, setAnswerGroup,
+  answerGroup, setAnswerGroup, setQuestionGroup,
+  questionGroup,
 }) {
   const boxRef = useRef(null);
 
@@ -213,7 +214,7 @@ export default function AnswerInputCard({
             Next
           </Button>
           <Button
-            onClick={() => { setStepCount(stepCount - 1); }}
+            onClick={() => { setStepCount(stepCount - 1); setQuestionGroup(questionGroup.filter((item) => item.question_id !== currentQuestionId)); }}
             variant="contained"
             sx={{
               position: 'absolute',

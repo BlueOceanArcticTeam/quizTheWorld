@@ -148,6 +148,8 @@ export default function CreateQuiz() {
             setCurrentQuestionId={setCurrentQuestionId}
             answerGroup={answerGroup}
             setAnswerGroup={setAnswerGroup}
+            setQuestionGroup={setQuestionGroup}
+            questionGroup={questionGroup}
           />
         )
         : ''}
@@ -164,6 +166,8 @@ export default function CreateQuiz() {
             setAnswerGroup={setAnswerGroup}
             setCurrentQuestionId={setCurrentQuestionId}
             currentQuestionId={currentQuestionId}
+            setQuestionGroup={setQuestionGroup}
+            questionGroup={questionGroup}
           />
         )
         : ''}
