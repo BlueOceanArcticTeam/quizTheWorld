@@ -106,6 +106,8 @@ export default function CreateQuiz() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      background: 'none',
+      zIndex: '-100',
     }}
     >
 
