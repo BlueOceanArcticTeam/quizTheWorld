@@ -140,9 +140,9 @@ export const App = function () {
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
-            <Route path="/quizzes" element={<PrivateRoute />}>
-              <Route path="/quizzes/create" element={<CreateQuiz />} />
-            </Route>
+            {/* <Route path="/quizzes" element={<PrivateRoute />}> */}
+            <Route path="/quizzes/create" element={<CreateQuiz />} />
+            {/* </Route> */}
             {/* <Route path="/chat" element={<PrivateRoute />}>
             </Route> */}
           </Route>
@@ -150,14 +150,16 @@ export const App = function () {
           <Route path="/login" element={<Login />} />
         </Routes>
         {/* <div className="chatButton" tabIndex={0} onBlur={() => { setDisplayModal(false); }}> */}
-          {displayModal
-            ? (displayChat ? <Chat /> : <ChatFriendList />)
-            : null}
-          {isLoggedIn
-            ? (<button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-                <ChatIcon className="chatIcon" />
-              </button>)
-            : null}
+        {displayModal
+          ? (displayChat ? <Chat /> : <ChatFriendList />)
+          : null}
+        {isLoggedIn
+          ? (
+            <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+              <ChatIcon className="chatIcon" />
+            </button>
+          )
+          : null}
         {/* </div> */}
       </AppContext.Provider>
     </div>

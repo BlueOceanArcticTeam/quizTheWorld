@@ -98,16 +98,7 @@ const NavBar = function () {
         >
           Quizzes
         </Link>
-        {/* <Link
-          style={{
-            color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-          }}
-          to="/chat"
-        >
-          Chat
-        </Link>
-        {/* {console.log(user)} */}
-        </Link> */}
+
         { user
           ? (
             <Link
