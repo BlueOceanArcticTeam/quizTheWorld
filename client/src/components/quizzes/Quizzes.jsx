@@ -207,13 +207,14 @@ export default function Quizzes() {
   // render component:
   return (
     <div style={{
-      width: '100vw',
-      height: '100vh',
+      width: '90vw',
+      height: '80vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       zIndex: '-100',
       position: 'relative',
+      marginTop: '30px',
     }}
     >
       <img
@@ -221,9 +222,10 @@ export default function Quizzes() {
         alt=""
         style={{
           zIndex: '-100',
-          width: '100vw',
-          height: '100vh',
+          width: '85vw',
+          height: '85vh',
           position: 'relative',
+          borderRadius: '25px',
         }}
       />
       {/* This is the Arrows for back and forward */}
@@ -234,7 +236,7 @@ export default function Quizzes() {
           fontSize: '100px',
           color: 'white',
           left: '10%',
-          top: '32vh',
+          top: '23vh',
         }}
       />
       <ArrowForwardIosIcon
@@ -244,7 +246,7 @@ export default function Quizzes() {
           fontSize: '100px',
           color: 'white',
           right: '10%',
-          top: '32vh',
+          top: '23vh',
         }}
       />
       <ArrowBackIosIcon
@@ -254,7 +256,7 @@ export default function Quizzes() {
           fontSize: '100px',
           color: 'white',
           left: '10%',
-          top: '69vh',
+          top: '62vh',
         }}
       />
       <ArrowForwardIosIcon
@@ -264,7 +266,7 @@ export default function Quizzes() {
           fontSize: '100px',
           color: 'white',
           right: '10%',
-          top: '69vh',
+          top: '62vh',
         }}
       />
       {/* This div contains all of the image tiles */}
@@ -272,14 +274,15 @@ export default function Quizzes() {
 
         background: 'none',
         width: '70vw',
-        height: '50em',
+        height: '85%',
         position: 'absolute',
-        marginTop: '5em',
+        marginTop: '4em',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '5em',
+        gap: '10px',
 
       }}
       >
@@ -348,7 +351,7 @@ export default function Quizzes() {
               defaultValue=""
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)' }}
+              sx={{ backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)', marginTop: '10px' }}
             // value={age}
               label="Difficulty"
             >

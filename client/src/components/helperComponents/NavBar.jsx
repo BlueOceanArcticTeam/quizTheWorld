@@ -15,6 +15,7 @@ import { AppContext } from '../../App.jsx';
 import LevelUp from './Search.jsx';
 import Modal from '../modal/Modal.jsx';
 import Search from './Search.jsx';
+import './NavBar.css';
 
 const NavBar = function () {
   const { user, handleLogOut, userID } = useContext(AppContext);
@@ -42,14 +43,21 @@ const NavBar = function () {
       }}
       >
         <Link
+          className="quizKnows"
           style={{
-            color: '#FE6845', fontSize: '2em', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+            color: '#FE6845',
+            fontSize: '2em',
+            fontWeight: 'bold',
+            paddingRight: '2em',
+            textDecoration: 'none',
+            transition: 'box-shadow .3s',
           }}
           to="/"
         >
           QuizKnows
         </Link>
         <Link
+          className="link"
           style={{
             color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
           }}
@@ -58,6 +66,7 @@ const NavBar = function () {
           Home
         </Link>
         <Link
+          className="link"
           style={{
             color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
           }}
@@ -68,6 +77,7 @@ const NavBar = function () {
         { user
           ? (
             <Link
+              className="link"
               style={{
                 color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
               }}
@@ -79,6 +89,7 @@ const NavBar = function () {
           )
           : (
             <Link
+              className="link"
               style={{
                 color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
               }}

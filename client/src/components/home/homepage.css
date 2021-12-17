@@ -21,6 +21,10 @@ body {
     margin: auto;
 }
 
+.createYourOwn:hover {
+        text-shadow: #5abae3 0 0 10px;
+}
+
 .heroSectionContainer {
     grid-template-columns: repeat(12, 1fr);
     width: 90vw;
