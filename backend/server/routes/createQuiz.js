@@ -40,19 +40,19 @@ createQuiz.route('/questions').post((req, res) => { // CHANGE POST TO THE METHOD
 });
 
 createQuiz.route('/answers').post((req, res) => { // CHANGE POST TO THE METHOD YOU WANT, AND CHANGE 'TEMPLATE' TO MATCH ABOVE
-  // console.log(req.body);
+  console.log(req.body);
 
-  for (let i = 0; i < req.body.length; i += 1) {
-    const {
-      question_id, correct, text,
-    } = req.body[i];
+  //   for (let i = 0; i < req.body.length; i += 1) {
+  const {
+    question_id, correct, text,
+  } = req.body;
 
-    db.query(
-      'INSERT INTO answers (id, question_id, correct, text) VALUES (DEFAULT, $1, $2, $3) RETURNING id;',
-      [question_id, correct, text],
-    ).then(() => { })
-      .catch((err) => { console.log(err); res.status(400).send('something went wrong'); });
-  }
+  db.query(
+    'INSERT INTO answers (id, question_id, correct, text) VALUES (DEFAULT, $1, $2, $3) RETURNING id;',
+    [question_id, correct, text],
+  ).then(() => { })
+    .catch((err) => { console.log(err); res.status(400).send('something went wrong'); });
+  //   }
 
   res.status(201).send('answers submitted!');
 });

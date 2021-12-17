@@ -49,9 +49,16 @@ export default function AddAnotherQuestion({
 
     for (let i = 0; i < idArr.length; i += 1) {
       for (let j = 0; j < tempAnswers[i].length; j += 1) {
-        tempAnswers[i][j].question_id = idArr[i];
+        if (tempAnswers[i][j].type) {
+          tempAnswers[i][j].question_id = idArr[i];
+          console.log(tempAnswers[i], '**** HERE');
+        } else {
+          tempAnswers[i][j].question_id = idArr[i];
+        }
+        console.log('working!');
       }
     }
+    console.log(tempAnswers);
     submitAnswers(tempAnswers);
   }
 

@@ -12,9 +12,13 @@ import {
 } from '@mui/material';
 
 export default function TrueFalseSelectCard({
-  stepCount, setStepCount, trueFalseAnswer, setTrueFalseAnswer, answerGroup, setAnswerGroup,
+  stepCount, setStepCount, trueFalseAnswer,
+  setTrueFalseAnswer, answerGroup, setAnswerGroup,
+  setTrueFalseOtherAnswer, trueFalseOtherAnswer,
 }) {
   const boxRef = useRef(null);
+  // eslint-disable-next-line prefer-const
+  const [trueFalseArr, setTrueFalseArr] = useState([]);
 
   useEffect(() => {
     gsap.to(boxRef.current, {
@@ -26,14 +30,42 @@ export default function TrueFalseSelectCard({
   }, [stepCount]);
 
   function updateTrueFalseAnswer(e) {
+    let opposite;
+    let correctAns;
+    if (e.target.value === 'true') {
+      opposite = false;
+      correctAns = true;
+    } else if (e.target.value === 'false') {
+      opposite = true;
+      correctAns = false;
+    }
     setTrueFalseAnswer({
       ...trueFalseAnswer,
-      correct: e.target.value,
+      correct: correctAns,
+      text: 'True',
     });
+    setTrueFalseOtherAnswer({
+      ...trueFalseOtherAnswer,
+      correct: opposite,
+      text: 'False',
+    });
+    const tfAnswer = {
+      ...trueFalseAnswer,
+      correct: correctAns,
+      text: 'True',
+    };
+    const tfOtherAnswer = {
+      ...trueFalseOtherAnswer,
+      correct: opposite,
+      text: 'False',
+    };
+    console.log(tfAnswer, tfOtherAnswer, 'here!');
+
+    setTrueFalseArr((trueFalseArr) => [...trueFalseArr, tfAnswer, tfOtherAnswer]);
   }
 
   function addAnswerToAnswerGroup() {
-    setAnswerGroup((answerGroup) => [...answerGroup, trueFalseAnswer]);
+    setAnswerGroup((answerGroup) => [...answerGroup, trueFalseArr]);
   }
 
   return (

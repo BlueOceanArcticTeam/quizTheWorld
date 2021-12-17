@@ -36,8 +36,15 @@ export default function CreateQuiz() {
   });
   const [trueFalseAnswer, setTrueFalseAnswer] = useState({
     question_id: 0,
+    type: 'TF',
     correct: null,
-    text: '',
+    text: 'True',
+  });
+  const [trueFalseOtherAnswer, setTrueFalseOtherAnswer] = useState({
+    question_id: 0,
+    type: 'TF',
+    correct: null,
+    text: 'True',
   });
   const [answers, setAnswers] = useState({
     question_id: 0,
@@ -87,6 +94,10 @@ export default function CreateQuiz() {
     console.log(trueFalseAnswer, 'TRUE/FALSE ANSWER');
   }, [trueFalseAnswer]);
 
+  useEffect(() => {
+    console.log(trueFalseOtherAnswer, 'TRUE/FALSE OTHER');
+  }, [trueFalseOtherAnswer]);
+
   // render component:
   return (
     <div style={{
@@ -119,6 +130,8 @@ export default function CreateQuiz() {
             answers={answers}
             trueFalseAnswer={trueFalseAnswer}
             setTrueFalseAnswer={setTrueFalseAnswer}
+            trueFalseOtherAnswer={trueFalseOtherAnswer}
+            setTrueFalseOtherAnswer={setTrueFalseOtherAnswer}
           />
         )
         : ''}
@@ -145,6 +158,8 @@ export default function CreateQuiz() {
             stepCount={stepCount}
             trueFalseAnswer={trueFalseAnswer}
             setTrueFalseAnswer={setTrueFalseAnswer}
+            trueFalseOtherAnswer={trueFalseOtherAnswer}
+            setTrueFalseOtherAnswer={setTrueFalseOtherAnswer}
             answerGroup={answerGroup}
             setAnswerGroup={setAnswerGroup}
           />

@@ -20,6 +20,7 @@ export default function QuestionInputCard({
   setQuestion, questionGroup, setQuestionGroup,
   currentQuestionId, setCurrentQuestionId, answers,
   setAnswers, trueFalseAnswer, setTrueFalseAnswer,
+  setTrueFalseOtherAnswer, trueFalseOtherAnswer,
 }) {
   const { user } = useContext(AppContext);
   const [multipleChoiceOrTrueFalse, setMultipleChoiceOrTrueFalse] = useState(null);
@@ -57,6 +58,10 @@ export default function QuestionInputCard({
     });
     setTrueFalseAnswer({
       ...trueFalseAnswer,
+      question_id: currentQuestionId,
+    });
+    setTrueFalseOtherAnswer({
+      ...trueFalseOtherAnswer,
       question_id: currentQuestionId,
     });
   }
