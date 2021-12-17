@@ -171,10 +171,13 @@ export const App = function () {
           : null}
 
         {isLoggedIn
-          ? (<button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
-               <ChatIcon className="chatIcon" />
-             </button>)
+          ? (
+            <button type="button" className="chatButton" onClick={() => { setDisplayModal(!displayModal); }}>
+              <ChatIcon className="chatIcon" />
+            </button>
+          )
           : null}
+        <SearchModal />
       </AppContext.Provider>
     </div>
   );
