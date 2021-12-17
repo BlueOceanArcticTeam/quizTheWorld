@@ -112,11 +112,11 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 2) Run webpack to bundle by running `npm run build`
 
 
-3) Time to populate the database. Make sure you have postgres installed on your computer and run `npm run load`
+3) Create a file in the root project folder called '.env'. Inside that file input your password for postgres in the following format: PASSWORD= 'your password'
 
 
-4) Create a file in the root project folder called '.env'. Inside that file input your password for postgres in the following format: PASSWORD= '<your password>'
 
+4) Time to populate the database. Make sure you have postgres installed on your computer and run `npm run load`
 
 5) Finally use `npm start` to start the server, navigate to the page on your favorite browser, and enjoy the knowledge!
 ---
