@@ -47,7 +47,11 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 **Login**:
 
-* Write some stuff here
+There are two forms of authentication on this app.  There is a google authentication option, which uses Google's api to log in.  When using this option it allows google to do the validation of the user and then sending back the information about the user.
+
+The other option for authentication is to register locally on the website.  To register you need to fill out a standard form with input fields of email, username, first name, last name, a profile thumbnail image url (optional), and then there are two password fields.  Each field will be scrubbed so that it doesn't do anything harmful to our website or backend.  This includes dropping tables or the entire database.  There is also form validation to make sure each input is valid for the field that it is given in.  If everything is correct then the user data will be submitted to our database.
+
+Once the user is registered, they will be signed in automatically.  Regardless of how a user chooses to sign in their authentication cookie will expire in 12 hours, unless they sign out earlier. 
 
 <img src="client/dist/readme/login.png" width="90%">
 
