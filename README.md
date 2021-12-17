@@ -75,7 +75,7 @@ Once the user is registered, they will be signed in automatically.  Regardless o
 
 **Quiz Page**:
 
-* Write some stuff here
+* The Quiz Page is the heart of the application. Here quizzes that were created from a public API, as well as any user-created quizzes, dynamically render and can be taken by the user. Each quiz pulls questions and answers from our database and renders them onscreen. As you progress through the quiz your progress is saved, and you can move back and forth to change your answers. Once you have entered answers for all the questions, you can submit the quiz. You'll be told how well you did, be given the option to retake the quiz if you feel you can do better, and shown a button that will take you to a page that allows you to select new quizzes. Your score is saved and statistics are sent to your profile to view later. It's so much fun to take these quizzes!
 
 <img src="client/dist/readme/quizpage.png" width="90%">
 
