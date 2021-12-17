@@ -252,6 +252,7 @@ export default function Quizzes() {
       <ArrowBackIosIcon
         onClick={leftArrowBot}
         style={{
+          zIndex: '1000',
           position: 'absolute',
           fontSize: '100px',
           color: 'white',
@@ -262,6 +263,7 @@ export default function Quizzes() {
       <ArrowForwardIosIcon
         onClick={rightArrowBot}
         style={{
+          zIndex: '1000',
           position: 'absolute',
           fontSize: '100px',
           color: 'white',
