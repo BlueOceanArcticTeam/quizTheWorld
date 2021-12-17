@@ -95,9 +95,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 * Chat with your friends from anywhere on the QuizKnows website! Note that you must be logged in to access the chat feature. 
 
-<img src="client/dist/readme/chatbox.png" width="40%">
-
-<img src="client/dist/readme/elonMusk.png" width="40%">
+<img src="client/dist/readme/chatbox.png" width="40%"><img src="client/dist/readme/elonMusk.png" width="40%">
 
 
 
