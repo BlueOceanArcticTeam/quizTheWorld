@@ -57,7 +57,7 @@ const TopQuizCard = function ({ title, category, quizId }) {
         style={{
           textDecoration: 'none', color: '#FFDAD1',
         }}
-        to="/quizzes/quiz"
+        to={`/quizzes/quiz/${quizId}`}
       >
         <h4 style={{ fontWeight: 'bold', color: '#FFDAD1' }}>{title}</h4>
       </Link>

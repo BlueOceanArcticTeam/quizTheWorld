@@ -50,6 +50,7 @@ export default function HomePage() {
                 to="/quizzes/create"
               >
                 <Button
+                  className="createYourOwn"
                   variant="contained"
                   sx={{
                     fontSize: '1.5rem',
@@ -62,6 +63,7 @@ export default function HomePage() {
                     height: 'auto',
                     overflow: 'hidden',
                     width: '25%',
+                    transition: 'box-shadow .3s',
                   }}
                 >
                   Create Your Own!

@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
 /* eslint-disable no-shadow */
 /* eslint-disable max-len */
 /* eslint-disable react/prop-types */
@@ -22,7 +20,7 @@ export default function QuestionInputCard({
   setQuestion, questionGroup, setQuestionGroup,
   currentQuestionId, setCurrentQuestionId, answers,
   setAnswers, trueFalseAnswer, setTrueFalseAnswer,
-  setTrueFalseOtherAnswer, trueFalseOtherAnswer,
+  setTrueFalseOtherAnswer, trueFalseOtherAnswer, quiz,
 }) {
   const { user } = useContext(AppContext);
   const [multipleChoiceOrTrueFalse, setMultipleChoiceOrTrueFalse] = useState(null);
@@ -51,6 +49,14 @@ export default function QuestionInputCard({
       user_id: user.id,
       questionType: type,
     });
+  }
+
+  function validateInputs() {
+    if (question.questionType === '' || question.text === '') {
+      alert('Please fill out the form!');
+    } else {
+      setStepCount(stepCount + multipleChoiceOrTrueFalse);
+    }
   }
 
   function updateAnswerId() {
@@ -117,7 +123,7 @@ export default function QuestionInputCard({
           >
             <textarea onChange={(e) => { updateQuestionText(e); }} name="" id="" cols="50" rows="6" maxLength="200" style={{ fontSize: '30px', borderRadius: '15px' }} />
             <Button
-              onClick={() => { setStepCount(stepCount + multipleChoiceOrTrueFalse); updateQuestionGroup(); }}
+              onClick={() => { validateInputs(); updateQuestionGroup(); }}
               variant="contained"
               sx={{
                 position: 'absolute',
