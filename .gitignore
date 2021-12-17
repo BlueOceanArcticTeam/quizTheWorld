@@ -4,4 +4,4 @@ client/dist/bundle.js
 .vscode/settings.json
 package-lock.json
 .env
-backend/config/keys.js
+backend/config/keys.jssendgrid.env
