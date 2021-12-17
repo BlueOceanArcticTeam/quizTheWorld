@@ -22,7 +22,7 @@ export default function HomePage() {
       .then((resp) => {
         setData(resp.data);
       });
-  });
+  }, []);
 
   return (
     <div className="wrapper">
