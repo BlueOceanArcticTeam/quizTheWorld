@@ -156,7 +156,7 @@ export const App = function () {
             <Route index element={<HomePage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
             <Route path="/quizzes" element={<Quizzes />} />
-            <Route path="/quizzes/quiz" element={<QuizPage />} />
+            <Route path="/quizzes/quiz/:quiz_id" element={<QuizPage />} />
             {/* <Route path="/quizzes" element={<PrivateRoute />}> */}
             <Route path="/quizzes/create" element={<CreateQuiz />} />
             {/* </Route> */}
