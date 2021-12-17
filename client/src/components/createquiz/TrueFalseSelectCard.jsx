@@ -15,6 +15,7 @@ export default function TrueFalseSelectCard({
   stepCount, setStepCount, trueFalseAnswer,
   setTrueFalseAnswer, answerGroup, setAnswerGroup,
   setTrueFalseOtherAnswer, trueFalseOtherAnswer,
+  setCurrentQuestionId, currentQuestionId,
 }) {
   const boxRef = useRef(null);
   // eslint-disable-next-line prefer-const
@@ -105,7 +106,7 @@ export default function TrueFalseSelectCard({
             </Select>
           </FormControl>
           <Button
-            onClick={() => { setStepCount(stepCount + 1); addAnswerToAnswerGroup(); }}
+            onClick={() => { setStepCount(stepCount + 1); addAnswerToAnswerGroup(); setCurrentQuestionId(currentQuestionId + 1); }}
             variant="contained"
             sx={{
               position: 'absolute',

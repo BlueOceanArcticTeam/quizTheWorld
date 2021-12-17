@@ -162,6 +162,8 @@ export default function CreateQuiz() {
             setTrueFalseOtherAnswer={setTrueFalseOtherAnswer}
             answerGroup={answerGroup}
             setAnswerGroup={setAnswerGroup}
+            setCurrentQuestionId={setCurrentQuestionId}
+            currentQuestionId={currentQuestionId}
           />
         )
         : ''}

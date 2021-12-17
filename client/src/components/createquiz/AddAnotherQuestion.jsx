@@ -51,7 +51,7 @@ export default function AddAnotherQuestion({
       for (let j = 0; j < tempAnswers[i].length; j += 1) {
         if (tempAnswers[i][j].type) {
           tempAnswers[i][j].question_id = idArr[i];
-          console.log(tempAnswers[i], '**** HERE');
+          console.log(tempAnswers[i][j], '**** HERE');
         } else {
           tempAnswers[i][j].question_id = idArr[i];
         }
