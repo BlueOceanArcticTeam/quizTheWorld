@@ -21,6 +21,20 @@ export default function Login() {
 
   // component functions - event handlers
   const handleLogin = () => {
+    // check that nothing malicious is going to alter our db
+    // password function is hanging too long, so until we fix that we will use the username one
+    const passwordCheck = inputValidation(loginPassword, 'username');
+    if (passwordCheck.valid === false) {
+      setMessage('Please check that the passwords match and are longer than 8 charaters');
+      return;
+    }
+    const emailCheck = inputValidation(loginEmail, 'email');
+    if (emailCheck.valid === false) {
+      setMessage(emailCheck.errorMessage);
+      return;
+    }
+
+    // if everything checks out then we can log in
     axios({
       method: 'post',
       data: {

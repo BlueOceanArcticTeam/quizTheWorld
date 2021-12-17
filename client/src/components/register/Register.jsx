@@ -6,6 +6,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import './register.css';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import inputValidation from '../../utilities/inputValidation.js';
 import LoginImage from './assets/Login.png';
 import { AppContext } from '../../App.jsx';
 
@@ -31,35 +32,66 @@ export default function Register() {
       // alert('passwords must be equal');
       document.getElementById('password1').focus();
     }
-    if (email === '' || username === '' || firstName === '' || lastName === '' || registerPassword1 === '' || registerPassword2 === '') {
-      setMessage('You must fill in all of the required fields to register');
-      document.getElementById('email').focus();
-    } else {
-      axios({
-        method: 'post',
-        data: {
-          // registration data
-          username,
-          password: registerPassword1,
-          firstName,
-          lastName,
-          email,
-          thumbnail_url,
-        },
-        withCredentials: true,
-        url: '/api/auth/register',
-      })
-        .then((res) => {
-          if (res.data === 'user created') {
-            alert('Thank you for registering');
-            handleLogin();
-            // goToHome();
-            // window.location.reload(true);
-          } else {
-            setMessage('Sorry, someone has already registered with that email or username');
-          }
-        });
+
+    const emailCheck = inputValidation(email, 'email');
+    if (emailCheck.valid === false) {
+      setMessage(emailCheck.errorMessage);
+      return;
     }
+    const usernameCheck = inputValidation(username, 'username');
+    if (usernameCheck.valid === false) {
+      setMessage(usernameCheck.errorMessage);
+      return;
+    }
+    const firstNameCheck = inputValidation(firstName, 'firstname');
+    if (firstNameCheck.valid === false) {
+      setMessage(firstNameCheck.errorMessage);
+      return;
+    }
+    const lastNameCheck = inputValidation(lastName, 'lastname');
+    if (lastNameCheck.valid === false) {
+      setMessage(lastNameCheck.errorMessage);
+      return;
+    }
+    if (thumbnail_url.length > 0) {
+      const thumbnailCheck = inputValidation(thumbnail_url, 'message');
+      if (thumbnailCheck.valid === false) {
+        setMessage(emailCheck.errorMessage);
+        return;
+      }
+    }
+    // Check the password,
+    // something isn't working in the password function, so we are temp using the username func
+    const passwordCheck = inputValidation(registerPassword1, 'username');
+    if (passwordCheck.valid === false) {
+      setMessage('Please check that the passwords match and are longer than 8 charaters');
+      return;
+    }
+
+    axios({
+      method: 'post',
+      data: {
+        // registration data
+        username,
+        password: registerPassword1,
+        firstName,
+        lastName,
+        email,
+        thumbnail_url,
+      },
+      withCredentials: true,
+      url: '/api/auth/register',
+    })
+      .then((res) => {
+        if (res.data === 'user created') {
+          alert('Thank you for registering');
+          handleLogin();
+          // goToHome();
+          // window.location.reload(true);
+        } else {
+          setMessage('Sorry, someone has already registered with that email or username');
+        }
+      });
   };
 
   // component functions - event handlers
@@ -184,7 +216,7 @@ export default function Register() {
             {/* This is the input for the PassWord1 */}
             <label htmlFor="password1" style={{ fontSize: '1.5em' }}>Password:</label>
             <input
-              type="new-password"
+              type="password"
               id="password1"
               required
               onChange={(e) => { setRegisterPassword1(e.target.value); }}
@@ -195,7 +227,7 @@ export default function Register() {
             {/* This is the input for the PassWord2 */}
             <label htmlFor="password2" style={{ fontSize: '1.5em' }}>Re-enter Password:</label>
             <input
-              type="new-password"
+              type="password"
               id="password2"
               required
               onChange={(e) => { setRegisterPassword2(e.target.value); }}
