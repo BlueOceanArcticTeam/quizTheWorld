@@ -4,18 +4,31 @@
 
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import Modal from '../Modal.jsx';
-import { AppContext } from '../App.jsx';
+import Modal from '../Modal/Modal.jsx';
+import { AppContext } from '../../App.jsx';
 
-export default function LevelUp() {
+export default function LevelUp({ searchItem }) {
 // get context from app
-  const { searched, setSearched, users} = useContext(AppContext);
+  const { searched, setSearched, users } = useContext(AppContext);
+  useEffect(() => {
+    axios.get('/api/searchQuery', {
+      params: {
+        queryItem: 'Animals',
+      },
+    })
+      .then((resp) => {
+        console.log(resp.data);
+      });
+  }, [searchItem]);
 
   return (
-    <Modal value={}>
-      <div id="search">
-        test
-      </div>
-    </Modal>
+    <div>
+      {console.log('this is the search')}
+      <Modal>
+        <div id="search">
+          test
+        </div>
+      </Modal>
+    </div>
   );
 }

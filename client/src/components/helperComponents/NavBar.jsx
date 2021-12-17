@@ -1,8 +1,3 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-/* eslint-disable react/function-component-definition */
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-cycle */
-
 import React, { useState, useContext, useEffect } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import {
@@ -14,19 +9,51 @@ import { Outlet } from 'react-router';
 import Button from '@mui/material/Button';
 // import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import axios from 'axios';
 import Login from '../login/Login.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
 import { AppContext } from '../../App.jsx';
+import LevelUp from './Search.jsx';
+import Modal from '../Modal/Modal.jsx';
 
-export default function NavBar() {
-  // set state variables below:
+const NavBar = function () {
+  const [query, setQuery] = useState('');
+  const [render, setRender] = useState(false);
+  const [data, setData] = useState();
   const { user, handleLogOut, userID } = useContext(AppContext);
   const [userDropDown, setUserDropDown] = useState(false);
   // component functions - event handlers
 
-  // use Effect:
+  function handleChange(e) {
+    setQuery(e.target.value);
+    console.log(query, ' query');
+  }
 
-  // render component:
+  function handleSubmit(e) {
+    e.preventDefault();
+    axios.get('/api/searchQuery', {
+      params: {
+        queryItem: query,
+      },
+    })
+      .then((resp) => {
+        setData(resp.data, 'response here');
+      });
+    setRender(true);
+  }
+
+  function handleClick(e) {
+    axios
+      .post(`/api/profile/${userID}/friends/${e.target.value}`, null, {
+        params: {
+          user_id: userID,
+          friend_id: e.target.value,
+        },
+      })
+      .then((response) => response.status)
+      .catch((err) => console.warn(err));
+  }
+
   return (
     <div style={{
       display: 'flex',
@@ -71,14 +98,7 @@ export default function NavBar() {
         >
           Quizzes
         </Link>
-        {/* <Link
-          style={{
-            color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-          }}
-          to="/chat"
-        >
-          Chat
-        </Link> */}
+
         { user
           ? (
             <Link
@@ -102,8 +122,10 @@ export default function NavBar() {
             </Link>
           ) }
         {/* HERE IS THE SEARCH BAR */}
-        <input type="text" placeholder="Search for quizzes or people.." style={{ borderRadius: '20px', marginRight: '10px' }} />
-        <SearchIcon style={{ color: 'white' }} className={'search'} />
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={handleChange} value={query} placeholder="Search for quizzes or people.." style={{ borderRadius: '20px', marginRight: '10px' }} />
+          <SearchIcon style={{ color: 'white' }} className="search" />
+        </form>
         {/* {user ? console.log(user.username) : console.log('not logged in')} */}
         {
         user
@@ -113,7 +135,7 @@ export default function NavBar() {
               ? (
                 <div
                   style={{
-                    display: 'flex', float: 'right', width: '8em', flexDirection: 'column', top: '8em', marginLeft: 'auto',
+                    display: 'flex', float: 'right', width: '10em', flexDirection: 'column', marginLeft: 'auto',
                   }}
                   sx={{
                     marginLeft: 'auto',
@@ -124,7 +146,7 @@ export default function NavBar() {
                 >
                   <div
                     variant="contained"
-                    style={{ width: '8em', height: '2em' }}
+                    style={{ width: '10em', height: '2em' }}
                     sx={{
                       marginLeft: 'auto',
                       background: '#FE6845',
@@ -135,7 +157,7 @@ export default function NavBar() {
                   <Button
                     to="/"
                     variant="contained"
-                    style={{ width: '8em' }}
+                    style={{ width: '10em' }}
                     onClick={(e) => {
                       e.preventDefault();
                       setUserDropDown(!userDropDown);
@@ -153,7 +175,7 @@ export default function NavBar() {
                   <Button
                     to="/"
                     variant="contained"
-                    style={{ width: '8em' }}
+                    style={{ width: '10em' }}
                     onClick={(e) => {
                       e.preventDefault();
                       // setUserDropDown(!userDropDown);
@@ -175,7 +197,7 @@ export default function NavBar() {
                 <Button
                   to="/"
                   variant="contained"
-                  style={{ width: '8em' }}
+                  style={{ width: '10em' }}
                   onClick={(e) => {
                     e.preventDefault();
                     setUserDropDown(!userDropDown);
@@ -197,6 +219,7 @@ export default function NavBar() {
               to="/login"
               component={Link}
               variant="contained"
+              style={{ width: '10em' }}
               sx={{
                 marginLeft: 'auto',
                 background: '#FE6845',
@@ -209,6 +232,33 @@ export default function NavBar() {
           )
 }
       </Box>
+      <Modal
+        value={render}
+
+      >
+        <div
+          id="search"
+          style={{
+            position: 'absolute', alignItems: 'center', left: 0, right: 0, top: '25%', margin: 'auto', display: 'flex', width: '30vw', height: '30vh', border: '1px solid red', backgroundColor: '#E9CEFF', zIndex: '99999',
+          }}
+        >
+
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 'auto', width: '100%',
+          }}
+          >
+            <ul>
+              {data ? data.map((item) => (
+                <li value={item.id} onClick={handleClick}>{item.username}</li>
+
+              )) : null}
+            </ul>
+
+          </div>
+        </div>
+      </Modal>
     </div>
   );
-}
+};
+
+export default NavBar;
