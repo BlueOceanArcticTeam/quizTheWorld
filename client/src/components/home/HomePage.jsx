@@ -16,12 +16,16 @@ import LevelUp from '../helperComponents/Search.jsx';
 
 export default function HomePage() {
   const [data, setData] = useState();
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/topQuizzes')
-      .then((resp) => {
-        setData(resp.data);
-      });
+    if (toggle) {
+      axios.get('/api/topQuizzes')
+        .then((resp) => {
+          setData(resp.data);
+          setToggle(false);
+        });
+    }
   }, []);
 
   return (
