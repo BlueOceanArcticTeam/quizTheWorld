@@ -136,7 +136,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
  > * **[Jack Dowling](https://www.linkedin.com/in/jackmdowling/)** System Architect
 
- > * **[Wilson Wong](https://www.linkedin.com/)** job title
+ > * **[Wilson Wong](https://www.linkedin.com/)** System Architect
 
  > * **[Matt Olsen](https://www.linkedin.com/)** job title
 ---
