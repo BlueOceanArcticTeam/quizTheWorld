@@ -7,11 +7,6 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false
   },
-  user: process.env.USERNAME,
-  host: 'localhost',
-  database: 'quizknows',
-  password: process.env.PASSWORD,
-  port: 5432 // Default port
 });
 
 pool.connect((err) => {
