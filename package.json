@@ -4,8 +4,8 @@
   "description": "Blue Ocean project for Team Arctic",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server/server.js",
-    "build": "webpack --config ./webpack.config.js --mode production -w",
+    "start": "node backend/server/server.js",
+    "build": "webpack --config ./webpack.config.js --mode production",
     "test": "jest",
     "load": "psql postgres -f ./load.sh"
   },
