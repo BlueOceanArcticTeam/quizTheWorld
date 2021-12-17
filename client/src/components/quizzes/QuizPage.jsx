@@ -6,7 +6,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
@@ -15,7 +15,7 @@ import './Quizzes.css';
 
 export default function QuizPage() {
   // set state variables below:
-  const [quiz_id, setQuizID] = useState();
+  const [quizID, setQuizID] = useState();
   const { user } = useContext(AppContext);
   const [quizState, setQuiz] = useState();
   const [questionsArray, setQuestions] = useState();
@@ -37,6 +37,9 @@ export default function QuizPage() {
   const [hideBack, setBack] = useState(true);
   const [hideNum, setNum] = useState(true);
   const [link, setLink] = useState(true);
+
+  const { quiz_id } = useParams();
+
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
@@ -120,37 +123,35 @@ export default function QuizPage() {
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    if (toggle) {
-      setToggle(false);
-      axios.get(`/api/quiz/${quiz_id}`)
-        .then((res) => {
-          const { data } = res;
-          const quiz = {
-            id: data[0].quiz_id,
-            category: data[0].category,
-            difficulty: data[0].difficulty,
-            source: data[0].source,
-            datecreated: data[0].datecreated,
-            numsubmissions: data[0].numsubmissions,
+    setToggle(false);
+    axios.get(`/api/quiz/${quiz_id}`)
+      .then((res) => {
+        const { data } = res;
+        const quiz = {
+          id: data[0].quiz_id,
+          category: data[0].category,
+          difficulty: data[0].difficulty,
+          source: data[0].source,
+          datecreated: data[0].datecreated,
+          numsubmissions: data[0].numsubmissions,
+        };
+        setQuiz(quiz);
+        const questions = [];
+        data.forEach((ele) => {
+          const {
+            id, text, thumbnail_url, questiontype, learnmore_url,
+          } = ele;
+          const entry = {
+            id,
+            text,
+            thumbnail_url,
+            questiontype,
+            learnmore_url,
           };
-          setQuiz(quiz);
-          const questions = [];
-          data.forEach((ele) => {
-            const {
-              id, text, thumbnail_url, questiontype, learnmore_url,
-            } = ele;
-            const entry = {
-              id,
-              text,
-              thumbnail_url,
-              questiontype,
-              learnmore_url,
-            };
-            questions.push(entry);
-          });
-          setQuestions(questions);
+          questions.push(entry);
         });
-    }
+        setQuestions(questions);
+      });
   }, [quiz_id]);
   // Fetch answers when the question changes
   useEffect(() => {
@@ -211,10 +212,8 @@ export default function QuizPage() {
   }, [submit]);
 
   useEffect(() => {
-    const data = localStorage.getItem('quizID');
-    setQuizID(Number(data));
-    setToggle(true);
-  });
+    setQuizID(Number(quiz_id));
+  }, []);
 
   useEffect(() => {
     show();

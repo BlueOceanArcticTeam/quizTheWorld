@@ -321,7 +321,7 @@ export default function Quizzes() {
               <div key={index}>
                 <p>{ele?.title}</p>
                 <Link to={{
-                  pathname: '/quizzes/quiz/',
+                  pathname: `/quizzes/quiz/${ele?.id}`,
                 }}
                 >
                   <img
@@ -371,7 +371,7 @@ export default function Quizzes() {
               <div key={index}>
                 <p>{ele.title}</p>
                 <Link to={{
-                  pathname: '/quizzes/quiz/',
+                  pathname: `/quizzes/quiz/${ele.id}`,
                 }}
                 >
                   <img
