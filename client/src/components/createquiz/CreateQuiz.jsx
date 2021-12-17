@@ -132,6 +132,7 @@ export default function CreateQuiz() {
             setTrueFalseAnswer={setTrueFalseAnswer}
             trueFalseOtherAnswer={trueFalseOtherAnswer}
             setTrueFalseOtherAnswer={setTrueFalseOtherAnswer}
+            quiz={quiz}
           />
         )
         : ''}

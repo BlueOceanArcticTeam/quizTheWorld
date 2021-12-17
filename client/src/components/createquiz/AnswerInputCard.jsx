@@ -121,8 +121,12 @@ export default function AnswerInputCard({
     clearOldQuestionAndCreateNewOne();
   }
 
-  function submitQuestion() {
-
+  function validateInputsAndChangeModal() {
+    if (answers.correct === null || answers.A === '' || answers.B === '' || answers.C === '' || answers.D === '') {
+      alert('Please fill out the form!');
+    } else {
+      setStepCount(stepCount + 2);
+    }
   }
 
   return (
@@ -199,7 +203,7 @@ export default function AnswerInputCard({
             }}
           />
           <Button
-            onClick={() => { setStepCount(stepCount + 2); storeAnswersForSubmitting(); submitQuestion(); }}
+            onClick={() => { validateInputsAndChangeModal(); storeAnswersForSubmitting(); }}
             variant="contained"
             sx={{
               position: 'absolute',

@@ -57,6 +57,14 @@ export default function CategoryDifficultyNameCard({
     });
   }
 
+  function validateInputsAndChangeModal() {
+    if (quiz.category === '' || quiz.difficulty === '' || quiz.title === '') {
+      alert('Please fill out the form!');
+    } else {
+      setStepCount(stepCount + 1);
+    }
+  }
+
   return (
 
     <div id="cardContainer" ref={boxRef} style={{ opacity: '0' }}>
@@ -125,7 +133,7 @@ export default function CategoryDifficultyNameCard({
             }}
           />
           <Button
-            onClick={() => { setStepCount(stepCount + 1); }}
+            onClick={() => { validateInputsAndChangeModal(); }}
             variant="contained"
             sx={{
               position: 'absolute',

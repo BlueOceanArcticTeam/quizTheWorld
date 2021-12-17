@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon backend/server/server.js",
-    "build": "webpack --config ./webpack.config.js --mode production -w",
+    "build": "webpack --config ./webpack.config.js --mode development -w",
     "test": "jest",
     "load": "psql postgres -f ./load.sh"
   },

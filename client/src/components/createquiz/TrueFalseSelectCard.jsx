@@ -73,6 +73,14 @@ export default function TrueFalseSelectCard({
     setAnswerGroup((answerGroup) => [...answerGroup, trueFalseArr]);
   }
 
+  function validateInputsAndChangeModal() {
+    if (trueFalseAnswer.correct === null) {
+      alert('Please fill out the form!');
+    } else {
+      setStepCount(stepCount + 1);
+    }
+  }
+
   return (
 
     <div id="cardContainer" ref={boxRef} style={{ opacity: '0' }}>
@@ -110,7 +118,7 @@ export default function TrueFalseSelectCard({
             </Select>
           </FormControl>
           <Button
-            onClick={() => { setStepCount(stepCount + 1); addAnswerToAnswerGroup(); setCurrentQuestionId(currentQuestionId + 1); }}
+            onClick={() => { validateInputsAndChangeModal(); addAnswerToAnswerGroup(); setCurrentQuestionId(currentQuestionId + 1); }}
             variant="contained"
             sx={{
               position: 'absolute',
