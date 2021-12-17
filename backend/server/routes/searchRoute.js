@@ -5,7 +5,7 @@ const db = require('../../database/db.js');
 
 searchQuery.route('/').get((req, res) => {
   const { queryItem } = req.query;
-  db.query('SELECT * FROM users WHERE username LIKE $1', [`%${queryItem}%`])
+  db.query('SELECT username, firstname, lastname, thumbnail_url, id FROM users WHERE LOWER(username) LIKE LOWER($1) OR LOWER(firstname) LIKE LOWER($1) OR LOWER(lastname) LIKE LOWER($1)', [`%${queryItem}%`])
     .then((data) => { res.send(data.rows); })
     .catch((err) => { console.log(err); });
 });

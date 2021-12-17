@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
 import {
   Link,
   BrowserRouter as Router,
@@ -14,45 +13,13 @@ import Login from '../login/Login.jsx';
 import Quizzes from '../quizzes/Quizzes.jsx';
 import { AppContext } from '../../App.jsx';
 import LevelUp from './Search.jsx';
-import Modal from '../Modal/Modal.jsx';
+import Modal from '../modal/Modal.jsx';
+import Search from './Search.jsx';
 
 const NavBar = function () {
-  const [query, setQuery] = useState('');
-  const [render, setRender] = useState(false);
-  const [data, setData] = useState();
   const { user, handleLogOut, userID } = useContext(AppContext);
   const [userDropDown, setUserDropDown] = useState(false);
   // component functions - event handlers
-
-  function handleChange(e) {
-    setQuery(e.target.value);
-    console.log(query, ' query');
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    axios.get('/api/searchQuery', {
-      params: {
-        queryItem: query,
-      },
-    })
-      .then((resp) => {
-        setData(resp.data, 'response here');
-      });
-    setRender(true);
-  }
-
-  function handleClick(e) {
-    axios
-      .post(`/api/profile/${userID}/friends/${e.target.value}`, null, {
-        params: {
-          user_id: userID,
-          friend_id: e.target.value,
-        },
-      })
-      .then((response) => response.status)
-      .catch((err) => console.warn(err));
-  }
 
   return (
     <div style={{
@@ -122,10 +89,7 @@ const NavBar = function () {
             </Link>
           ) }
         {/* HERE IS THE SEARCH BAR */}
-        <form onSubmit={handleSubmit}>
-          <input type="text" onChange={handleChange} value={query} placeholder="Search for quizzes or people.." style={{ borderRadius: '20px', marginRight: '10px' }} />
-          <SearchIcon style={{ color: 'white' }} className="search" />
-        </form>
+        <Search />
         {/* {user ? console.log(user.username) : console.log('not logged in')} */}
         {
         user
@@ -232,31 +196,6 @@ const NavBar = function () {
           )
 }
       </Box>
-      <Modal
-        value={render}
-
-      >
-        <div
-          id="search"
-          style={{
-            position: 'absolute', alignItems: 'center', left: 0, right: 0, top: '25%', margin: 'auto', display: 'flex', width: '30vw', height: '30vh', border: '1px solid red', backgroundColor: '#E9CEFF', zIndex: '99999',
-          }}
-        >
-
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 'auto', width: '100%',
-          }}
-          >
-            <ul>
-              {data ? data.map((item) => (
-                <li value={item.id} onClick={handleClick}>{item.username}</li>
-
-              )) : null}
-            </ul>
-
-          </div>
-        </div>
-      </Modal>
     </div>
   );
 };
