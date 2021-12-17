@@ -123,7 +123,6 @@ export default function QuizPage() {
 
   // Initial Fetch for quiz and associated questions
   useEffect(() => {
-    console.log('comin through here');
     setToggle(false);
     axios.get(`/api/quiz/${quiz_id}`)
       .then((res) => {
