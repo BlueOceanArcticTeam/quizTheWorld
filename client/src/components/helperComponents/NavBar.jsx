@@ -65,7 +65,6 @@ const NavBar = function () {
         >
           Quizzes
         </Link>
-
         { user
           ? (
             <Link
