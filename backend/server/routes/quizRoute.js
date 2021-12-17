@@ -14,11 +14,11 @@ quiz.route('/:quiz_id').get((req, res) => {
 
 quiz.route('/').post((req, res) => {
   const {
-    user_id, quizID, numCorrect, totalQuestions, lastAnswered, completed, dateCompleted,
+    user_id, quizID, numCorrect, totalQuestions, completed, dateCompleted,
   } = req.body;
   // completed = completed.toString();
 
-  db.query('INSERT INTO userquizstatus(quiz_id, user_id, completed, datecompleted, lastanswered, numcorrect, totalquestions) VALUES ($1, $2, $3, $4, $5, $6, $7);', [quizID, user_id, completed, dateCompleted, lastAnswered, numCorrect, totalQuestions], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
+  db.query('INSERT INTO userquizstatus(quiz_id, user_id, completed, datecompleted, numcorrect, totalquestions) VALUES ($1, $2, $3, $4, $5, $6);', [quizID, user_id, completed, dateCompleted, numCorrect, totalQuestions], (err, data) => { // FILL IN THE QUERY AND PARAMETERS
     if (err) console.log(err);
   });
 });

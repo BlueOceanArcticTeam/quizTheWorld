@@ -201,11 +201,11 @@ export default function QuizPage() {
         quizID: quiz_id,
         numCorrect: totalCorrect,
         totalQuestions: last + 1,
-        lastAnswered: questionIndex,
         completed: done,
         dateCompleted: date,
       })
         .then((res) => {
+          console.log('this definitely posted');
           console.log(res);
         });
     }
