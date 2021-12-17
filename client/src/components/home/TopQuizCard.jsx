@@ -20,6 +20,8 @@ import MythLg from './Assets/MythLg.png';
 import SciSm from './Assets/SciSm.png';
 import SciMd from './Assets/SciMd.png';
 import SciLg from './Assets/SciLg.png';
+import BookLg from './Assets/BookLg.png';
+import MusicLg from './Assets/MusicLg.png';
 
 const TopQuizCard = function ({ title, category, quizId }) {
   const handleClick = function () {
@@ -38,6 +40,10 @@ const TopQuizCard = function ({ title, category, quizId }) {
     bgStyle = SciLg;
   } else if (category === 'Mythology') {
     bgStyle = MythLg;
+  } else if (category.includes('Music')) {
+    bgStyle = MusicLg;
+  } else if (category.includes('Book')) {
+    bgStyle = BookLg;
   }
   return (
     <div

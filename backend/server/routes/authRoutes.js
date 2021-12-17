@@ -26,12 +26,13 @@ authRouter.post('/register', async (req, res) => {
     // create new user in the database
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     db.query(
-      'INSERT INTO users(id, username, password, firstname, lastname, email) VALUES (DEFAULT, $1, $2, $3, $4, $5) RETURNING id;',
+      'INSERT INTO users(id, username, password, firstname, lastname, email, thumbnail_url) VALUES (DEFAULT, $1, $2, $3, $4, $5, $6) RETURNING id;',
       [req.body.username,
         hashedPassword,
         req.body.firstName,
         req.body.lastName,
-        req.body.email],
+        req.body.email,
+        req.body.thumbnail_url],
       (err, data) => {
         // console.log('data returned', data);
         if (err) {

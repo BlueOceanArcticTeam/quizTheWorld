@@ -138,23 +138,15 @@ export const App = function () {
             <Route path="*" element={<NoPath />} />
             <Route index element={<HomePage />} />
             <Route path="/profile/:user_id" element={<ProfilePage />} />
-            <Route path="/register" element={<Register />} />
             <Route path="/quizzes" element={<Quizzes />} />
             <Route path="/quizzes/quiz" element={<QuizPage />} />
-            <Route path="/quizzes" element={<PrivateRoute />}>
-              {' '}
-              //KEEP
-              <Route path="/quizzes/create" element={<CreateQuiz />} />
-            </Route>
-            {' '}
-            //KEEP
-            <Route path="/chat" element={<PrivateRoute />}>
-              {' '}
-              //KEEP
-            </Route>
-            {' '}
-            //KEEP
+            {/* <Route path="/quizzes" element={<PrivateRoute />}> */}
+            <Route path="/quizzes/create" element={<CreateQuiz />} />
+            {/* </Route> */}
+            {/* <Route path="/chat" element={<PrivateRoute />}>
+            </Route> */}
           </Route>
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Routes>
         {displayModal

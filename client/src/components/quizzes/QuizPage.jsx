@@ -6,6 +6,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Button from '@mui/material/Button';
 import QuizBackground from './assets/Question.png';
@@ -35,6 +36,7 @@ export default function QuizPage() {
   const [hideNext, setNext] = useState(true);
   const [hideBack, setBack] = useState(true);
   const [hideNum, setNum] = useState(true);
+  const [link, setLink] = useState(true);
   // This function will let you start a quiz and then let you submit one later!
   const startSubmit = () => {
     if (!render) {
@@ -58,6 +60,7 @@ export default function QuizPage() {
       setAnswers([]);
       setButton('TRY AGAIN');
       setSubmit(true);
+      setLink(false);
     } if (buttonText === 'TRY AGAIN') {
       setNext(false);
       setHide(true);
@@ -69,6 +72,14 @@ export default function QuizPage() {
       const question = questionsArray[questionIndex].text;
       setCurrent(question);
       setSubmit(false);
+      setLink(true);
+    }
+  };
+  const show = () => {
+    if (questionsArray) {
+      if (Object.keys(submittedAnswers).length === questionsArray.length) {
+        setHide(false);
+      }
     }
   };
   const selectAnswer = (e) => {
@@ -205,6 +216,9 @@ export default function QuizPage() {
     setToggle(true);
   });
 
+  useEffect(() => {
+    show();
+  }, [submittedAnswers]);
   // render component:
   return (
     <div style={{
@@ -352,23 +366,30 @@ export default function QuizPage() {
               >
                 {buttonText}
               </Button>
+              <Link to={{
+                pathname: '/quizzes/',
+              }}
+              >
+                <Button
+                  className={link ? 'hide' : ''}
+                  variant="contained"
+                  sx={{
+                    width: '100%',
+                    marginTop: '10px',
+                    float: 'right',
+                    backgroundImage: 'linear-gradient(#FE8C59, #F56CA6)',
+                    ':hover': {
+                      bgcolor: '#ff9100', // theme.palette.primary.main
+                      color: 'white',
+                    },
+                  }}
+                >
+                  More Quizzes!
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* This is the Chat container  */}
-        {/* <div style={{
-          display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginBottom: '2em', marginTop: '1.5em',
-        }}
-        >
-          <h2 style={{ marginBottom: '1.25em', color: '#F78670' }}>Chat with Friends</h2>
-          <div style={{
-            width: '25em', height: '35em', background: 'pink', borderRadius: '15px',
-          }}
-          >
-            Goodbye
-          </div>
-        </div> */}
       </div>
     </div>
   );

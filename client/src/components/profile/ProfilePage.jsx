@@ -3,7 +3,7 @@
 /* eslint-disable import/no-cycle */
 
 import React, { useState, useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -16,15 +16,18 @@ import './profilepage.css';
 import placehold from '../home/Assets/placehold.png';
 import { AppContext } from '../../App.jsx';
 import UserChart from './UserChart.jsx';
+import NoPath from '../nopath/NoPath.jsx';
 
 export default function ProfilePage() {
+  const { goToHome } = useContext(AppContext);
   const { user_id } = useParams();
 
   const [userMetaData, setUserMetaData] = useState({});
   const [lastQuiz, setLastQuiz] = useState();
   const [userId, setUserId] = useState(user_id);
   const [userFriends, setUserFriends] = useState([]);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState();
+  const [userExist, setUserExist] = useState(true);
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [
@@ -41,6 +44,14 @@ export default function ProfilePage() {
       },
     ],
   });
+
+  function fetchUserFriends() {
+    axios
+      .get(`/api/profile/${userId}/friends`)
+      .then((data) => {
+        setUserFriends(data.data.rows);
+      });
+  }
 
   function fetchUserMetaData() {
     axios
@@ -81,104 +92,110 @@ export default function ProfilePage() {
           });
         }
       });
-    axios
-      .get(`/api/profile/${userId}`)
-      .then((data) => {
-        setUserData(data.data[0]);
-      })
-      .catch((err) => {
-        throw err;
-      });
-    axios
-      .get(`/api/profile/${userId}/friends`)
-      .then((data) => {
-        setUserFriends(data.data.rows);
-      });
+  }
+
+  function fetchUserData() {
+    if (!isNaN(user_id)) {
+      axios
+        .get(`/api/profile/${userId}`)
+        .then((data) => {
+          setUserData(data.data[0]);
+          fetchUserFriends();
+          fetchUserMetaData();
+        })
+        .catch((err) => {
+          console.log('big error time');
+        });
+    }
   }
 
   // use effect - load data when rendering the page
   useEffect(() => {
     // get user meta data
-    fetchUserMetaData();
+    fetchUserData();
   }, [userId]);
 
   return (
-    <div className="mainProfileContainer">
-      <div className="infoContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Profile
-          <br />
-          <div className="info">
-            <img
-              src={userData.thumbnail_url === undefined || userData.thumbnail_url === 'null' ? placehold : userData.thumbnail_url}
-              alt="ProfilePicture"
-              style={{
-                margin: 'auto', borderRadius: '100%',
-              }}
-              id="profilepic"
-            />
-            <div className="key">
-              Screen Name
+    userData
+      ? (
+        <div className="mainProfileContainer">
+          <div className="infoContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Profile
+              <br />
+              <div className="info">
+                <img
+                  src={userData.thumbnail_url === null || userData.thumbnail_url === 'null' ? placehold : userData.thumbnail_url}
+                  alt="ProfilePicture"
+                  style={{
+                    margin: 'auto', borderRadius: '100%',
+                  }}
+                  id="profilepic"
+                />
+                <div className="key">
+                  Screen Name
+                </div>
+                <div className="property">
+                  {`${userData.username}`}
+                </div>
+                <div className="key">
+                  Full Name
+                </div>
+                <div className="property">
+                  {`${userData.firstname} ${userData.lastname}`}
+                </div>
+                <div className="key">
+                  Email
+                </div>
+                <div className="property">
+                  {`${userData.email}`}
+                </div>
+              </div>
             </div>
-            <div className="property">
-              {`${userData.username}`}
+          </div>
+          <div className="statsContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Quiz Overview
             </div>
-            <div className="key">
-              Full Name
+            <div className="cards">
+              <div>
+                {NewCard('Quizzes Taken', userMetaData.count > 0 ? `${userMetaData.count}` : '')}
+              </div>
+              <div>
+                {NewCard('Average', userMetaData.average ? `${userMetaData.average}%` : '')}
+              </div>
+              <div>
+                {NewCard('Last Quiz Taken', lastQuiz ? `${lastQuiz}` : '')}
+              </div>
             </div>
-            <div className="property">
-              {`${userData.firstname} ${userData.lastname}`}
+            <div className="infoChart">
+              <div style={{ fontWeight: 'bold' }}>
+                Quiz Scores
+              </div>
+              <div id="userchartcontainer">
+                <UserChart data={chartData} />
+              </div>
             </div>
-            <div className="key">
-              Email
+          </div>
+          <div className="friendsContainer">
+            <div style={{ fontWeight: 'bold' }}>
+              Friends
             </div>
-            <div className="property">
-              {`${userData.email}`}
-            </div>
+            {userFriends.map((friend, index) => (
+              <Link
+                style={{
+                  color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
+                }}
+                to={`/profile/${friend.id}`}
+                key={index}
+                onClick={() => { setUserId(friend.id); }}
+              >
+                {RenderFriend(friend, index)}
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
-      <div className="statsContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Quiz Overview
-        </div>
-        <div className="cards">
-          <div>
-            {NewCard('Quizzes Taken', userMetaData.count > 0 ? `${userMetaData.count}` : '')}
-          </div>
-          <div>
-            {NewCard('Average', userMetaData.average ? `${userMetaData.average}%` : '')}
-          </div>
-          <div>
-            {NewCard('Last Quiz Taken', lastQuiz ? `${lastQuiz}` : '')}
-          </div>
-        </div>
-        <div className="infoChart">
-          <div style={{ fontWeight: 'bold' }}>
-            Quiz Scores
-          </div>
-          <div id="userchartcontainer">
-            <UserChart data={chartData} />
-          </div>
-        </div>
-      </div>
-      <div className="friendsContainer">
-        <div style={{ fontWeight: 'bold' }}>
-          Friends
-        </div>
-        {userFriends.map((friend, index) => (
-          <Link
-            style={{
-              color: '#FFF1EA', fontWeight: 'bold', paddingRight: '2em', textDecoration: 'none',
-            }}
-            to={`/profile/${friend.id}`}
-            key={index}
-            onClick={() => { setUserId(friend.id); }}
-          >
-            {RenderFriend(friend, index)}
-          </Link>
-        ))}
-      </div>
-    </div>
+      )
+      : <NoPath />
   );
 }

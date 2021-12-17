@@ -21,12 +21,6 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
     return output;
   }
 
-  // check if userInput is any empty string
-  if (userInput === '') {
-    output.errorMessage = `Please input a value for ${usage}`;
-    return output;
-  }
-
   // for overall validation - checking for sql commands
   /**
    * ALTER TABLE
@@ -188,6 +182,12 @@ export default function inputValidation(userInput, usage) { // TAKES AN INPUT OF
   // additional checks for lastname
   if (usage === 'lastname' && userInput.length > 40) {
     output.errorMessage = `${usage} must be less than 40 characters`;
+    return output;
+  }
+
+  // check if userInput is any empty string
+  if (userInput === '') {
+    output.errorMessage = `Please input a value for ${usage}`;
     return output;
   }
 

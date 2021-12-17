@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import './homepage.css';
 import Container from '@mui/material/Container';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import placehold from './Assets/placehold.png';
 import TopQuizSlider from './TopQuizSlider.jsx';
 import TopQuizCard from './TopQuizCard.jsx';
 import NavBar from '../helperComponents/NavBar.jsx';
+import LevelUp from '../helperComponents/Search.jsx';
 
 export default function HomePage() {
   const [data, setData] = useState();
@@ -41,23 +43,31 @@ export default function HomePage() {
           <div className="heroSectionSlider">
             <div className="heroSectionSliderText" style={{ fontWeight: 'bold' }}>
               Check out some of our most popular quizzes or..
-              <Button
-                variant="contained"
-                sx={{
-                  fontSize: '1.5rem',
-                  background: 'linear-gradient(#F06E0E, #DE8D2F)',
+              <Link
+                style={{
                   textDecoration: 'none',
-                  marginLeft: '1.25rem',
-                  borderRadius: 4,
-                  fontFamily: 'Poppins',
-                  fontWeight: 'bold',
-                  height: 'auto',
-                  overflow: 'hidden',
-                  width: '25%',
                 }}
+                to="/quizzes/create"
               >
-                Create Your Own!
-              </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    fontSize: '1.5rem',
+                    background: 'linear-gradient(#F06E0E, #DE8D2F)',
+                    textDecoration: 'none',
+                    marginLeft: '1.25rem',
+                    borderRadius: 4,
+                    fontFamily: 'Poppins',
+                    fontWeight: 'bold',
+                    height: 'auto',
+                    overflow: 'hidden',
+                    width: '25%',
+                  }}
+                >
+                  Create Your Own!
+                </Button>
+
+              </Link>
               <div
                 className="heroSlider"
                 style={{
