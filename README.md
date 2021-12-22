@@ -36,7 +36,7 @@ In the ever-changing uncertainty of the modern world, what can give more comfort
 
 **Homepage**:
 
-* Write some stuff here
+* Here is the homepage of QuizKnows! Create an Account, Login, and test your knowledge. Some of our most popular quizzes will be on the homepage to play.
 
 <img src="./client/dist/readme/homepage.png" width="90%">
 
