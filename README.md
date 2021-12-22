@@ -86,7 +86,7 @@ Once the user is registered, they will be signed in automatically.  Regardless o
 
 **Quiz Creation**:
 
-* Write some stuff here
+* Here you can create your own quiz! Follow along the modals and create a quiz with as many questions and answers as you like. You can choose true / false or multiple choice types of questions.  Make your quiz dreams a reality!
 
 <img src="client/dist/readme/create.png" width="90%">
 
