@@ -142,7 +142,7 @@ Once the user is registered, they will be signed in automatically.  Regardless o
 
  > * **[Wilson Wong](https://www.linkedin.com/)** System Architect
 
- > * **[Matt Olsen](https://www.linkedin.com/)** job title
+ > * **[Matt Olsen](https://www.linkedin.com/mbolsen)** Software Engineer
 ---
 
 ## Languages and Frameworks Used
